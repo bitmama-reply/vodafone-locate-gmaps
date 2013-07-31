@@ -1,0 +1,50 @@
+<div id="standardMessageDetailContent" class="inboxMessageContentDiv">
+	
+	<div class="toolsMessage clearfix">
+		<a class="goBack" onclick="hideMessageContent(this);"><#= $.i18n.prop('messages.backToList') #></a>
+		<# if(lbasRightManager && lbasRightManager.checkRight('send_messages')) { #>
+		  <a onclick="openComposeMessageDialogFromInbox()" class="inboxActionLink newMsg"><span><#= $.i18n.prop('messages.newMessage') #></span></a>
+		<# } #> 
+	</div>
+	
+	
+	<div class="head">
+		<div class="clearfix">
+			<h2><#= json.detailTitle #></h2>
+			
+			<ul class="messageTools clearfix">
+				<li>
+					<a onclick="deleteMessage(1,<#= json.messageId #>);" class="inboxActionLink marginLeft"><span><#= $.i18n.prop('message.Delete') #></span></a>
+				</li>
+				<li>
+					<a onclick="forwardMessage(<#= json.messageId #>, 0 ,1);" class="inboxActionLink"><span><#= $.i18n.prop('message.Forward') #></span></a>
+				</li>
+				<li>
+					<a onclick="replyToMessage(<#= json.messageId #>, 'all');" class="inboxActionLink"><span><#= $.i18n.prop('message.ReplyAll') #></span></a>
+				</li>
+				<li>
+					<a onclick="replyToMessage(<#= json.messageId #>, 'single');" class="inboxActionLink"><span><#= $.i18n.prop('message.Reply') #></span></a>
+				</li>
+			</ul>
+			
+			
+		</div>
+		<div class="clearfix">
+			<h3 class="from">
+				<#= $.i18n.prop('messageDetail.from') #>: <span><#= json.from #></span> 
+		  </h3>
+		  <h3 class="to">
+		    <!-- json.toUserId -->
+				<#= $.i18n.prop('messageDetail.to') #>: <span><#= json.to #></span>
+			</h3>
+			
+			<p class="sentTime"><#= $.i18n.prop('messageDetail.sent') #>:&nbsp;</p>
+			
+		</div>
+	</div>
+	
+	<div class="content">
+		<#= json.content #>
+	</div>
+				
+</div>

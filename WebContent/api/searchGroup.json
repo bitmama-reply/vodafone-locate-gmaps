@@ -1,0 +1,59 @@
+{
+    "addedUsers": [],
+    "availableUserNames": null,
+    "editUserPerm": false,
+    "errorText": null,
+    "groupId": 0,
+    "groupList": null,
+    "groupUsers": null,
+    "groupUsersTmp": null,
+    "lbasUser": null,
+    "lbasUsers": null,
+    "messageContent": null,
+    "preUserMsisdn": null,
+    "removedUsers": [],
+    "repassword": null,
+    "requestedUserId": 0,
+    "searchText": "Search",
+    "searchUserId": "u113219399891",
+    "selectedGroup": null,
+    "selectedUsers": null,
+    "timestamp": 0,
+    "userAction": 0,
+    "userActionList": [
+        {
+            "key": "1",
+            "value": "Request Permission"
+        },
+        {
+            "key": "3",
+            "value": "View user details"
+        },
+        {
+            "key": "6",
+            "value": "Send message"
+        },
+        {
+            "key": "7",
+            "value": "View report"
+        },
+        {
+            "key": "11",
+            "value": "Share my location"
+        },
+        {
+            "key": "12",
+            "value": "Show on map"
+        }
+    ],
+    "userGroups": [
+        {
+            "assetGroup": false,
+            "id": 113199954391,
+            "name": "REPLY",
+            "userSize": 1,
+            "users": null
+        }
+    ],
+    "usersCurrentLocationPermissionStatuses": {}
+}

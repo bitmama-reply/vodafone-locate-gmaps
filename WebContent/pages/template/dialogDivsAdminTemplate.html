@@ -1,0 +1,392 @@
+<div class="demo" sizcache="0" sizset="61" style="display: none"><!--edit enterprise category  -->
+<div id="dialog" title="">
+<div id="tabs_in_dialog">
+<ul>
+	<li id="edit_ecat_tab1_list_item"><a id="tab1" href="#tabs-1">
+		<span class="lm" key="editEnterpriseCategoryDialog.Details"><#= $.i18n.prop('editEnterpriseCategoryDialog.Details') #></a></span>
+	</li>
+	<li id="edit_ecat_tab2_list_item"><a id="tab2" href="#tabs-2" onclick="openCategoryPermissionsTab();">
+		<span class="lm" key="editEnterpriseCategoryDialog.Permissions"><#= $.i18n.prop('editEnterpriseCategoryDialog.Permissions') #></a></span>
+	</li>
+	<li id ="edit_ecat_tab3_list_item"><a id="tab3" href="#tabs-3" onclick="getAdminOfCategory();">
+		<span class="lm" key="editEnterpriseCategoryDialog.Admin"><#= $.i18n.prop('editEnterpriseCategoryDialog.Admin') #></a></span>
+	</li>
+</ul>
+
+<div id="tabs-1"></div>
+
+<div id="tabs-2"></div>
+
+<div id="tabs-3"></div>
+</div>
+
+<table width="100%">
+<tr>
+<td align="right">
+	<span id ="cancelCategoryButton">
+	   	<a href="javascript:void(0);" style="color: #ffff;" class="textBtnGrey" onclick="$('span.ui-icon-closethick:last').click();"> 	                          
+			<span class="btnSpan">
+				<span class="lm" key="buttons.cancel"><#= $.i18n.prop('buttons.cancel') #></span>
+			</span>                    	
+	    </a>
+		</span>&nbsp;
+		
+<span id="updateCategoryButton">
+		<a class="textBtnRed" style="color: #FFFFFF;" href="javascript:void(0);" onclick="if (lbasValidate('categoryDetailForm')) AjxUpdateCategory();">
+			<span class="btnSpan" id="catgrEEditButn">
+				<span class="lm" key="buttons.update"><#= $.i18n.prop('buttons.update') #></span>
+			</span>
+		</a>
+</span>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</div>
+</div>
+
+<input type="hidden" id="selectedLocationId" name="selectedLocationId">
+<input type="hidden" id="selectedLocationType" name="selectedLocationType">
+
+<div style="display:none" ><!--edit location  -->
+				<div id="edit_loc_dialogxxx" title="">
+				    <div id="tabs_in_edit_loc">
+				        <ul>				        				       
+				            <li id ="edit_loc_tab1_list_item"><a id="edit_loc_tab1_link" href="#edit_loc_tab1"><#= $.i18n.prop('location.details') #></a></li>				            
+				            <li id ="edit_loc_tab2_list_item"><a id="edit_loc_tab2_link" href="#edit_loc_tab2" onclick ="openEditLocTab2();"><#= $.i18n.prop('location.categories') #></a></li>
+				            <li id ="edit_loc_tab3_list_item" ><a id="edit_loc_tab3_link" href="#edit_loc_tab3" onclick ="openEditLocTab3();"><#= $.i18n.prop('location.permissions') #></a></li>
+							<li id ="edit_loc_tab4_list_item"><a id="edit_loc_tab4_link" href="#edit_loc_tab4" onclick ="openEditLocTab4();"><#= $.i18n.prop('location.admin') #></a></li>
+				        </ul>
+
+				        <div id="edit_loc_tab1">				        	   
+				        </div>				        
+						<div id="edit_loc_tab2">				        	
+				        </div>
+				        <div id="edit_loc_tab3">				        	
+				        </div>
+				        <div id="edit_loc_tab4">
+				        </div>				        
+				     </div>
+				     <table width="100%">
+				     	<tr>
+						<td  align="right" >
+							<a href="javascript:void(0);" style="color: #FFFFFF;" class="textBtnGrey" onclick="$('span.ui-icon-closethick:last').click();">                          	                          
+								<span class="btnSpan">
+									<span class="lm" key="buttons.cancel"><#= $.i18n.prop('buttons.cancel') #></span>
+								</span>                     	
+							</a>&nbsp;	
+							<a href="javascript:void(0);" id="updateLocationButton" style="color: #FFFFFF;display:none;" class="textBtnRed" tabindex="20" >                          	                          
+								<span class="btnSpan">
+									<span class="lm" key="buttons.update"><#= $.i18n.prop('buttons.update') #></span>
+								</span>                     	
+							</a>&nbsp;
+							<a id="addLocationButton" href="javascript:void(0);" style="color: #FFFFFF;display:none;" class="textBtnRed"  onclick="if (lbasValidate('updateLocationDetail'))AjxSaveNewLocation();" tabindex="20" >                          	                          
+								<span class='btnSpan'>
+									<span class="lm" key="buttons.save"><#= $.i18n.prop('buttons.save') #></span>
+								</span>                     	
+							</a>&nbsp;
+						</td>
+						</tr>
+					<tr><td>&nbsp;</td></tr>	
+					</table>
+				</div>
+		
+</div>
+
+<div class="demo" sizcache="0" sizset="61" style="display:none"><!-- upload file -->
+	<div id="UploadFileDialog" title="" />
+</div>
+
+<div class="demo" sizcache="0" sizset="61" style="display:none"><!-- send message  -->
+<div id="sendMessageDialog" title="">
+<form id="sendMessage" action="sendMessage" theme="simple">
+
+<input type="hidden" id="selectedUserAndGroups" name="selectedUserAndGroups">
+   <table cellpadding="9" cellspacing="9" class="sendMessageTable">
+	
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('messages.to') #></label></td>
+		</tr>
+		
+		<tr>
+			<td><input type="text" id="messageTo" class="inputText" name="messageTo" size="50" maxlength="50" readonly="false"/></td>
+		</tr>
+		
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('messages.Subject') #></label></td>
+		</tr>
+		
+		<tr>
+			<td><input type="text" id="messageSubject" name ="messageSubject" size="50" maxlength="40"/></td>
+		</tr>
+		
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('messages.message') #></label>&nbsp;(<span class="charsLeft">160</span>&nbsp;<#= $.i18n.prop('messages.charLeft') #>)</td>
+		</tr>
+		
+		<tr>  
+			<td><textarea id="messageContent" name ="messageContent" cols="50" rows="3" maxlength="160" /></td>
+		</tr>
+	
+		
+		<tr align="right">
+		  <td align="right" colspan ="3">
+			   <a href="javascript:void(0);" style="color: #FFFFFF;text-decoration:none" class="textBtnRed"  
+			         onclick="sendMessageToUsers();" >                          	                          
+				       <span class='btnSpan'><#= $.i18n.prop('messages.send') #></span>                     	
+			   </a>
+			</td>
+		</tr>	
+	
+   </table>
+   </form>
+	</div>
+</div>
+
+<div class="demo" sizcache="0" sizset="61" style="display:none"><!-- move to new group  -->
+	<div id="moveToNewGroupDialog" title="">
+
+	</div>
+</div>
+
+<div class="demo" sizcache="0" sizset="61" style="display:none"><!-- group edit  -->
+				<div id="edit_group_dialog" >
+				   
+				    <div id="tabs_in_edit_group">
+				        <ul>
+				            <li><a id="edit_group_tab0_link" style="font-weight:bold" href="#edit_group_tab0"><#= $.i18n.prop('groupEdit.GroupDetails') #></a></li>
+				            <li><a id="edit_group_tab1_link" style="font-weight:bold" href="#edit_group_tab1"><#= $.i18n.prop('groupEdit.GroupMembers') #></a></li>
+				            <li><a id="edit_group_tab2_link" style="font-weight:bold" href="#edit_group_tab2"><#= $.i18n.prop('groupEdit.Permissions') #></a></li>
+							<li><a id="edit_group_tab3_link" style="font-weight:bold" href="#edit_group_tab3"><#= $.i18n.prop('groupEdit.Admin') #></a></li>
+				        </ul>
+
+                        <div id="edit_group_tab0">	             
+				        </div>	
+				        <div id="edit_group_tab1">	             
+				        </div>				        
+						<div id="edit_group_tab2">				        	
+				        </div>
+				        <div id="edit_group_tab3">
+				        </div>
+					   
+				     </div>
+				     
+				     <br/>
+					<table id="editGroupDialogUpdateButton" style="position:absolute;right:15px" width="100%">
+	     				<tr>
+							<td  align="right" >
+						  		<a href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnRed"  onclick="updateUserGroup();" >                          	                          
+				            		<span class='btnSpan'><#= $.i18n.prop('buttons.update') #></span>                     	
+			   		      		</a>
+			   		     </td>
+			   		     </tr>
+			   		  </table> 
+			   		  <div style="height:20px">
+			   		  </div>
+				     
+	   
+				</div>
+</div>
+
+<div class="demo" sizcache="0" sizset="61" style="display:none"><!-- user edit  -->
+	<div id="edit_user_dialog">	
+		 <div id="tabs_in_edit_user">
+	        <ul>				        				       
+	            <li id ="edit_user_tab1_list_item"><a id="edit_user_tab1_link" href="#edit_user_tab1" onclick="$('#edit_user_tab1').show();"><#= $.i18n.prop('location.details') #></a></li>				            
+	            <li id ="edit_user_tab2_list_item"><a id="edit_user_tab2_link" href="#edit_user_tab2" onclick ="$('#edit_user_tab2').show();"><#= $.i18n.prop('userEdit.Groups') #></a></li>
+	            <li id ="edit_user_tab3_list_item" ><a id="edit_user_tab3_link" href="#edit_user_tab3" onclick ="$('#edit_user_tab3').show();"><#= $.i18n.prop('location.permissions') #></a></li>
+	        	<li id ="edit_user_tab4_list_item" ><a id="edit_user_tab4_link" href="#edit_user_tab4" onclick ="$('#edit_user_tab4').show();"><#= $.i18n.prop('user.cdf') #></a></li>	        
+	        </ul>
+
+	        <div id="edit_user_tab1">				        	   
+	        </div>				        
+			<div id="edit_user_tab2">				        	
+	        </div>
+	        <div id="edit_user_tab3">				        	
+	        </div>	
+	        <div id="edit_user_tab4">				        	
+	        </div>		        
+	     </div>
+	     <table id="editUserDialogButtons" style="display:none" width="100%">
+	     	<tr>
+				<td  align="right" >
+					<a href="javascript:void(0);"  style="color:#FFFFFF;text-decoration:none" class="textBtnRed"  onclick="if(lbasValidate('userDetailForm')) AjxSaveUser();">                          	                          
+						<span class='btnSpan'>
+							<span id="editUserSaveButton" class="lm" key="buttons.save" style="color:#FFFFFF;display:none;"><#= $.i18n.prop('buttons.save') #></span>  
+							<span id="createUserSaveButton" class="lm" key="buttons.create" style="color:#FFFFFF;display:none;"><#= $.i18n.prop('buttons.create') #></span>                  	
+						</span>
+					</a>
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>	
+		</table>
+	</div>
+	<div id="edit_application_dialog">	
+	</div>
+	<div id="edit_asset_dialog">	
+	</div>
+</div>
+
+<div class="demo" sizcache="0" sizset="61" style="display:none"><!-- new group  -->
+	<div id="new_group_dialog" title="New group">
+	
+	</div>
+</div>
+
+<div id="deleteConfirmation" style="display:none" title="Delete"><!-- delete confirm  -->
+	<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span><#= $.i18n.prop('confirmation.delete') #></p>
+</div>
+
+<div id="selectUserConfirmation" style="display:none" title="Select User"><!-- select user confirm  -->
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span><#= $.i18n.prop('warning.select.user') #></p>
+</div>
+
+<div id="genericConfirmation" style="display:none" title="Confirmation"><!-- delete confirm  -->
+	<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span></p>
+</div>
+
+<div id="userChangePasswordDialog" style="display:none">
+<form id="userChangePassword" action="userChangePassword">
+	<table>		
+		<tr>
+			<td colspan="2"><div id="changePswddMsj"><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span><#= $.i18n.prop('info.password.change') #></div></td>
+		</tr>
+		<tr>
+			<td><span class="labelStyle"><#= $.i18n.prop('userNewPassword') #></span></td>
+			<td><input type="password" id="upsw1"
+				class="lbasInputText vldRequired vldMaxLength10" name="userNewPassword" title="<#= $.i18n.prop('tip.user.pwd.instruction') #>" /></td>
+		</tr>
+		<tr>
+			<td><span class="labelStyle"><#= $.i18n.prop('userRetypeNewPassword') #></span></td>
+			<td><input type="password" id="upsw2"
+				class="lbasInputText vldRequired vldMaxLength10" name="userRetypeNewPassword" title="<#= $.i18n.prop('tip.user.pwd.instruction') #>" /></td>
+		</tr>
+		<tr>
+			<td colspan ="2" align ="right">
+			 <a href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnRed"  onclick="updateUserPassword();" >                          	                          
+		       <span class='btnSpan'><#= $.i18n.prop('buttons.change') #></span>                     	
+	   		</a>
+			</td>
+		</tr>
+	</table>
+</form>
+</div>
+
+<div class="demo" sizcache="0" sizset="61" style="display:none"><!-- temprory pre user add  -->
+	<div id="add_pre_user_dialog">	
+     
+     <form action="newPreUser" id="newPreUser">
+	  
+	  <table cellpadding="9" cellspacing="9">
+		
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('msisdn') #></label></td>
+			<td width ="22">&nbsp</td>
+			<td>
+			<input type="text" id="preUserMsisdn"  name="preUserMsisdn" class="vldRequired"/>
+	       </td>
+		</tr>
+		
+		<tr>
+		    <td width="50">
+			<td  align="right" colspan="3">	
+			    <a href="javascript:void(0);" style="color: #FFFFFF;text-decoration:none" class="textBtnRed"  
+			         onclick="savePreUser();" >                          	                          
+				       <span class='btnSpan'><#= $.i18n.prop('buttons.add') #></span>                     	
+			   </a>
+			</td>
+		</tr>
+		
+	   </table>	
+	   
+	 </form>
+	</div>
+</div>
+
+<div class="demo" sizcache="0" sizset="61" style="display:none">
+	<div id="add_company_ban_dialog">	
+     
+     <form action="newCompanyBanForm" id="newCompanyBanForm">
+	  
+	  <table cellpadding="9" cellspacing="9">
+		
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('companyList.BAN') #></label></td>
+			<td width ="22">&nbsp</td>
+			<td>			
+			 <input type="text" id="newCompanyBan"  name="newCompanyBan" maxlength="30" class="vldRequired vldMaxLength30"/>			
+	       </td>
+		</tr>
+		
+		<tr>
+			<td><label><#= $.i18n.prop('companyList.DoC') #></label></td>
+			<td width ="22">&nbsp</td>
+			<td>			
+  				<# var radioList=$.i18n.prop('companyList.Doc.radioList').split("|"); 
+			       for(var i=0; i < radioList.length; i++) { var radioItem=radioList[i].split(":"); #>    
+			         <input type="radio" onclick="selectBanDocRadio('<#= radioItem[1] #>');" value="<#= radioItem[1] #>" 
+					       <# if(radioItem[1] == 0 ){ #>  checked="checked" <# } #> id="banDoCRadioItem<#= radioItem[1] #>">
+					       <label for="radioList"><#= radioItem[0] #></label>
+			    <# } #>	 
+			</td>
+		</tr>
+		
+		<tr>
+		    <td width="50">
+			<td  align="right" colspan ="3">	
+			    <a id="banAddOrUpdateId" href="javascript:void(0);" style="color: #FFFFFF;text-decoration:none" class="textBtnRed" >                          	                          
+				       <span class='btnSpan' id="banAddOrUpdate"></span>                     	
+			   </a>
+			</td>
+		</tr>
+		
+	   </table>	
+	   
+	 </form>
+	 
+	 
+	</div>
+	
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none">
+	<div id="createCompanyDialog" title="">
+	</div>
+</div>
+
+<!-- companyPasswordResetDialog info message  -->
+<!-- asagidaki infoText i parent i ile birlikte kullanmalisin -->
+<div id="companyPasswordResetDialog" style="display:none" title="Info">
+	<p>
+		<span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 50px 0;"></span>
+		<div id="infoText">					
+		</div>		
+	</p>
+</div>
+
+<!-- companyViewHistoryDialog info message  -->
+<div id="companyViewHistoryDialog" style="display:none" title="Info">
+	<p>
+		<span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 50px 0;"></span>
+	
+	</p>
+</div>
+
+<!-- userRenewPasswordConfirmationDialog info message  -->
+<!-- asagidaki infoText i parent i ile birlikte kullanmalisin -->
+<div id="userRenewPasswordConfirmationDialog" style="display:none" title="Info">
+	<p>
+		<span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 50px 0;"></span>
+		<div id="infoText">					
+		</div>		
+	</p>
+</div>
+
+<div id="activateUsersDialog" style="display:none">
+	<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span></p>
+</div>
+
+
+<div id="viewDBObjectsAttrDialog" style="display:none" title="Info">
+	<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span></p>
+</div>

@@ -1,0 +1,1578 @@
+14div.contents{
+	margin:16px 0 7px 7px;
+}
+.items_list_buttons li{
+	font-weight:bold;
+	margin-right:2px; 
+}
+
+
+.items_list_buttons li{
+	margin-right:1px; 
+}
+
+.items_list_buttons .share_my_location{
+	width: 29px; height: 29px; display: block; background: url('../images/share_my_location.png') 0 0 no-repeat; margin: 0 0 0 10px;
+}
+.items_list_buttons .share_my_location:hover{
+	background: url('../images/share_my_location.png') 0 -36px no-repeat;
+}
+.token-input-highlighted-token:hover{background:none;}
+.token-input-dropdown-facebook .token-input-dropdown-item2,
+.token-input-dropdown-facebook .token-input-dropdown-item-facebook{
+	font-size:13px; 
+	color:#888888; 
+	height:22px; 
+	line-height:24px; 
+	border-bottom:1px solid #e7e7e7; 
+	margin-left: 5px;
+	padding-left: 15px;
+	padding-right: 0;
+	font-family:arial,helvetica,verdana,sans-serif;
+	width: 202px; 
+	background:none;}
+
+.token-input-dropdown-facebook ul li:last-child{ border:none;}
+
+.keyOver,
+.token-input-dropdown-facebook .token-input-dropdown-item2:hover,
+.token-input-dropdown-facebook .token-input-dropdown-item-facebook:hover{
+	color:#000000!important; 
+	background:#ebebeb!important;
+	font-weight:bold;}
+    
+div.token-input-dropdown-facebook ul li.token-input-selected-dropdown-item-facebook {
+  background:none;
+  color:#888888;}
+  
+.token-input-dropdown-facebook .token-input-dropdown-item2 b,
+.token-input-dropdown-facebook .token-input-dropdown-item-facebook b{ 
+  font-weight:bold; 
+  color:#000000;} 
+  
+  
+.token-input-dropdown-facebook ul{
+  
+  background: url('../images/messageAutoCompleteTop.png') no-repeat scroll top left;
+  width: 231px;
+  padding-top: 10px!important;
+}
+
+
+.token-input-dropdown-facebook p{
+  background: url('../images/messageAutoCompleteTop.png') no-repeat scroll top left;
+  width: 231px;
+  padding: 10px 0 5px 10px!important;
+  margin-top:5px;
+  font-family: arial, verdana, sans-serif !important;
+}
+  
+div.token-input-dropdown-facebook {
+  background: url('../images/messageAutoCompleteBottom.png') no-repeat scroll bottom left;
+  width: 231px;
+  padding-bottom: 13px;
+  width:231px;
+  border:none!important;
+  z-index:9999;
+  margin-top: 2px;
+}
+
+#messages{padding:30px 0 0 0;}
+
+#messages #inbox{float:left; width:220px; margin: 0 30px 0 20px; border-right: 1px solid #ccc; height: 210px;} /*height should fixed*/
+#messages #inbox ul {}
+#messages #inbox ul li{}
+#messages #inbox ul li{height: 30px; line-height: 30px; position: relative; width: 230px; z-index: 10;}
+#messages #inbox ul li a { display: block; cursor: pointer; text-decoration: none; color: #000; font-family:arial, verdana, sans-serif !important; font-size:13px;}
+#messages #inbox ul li a.active{color:#fff; font-weight:bold;}
+#messages #inbox ul li a span{border-top: 1px solid #cccccc;  display: block; padding: 0 0 0 20px; width: 200px; border-top: 1px solid #cccccc;}
+#messages #inbox ul li.TRASH_menu a span{border-bottom: 1px solid #cccccc;}
+
+#messages .ui-tabs .ui-tabs-nav li{width:auto!important; border:none!important; background:none; margin:0; padding:0;}
+#messages .ui-tabs .ui-tabs-nav li.ui-tabs-selected{background:none;}
+/*.ui-tabs .ui-tabs-panel{padding:0;}*/
+
+#messages #inbox ul li a.active{background:url(../images/inboxSelector.png) no-repeat 0 0;}
+#messages #messageDiv{float:left; width:75%; position: relative;}
+#messages #messageDiv #messages-container h1{font-weight: bold; font-size: 20px; margin:0 0 15px;}
+#messages #messageDiv #messages-container .ulcover{background:url(../images/messages/borderline.png) repeat-x bottom left; position:relative; z-index: 4; height: 4px; top: -4px;}
+#messages #messageDiv #messages-container ul {margin:0; padding: 0;}
+#messages #messageDiv #messages-container ul li{}
+
+/* tab mex */
+#messages #messageDiv #messages-container ul li.tab-messages {z-index:3; top: 2px; }
+#messages #messageDiv #messages-container ul li.tab-messages a{background:url(../images/messages/tab_NotActive_left.png) no-repeat top left; height:50px; display:block; padding-left:10px;}
+#messages #messageDiv #messages-container ul li.tab-messages a span{display:block; line-height: 40px; height: 50px; background: url(../images/messages/tab_NotActive_right.png) no-repeat top right; padding: 0 40px 0 5px; font-weight:bold; font-size: 14px;}
+#messages #messageDiv #messages-container ul li.tab-messages.ui-state-active{z-index:5; top: 0px;}
+#messages #messageDiv #messages-container ul li.tab-messages.ui-state-active a{background:url(../images/messages/tab_active_left.jpg) no-repeat top left; height:50px; display:block; padding-left:10px; }
+#messages #messageDiv #messages-container ul li.tab-messages.ui-state-active a span{display:block; line-height: 42px; height: 50px; background: url(../images/messages/tab_active_right.png) no-repeat top right; padding: 0 40px 0 5px; font-size:16px; font-weight:bold;}
+#messages #messageDiv #messages-container ul li.tab-messages.ui-state-active a#tab-trash span{background: url(../images/messages/tab_active_right_single.png) no-repeat top right;}
+
+/* tab req */
+#messages #messageDiv #messages-container ul li.tab-requests{border:none; z-index:3; top: 2px; left: -11px;}
+#messages #messageDiv #messages-container ul li.tab-requests a{background:url(../images/messages/tab_NotActive_left.png) no-repeat top left; height:50px; display:block; padding-left:10px; }
+#messages #messageDiv #messages-container ul li.tab-requests a span{display:block; line-height: 40px; height: 50px; background: url(../images/messages/tab_NotActive_right.png) no-repeat top right; padding: 0 31px 0 5px; font-weight:bold; font-size: 14px;}
+#messages #messageDiv #messages-container ul li.tab-requests.ui-state-active{border:none; z-index:5; top:0; left: -17px; font-size: 16px;}
+#messages #messageDiv #messages-container ul li.tab-requests.ui-state-active a{background:url(../images/messages/tab_active_request_left.png) no-repeat top left;height:50px;	display:block;	padding-left:10px; }
+#messages #messageDiv #messages-container ul li.tab-requests.ui-state-active a span{display:block; line-height: 42px; height: 50px; background: url(../images/messages/tab_active_request_right.png) no-repeat top right; padding: 0 40px 0 11px; font-size:16px; font-weight:bold;}
+
+
+
+#tab-inbox-messages, #tab-inbox-requests, #tab-sent-messages, #tab-sent-requests, #tab-trash, #tab-inbox-requests{padding:0;}
+#messages .headBar{border:1px solid #cccccc; height:39px; margin:20px 0!important; padding:0 13px!important; background:url(../images/messages/utilityBar.png) repeat-x top left;}
+#messages .headBar li{float:left; padding: 5px 0 0;}
+#messages .headBar .DropDownBox{float:left; padding:5px 9px 0 0;}
+#messages .headBar .selectAll{padding: 11px 13px 0 0;}
+#messages .headBar .newMsg{float:right;}
+#messages .headBar .newMsg a{cursor: pointer;}
+#messages .headBar .actions{float:right; padding:6px 0 0 0;}
+#messages .searchPart{/* float:right; */ padding:0;position: absolute; top:0; right: 0;z-index: 999;}
+#messages .searchPart .search-bt {padding:10px 0 0 10px;float: right; background: url("../images/search_bt.jpg") right bottom no-repeat; display: block; width: 25px; height: 23px;}
+#messages .searchPart #searchMessageArea {background:url(../images/controlPanel/bg/searchFields/seachFieldsW246.png) no-repeat 0 0; width: 246px; height: 24px; margin-top: 10px; float: left;}
+#messages .searchPart #searchMessageArea #searchMessageInput{border:none; padding: 0; margin: 0; padding-left:4px; width: 206px; float: left; position: relative; top:5px; left:3px; font-weight: bold; font-family: Arial, sans-serif; font-size:12px;line-height: 12px;}
+#messages .searchPart #searchMessageArea a{ float: right; position: relative; margin: 0 5px 0 0; top:3px;}
+
+#messages  .tools{margin:0 0 20px!important;}
+#messages  .tools li{float:left; margin:0 10px 0 0px;}	
+#messages  .tools li.newMsg{float: right!important; margin:0;}
+#messages  .tools li a{background: url("../images/dialog_button_grey_left.png") no-repeat scroll left top transparent; cursor: pointer;	display: block;	height: 28px;	padding-left: 10px;	text-align: center;}
+#messages .tools li a span{background: url("../images/dialog_button_grey_right.png") no-repeat scroll right top transparent; color: #333; display: block; font-weight: bold; font-size: 0.9em; height: 28px; line-height: 28px; padding-right: 10px;}
+#messages .tools li a:hover {background-position: left -30px;}
+#messages .tools li a:hover span {background-position: right -30px;}
+
+/*#messageListContent{overflow:auto;}*/
+#messageListContent .fixedArea:hover, #messageListContent .fixedArea,
+#requestedListContent .fixedArea:hover, #requestedListContent .fixedArea {height:28px; width:100%; border-top:1px solid #ccc; border-bottom:1px solid #ccc; line-height: 29px; font-weight:bold; background:#eeeeee; font-size:12px;}
+#requestedListContent .fixedArea .first, #messageListContent .fixedArea .first{width:94px; padding:0 0 0 14px; }
+#requestedListContent .fixedArea .second, #messageListContent .fixedArea .second{width:180px; padding:0 0 0 15px; border-right:1px solid #e4e4e4;}
+#requestedListContent .fixedArea .third, #messageListContent .fixedArea .third{padding:0 0 0 30px; border-right:1px solid #e4e4e4;}
+#requestedListContent .fixedArea .four, #messageListContent .fixedArea .four{width:140px; padding:0 0 0 30px;}
+#requestedListContent .fixedArea .fifth, #messageListContent .fixedArea .fifth{width:155px; padding:0 0 0 30px;}
+#requestedListContent #sentListHeader .four{width:91px; padding:0 0 0 30px; border-right:1px solid #e4e4e4;}
+
+#requestedListContent .fixedArea .four {width: 158px;} 
+#requestedListContent .fixedArea .fifth{width: 140px;}
+
+#requestedListContent .inboxTable{font-weight: bold;}
+#requestedListContent .inboxTable ,#messageListContent .inboxTable {font-size:13px;}
+#requestedListContent .inboxTable .first{width:69px; padding:0 0 0 14px;}
+#messageListContent .inboxTable .first{padding:0 0 0 14px; width: 94px;}
+#requestedListContent .inboxTable .second, #messageListContent .inboxTable .second{width:180px; padding:0 0 0 15px; border-right:1px solid #e4e4e4;}
+#requestedListContent .inboxTable .third, #messageListContent .inboxTable .third{padding:0 0 0 30px; border-right:1px solid #e4e4e4;}
+#messageListContent .inboxTable .four{width:140px; padding:0 0 0 30px;}
+#requestedListContent .inboxTable .fifth, #messageListContent .inboxTable .fifth{width:140px; padding:0 0 0 30px;}
+#requestedListContent #sentList .four{width:91px; padding:0 0 0 30px; border-right:1px solid #e4e4e4;}
+#requestedListContent #sentList .four.status {font-weight: bold; text-transform: capitalize;}
+#requestedListContent #requestedList .four{width:158px; padding:0 0 0 30px;}
+
+#requestedListContent .inboxTable .inboxTbTRRowCell, #requestedListContent .inboxTable .inboxTbTRRowCellSelected,
+#requestedListContent .inboxTable .inboxTbTRRowCellHover, #messageListContent .inboxTable .inboxTbTRRowCell, #messageListContent .inboxTable .inboxTbTRRowCellSelected,
+#messageListContent .inboxTable .inboxTbTRRowCellHover{height:29px; border-bottom:1px solid #e4e4e4; line-height: 29px;}
+
+/* #messageListContent .inboxTableCover {overflow: -moz-scrollbars-vertical;overflow-y: scroll;overflow-x: hidden;} */
+
+/* ADD SCROLLBARS TO MESSAGE BOX LIST */
+/* #requestedListContent .inboxTableCover, #messageListContent .inboxTableCover{height: 217px;overflow: auto;} */
+
+#requestedListContent .inboxTable .selector, #messageListContent .inboxTable .selector{float:left; /* margin:7px 10px 0 0; */ position: relative; top: 5px;}
+#requestedListContent .inboxTable .arrow, #messageListContent .inboxTable .arrow{background: url("../images/messages/arrow.png") no-repeat scroll 0 0; width:5px; height:9px; float:left; margin:8px 14px 0 0px; position: relative; top: 2px;}
+#requestedListContent .inboxTable .read_unread, #messageListContent .inboxTable .read_unread{background: url("../images/messages/read_unread.png") no-repeat scroll 0 -12px;  width:14px; height:17px; float:left; /* margin:3px 10px 0 0; */ position: relative; top: 7px; left:15px;}
+#requestedListContent .inboxTable .read_unread.bold, #messageListContent .inboxTable .read_unread.bold{background: url("../images/messages/read_unread.png") no-repeat scroll 0 0; width:14px; height:10px; margin:9px 0 0 0;  position: relative; top: 2px;}
+#requestedListContent .inboxTable .bold, #messageListContent .inboxTable .bold{font-weight:bold; }
+
+#requestedListContent #requestedList .inboxTbTRRowCell td{ font-weight: bold;}
+	
+#messages #selectMulti{margin: 0 0 15px;}
+#messages #selectMulti h2{float:left; font-size:14px; font-weight:bold; }
+#messages #selectMulti #inboxPaging{float:right;}
+#messages #selectMulti #inboxPagingReq{float:right;}
+
+#messages #selectMulti #inboxPaging label, #messages #selectMulti #inboxPaging a {display: block; float: left;padding-right: 7px;}
+#messages #selectMulti #inboxPaging .page-link-list {float: left;}
+#messages #selectMulti #inboxPaging .page-link-list li {float: left;}
+
+
+#messages #selectMulti #inboxPaging .page-link-list li a.page-link {text-decoration: underline;}
+#messages #selectMulti #inboxPaging .page-link-list li a.page-link.active {text-decoration: none;}
+
+#standardMessageDetailContent{position:relative; top:-5px;}
+#messages-container #messageDetail .head{padding: 20px 0;border-top: 1px solid #CCC;border-bottom: 1px solid #CCC;}
+#standardMessageDetailContent h2{font-weight:bold; font-size:20px;}
+.toolsMessage {padding: 20px 0;}
+.toolsMessage .goBack{float:left; cursor:pointer; padding:15px 0 0; text-decoration: underline;}
+.toolsMessage .newMsg{float:right; background: url("../images/dialog_button_grey_left.png") left top no-repeat; display: block;	height: 28px;	padding-left: 10px;	text-align: center;}
+.toolsMessage .newMsg span{background: url("../images/dialog_button_grey_right.png") right top no-repeat; color: #333; display: block; font-weight: bold; font-size: 0.9em; height: 28px; line-height: 28px; padding-right: 10px;}
+.toolsMessage .newMsg:hover {background-position: left -30px;}
+.toolsMessage .newMsg:hover span {background-position: right -30px;}
+
+#locationRequestMessageDetailContent{position:relative; top:-5px;}
+#messages-container #requestDetail .head{padding: 20px 0;border-top: 1px solid #CCC;border-bottom: 1px solid #CCC;}
+#locationRequestMessageDetailContent h2{font-weight:bold; font-size:20px;}
+
+#locationRequestMessageDetailContent .req-action-box {border: 1px solid #ccc; background-color: #ebebeb; padding: 20px;}
+#locationRequestMessageDetailContent .req-action-box.temporary {background: none;}
+#locationRequestMessageDetailContent .req-action-box h3 {font-family: Arial, sans-serif; font-size: 18px; line-height: 20px; font-weight: bold;}
+#locationRequestMessageDetailContent .temporary.req-action-box h3 {background: url("../images/icon_info.png") 0 0 no-repeat; padding-left: 46px; font-size: 13px;}
+#locationRequestMessageDetailContent .temporary.req-action-box h3 span {display: block; font-size: 14px; font-weight: bold;}
+#locationRequestMessageDetailContent .req-action-box p {
+  font-size: 14px;
+  line-height: 18px;
+  padding-bottom: 19px;
+  padding-top: 10px;
+}
+#locationRequestMessageDetailContent .req-action-box .working-hours-select {float: left; width: 205px; }
+#locationRequestMessageDetailContent .req-action-box .working-hours-select .ui-selectmenu-status{padding-left: 10px;}
+#locationRequestMessageDetailContent .req-action-box .action {float: right;}
+#locationRequestMessageDetailContent .temporary.req-action-box .action {float: left;}
+#locationRequestMessageDetailContent .req-action-box .action li {float: left;}
+#locationRequestMessageDetailContent .req-action-box>span {width: 205px;}
+
+#locationRequestMessageDetailContent .buttons_class .cancel,
+#locationRequestMessageDetailContent .buttons_class .send {width: 80px; margin-top: 0;}
+#locationRequestMessageDetailContent .buttons_class .cancel span,
+#locationRequestMessageDetailContent .buttons_class .send span {width: 60px;}
+
+
+#tab-inbox-messages .messageTools {float:right; margin:0 0 0!important;}
+#tab-inbox-messages .messageTools li{float:right;}
+#tab-inbox-messages .messageTools li a{cursor: pointer;}
+#tab-inbox-messages .headBar .li,#tab-trash .headBar .li, #tab-sent-messages .headBar .li{float:left;}
+#tab-inbox-messages .inboxActionLink,#tab-sent-messages .inboxActionLink,
+#tab-trash .inboxActionLink {background: url("../images/dialog_button_grey_left.png") no-repeat scroll left top transparent; display: block;	height: 29px;	padding-left: 10px;	text-align: center; margin-left:10px; cursor: pointer;}
+#tab-inbox-messages .inboxActionLink span,#tab-trash .inboxActionLink span,#tab-sent-messages .inboxActionLink span{background: url("../images/dialog_button_grey_right.png") no-repeat scroll right top transparent; color: #333; display: block; font-weight: bold; font-size: 0.9em; height: 29px; line-height: 29px; padding-right: 20px;padding-left: 10px;}
+#tab-inbox-messages .inboxActionLink:hover {background-position: left -30px;}
+#tab-inbox-messages .inboxActionLink:hover span {background-position: right -30px;}
+#tab-inbox-messages .inboxActionLink.marginLeft{margin-left:40px;}
+
+#tab-inbox-messages .inboxActionLink.multi_user_button_inactive:hover {background-position: left top;}
+#tab-inbox-messages .inboxActionLink.multi_user_button_inactive:hover span {background-position: right top;}
+
+#tab-sent-messages .messageTools {float:right; margin:0px 0 0!important;}
+#tab-sent-messages .messageTools li{float:right;}
+#tab-sent-messages .inboxActionLink:hover {background-position: left -30px;}
+#tab-sent-messages .inboxActionLink:hover span {background-position: right -30px;}
+#tab-sent-messages .inboxActionLink.marginLeft{margin-left:40px;}
+
+#tab-sent-messages .inboxActionLink.multi_user_button_inactive:hover {background-position: left top;}
+#tab-sent-messages .inboxActionLink.multi_user_button_inactive:hover span {background-position: right top;}
+
+#tab-sent-messages .inboxActionLink.multi_user_button_inactive:hover {background-position: left top;}
+#tab-sent-messages .inboxActionLink.multi_user_button_inactive:hover span {background-position: right top;}
+
+#tab-trash .inboxActionLink:hover {background-position: left -30px;}
+#tab-trash .inboxActionLink:hover span {background-position: right -30px;}
+#tab-trash .inboxActionLink.marginLeft{margin-left:40px;}
+
+#tab-trash .inboxActionLink.multi_user_button_inactive:hover {background-position: left top;}
+#tab-trash .inboxActionLink.multi_user_button_inactive:hover span {background-position: right top;}
+
+#messages-container #messageDetail .head h2 {padding:0px 0 15px; font-size: 18px;font-weight: bold; float:left;}
+#messages-container #messageDetail .sentTime{ color:#666666; font-size:12px; padding:0 0 0px;}
+#messages-container #messageDetail .head h3 {font-weight: bold;font-size: 14px; line-height:20px;}
+#messages-container #messageDetail .head h3.from {}
+#messages-container #messageDetail .head h3.to {margin-bottom: 10px;}
+#messages-container #messageDetail .content {font-size: 14px; padding-top: 30px;}
+
+#messages-container #requestDetail .head h2 {padding:0px 0 15px; font-size: 18px;font-weight: bold; }
+#messages-container #requestDetail .sentTime{ color:#666666; font-size:12px; padding:0 0 0px;}
+#messages-container #requestDetail .head h3 {font-weight: bold;font-size: 14px; line-height:20px;}
+#messages-container #requestDetail .head h3.from {}
+#messages-container #requestDetail .head h3.to {margin-bottom: 10px;}
+#messages-container #requestDetail .content {font-size: 14px; padding-top: 30px;}
+#messages-container #requestDetail .reason {font-size: 14px; padding: 15px 0px;}
+
+#messages #inbox ul a.trash {border-width: 1px;}
+#messages #inbox ul a.active {font-weight: bold;}
+
+#messages-container .inboxTableCover table tr:hover td {background: #e9e9e9;}
+#messages-container .inboxTableCover table td, #messages-container .inboxTable td {cursor:pointer;}
+#messages-container #message-viewer {clear: both; position:relative;}
+#messages-container #messageDetail {position: absolute;top: 0; left: 0; width:100%; height:100%; display:none; background: #fff;}
+#messages-container #requestDetail {position: absolute;top: 0; left: 0; width:100%; height:100%; display:none; background: #fff;}
+
+#messages .ui-tabs .ui-tabs-nav {width: auto;}
+
+/* DIALOG BUTTONS */
+.dialog_text {line-height: 20px;}
+.button_class.dialog_action {padding: 20px 0;}
+.button_class.dialog_action button {float: right; width: 86px!important; }
+.button_class.dialog_action button.send {margin-left: 10px;}
+.button_class.dialog_action button.cancel { height:29px; background: url("../images/dialog_button_grey_left.png") no-repeat left top; padding-left:10px; padding-right: 6px; float: right; font-weight:bold; font-size:13px;}
+.button_class.dialog_action button.cancel span {height:29px; background: url("../images/dialog_button_grey_right.png") no-repeat right top; margin:0;}
+.button_class.dialog_action button.cancel.cancelActive, .button_class.dialog_action button.cancel.cancelOver {background-position: left -29px;}
+.button_class.dialog_action button.cancel.cancelActive span, .button_class.dialog_action button.cancel.cancelOver span  {background-position: right -29px !important}
+
+/* select */
+#message-type-menu {width: 163px!important}
+#tab-inbox-messages .headBar .ui-selectmenu {width: 163px!important}
+#tab-inbox-messages .headBar .ui-selectmenu-status {padding-left: 10px; padding-top: 6px; width: 153px!important;}
+
+/* dropdown */
+.ui-selectmenu-open .ui-selectmenu-menu-dropdown li {border: 0!important;}
+.ui-selectmenu-open .ui-selectmenu-menu-dropdown li a {line-height: 26px; padding-top: 0; padding-bottom: 0;}
+
+.noCloseNoOk{display: none;}
+.noCloseNoOk .ui-button, .noCloseNoOk .ui-dialog-buttonpane {display: none !important}
+.noCloseNoOk .successMessageCheck{padding:15px 0px 10px 50px; background: url("../images/messages/successMessageCheck.png") no-repeat scroll 0 0; margin: 7px 1px 7px 0px;}
+.noCloseNoOk .s{padding: 0!important;}
+.noCloseNoOk .hd{background: transparent url(../images/messages/noCloseNoButton_01.png) no-repeat top left; margin-right: 16px; height: 10px}
+.noCloseNoOk .hd .c{background: transparent url(../images/messages/noCloseNoButton_02.png) no-repeat top right; margin-right: -16px; height: 10px;}
+.noCloseNoOk .bd{background: transparent url(../images/messages/noCloseNoButton_03.png) repeat-y top left; margin-right: 16px; }
+.noCloseNoOk .bd .c{background: transparent url(../images/messages/noCloseNoButton_04.png) repeat-y top right; margin-right: -16px; }
+.noCloseNoOk .ft{background: transparent url(../images/messages/noCloseNoButton_06.png) no-repeat top left; margin-right: 16px; height: 10px}
+.noCloseNoOk .ft .c{background: transparent url(../images/messages/noCloseNoButton_07.png) no-repeat top right; margin-right: -16px; height: 10px;}
+.noCloseNoOk .bd .c .s{ margin: 0px 13px 0px 6px;}
+
+
+/* inbox popup */
+.menu-popup{display: none; min-width: 216px !important;}
+.menu-popup .ui-button, .menu-popup .ui-dialog-buttonpane {display: none !important}
+.menu-popup .successMessageCheck{padding:15px 0px 10px 50px; background: url("../images/messages/successMessageCheck.png") no-repeat scroll 0 0; margin: 7px 1px 7px 0px;}
+.menu-popup .s{padding: 0!important;}
+.menu-popup .hd{background: transparent url(../images/messages/noCloseNoButton_small_01.png) no-repeat top left; margin-right: 40px; height: 10px}
+.menu-popup .hd .c{background: transparent url(../images/messages/noCloseNoButton_02.png) no-repeat top right; margin-right: -16px; height: 10px;}
+.menu-popup .bd{background: transparent url(../images/messages/noCloseNoButton_small_03.png) repeat-y top left; margin-right: 40px; }
+.menu-popup .bd .c{background: transparent url(../images/messages/noCloseNoButton_small_04.png) repeat-y top right; margin-right: -16px; }
+.menu-popup .ft{background: transparent url(../images/messages/noCloseNoButton_small_06.png) no-repeat top left; margin-right: 40px; height: 10px}
+.menu-popup .ft .c{background: transparent url(../images/messages/noCloseNoButton_07.png) no-repeat top right; margin-right: -16px; height: 10px;}
+.menu-popup .bd .c .s{ margin: 0px 13px 0px 6px;}
+.ui-widget-overlay {display: none;}
+
+.menu-popup-wrapper p {color: #333;cursor: pointer;display: block;font-family: arial,verdana,sans-serif;font-size: 13px!important;font-weight: bold;line-height: 35px;padding: 0 10px;text-decoration: none;}
+.menu-popup-wrapper span {font-family: arial,verdana,sans-serif;font-size: 13px;font-weight: bold;line-height: 35px; padding-left: 5px;}
+.menu-popup-wrapper img {padding-left: 20px; height: 5px;}
+.menu-popup-wrapper ul {border-top: 1px solid #ddd; }
+.menu-popup-wrapper li a span {color: #666; font-weight: normal; display: block;}
+.menu-popup-wrapper li a:hover span {background-color: #e3e3e3; color: #333; font-weight: bold;}
+
+
+/*TAB INBOX - SENT */
+#tab-sent-requests .headBar .li{float:left;}
+#tab-sent-requests .inboxActionLink {background: url("../images/dialog_button_grey_left.png") no-repeat scroll left top transparent; display: block;	height: 28px;	padding-left: 10px;	text-align: center; margin-left:10px;}
+#tab-sent-requests .inboxActionLink span{background: url("../images/dialog_button_grey_right.png") no-repeat scroll right top transparent; color: #333; display: block; font-weight: bold; font-size: 0.9em; height: 28px; line-height: 28px; padding-right: 20px;padding-left: 10px;}
+#tab-sent-requests .inboxActionLink:hover {background-position: left -30px;}
+#tab-sent-requests .inboxActionLink:hover span {background-position: right -30px;}
+#tab-sent-requests .inboxActionLink.marginLeft{margin-left:40px;}
+
+#tab-sent-requests .inboxActionLink.multi_user_button_inactive:hover {background-position: left top;}
+#tab-sent-requests .inboxActionLink.multi_user_button_inactive:hover span {background-position: right top;}
+
+
+/*#messages-container #messageDetail .tools {padding:10px;background: #e6e6e6;border-bottom: 1px solid #000}
+#messages-container #messageDetail .tools a.newMsg {float: right;display: block;padding: 10px;border: 1px solid #333;margin: 0 10px 0 0;}
+#messages-container #messageDetail .head, #messages-container #messageDetail .content {padding:20px;}
+*/
+
+/* availibity*/
+
+/*
+#privacy #visibility{float:left; width:220px; margin: 0 30px 0 20px; border-right: 1px solid #ccc; height: 210px;}
+#privacy #visibility ul {}
+#privacy #visibility ul li{}
+#privacy #visibility ul li{height: 30px; line-height: 30px; position: relative; width: 230px; z-index: 10;}
+#privacy #visibility ul li a { display: block; cursor: pointer; text-decoration: none; color: #000; font-family:arial, verdana, sans-serif !important; font-size:13px;}
+#privacy #visibility ul li a.active{color:#fff; font-weight:bold;}
+#privacy #visibility ul li a span{border-top: 1px solid #cccccc;  display: block; padding: 0 0 0 20px; width: 200px; border-top: 1px solid #cccccc;}
+*/
+
+#privacy .ui-tabs .ui-tabs-nav li{width:auto!important; border:none!important; background:none; margin:0; padding:0;}
+#privacy .ui-tabs .ui-tabs-nav li.ui-tabs-selected{background:none;}
+
+
+
+.menu .userNameBox{position:relative;}
+.menu #changeStatus{width:45px; height:23px;  margin:18px 0 0 0; position: relative; z-index: 99999; padding:5px 0 0 25px;}
+.menu #changeStatusBox{display:none; position:absolute; top: 18px; z-index: 9999; margin:0 0 0 20px; background:url(../images/header/shadow.png) right bottom; padding:0 7px 8px 0;}
+.menu #changeStatusBox ul{}
+.menu #changeStatusBox ul li{float:none; height:25px; background:none; border:1px solid #ccc; border-bottom:none; line-height:25px; text-align:right; background:#fff; padding:0 5px 0 20px; cursor:pointer;}
+.menu #changeStatusBox ul li:hover{background:#e4e4e4;}
+.menu #changeStatusBox ul li.little{border:1px solid #ccc; border-bottom:none; width:55px; padding:0; margin:0px  0 0 62px;}
+.menu #changeStatusBox ul li.little:hover{background:none;}
+.menu #changeStatusBox ul li.lastIteam{border-bottom:1px solid #ccc; text-align:center;}
+.menu #btn_username{}
+.menu .visible{background: url('../images/header/icons.png') no-repeat scroll 0 0;	   width: 14px; height: 14px; }
+.menu .invisible{background: url('../images/header/icons.png') no-repeat scroll 0 -16px; width: 14px; height: 14px; }
+.menu .selectedCheck{background: url('../images/header/icons.png') no-repeat scroll 0 -34px; width: 14px; height: 14px; }
+.menu .icon{width: 14px; height: 14px; }
+.menu .downArrow{background: url('../images/header/icons.png') no-repeat scroll 0 -48px; width: 14px; height: 14px; }
+.menu .left{float:left;}
+.menu .right{float:right;}
+.menu .style{margin:4px 0 0 10px;}
+.menu .style2{ margin: 2px 5px 0;}
+.menu .style3{margin:2px 0 0 5px;}
+
+#privacy{padding:30px 0 0 0; font-family:arial, verdana, sans-serif !important;}
+#privacy #visibility{float:left; width:220px; margin: 0 30px 0 20px; border-right: 1px solid #ccc; height: 210px;}
+#privacy #availabilityDiv{float:left; width:75%;}
+
+
+#privacy #visibility .availabilityMenu li{height: 30px; line-height: 30px; position: relative; width: 230px; z-index: 10; overflow: hidden;}
+#privacy #visibility .availabilityMenu li a{display: block; cursor: pointer; text-decoration: none; color: #000; font-family:arial, verdana, sans-serif !important; font-size:13px;}
+#privacy #visibility .availabilityMenu li a.active{color:#fff; font-weight:bold; background:url(../images/inboxSelector.png) no-repeat 0 0;}
+#privacy #visibility .availabilityMenu li a span{border-top: 1px solid #cccccc;  display: block; padding: 0 0 0 20px; width: 200px; border-top: 1px solid #cccccc;}
+#privacy #visibility .availabilityMenu li.locateOthers a span{border-bottom: 1px solid #cccccc;}
+
+
+#privacy #availabilityDiv h1{font-weight: bold; font-size: 20px; margin:0 0 10px;}
+#privacy #availabilityDiv #visibilityProfiles-container h1.underline{border-bottom: 1px solid #ccc; padding-bottom: 10px;}
+#privacy #availabilityDiv .exceptionsAdd{margin-top: 25px;}
+#privacy #availabilityDiv #statusUser{border:1px solid #cccccc; height:39px; margin:20px 0!important; padding:0 13px!important; background:url(../images/messages/utilityBar.png) repeat-x top left;}
+/*#privacy #availabilityDiv #statusUser #visIcon{float:left; background:url(../images/availability/avaibleCheck.png) no-repeat top left; width:27px; height:27px; margin:6px 10px 0 0;} */
+/*#privacy #availabilityDiv #statusUser span{float:left; margin:6px 0 0 0;}*/
+#privacy #availabilityDiv #statusUser #visibilityStatus-button{margin: 6px; padding-right: 20px;}
+#privacy #availabilityDiv #statusUser #visibilityStatus-button span.ui-selectmenu-status{padding:6px 0px 0 10px;}
+#visibilityStatus-menu{padding-right: 20px;}
+#privacy #availabilityDiv #statusUser #visibilityStatus{margin: 6px 0 0; padding: 5px;}
+#privacy #availabilityDiv .smallText{font-size:12px; line-height:18px;}
+#privacy #availabilityDiv .smallText strong{font-size:14px;}
+#privacy #availabilityDiv #whoLocate{margin:20px 0 28px;}
+#privacy #availabilityDiv #whoLocate #plusBox{ border-top:1px solid #ccc; border-bottom:1px solid #ccc; height: 50px; padding: 0 0 0 20px; cursor:pointer;}
+#privacy #availabilityDiv #whoLocate #plusBox #plus{width:18px; height:18px; display:block; background:url(../images/availability/plus_minus.jpg) no-repeat top left; float:left; margin: 17px 0 0 -2px;}
+#privacy #availabilityDiv #whoLocate #plusBox .text{float:left; font-size:16px; font-weight:bold; margin:18px 20px 0;}
+
+
+.excpTitle {font-weight: bold; font-size: 20px; padding:0 0 10px 0 !important;}
+.excpText  {font-size: 12px; margin:0 0 19px 0 !important; font-weight: normal !important;}
+.editPermissionsWhoCan .excpTime{line-height: 22px; font-weight: normal;}
+.nameInput {color: #6B6B6B; height: 23px; line-height: 23px; padding: 0 5px; margin: 0 0 10px; width: 350px; border:1px solid #B4B4B4;}
+.dateInputFrom {color: #6B6B6B; height: 23px; line-height: 23px; padding: 0 5px; margin: 0 20px 15px 4px; text-align: center; font-weight: bold;border:1px solid #B4B4B4 !important;}
+.dateInputTo {color: #6B6B6B; height: 23px; line-height: 23px; padding: 0 5px; margin: 0 20px 15px 20px; text-align: center; font-weight: bold;border:1px solid #B4B4B4 !important;}
+.dateInputFromEE {color: #6B6B6B; height: 23px; line-height: 23px; padding: 0 5px; margin: 0 20px 15px 4px; text-align: center; font-weight: bold;border:1px solid #B4B4B4 !important;}
+.dateInputToEE {color: #6B6B6B; height: 23px; line-height: 23px; padding: 0 5px; margin: 0 20px 15px 20px; text-align: center; font-weight: bold;border:1px solid #B4B4B4 !important;}
+.timeInput {color: #6B6B6B; height: 23px; line-height: 23px; padding: 0 5px; margin: 0 0 15px 45px; text-align: center; font-weight: bold;border:1px solid #B4B4B4 !important;}
+.ui-datepicker-trigger {float: left; display: block;}
+
+#addExcp-form label {width: 60px;display:block; float:left; line-height: 23px;}
+#addExcp-form #name {float: left;}
+#addExcp-form #exceptionTime #start-date,
+#addExcp-form #exceptionTime #end-date {width: 85px;border: 1px solid #B4B4B4; height: 23px;line-height: 23px; text-align: center; font-weight: bold; float: left; padding: 0;}
+#addExcp-form #exceptionTime .ui-datepicker-trigger {padding: 0 18px;}
+#addExcp-form #exceptionTime #start-time,
+#addExcp-form #exceptionTime #end-time {float: left;}
+#addExcp-form #exceptionTime li {margin-bottom: 10px;}
+#addExcp-form #exceptionTime li.last {margin: 0;} 
+#addExcp-form #exceptionTime .time-wrap .hours,
+#addExcp-form #exceptionTime .time-wrap .mins {width: 25px; font-weight: bold;line-height: 23px; height: 23px; padding: 0;}
+#addExcp-form .button_class.dialog_action {padding-top: 40px; padding-bottom: 0;}
+
+#editExcp-form label {width: 60px;display:block; float:left; line-height: 23px;}
+#editExcp-form #name {float: left;}
+#editExcp-form #exceptionTime #start-date,
+#editExcp-form #exceptionTime #end-date {width: 85px;border: 1px solid #B4B4B4; height: 23px;line-height: 23px; text-align: center; font-weight: bold; float: left; padding: 0;}
+#editExcp-form #exceptionTime .ui-datepicker-trigger {padding: 0 18px;}
+#editExcp-form #exceptionTime #start-time,
+#editExcp-form #exceptionTime #end-time {float: left;}
+#editExcp-form #exceptionTime li {margin-bottom: 10px;}
+#editExcp-form #exceptionTime li.last {margin: 0;} 
+#editExcp-form #exceptionTime .time-wrap .hours,
+#editExcp-form #exceptionTime .time-wrap .mins {width: 25px; font-weight: bold;line-height: 23px; height: 23px; padding: 0;}
+#editExcp-form .button_class.dialog_action {padding-top: 40px; padding-bottom: 0;}
+
+/*
+#privacy #availabilityDiv #addExcp-form .dateInput  {color: #6B6B6B; height: 13px; line-height: 13px; padding: 0 5px; margin: 0 0 15px; width: 425px;}
+#privacy #availabilityDiv #addExcp-form .timeInput  {color: #6B6B6B; height: 13px; line-height: 13px; padding: 0 5px; margin: 0 0 15px; width: 425px;}
+*/
+
+#privacy #availabilityDiv #whoLocate #profiles{display:none; border:1px solid #acacac;  background:#cccccc; padding:2px;}
+#privacy #availabilityDiv #whoLocate #profiles .innerBorder{background:#fff;}
+#privacy #availabilityDiv #whoLocate #profiles #minusBox{height: 47px; padding: 0 0 0 15px; cursor:pointer;}
+#privacy #availabilityDiv #whoLocate #profiles #minus{width:18px; height:18px; display:block; background:url(../images/availability/plus_minus.jpg) no-repeat bottom left; float:left; margin: 15px 0 0;}
+#privacy #availabilityDiv #whoLocate #profiles .text{float:left; font-size:16px; font-weight:bold; margin:16px 20px 0;}
+#privacy #availabilityDiv #whoLocate #profiles .tableCover{margin: 0 40px 0 55px; padding-bottom: 20px;}
+#privacy #availabilityDiv #whoLocate #profiles #locating{width:100%;}
+#privacy #availabilityDiv #whoLocate #profiles #locating tr{border-top:1px solid #acacac; height:50px;}
+#privacy #availabilityDiv #whoLocate #profiles #locating tr td{vertical-align:middle}
+#privacy #availabilityDiv #whoLocate #profiles #locating tr td.first{text-align:left;}
+#privacy #availabilityDiv #whoLocate #profiles #locating tr td.first .name{float:left; font-size:14px; font-weight:bold;}
+#privacy #availabilityDiv #whoLocate #profiles #locating tr td.first .info{float:left; width:18px; height:18px; display:block; background:url(../images/availability/info.png) no-repeat bottom left; margin:-3px 8px 0;}
+#privacy #availabilityDiv #whoLocate #profiles #locating tr td.second{text-align:right;}
+#privacy #availabilityDiv #whoLocate #profiles #locating tr td.second .message{float:right; margin:6px 0 0; font-size:14px; font-weight:normal;}
+#privacy #availabilityDiv #whoLocate #profiles #locating tr td.second .viewVisProfile{float:right;}
+
+#privacy #availabilityDiv #whoLocate #profiles #locating .viewVisProfile{background: url("../images/dialog_button_grey_left.png") no-repeat scroll left top transparent; display: block;	height: 28px;	padding-left: 10px;	text-align: center; margin-left:10px;}
+#privacy #availabilityDiv #whoLocate #profiles #locating .viewVisProfile span{background: url("../images/dialog_button_grey_right.png") no-repeat scroll right top transparent; color: #333; display: block; font-weight: bold; font-size: 0.9em; height: 28px; line-height: 28px; padding-right: 10px;}
+#privacy #availabilityDiv #whoLocate #profiles #locating .viewVisProfile:hover {background-position: left -30px;}
+#privacy #availabilityDiv #whoLocate #profiles #locating .viewVisProfile:hover span {background-position: right -30px;}
+
+#privacy #availabilityDiv #exception-contain{margin:10px 0 0;}
+#privacy #availabilityDiv #exception-contain #excp{ width:100%;}
+#privacy #availabilityDiv #exception-contain #excp thead tr{ background:#ededed; border-bottom: 1px solid #CCC;}
+#privacy #availabilityDiv #exception-contain #excp thead th{ text-align:left; height:38px; vertical-align:middle; padding:0 0 0 20px; color:#000;}
+#privacy #availabilityDiv #exception-contain #excp thead .first{}
+#privacy #availabilityDiv #exception-contain #excp thead .second{border-left: 1px solid #CCC; border-right: 1px solid #CCC; }
+#privacy #availabilityDiv #exception-contain #excp thead .third{}
+#privacy #availabilityDiv #exception-contain #excp tbody td{ border-bottom: 1px solid #CCC; height:46px; vertical-align:middle; text-align:left; padding:0 0 0 20px;}
+#privacy #availabilityDiv #exception-contain #excp tbody .first{border-right:1px solid #CCC; font-weight: bold;}
+#privacy #availabilityDiv #exception-contain #excp tbody .second{width: 65px;}
+#privacy #availabilityDiv #exception-contain #excp tbody .third{width: 65px; border-right:1px solid #CCC; padding:0 30px 0 10px;}
+#privacy #availabilityDiv #exception-contain #excp tbody .fourth{width: 65px;}
+#privacy #availabilityDiv #exception-contain #excp tbody .fifth{width: 65px; padding:0 10px 0 10px;}
+#privacy #availabilityDiv #exception-contain #excp tbody .sixth{width: 35px; padding:0;}
+#privacy #availabilityDiv #exception-contain #excp tbody .seventh{padding:0; width: 35px;}
+#privacy #availabilityDiv #exception-contain #removeExceptionRow{width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top left;}
+#privacy #availabilityDiv #exception-contain #editExceptionRow{width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top right;}
+
+privacy #availabilityDiv #exceptionsAdd #addExcp-form{ width:100%;}
+
+#privacy #availabilityDiv #addExcp{background: url("../images/dialog_button_purple_left.png") no-repeat scroll left top transparent; display: block;	height: 28px;	padding-left: 10px;	text-align: center; margin-top:20px; float:left; }
+#privacy #availabilityDiv #addExcp span{background: url("../images/dialog_button_purple_right.png") no-repeat scroll right top transparent; color: #fff; display: block; font-weight: bold; font-size: 0.75em; height: 28px; line-height: 28px; padding-right: 10px;}
+#privacy #availabilityDiv #addExcp:hover {background-position: left -30px;}
+#privacy #availabilityDiv #addExcp:hover span {background-position: right -30px;}
+
+#privacy #availabilityDiv #exception-status tr .makeHover{}
+#privacy #availabilityDiv #exception-status tr .makeHoverThis{background:#f4f4f4;}
+#privacy #availabilityDiv #exception-status .second .delete{float:right; width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top left; margin:0 5px 0 0; visibility:hidden;}
+#privacy #availabilityDiv #exception-status .second .edit{float:right; width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top right;  margin:0 10px 0 0; visibility:hidden;}
+
+#privacy #whoLocate-container{}
+#privacy #whoLocate-container #searchFilter{border:1px solid #cccccc; height:39px; margin:20px 0!important; padding:0 13px!important; background:url(../images/messages/utilityBar.png) repeat-x top left;}
+#privacy #whoLocate-container #searchFilter .tools .search{float:left;}
+#privacy #whoLocate-container #searchFilter .tools .search .modBorder{background: url("../images/controlPanel/bg/searchFields/seachFieldsW246.png") no-repeat scroll left top transparent; padding: 0 7px 0 0; height: 24px; margin: 8px 0 0;}
+#privacy #whoLocate-container #searchFilter .tools .search .modBorder #searchPeople{border:none; width: 216px; margin: 5px 0px 0px 3px; font-weight:bold; float: left;}
+#privacy #whoLocate-container #searchFilter .tools .filter{float:right;}
+#privacy #whoLocate-container #searchFilter .tools .filter #requestType{width:115px; }
+#privacy #whoLocate-container #searchFilter .tools .filter #requestType-button{margin:6px 0 0; }
+#privacy #whoLocate-container #searchFilter .tools .filter #requestType-button span.ui-selectmenu-status{padding:6px 0 0 10px;}
+
+#privacy #whoLocate-container #searchFilter .tools .filter .text{padding:5px 10px 0 0; font-size: 14px;}
+#privacy #whoLocate-container #searchFilter .tools .filter .filtering{margin:0; padding:0;}
+#privacy #whoLocate-container #searchFilter .tools .filter .filtering tr td{vertical-align:middle;}
+#privacy #whoLocate-container #whoLocateMe{ width:100%;}
+#privacy #whoLocate-container #whoLocateMe tr{border-bottom:1px solid #CCC;}
+#privacy #whoLocate-container #whoLocateMe tr .makeHover{}
+#privacy #whoLocate-container #whoLocateMe tr .makeHoverThis{background:#f4f4f4;}	
+#privacy #whoLocate-container #whoLocateMe td{height:40px; padding:0 0 0 15px; vertical-align: middle; font-size: 14px;}
+#privacy #whoLocate-container #whoLocateMe .image{float:left; background:url(../images/availability/noImage.png) no-repeat top left; width:21px; height:27px; margin: 0 15px 0 0; text-indent:-999px;}
+#privacy #whoLocate-container #whoLocateMe .text{float:left;}
+#privacy #whoLocate-container #whoLocateMe .viewPos{text-decoration:underline; color:#333333;}
+#privacy #whoLocate-container #whoLocateMe .iconCheck{background:url(../images/availability/check.png) no-repeat top left; width:19px; height:16px; margin:0 auto;}
+#privacy #whoLocate-container #whoLocateMe .info{float:left; width:18px; height:18px; display:block; background:url(../images/availability/info.png) no-repeat bottom left; margin:-3px 8px 0;}
+#privacy #whoLocate-container #whoLocateMe .first ,#privacy #whoLocate-container #whoLocateMe .second, #privacy #whoLocate-container #whoLocateMe .third, #privacy #whoLocate-container #whoLocateMe .fifth,#privacy #whoLocate-container #whoLocateMe .sixth, #privacy #whoLocate-container #whoLocateMe .seventh {border-right:1px solid #CCC;}
+#privacy #whoLocate-container #whoLocateMe .first ,#privacy #whoLocate-container #whoLocateMe .second, #privacy #whoLocate-container #whoLocateMe .third, #privacy #whoLocate-container #whoLocateMe .forth{background:#ededed;}
+#privacy #whoLocate-container #whoLocateMe .eight .textt{float:left; padding:6px 0 0;}
+#privacy #whoLocate-container #whoLocateMe .eight .info{float:left; padding:6px 0 0;}
+#privacy #whoLocate-container #whoLocateMe .eight .delete{float:right; width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top left; margin:0 5px 0 0; visibility:hidden;}
+#privacy #whoLocate-container #whoLocateMe .eight .edit{float:right; width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top right;  margin:0 10px 0 0; visibility:hidden;}
+#privacy #whoLocate-container #whoLocateMe .first,#privacy #whoLocate-container #whoLocateMe .second,#privacy #whoLocate-container #whoLocateMe .third ,#privacy #whoLocate-container #whoLocateMe .forth{font-size: 12px; font-weight: bold; padding: 0; text-align: center;}
+#privacy #whoLocate-container #whoLocateMe .sixth,#privacy #whoLocate-container #whoLocateMe .seventh{padding: 0; text-align: center; }
+
+#privacy #whomILocate-container{}
+#privacy #whomILocate-container h1{font-weight: bold; font-size: 20px; margin:0 0 15px;}
+#privacy #whomILocate-container #searchFilter{border:1px solid #cccccc; height:39px; margin:20px 0!important; padding:0 13px!important; background:url(../images/messages/utilityBar.png) repeat-x top left;}
+#privacy #whomILocate-container #searchFilter .tools .search{float:left;}
+#privacy #whomILocate-container #searchFilter .tools .search .modBorder{background: url("../images/controlPanel/bg/searchFields/seachFieldsW246.png") no-repeat scroll left top transparent; padding: 0 7px 0 0; height: 24px; margin: 8px 0 0;}
+#privacy #whomILocate-container #searchFilter .tools .search .modBorder #searchPeople{border:none; width: 216px; margin: 5px 0px 0px 3px; font-weight:bold; float: left;}
+#privacy #whomILocate-container #searchFilter .tools .filter{float:right;}
+#privacy #whomILocate-container #searchFilter .tools .filter #requestType{width:115px; }
+#privacy #whomILocate-container #searchFilter .tools .filter #requestType-button{margin:6px 0 0;}
+#privacy #whomILocate-container #searchFilter .tools .filter #requestType-button span.ui-selectmenu-status{ padding:6px 0 0 10px;}
+#privacy #whomILocate-container #searchFilter .tools .filter .text{padding:5px 10px 0 0; font-size: 14px;}
+#privacy #whomILocate-container #searchFilter .tools .filter .filtering{margin:0; padding:0;}
+#privacy #whomILocate-container #searchFilter .tools .filter .filtering tr td{vertical-align:middle;}
+#privacy #whomILocate-container #whomILocateMe{ width:100%;}
+#privacy #whomILocate-container #whomILocateMe tr{border-bottom:1px solid #CCC;}
+#privacy #whomILocate-container #whomILocateMe tr .makeHover{}
+#privacy #whomILocate-container #whomILocateMe tr .makeHoverThis{background:#f4f4f4;}	
+#privacy #whomILocate-container #whomILocateMe td{height:40px; padding:0 0 0 15px; vertical-align: middle;}
+#privacy #whomILocate-container #whomILocateMe .image{float:left; background:url(../images/availability/noImage.png) no-repeat top left; width:21px; height:27px; margin: 0 15px 0 0; text-indent:-999px;}
+#privacy #whomILocate-container #whomILocateMe .text{float:left;}
+#privacy #whomILocate-container #whomILocateMe .viewPos{text-decoration:underline;}
+#privacy #whomILocate-container #whomILocateMe .iconCheck{background:url(../images/availability/check.png) no-repeat top left; width:19px; height:16px; margin:0 auto;}
+#privacy #whomILocate-container #whomILocateMe .info{float:left; width:18px; height:18px; display:block; background:url(../images/availability/info.png) no-repeat bottom left; margin:-3px 8px 0;}
+#privacy #whomILocate-container #whomILocateMe .first ,#privacy #whomILocate-container #whomILocateMe .second, #privacy #whomILocate-container #whomILocateMe .third, #privacy #whomILocate-container #whomILocateMe .fifth,#privacy #whomILocate-container #whomILocateMe .sixth, #privacy #whomILocate-container #whomILocateMe .seventh {border-right:1px solid #CCC;}
+#privacy #whomILocate-container #whomILocateMe .first ,#privacy #whomILocate-container #whomILocateMe .second, #privacy #whomILocate-container #whomILocateMe .third, #privacy #whomILocate-container #whomILocateMe .forth{background:#ededed; font-size: 12px; font-weight: bold;}
+#privacy #whomILocate-container #whomILocateMe .eight .textt{float:left; padding:6px 0 0; font-size: 14px;}
+#privacy #whomILocate-container #whomILocateMe .eight .info{float:left; padding:6px 0 0;}
+#privacy #whomILocate-container #whomILocateMe .eight .delete{float:right; width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top left; margin:0 5px 0 0; visibility:hidden;}
+#privacy #whomILocate-container #whomILocateMe .eight .edit{float:right; width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top right;  margin:0 10px 0 0; visibility:hidden;}
+#privacy #whomILocate-container #whomILocateMe .second,#privacy #whomILocate-container #whomILocateMe .third{font-size: 12px; font-weight: bold; padding: 0; text-align: center;}
+#privacy #whomILocate-container #whomILocateMe .sixth,#privacy #whomILocate-container #whomILocateMe .seventh{padding: 0; text-align: center; }
+#privacy #whomILocate-container #whomILocateMe .fifth p{font-size: 14px; line-height: 26px;}
+.locateSingleUser{margin:0 0 0 -50px;}
+
+
+
+
+#privacy #availabilityDiv{float:left; width:75%;}
+#privacy #availabilityDiv #visibilityProfiles-container{min-height: 750px; height:auto !important; height: 750px;}
+#privacy #availabilityDiv #visibilityProfiles-container .ulcover{background:url(../images/messages/borderline.png) repeat-x bottom left; position:relative; z-index: 4; height: 4px; top: -4px;}
+#privacy #availabilityDiv #visibilityProfiles-container ul {margin:0; padding: 0;}
+#privacy #availabilityDiv #visibilityProfiles-container ul li{}
+
+/* tab profiles */
+#privacy #availabilityDiv #visibilityProfiles-container ul li.tab-profiles {z-index:3; top: 2px; }
+#privacy #availabilityDiv #visibilityProfiles-container ul li.tab-profiles a{background:url(../images/messages/tab_NotActive_left.png) no-repeat top left; height:50px; display:block; padding-left:10px;}
+#privacy #availabilityDiv #visibilityProfiles-container ul li.tab-profiles a span{display:block; line-height: 34px; height: 50px; background: url(../images/messages/tab_NotActive_right.png) no-repeat top right; padding: 0 40px 0 5px; font-size:15px; font-weight:bold;}
+#privacy #availabilityDiv #visibilityProfiles-container ul li.tab-profiles a span .little{font-weight: normal; font-size: 12px; line-height: 0px; text-align: left;}
+#privacy #availabilityDiv #visibilityProfiles-container ul li.tab-profiles.ui-state-active{z-index:5; top: 0px;}
+
+#privacy #availabilityDiv #visibilityProfiles-container ul li.tab-profiles.ui-state-active a{background:url(../images/visibilityTabsLeft.jpg) no-repeat top left; height:50px; display:block; padding-left:10px; }
+#privacy #availabilityDiv #visibilityProfiles-container ul li.tab-profiles.ui-state-active a span{display:block; line-height: 34px; height: 50px; background: url(../images/visibilityTabsRight.jpg) no-repeat top right; padding: 0 40px 0 5px; font-size:15px; font-weight:bold;}
+#privacy #availabilityDiv #visibilityProfiles-container .ulcover{background:url(../images/messages/borderline.png) repeat-x bottom left; position:relative; z-index: 4; height: 4px; top: -4px;}
+#privacy #availabilityDiv #visibilityProfiles-container .closeBT{display: none;}
+#privacy #availabilityDiv #visibilityProfiles-container .ui-state-active a.linkProfiles{background: url(../images/visibilityTabsLeftSelectedMiddle.png) no-repeat top left!important; margin-left: -3px;}
+#privacy #availabilityDiv #visibilityProfiles-container .ui-state-active a.linkProfiles span{background: url(../images/visibilityTabsRightSelectedMiddle.png) no-repeat top right!important;margin-right: -1px;}
+#privacy #availabilityDiv #visibilityProfiles-container .ui-state-active .closeBT{display: block; background:url(../images/visibilityTabsClose.png) no-repeat top left; height: 16px; text-indent: -9999px; width: 16px;}
+#privacy #availabilityDiv #visibilityProfiles-container .ui-state-active .closeBT:hover{display: block; background:url(../images/visibilityTabsClose.png) no-repeat bottom left; height: 16px; text-indent: -9999px; width: 16px;}
+#privacy #availabilityDiv #visibilityProfiles-container .ui-state-disabled a span{padding: 0px 15px 0px 0px!important;}
+#privacy #availabilityDiv #visibilityProfiles-container ul li.tab-profiles.ui-state-active.ui-first a{background:url(../images/messages/tab_NotActive_left.png) no-repeat top left; height:50px; display:block; padding-left:10px;}
+#privacy #availabilityDiv #visibilityProfiles-container #btDel_-100{display:none;}
+
+/* Calendar */
+td.fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
+	background: transparent;
+	}
+#availabilityDiv #buttonSaveClear{position: relative;z-index: 1;}
+#availabilityDiv #buttonSaveClear h1{float: left; font-size:16px;}
+#availabilityDiv #buttonSaveClear #calSave{float: right; margin:0; cursor: pointer;}
+#availabilityDiv #buttonSaveClear #calClear{float: right; margin:0; background: url("../images/dialog_button_grey_left.png") no-repeat scroll left top transparent; cursor: pointer;}
+#availabilityDiv #buttonSaveClear #calClear span{background: url("../images/dialog_button_grey_right.png") no-repeat scroll right 0 transparent; color:#333333;}
+#availabilityDiv #buttonSaveClear #calClear:hover{background-position: left -30px;}
+#availabilityDiv #buttonSaveClear #calClear:hover span{background-position: right -30px;}
+	
+#availabilityDiv #workOrFull{position: relative; top: 9px; z-index: 1; left:8px;}
+#availabilityDiv #workOrFull #workingTime{background: url("../images/visibilityCalendarWorkOrFull.png") no-repeat 0 -30px; display: block; float: left; height: 29px; width: 35px; text-indent:-9999px;}
+#availabilityDiv #workOrFull #workingTime:hover, #availabilityDiv #workOrFull #workingTime.selected{background: url("../images/visibilityCalendarWorkOrFull.png") no-repeat 0 0; display: block; float: left; height: 29px; width: 35px; text-indent:-9999px;}
+#availabilityDiv #workOrFull #fullTime{background: url("../images/visibilityCalendarWorkOrFull.png") no-repeat -35px 0; display: block; float: left; height: 29px; width: 35px; text-indent:-9999px;}
+#availabilityDiv #workOrFull #fullTime:hover,#availabilityDiv #workOrFull #fullTime.selected{background: url("../images/visibilityCalendarWorkOrFull.png") no-repeat -35px -30px; display: block; float: left; height: 29px; width: 35px; text-indent:-9999px;}
+
+#availabilityDiv .fc-widget-header{background: #f1f1f1; height: 41px; line-height: 41px; font-size:16px; font-weight: bold;}
+#availabilityDiv .fc-agenda-axis.fc-widget-header{background: none; height: auto; line-height: 18px; font-size:14px;}
+#availabilityDiv .fc-agenda-axis.fc-widget-header.fc-first{width: 75px;}
+
+#privacy #availabilityDiv .headerTop{margin-bottom: 19px;}
+#privacy #availabilityDiv #whoListUsers{margin:20px 0 28px;}
+#privacy #availabilityDiv #whoListUsers #plusBox{ border-top:1px solid #ccc; border-bottom:1px solid #ccc; height: 50px; padding: 0 0 0 20px; cursor:pointer;}
+#privacy #availabilityDiv #whoListUsers #plusBox #plus{width:18px; height:18px; display:block; background:url(../images/availability/plus_minus.jpg) no-repeat top left; float:left; margin: 17px 0 0 -2px;}
+#privacy #availabilityDiv #whoListUsers #plusBox .text{float:left; font-size:16px; font-weight:bold; margin:18px 20px 0;}
+
+
+#privacy #availabilityDiv #whoListUsers #profiles{display:none; border:1px solid #acacac;  background:#cccccc; padding:2px;}
+#privacy #availabilityDiv #whoListUsers #profiles .innerBorder{background:#fff;}
+#privacy #availabilityDiv #whoListUsers #profiles #minusBox{height: 47px; padding: 0 0 0 15px; cursor:pointer;}
+#privacy #availabilityDiv #whoListUsers #profiles #minus{width:18px; height:18px; display:block; background:url(../images/availability/plus_minus.jpg) no-repeat bottom left; float:left; margin: 15px 0 0;}
+#privacy #availabilityDiv #whoListUsers #profiles .text{float:left; font-size:16px; font-weight:bold; margin:16px 20px 0;}
+#privacy #availabilityDiv #whoListUsers #profiles .tableCover{margin: 0 40px 0 55px; padding-bottom: 20px;}
+#privacy #availabilityDiv #whoListUsers #profiles #listUsers{width:100%;}
+#privacy #availabilityDiv #whoListUsers #profiles #listUsers tr{border-top:1px solid #acacac; height:50px;}
+#privacy #availabilityDiv #whoListUsers #profiles #listUsers tr td{vertical-align:middle}
+#privacy #availabilityDiv #whoListUsers #profiles #listUsers tr td.first{text-align:left;}
+#privacy #availabilityDiv #whoListUsers #profiles #listUsers tr td.first .name{float:left; font-size:14px; font-weight:bold;}
+#privacy #availabilityDiv #whoListUsers #profiles #listUsers tr td.second{width: 35px; padding:0;}
+#privacy #availabilityDiv #whoListUsers #profiles #listUsers tr td.third{padding:0; width: 35px;}
+#privacy #availabilityDiv #whoListUsers #profiles #listUsers #removeUser{width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top left;}
+#privacy #availabilityDiv #whoListUsers #profiles #listUsers #editUser{width:25px; height:26px; display:block; background:url(../images/availability/editRemoveIcon.png) no-repeat top right;}
+
+#privacy #availabilityDiv #activeException{border:1px solid #a8b400; width: 500px; margin: 0 auto; padding: 10px 15px 20px; display: none;}
+#privacy #availabilityDiv #activeException #exception-status span{position: relative; top:-7px; font-weight: bold; padding: 0 0 0 15px;}
+#privacy #availabilityDiv #activeException p{ padding: 0 0 0 47px; font-size: 14px; line-height: 30px;}
+#privacy #availabilityDiv #activeException #currentException{padding: 0 0 0 47px; font-size: 14px; font-weight: bold;}
+#privacy #availabilityDiv #activeException #currentException .titleArrow{background: url(../images/exceptionActiveError.png) no-repeat 0 3px; padding-left: 9px;}
+#privacy #removeCanLocateRow-form{display: none;}
+#privacy #removeExceptionRow-form{display: none;}
+#privacy #editExcp-form{display: none;}
+
+#privacy #availabilityDiv #notifications{margin-top: 40px;}
+#privacy #availabilityDiv #notifications h1{font-size: 20px; font-weight: bold; margin: 0;}
+
+#privacy #availabilityDiv #notifications #notificationEmail{ margin: 22px 0 8px;}
+#privacy #availabilityDiv #notifications #notificationEmail span{float: left; }
+#privacy #availabilityDiv #notifications #notificationEmail span.ui-selectmenu-status{padding-left: 8px}
+#privacy #availabilityDiv #notifications #notificationEmail #notificationEmailCheck{float: left; margin: 6px 0 0;}
+#privacy #availabilityDiv #notifications #notificationEmail .smallText{line-height: 26px; float:left; margin: 0 10px;}
+#notificationEmailSelect-button{padding: 0 20px 0 0;}
+#notificationEmailSelect-menu{padding-right:20px; }
+
+#privacy #availabilityDiv #notifications #notificationSMS{margin: 0 0 30px;}
+#privacy #availabilityDiv #notifications #notificationSMS span{float: left;}
+#privacy #availabilityDiv #notifications #notificationSMS span.ui-selectmenu-status{padding-left: 8px}
+#privacy #availabilityDiv #notifications #notificationSMS #notificationSmsCheck{float: left; margin: 6px 0 0;}
+#privacy #availabilityDiv #notifications #notificationSMS .smallText{line-height: 26px; float:left; margin: 0 10px;}
+#notificationSmsSelect-button{padding: 0 20px 0 0;}
+#notificationSmsSelect-menu{padding-right:20px; }
+
+
+#visibilityProfiles-container #profiles-viewer {clear: both; position:relative; top:-4px;}
+#visibilityProfiles-container #profiles-viewer .ui-tabs-panel.ui-widget-content.ui-corner-bottom{padding: 0;}
+#visibilityProfiles-container #visHours {clear: both; position:relative;}
+#visibilityProfiles-container #calendarVis{position:relative; top:-27px;}
+
+#visibilityProfiles-container #calendarVis .fc-event-skin{background-color: #3396a8; border:none;}
+#visibilityProfiles-container #calendarVis .ui-resizable-handle.ui-resizable-s{width: 17px; background: url("../images/calendarResizeArrow.png") no-repeat scroll center top transparent; display: block; position: relative; z-index: 99; overflow: auto; top: -5px; height: 17px ! important; text-indent:-9999px;}
+#visibilityProfiles-container #calendarVis .fc-event-vert .fc-event-bg{opacity: 0;}
+#visibilityProfiles-container #calendarVis .fc-event-vert .fc-event-content{bottom:10px; font-size: 14px; line-height: 25px; position: absolute; bottom:1px; text-align: center;}
+#visibilityProfiles-container #calendarVis .fc-event-vert .fc-event-time{text-align: center; font-size: 14px; line-height: 20px; }
+#privacy .ui-tabs .ui-tabs-nav {width: auto;}
+
+
+
+/* spinners */
+.search-ico {color: #fff; margin-left:0px;}
+.search-ico.magnifier {
+  background: url('../images/mg_icon_small.png') center center no-repeat;
+  width: 18px; height: 18px;
+  display: block;
+}
+.search-ico.loading {
+  background: url('../images/loader_small_3.gif') center center no-repeat;
+  width: 18px; height: 18px;
+  display: block;
+}
+.search-ico.search-reset {
+  background: url("../images/x_icon_small.png") center center no-repeat;
+  width: 18px; height: 18px;
+  display: block;
+}
+
+
+/* datepicker */
+
+#ui-datepicker-div {width: 200px; padding: 10px 25px 10px 30px; cursor: default; background-image: url("../images/availability/my_availability_calendar_background.png"); background-size: 255px 182px !important; height: 157px !important;}
+#ui-datepicker-div .ui-widget-header {font-weight: bold !important; color: #000000 !important; background: transparent !important;}
+.ui-datepicker table {font-weight: bold;}
+
+.ui-datepicker-calendar .ui-state-active  {color: #ffffff; background: #0099CC; /* background-color: #cceff3; */}
+/* .ui-icon-circle-triangle-w {background-image: url("../images/availability/my_availability_calendar_arrow_prev.png") !important; background-position: 0 !important;} */
+.ui-icon-circle-triangle-w {background-image: none !important;}
+
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { margin: -8px 0 !important; }
+/* .ui-datepicker .ui-datepicker-next { background-image: url("../images/availability/my_availability_calendar_arrow_next.png") !important; background-size: auto auto; height: 11px; margin: 5px 4px 0 0; right: 2px; width: 7px;} */
+
+.ui-datepicker .ui-datepicker-prev {background: url("../images/calendar_btns.png") 0 0 no-repeat!important; background-size: auto auto; height: 21px; right: 2px; width: 20px;}
+.ui-datepicker .ui-datepicker-next {background: url("../images/calendar_btns.png") -20px 0 no-repeat!important; background-size: auto auto; height: 21px; right: 2px; width: 20px;}
+.ui-icon-circle-triangle-e { background-image: none !important; background-position: 0 0 !important;}
+
+/* CALENDAR DATEPICKER LEFT / RIGHT */
+#calendar #calendarDatepicker {padding-right: 30px;}
+#calendar #calendarDatepicker .ui-datepicker {padding: 0;}
+#calendar #calendarDatepicker .ui-datepicker .ui-datepicker-header {padding: 0;}
+#calendar #calendarDatepicker .ui-datepicker .ui-datepicker-prev, #calendar .ui-datepicker .ui-datepicker-next {height: 21px; /* top:12px */top:0;}
+#calendar #calendarDatepicker .ui-datepicker .ui-datepicker-prev {/* left: 173px; */ left: 0;}
+#calendar #calendarDatepicker .ui-datepicker .ui-datepicker-next {margin: 0; right: 0px;}
+#calendar #calendarDatepicker .ui-datepicker .ui-datepicker-title {text-align: center; margin: 0; color: #323232; padding-bottom: 15px;}
+#calendar #calendarDatepicker .ui-datepicker-title span {line-height: 24px; font-size: 16px; font-family: Arial, sans-serif;}
+#calendar #calendarDatepicker .ui-datepicker {width: auto;}
+#calendar #calendarDatepicker .ui-datepicker td span, #calendar .ui-datepicker td a {display: block;height: 24px;line-height: 24px;padding: 0;text-align: center;text-decoration: none;width: 30px;}
+#calendar #calendarDatepicker .ui-state-highlight, #calendar .ui-widget-content .ui-state-highlight, #calendar .ui-widget-header .ui-state-highlight {border: 0;}
+#calendar #calendarDatepicker .ui-datepicker-calendar .ui-state-active  {color: #fff; /* background: #0099CC; */ background-color: #00b0ca;}
+#calendar #calendarDatepicker .ui-datepicker table, #calendar .ui-datepicker table th, #calendar .ui-datepicker table tr,#calendar .ui-datepicker table td {border: 1px solid #d4d4d4; width: 30px;}
+#calendar #calendarDatepicker .ui-datepicker table th {background-color: #d4d4d4;}
+#calendar #calendarDatepicker .ui-datepicker td {padding: 0;}
+#calendar #calendarDatepicker .ui-datepicker-calendar .highlight {background-color: #007d92;}
+#calendar #calendarDatepicker .ui-datepicker-calendar .highlight a {color: #fff;}
+#calendar {padding: 30px 0 0 20px; min-width: 1000px;}
+#calendar .left {/* width: 240px!important; */}
+#calendar .right {float: left!important; /* width: 700px; */ width: 80%; padding:0 0 30px;}
+#calendar .fc th {background-color: #fff; height: 41px; line-height: 41px; font-family: Arial, sans-serif; font-size: 16px; font-weight: bold;}
+#calendar .fc-grid .fc-day-number {float: right;font-family: arial;font-size: 12px;padding: 10px 10px;}
+
+
+/* HEADER CALENDAR */
+#calendar .fc-button-prev {background: url("../images/calendar_btns.png") 0 0 no-repeat!important; background-size: auto auto; height: 21px; width: 20px; border: none!important;}
+#calendar .fc-button-next {background: url("../images/calendar_btns.png") -20px 0 no-repeat!important; background-size: auto auto; height: 21px; width: 20px; border: none!important;}
+#calendar .fc-state-default, .fc-state-default .fc-button-inner {background: none; border: none;}
+#calendar .fc-header-left .fc-state-default, 
+#calendar .fc-header-left .fc-state-default .fc-button-inner {background: url("../images/fc-button-sprite.png") 0 0 no-repeat; height: 29px;}
+#calendar .fc-header-left .fc-state-default.fc-state-active .fc-button-inner {background: url("../images/fc-button-sprite.png") 0 -87px no-repeat; height: 29px;}
+
+#calendar .fc-header-left .fc-state-default.fc-corner-left .fc-button-inner {background: url("../images/fc-button-sprite.png") 0 -29px no-repeat;}
+#calendar .fc-header-left .fc-state-default.fc-corner-left.fc-state-active .fc-button-inner {background: url("../images/fc-button-sprite.png") 0 -116px no-repeat;}
+
+#calendar .fc-header-left .fc-state-default.fc-corner-right .fc-button-inner {background: url("../images/fc-button-sprite.png") right -58px no-repeat;}
+#calendar .fc-header-left .fc-state-default.fc-corner-right.fc-state-active .fc-button-inner {background: url("../images/fc-button-sprite.png") right -145px no-repeat;}
+
+#calendar .fc-state-default {border: 0;}
+#calendar .fc-state-default .fc-button-inner {border: 0;}
+#calendar .fc-state-default .fc-button-effect span {background: none; width: auto; border: 0;}
+#calendar .fc-button-content {display: none;}
+#calendar .fc-state-active .fc-button-content {color: #fff!important;}
+#calendar .fc-header-left .fc-button-content {display: block; padding: 0 22px; font-family: Arial; font-size: 11px; color: #777; line-height: 27px; text-transform: capitalize;}
+#calendar .fc .fc-header-space {padding-left: 49px;}
+#calendar .fc-header-title h2 {font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; line-height: 21px;}
+#calendar .fc-header .fc-button {margin-bottom: 19px; border-left: 1px solid #999;}
+#calendar .fc th {border: 0; border-top: 1px solid #c9c9c9; border-bottom: 1px solid transparent;}
+#calendar .fc .fc-minor th{border-top-style: dotted;}
+#calendar .fc .fc-slot0 th{border-top: none; }
+#calendar .fc .fc-first th {border-bottom: 1px solid #c9c9c9;}
+#calendar .fc-state-highlight {background-color: #00b0ca;}
+#calendar .fc-grid .fc-state-highlight .fc-day-number {color: #fff;}
+
+input[type=checkbox] {margin-left: 0!important;margin-right: 0!important;padding-left: 0!important;padding-right: 0!important;}
+
+
+
+
+#tab-sent-requests table.fixedArea td.first,#tab-inbox-requests table.fixedArea td.first, #tab-sent-messages table.fixedArea td.first, #tab-trash table.fixedArea td.first {width:22px;}
+#tab-sent-requests tr.inboxTbTRRowCell td.first,#tab-inbox-requests tr.inboxTbTRRowCell td.first ,#tab-sent-messages tr.inboxTbTRRowCell td.first , #tab-trash tr.inboxTbTRRowCell td.first,
+#tab-sent-requests tr.inboxTbTRRowCellHover td.first,#tab-inbox-requests tr.inboxTbTRRowCellHover td.first ,#tab-sent-messages tr.inboxTbTRRowCellHover td.first , #tab-trash tr.inboxTbTRRowCellHover td.first {width:22px;}
+
+
+.hoverCalendars .hd{background: url("../images/hoverCalendarTopLeft.png") 11px 0 no-repeat; height: 12px; padding-left:12px; } 
+.hoverCalendars .hd .c{background: url("../images/hoverCalendarTopRight.png") 100% 0 no-repeat; height: 12px; margin-right: -16px;}
+.hoverCalendars .bd{background: url("../images/hoverCalendarMiddleLeft.png") 0 50% no-repeat; padding-left:12px;} 
+.hoverCalendars .bd .c{background: url("../images/hoverCalendarMiddleRight.png") 100% 0 no-repeat; margin-right: -16px;}
+.hoverCalendars .ft{background: url("../images/hoverCalendarBottomLeft.png") 11px 0 no-repeat; height: 12px; padding-left:12px; } 
+.hoverCalendars .ft .c{background: url("../images/hoverCalendarBottomRight.png") 100% 0 no-repeat; height: 12px; margin-right: -16px;} 
+.hoverCalendars .fc-agenda-slots td div{height: 11px;}
+.hoverCalendars .fc-first.fc-last{height:30px; line-height:30px;}
+.hoverCalendars .fc-agenda-days.fc-border-separate .fc-first.fc-last th{border-top:none; font-size:16px; font-weight:bold; border-top:none;}
+.hoverCalendars .fc-agenda-days.fc-border-separate .fc-first.fc-last th.fc-first{border-left:none; border-top:none;}
+.hoverCalendars .fc-agenda-slots tr.fc-minor th{border-top:none;}
+.hoverCalendars .fc-agenda-slots tr th{border-left:none;font-size: 10px; font-weight: bold; text-align: left;}
+.hoverCalendars .fc-agenda-slots tr.fc-minor td{border-top-style:solid;}
+.hoverCalendars .ui-dialog-titlebar-close.ui-corner-all{display:none;}
+.hoverCalendars .fc-event-head{display:none;}
+.hoverCalendars .fc-event-content{display:none;}
+
+.hoverCalendars.oppositeSide .hd{background: url("../images/hoverCalendarOppositeTopRight.png") 1px 0 no-repeat; height: 12px; padding-left:19px; } 
+.hoverCalendars.oppositeSide .hd .c{background: url("../images/hoverCalendarOppositeTopLeft.png") 100% 0 no-repeat; height: 12px; margin-right: -2px;}
+.hoverCalendars.oppositeSide .bd{background: url("../images/hoverCalendarOppositeMiddleRight.png") 0 0 no-repeat; padding-left:12px;} 
+.hoverCalendars.oppositeSide .bd .c{background: url("../images/hoverCalendarOppositeMiddleLeft.png") 100% 50% no-repeat; margin-right: -13px; padding-right: 5px;}
+.hoverCalendars.oppositeSide .ft{background: url("../images/hoverCalendarOppositeBottomRight.png") 0px 0 no-repeat; height: 12px; padding-left:19px; } 
+.hoverCalendars.oppositeSide .ft .c{background: url("../images/hoverCalendarOppositeBottomLeft.png") 100% 0 no-repeat; height: 12px; margin-right: -2px;} 
+
+
+
+
+
+#meetingAttendees .token-input-list-facebook {width:357px; max-height:100px; min-height:55px;}
+#meetingAttendees #token-input-messageTo{border: none;}
+
+.WhoHasLocateMe .dialog .bd .c .s{padding: 9px 15px 8px 8px;}
+.WhoHasLocateMe .ui-dialog-titlebar-close{margin:-10px 8px 0 0!important;}
+.WhoHasLocateMe .ui-dialog .ui-dialog-titlebar{padding: 0 0 0 8px!important;}
+.WhoHasLocateMe .ui-dialog .ui-dialog-title{}
+.WhoHasLocateMe #before{background: url("../images/calendar_btns.png") no-repeat scroll 0 0 transparent; display:block; width: 20px; height: 21px;  float: left; text-indent: -999px;}
+.WhoHasLocateMe #after{background: url("../images/calendar_btns.png") no-repeat scroll -20px 0 transparent; display:block; width: 23px; height: 21px; float: right; text-indent: -999px;}
+.WhoHasLocateMe #DateLoc{float: left; width:242px; height: 20px; line-height: 20px; text-align:center; font-size:14px; font-weight: bold;}
+.WhoHasLocateMe #tableLoc {margin:10px 0 0; max-height: 260px; overflow-y: auto;}
+.WhoHasLocateMe #tableLoc tr{height: 30px; line-height: 30px; border-bottom: 1px solid #eee;}
+.WhoHasLocateMe #tableLoc tr:hover td{background: #eee;}
+.WhoHasLocateMe #tableLoc .first{width:90px; padding: 0 0 0 10px;}
+
+
+#events-layer{position:absolute; width:100%; top:2px; z-index:100;}
+#events-layer .closeTray{background: url("../images/x_icon_small_calendar.png") no-repeat 0 -14px; display:block; width:12px; height: 12px; float: right; margin: 5px 10px;}
+#events-layer .closeTray:hover{background-position: 0 0;}
+
+
+ul.location-autocomplete.ui-autocomplete li.first-item{background: url("../images/controlPanel/shadows/autocompleteTop360.png") no-repeat scroll center top transparent; padding-top: 17px;}
+ul.location-autocomplete.ui-autocomplete {width: 360px!important; background: url("../images/controlPanel/shadows/autocompleteBottom360.png") no-repeat scroll center bottom transparent;}
+ul.location-autocomplete.ui-autocomplete li{background: url("../images/controlPanel/shadows/autocompleteCont360.png") repeat-y scroll left top transparent; width: 300px;}
+
+ul.location-searchPeople.ui-autocomplete li.first-item{background: url("../images/controlPanel/shadows/autocompleteTop240.png") no-repeat scroll center top transparent; padding-top: 17px;}
+ul.location-searchPeople.ui-autocomplete {width: 240px!important; background: url("../images/controlPanel/shadows/autocompleteBottom240.png") no-repeat scroll center bottom transparent;}
+ul.location-searchPeople.ui-autocomplete li{background: url("../images/controlPanel/shadows/autocompleteCont240.png") repeat-y scroll left top transparent; width: 180px;}
+
+
+.locateSingleUser #dialog{max-height:200px; overflow: auto;}
+
+.deleteTabMessage h1{background: url("../images/icon_notification.png") no-repeat scroll 0% 0% transparent; padding: 8px 0px 9px 43px!important; margin-bottom: 15px; font-weight: bold;}
+.deleteTabMessage h2{font-weight: bold; margin-bottom: 7px;}
+.deleteTabMessage .smallText{font-weight:normal;}
+.deleteTabMessage .blockFirst{margin-top: 19px; padding-left: 15px;}
+.deleteTabMessage .blockFirst .part1 span{font-weight: bold;font-size:14px!important;}
+.deleteTabMessage .blockFirst .part2 {padding: 10px 0px 0px 25px; margin: 0px 0px 10px;}
+.deleteTabMessage .blockSecond{padding-left: 15px;}
+.deleteTabMessage .blockSecond #chkDelProfile{float: left;margin-right: 7px;}
+.deleteTabMessage .blockSecond .part{float: left; width: 90%; margin:0 0 15px;}
+.deleteTabMessage .blockSecond .part1{font-weight:bold; font-size:14px!important; margin-bottom: 5px;}
+.deleteTabMessage .blockSecond .part2{font-weight:normal; margin-bottom: 5px;}
+.deleteTabMessage .blockFirst .part2 .ui-selectmenu-status{padding-left: 11px;}
+.requestReportPermissonDialogBox{width: 400px;}
+.requestReportPermissonDialogBox #time1{margin:0 0 0 40px;}
+.requestReportPermissonDialogBox #time2{margin:0 0 0 40px;}
+.requestReportPermissonDialogBox #requestedUser{display: none;}
+
+
+.editVisibility .part2{margin: 10px 0 15px;}
+.editVisibility .part2 .ui-selectmenu-status{padding-left: 11px;}
+
+.deleteVisibility{}
+
+.locationReportRequestPermission #casefalse .info {background: url("../images/availability/info.png") no-repeat scroll left bottom transparent;display: inline-block;height: 18px;width: 18px; position: relative; top:3px; left:3px;}
+.locationReportRequestPermission #casefalse .part1{font-size: 12px; margin: 6px 0px 20px;}
+.locationReportRequestPermission #casefalse .part1 #requestedUser{font-weight:bold; float: none;} 
+.locationReportRequestPermission #casefalse .part2{font-size: 14px; margin: 0px 0px 15px;}
+.locationReportRequestPermission #casefalse .part3{line-height: 20px; border: 1px solid #ccc; padding: 15px; font-weight: bold; font-size: 12px;}
+
+.locationReportRequestPermission #casetrue #time1{margin:0 0 0 40px;}
+.locationReportRequestPermission #casetrue #time2{margin:0 0 0 40px;}
+.locationReportRequestPermission #casetrue .excpLabel{float: left; line-height: 25px;}
+.locationReportRequestPermission #casetrue #date1{float: left;}
+.locationReportRequestPermission #casetrue #date2{float: left;}
+.locationReportRequestPermission #casetrue #requestedUser{display: none;}
+
+.locationReportRequestPermission .time-wrap{border: 1px solid #B4B4B4 !important; float: right; margin-left: 35px; position: relative; width: 60px;}
+.locationReportRequestPermission .inputs input.time {border: 0 none;}
+.locationReportRequestPermission .time-wrap .hours {padding-right: 3px;text-align: right;width: 20px; border: none!important; float: left; height: 20px;}
+.locationReportRequestPermission .time-wrap span {float: left;line-height: 22px;}
+.locationReportRequestPermission .inputs input.time {border: 0 none;}
+.locationReportRequestPermission .time-wrap .mins { padding-left: 3px; text-align: left;  width: 20px;border: none!important;float: left; height: 20px;}
+.locationReportRequestPermission span{float: left; line-height: 24px; font-weight: bold; margin-right:5px;}
+
+#visPro-button-button{display: none;}
+#locationReportsPopUp .line1{font-size: 13px !important;font-weight: normal;line-height: 18px;margin: 4px 0;}
+#locationReportsPopUp .line2{font-size: 13px !important;font-weight: normal;line-height: 18px;margin: 8px 0;}
+#locationReportsPopUp .line3{font-size: 13px !important;line-height: 18px;margin: 0 0 4px;}
+
+
+
+
+#tab-places .actions .action_button_bar li{margin: 0 5px 0 0;}
+#tab-places .actions .action_button_bar li.first  {width:107px;}
+#tab-places .actions .action_button_bar li.second {width:107px;}
+#tab-places .actions .action_button_bar li.third  {width:60px;}
+#tab-places .actions .action_button_bar li.fourth {margin: 0; width:40px;}
+
+#tab-places .subtabsCover {background: url("../images/search-wrap-top.png") no-repeat scroll 0 0 #CCCCCC; padding-top: 4px;width: 330px;}
+#tab-places .subtabsCover .ui-tabs-nav{width: 325px; padding: 2px 0 5px 2px; background: none; border:none;}
+#tab-places .subtabsCover .ui-tabs-nav li a{padding: 0; height: 40px; line-height: 40px;}
+#tab-places .subtabsCover .container_bottom{background-attachment: scroll;   background-clip: border-box;  background-color: #CCCCCC;  background-image: url("../images/bottom_corners-1.png");    background-origin: padding-box;    background-position: center bottom;  background-repeat: no-repeat; background-size: 100% auto; height: 3px;}
+#tab-places .subtabsCover #fom_single_search{margin-bottom: 3px; position: relative;}
+#tab-places .subtabsCover .first{width: 93px; padding: 0; background: url('../images/places_tab_button.png') no-repeat 0 0; border:none; border-right:1px solid #aaaaaa;}
+#tab-places .subtabsCover .second{width: 121px; padding: 0; background: url('../images/places_tab_button.png') no-repeat -94px 0; border:none; border-right:1px solid #aaaaaa;}
+#tab-places .subtabsCover .third{width: 106px!important; padding: 0; background: url('../images/places_tab_button.png') no-repeat -216px 0!important; border:none;}
+#tab-places .subtabsCover .first.ui-state-active, #tab-places .subtabsCover .first:hover{background: url('../images/places_tab_button.png') no-repeat 0 -45px!important;}
+#tab-places .subtabsCover .second.ui-state-active, #tab-places .subtabsCover .second:hover{background: url('../images/places_tab_button.png') no-repeat -94px -45px!important;}
+#tab-places .subtabsCover .second.ui-state-disabled a{cursor: default;}
+#tab-places .subtabsCover .second.ui-state-disabled:hover{background: url('../images/places_tab_button.png') no-repeat -94px 0!important;}
+#tab-places .subtabsCover .third.ui-state-active, #tab-places .subtabsCover .third:hover{background: url('../images/places_tab_button.png') no-repeat -216px -45px!important;}
+#tab-places .subtabsCover .placesSearch{margin: 0 0 0 5px;}
+#tab-places .subtabsCover .placesSearch #search_places{border: medium none; background: url("../images/places_tab_search.jpg") no-repeat scroll 0px 0px transparent; height: 25px; width: 300px; padding: 0px 22px 0px 6px;}
+
+
+#tab-places .subtabsCover .searchMagnifier{background: url("../images/mg_icon_small.png") no-repeat scroll center center transparent; clear:none; cursor: pointer; display:block; float:right; height:21px; position: relative; top:-23px; width: 21px; margin:0 6px 0 0;}
+
+#tab-places .subtabsCover .searchLoading{background:url("../images/loader_small_3.gif") no-repeat scroll center center transparent; width: 16px; height: 16px; position: absolute; top: 5px; left: 306px; display: none;}
+#tab-places .subtabsCover .searchReset{float:right; height:21px; position: relative; top:-23px; width: 21px; margin:0 6px 0 0; display:none; cursor: pointer; background:url("../images/x_icon_small.png") no-repeat scroll center center transparent; text-indent: -9999px;}
+
+#idGenericPOIsearchResult {margin: 15px 0;}
+#tab-places.ui-tabs-panel{width: 330px; margin:0 auto;}
+#tab-places #tab-places-enterprise{width: 330px;}
+#tab-places #tab-places-enterprise .contents{margin:0px 0 10px 0px; /* max-height:531px; */}
+#tab-places #tab-places-enterprise .contents li div:hover div{background: #f4f4f4;}
+#tab-places #tab-places-enterprise .contents li div:hover div .globalSearchButton{background-position:left top;}
+#tab-places #tab-places-enterprise .contents li div:hover div .globalSearchButton span{background-position:right center; color: #333333;}
+#tab-places #tab-places-enterprise ul li ul li{}
+#tab-places #tab-places-enterprise .contents .users, #tab-places #tab-places-personal .contents .users{display: none;}
+#tab-places #tab-places-recents{width: 330px;}
+#tab-places #tab-places-recents .contents{margin:0px 0 10px 0px; /* max-height:531px; */}
+#tab-places #tab-places-recents .contents li div:hover div{background: #f4f4f4;}
+#tab-places #tab-places-recents .contents li div:hover div .globalSearchButton{background-position:left top;}
+#tab-places #tab-places-recents .contents li div:hover div .globalSearchButton span{background-position:right center; color: #333333;}
+
+#tab-places #tab-places-personal{width: 330px;}
+#tab-places #tab-places-personal .contents{margin:0px 0 10px 0px; /* max-height:531px; */}
+#tab-places #tab-places-personal .contents li div:hover div{background: #f4f4f4;}
+#tab-places #tab-places-personal .contents li div:hover div .globalSearchButton{background-position:left top;}
+#tab-places #tab-places-personal .contents li div:hover div .globalSearchButton span{background-position:right center; color: #333333;}
+
+#tab-places-enterprise #adminRightAction, #tab-places-recents #adminRightAction, #tab-places-personal #adminRightAction, #tab-places-enterprise #refreshAssets, #tab-places-recents #refreshAssets, #tab-places-personal #refreshAssets, #refreshTabRecentPlaces{ padding-bottom:7px; }
+
+
+#tab-places .subtabsCover .first a {width: 100%;}
+#tab-places .subtabsCover .second a{width:100%;}
+#tab-places .subtabsCover .third a {width: 100%;}
+#tab-places .places .advancedButton{display:none;}
+#tab-places .placesList input{position: relative; left:2px;}
+#tab-places .placesList .adressPlace{margin: 0 0 0 10px;}
+#tab-places .group input{position: relative; left:2px;}
+#tab-places .group .openClose{margin-left: 3px;}
+#tab-places .group span.groupName{margin-left: 0;}
+#tab-places .container input{position: relative; left:2px;}
+#tab-places .container .openClose{margin: 0 3px 0 10px;}
+#tab-places .container span.nameUser{margin-left: 0;}
+#tab-places .container{padding:0 3px 0 8px;}
+#tab-places .container .locationPlacesRight{background: url("../images/rollover_button_places_show.png") no-repeat scroll right top transparent;}
+#tab-places .container .locationPlacesRight:hover{background-position: right -24px; }
+#tab-places .container .locationPlacesRight:active{background-position: right -49px; }
+
+#tab-routes .subtabsCover{background: url("../images/search-wrap-top.png") no-repeat scroll 0 0 #CCCCCC; padding-top: 4px;width: 330px;}
+#tab-routes .subtabsCover .search_container_route{margin: 2px 0px 0px;}
+#tab-routes .subtabsCover .container_bottom{background-attachment: scroll;   background-clip: border-box;  background-color: #CCCCCC;  background-image: url("../images/bottom_corners-1.png");    background-origin: padding-box;    background-position: center bottom;  background-repeat: no-repeat; background-size: 100% auto; height: 3px;}
+#tab-routes .subtabsCover .ui-tabs-nav{width: 325px; padding: 2px 0 1px 2px; background: none; border:none;}
+#tab-routes .subtabsCover .ui-tabs-nav li.first a, #tab-routes .subtabsCover .ui-tabs-nav li.second a{width: 100%; line-height: 40px; padding: 0; }
+
+#tab-routes .subtabsCover li.first{ padding:0; width:160px; border-right:1px solid #ccc; background: url("../images/route_tab_state.png") no-repeat top left!important;}
+#tab-routes .subtabsCover li.first.ui-state-active, #tab-routes .subtabsCover .first:hover{ background: url("../images/route_tab_state.png") no-repeat bottom left!important;}
+
+#tab-routes .subtabsCover li.second{padding:0; width: 160px!important; background: url("../images/route_tab_state.png") no-repeat top right!important;}
+#tab-routes .subtabsCover li.second.ui-state-active, #tab-routes .subtabsCover .second:hover{ background: url("../images/route_tab_state.png") no-repeat bottom right!important;}
+
+
+#tab-routes #idRoutingSearchBoxDiv{background: url("../images/routing_frame_top.png") no-repeat 0 0; margin: 10px 0 0; padding: 10px 0 0;}
+#tab-routes #idRoutingSearchBoxDiv .bottomBody{background: url("../images/routing_frame_bottom.png") no-repeat 0 0; height: 6px; position: relative; top: 6px;}
+#tab-routes #routing{width: 280px; margin: 0px 0px 0px 4px; padding: 0 0 0 7px;}
+#tab-routes #routing_addDestination{margin: 10px 0 0; color: #007c92;}
+#tab-routes #idRouteResult{margin:15px 4px 0 0; }
+#tab-routes #routePointTable{width: 280px;}
+#tab-routes #routePointTable tr{height: 36px;}
+#tab-routes #routePointTable .inputCov input{border:1px solid #B4B4B4; height: 22px; width: 84%; margin-left: 10px; padding-right: 24px;}
+#tab-routes #routePointTable .inputCov a{  margin-left: -24px; position: relative; top: 3px;}
+#tab-routes .pointLabel img{position: relative; top:9px;}
+
+#tab-routes #routingTypes {margin: 0 0 0 10px;}
+#tab-routes #routingTypes li.drive{background: url("../images/drivingMode.png") no-repeat 0 0; display:block; text-indent:-9999px; width:31px; height: 28px; float:left;}
+#tab-routes #routingTypes li.drive.selected, #tab-routes #routingTypes li.drive:hover{background-position: 0% 100%;}
+#tab-routes #routingTypes li.pedestrian{background: url("../images/drivingMode.png") no-repeat 100% 0; display:block; text-indent:-9999px; width:31px; height: 28px; float:left;}
+#tab-routes #routingTypes li.pedestrian a,
+#tab-routes #routingTypes li.drive a {display: block; width: 31px; line-height: 26px;}
+#tab-routes #routingTypes li.pedestrian.selected, #tab-routes #routingTypes li.pedestrian:hover{background-position: 100% 100%;}
+#tab-routes #label_routingTypes{position: relative; top:-10px; }
+
+#tab-routes #routeButtons{margin: 10px 0;}
+#tab-routes #routeButtons .traficCover{float: right;   position: relative; top: 4px;}
+#tab-routes #routeButtons .coverSelect{width: 210px;}
+#tab-routes #btn_route_route{ float: right; margin: 0 25px 0 0; width: auto;}
+#tab-routes #btn_route_route span{color:#fff!important; line-height: 27px; display: block; padding: 0 20px 0 10px;}
+#tab-routes #btn_route_route:hover{background-position:left -30px!important;}
+#tab-routes #btn_route_route:hover span{background-position:right -30px!important;}
+
+#tab-routes #idRouteResultsScrollPane{}
+#tab-routes #idRouteResultsScrollPane .row{border-bottom: 1px solid #CCCCCC; height: 50px; padding: 10px 0 0;}
+#tab-routes #idRouteResultsScrollPane .row.colored{background: #f3f3f3;}
+#tab-routes #idRouteResultsScrollPane .row .routingTable .first{ width: 40px; text-align: center; }
+
+#tab-routes #tab-routes-routing{ padding: 0px 11px 0px 0px; margin: 5px 0px 0px; width: 318px;}
+#tab-routes #idRouteResultActionsDiv .textBtnGrey{float: right; margin-left: 10px;}
+#tab-routes #idRouteResultsHeader{font-weight: bold; line-height: 18px; margin: 0px 0px 10px; padding: 0 5px 0 0;}
+#tab-routes #idJourneyStartDiv{border-top: 1px solid rgb(204, 204, 204); margin-top: 10px; border-bottom: 1px solid rgb(204, 204, 204); padding: 10px 0px;}
+
+#tab-routes #idJourneyEndDiv{padding: 10px 0 0;}
+#privacy #visibility .availabilityMenu li a span#whoCanLocateMeNumber{width: auto; padding: 0; border:none; display: inline;}
+
+.saveDialogRoute #idRouteName{width: 315px; border:1px solid #B4B4B4;}
+.saveDialogRoute .button{float: right; margin: 20px 0 0 15px; }
+.saveDialogRoute .purple_button{width: auto; }
+.saveDialogRoute .purple_button span{display: block; padding: 0 15px 0 5px;}
+.saveDialogRoute .errorMessage{display: none; border: 1px solid red; margin-bottom: 10px;}
+.saveDialogRoute .errorMessage .errorImage{background: url("../images/icon-error.png") no-repeat center center; width: 60px; height: 60px;  float: left;}
+.saveDialogRoute .errorMessage .message{float: left; padding: 10px 0 0;}
+
+.search_container_route .search-wrap{background: url("../images/search-input-wrap.png") no-repeat scroll 0 0 transparent;display: block;height: 27px;margin: 0 0 3px 3px;width: 324px !important;}
+.search_container_route .search-wrap input{ margin:3px 0 0 7px; width: 89%; float: left; border:none;}
+.search_container_route .search-wrap .searchMagnifier{  background: url("../images/mg_icon_small.png") no-repeat scroll center center transparent; clear: none; cursor: pointer; display: block; float: left; height: 21px; position: relative; right: 2px; top: 2px; width: 21px;}
+.search_container_route .search-wrap .searchReset{ background:url("../images/x_icon_small.png") no-repeat scroll center center transparent; clear: none; cursor: pointer; display: block; float: left; height: 21px; position: relative; right: 2px; top: 2px; width: 21px;}
+.search_container_route .search-wrap .searchLoading{ background:url("../images/loader_small_3.gif") no-repeat scroll center center transparent;  clear: none; cursor: pointer; display: block; float: left; height: 21px; position: relative; right: 2px; top: 2px; width: 21px;}
+
+
+#tab-routes-savedRoutes{padding: 0;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .contents{overflow: hidden; margin: 0; width: 315px;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .contents .groupElement{width: 100%; }
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .contents .expand .groupElement{ }
+
+#tab-routes-savedRoutes #idSavedRoutesScrollPane{margin:10px 0;} 
+#tab-routes-savedRoutes .search_container_route{margin: 4px 0 0;}
+
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .container{float: left; width: 98%;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .container .item_details .label{font-weight: bold; display: inline-block; width: 71px;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .globalSearchButton{float: right; margin: 3px 13px 0 0;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .globalSearchButton span{background: url("../images/rollover_button_places_show.png") no-repeat scroll right top transparent;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .globalSearchButton:hover{background-position: top left; }
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .globalSearchButton:hover span{background-position: right -24px}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .globalSearchButton:active span{background-position: right -49px}
+
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places li{border-bottom: 1px solid #F4F4F4;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .groupElement div.container{border:none;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places li.expand{border:1px solid #CCCCCC!important; margin-bottom: 5px;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places li.expand .item_details{margin: 10px 0 0;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places li.expand .item_details li{line-height: 16px;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places li.expand .globalSearchButton{background: url("../images/rollover_button_left.png") no-repeat scroll left 0 transparent}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places li.expand .globalSearchButton span{background-position: right -24px; color:#000;}
+
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .action_button_bar{margin-left: 62px;margin-top:10px;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .action_button_bar li{width: auto;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .action_button_bar .iconPrint{ width:29px; height:29px; display:block; background: url("../images/savedRouteIcons.png") no-repeat 0 0;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .action_button_bar .iconShare{ width:29px; height:29px; display:block; background: url("../images/savedRouteIcons.png") no-repeat -43px 0;}
+#tab-routes-savedRoutes #idSavedRoutesScrollPane .places .action_button_bar .iconDelete{ width:29px; height:29px; display:block; background: url("../images/savedRouteIcons.png") no-repeat -87px 0;}
+
+
+
+.shareRouteDialog .ui-icon-closethick{display: none!important;}
+.shareRouteDialog .textBtnGrey{float: right; width: auto; margin: 20px 0 0;}
+.shareRouteDialog .purple_button span{ display: block; padding: 0px 10px 0px 0px; color:#fff; font-weight: bold;}
+.shareRouteDialog .purple_button:hover{background-position:left -29px ;}
+.shareRouteDialog .purple_button:hover span{background-position:right -29px ;}
+.shareRouteDialog .text{margin: 0 0 10px;}
+.shareRouteDialog li.token-input-token-facebook span{font-weight: normal; color:#000;}
+.shareRouteDialog .token-input-delete-token-facebook{color:#B2B2B2; font-weight: bold;}
+
+.errorsDisplay{border:1px solid red; display: none;}
+.errorsDisplay .message{float: left; }
+.errorsDisplay .message h1{line-height: 60px; font-size: 1.2em;}
+.errorsDisplay .error{background: url("../images/icon-error.png") no-repeat scroll center center transparent;float: left;height: 60px;width: 60px;}
+
+.addExcpPos #name{width: 253px;}
+.addExcpPos #exceptionTime .time-wrap {float:right; border: 1px solid #b8b8b8; margin-right:10px;}
+.addExcpPos #exceptionTime .time-wrap .disabled-input {display: none; width: 45px; line-height: 22px;height: 22px; border: none; padding-left: 14px;}
+.addExcpPos #exceptionTime .time-wrap span {float: left; line-height: 22px;}
+.addExcpPos #exceptionTime .time-wrap .hours {float: left;padding-right: 3px; width: 20px; text-align: right; border: none;}
+.addExcpPos #exceptionTime .time-wrap .mins {float: left; padding-left: 3px; width: 20px; text-align: left; border: none; }
+
+
+.editExcpPos #name{width: 253px;}
+.editExcpPos #exceptionTimeEdit .time-wrap {float:right; border: 1px solid #b8b8b8; margin-right:10px;}
+.editExcpPos #exceptionTimeEdit .time-wrap .disabled-input {display: none; width: 45px; line-height: 22px;height: 22px; border: none; padding-left: 14px;}
+.editExcpPos #exceptionTimeEdit .time-wrap span {float: left; line-height: 22px;}
+.editExcpPos #exceptionTimeEdit .time-wrap .hours {float: left;padding-right: 3px; width: 20px; text-align: right; border: none;}
+.editExcpPos #exceptionTimeEdit .time-wrap .mins {float: left; padding-left: 3px; width: 20px; text-align: left; border: none; }
+.editExcpPos #exceptionTimeEdit #start-date{float: left;}
+.editExcpPos #exceptionTimeEdit #end-date{float: left;}
+.editExcpPos #nameEdit{width: 253px;}
+.editExcpPos .excpLabel{float: left;}
+.editExcpPos #dateFromEdit{float: left;}
+.editExcpPos #dateToEdit{float: left;}
+
+.shareWithMailPhone #emailOrSms{width: 270px; border:1px solid #B4B4B4; height: 25px; line-height: 25px; padding-left: 5px;} 
+.shareWithMailPhone .purple_button{display: block;float: right;width: auto;}
+.shareWithMailPhone .purple_button span{display: block; padding: 0px 10px 0px 0px;}
+.shareWithMailPhone .specialPos{padding: 0px 20px 0px 10px; position: relative; left: -40px;}
+.shareWithMailPhone #shareTable{margin: 10px 0; position: relative; width: 353px;  border-top: 1px solid rgb(231, 231, 231); }
+.shareWithMailPhone #shareTable tr{height: 28px; line-height: 28px; border-bottom: 1px solid rgb(231, 231, 231);}
+.shareWithMailPhone .button{float: right; margin-top: 10px;}
+
+.openDetailsPlaces{}
+.openDetailsPlaces .purple_button{width: auto;}
+.openDetailsPlaces .purple_button span{display: block; padding: 0 15px 0 5px;}
+.openDetailsPlaces #cancelButton{float: right;}
+.openDetailsPlaces .ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all{    padding: 0;width: auto;}
+.openDetailsPlaces .ui-state-default.ui-corner-top {background: none repeat scroll 0 0 #E7E7E7 !important;border: 1px solid #B9B9B9 !important;margin-right: 5px;padding: 0;position: relative;top: 1px;width: auto;}
+.openDetailsPlaces .ui-state-default.ui-corner-top a {line-height: 22px;padding: 0 10px;text-align: center;}
+.openDetailsPlaces .ui-state-default.ui-corner-top:last-child{background: #E7E7E7!important; width:auto;}
+.openDetailsPlaces .ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active {border:1px solid #CCCCCC !important; border-bottom:none!important;position: relative; top: 2px; width: auto;}
+.openDetailsPlaces .buttons{margin: 10px 0 0;}
+
+/*tab 1*/
+.openDetailsPlaces #edit_loc_tab1{border: 1px solid #b9b9b9; }
+.openDetailsPlaces #edit_loc_tab1 .forScroll{overflow-y:scroll; height: 375px; margin: 15px 0;}
+.openDetailsPlaces #updateLocationDetail tr td { padding-bottom:20px;}
+.openDetailsPlaces #edit_loc_tab1 .d_label {font-weight: bold;height: 27px;line-height: 27px;padding: 0 20px 0 0;text-align: right;width: 145px;}
+.openDetailsPlaces #edit_loc_tab1 .d_input.position .lm{font-weight: bold;}
+.openDetailsPlaces #edit_loc_tab1 .d_input input{border :1px solid #B4B4B4;height: 25px;line-height: 25px; width: 275px;}
+.openDetailsPlaces #edit_loc_tab1 .d_input input#editPoiRadiusCheckbox{width: auto; height: auto;}
+.openDetailsPlaces #edit_loc_tab1 .d_input span{height: 25px;line-height: 25px;}
+.openDetailsPlaces #edit_loc_tab1 .d_input .disabled{border:none!important; background: #fff;}
+.openDetailsPlaces #edit_loc_tab1 #editPoiShortDesc { width: 275px;max-height: 45px; overflow: auto; resize: none;}
+.openDetailsPlaces #edit_loc_tab1 #editPoiLongDesc { width: 275px; max-height: 75px; overflow: auto; resize: none;}
+
+/*tab 2*/
+.openDetailsPlaces #selectPersCategoriesCheckContainer, #selectEntCategoriesCheckContainer {overflow: auto;width: 100%; max-height: 300px;}
+.openDetailsPlaces #selectPersCategoriesCheckContainer ul li, .openDetailsPlaces #selectEntCategoriesCheckContainer ul li {float: left; width: 160px;  margin-bottom: 2px;}
+.openDetailsPlaces #POICategorySelector{width: 100%;margin-bottom: 1em}
+.openDetailsPlaces #POICategorySelector span{width: 49%; display:inline-block; border:none;}
+
+.openDetailsPlaces #edit_loc_tab2 .openClose h1  { float: left; line-height: 55px; margin-left: 18px;}
+.openDetailsPlaces #edit_loc_tab2 .openClose .iconPlus {background: url("../images/availability/plus_minus.jpg") no-repeat scroll left top transparent;float: left;height: 18px;margin: 19px 0 0 20px;width: 18px;}
+
+.openDetailsPlaces #edit_loc_tab2{border: 1px solid #b9b9b9;}
+.openDetailsPlaces #edit_loc_tab2 #selections #enterpriseOpen, .openDetailsPlaces #edit_loc_tab2 #selections #personalOpen {border: 1px solid #AEAEAE; background: #ccc;}
+.openDetailsPlaces #edit_loc_tab2 #selections { margin: 10px 0;}
+.openDetailsPlaces #edit_loc_tab2 #selections .openClose{border-bottom: 1px solid #CCCCCC;}
+.openDetailsPlaces #edit_loc_tab2 #selections .backGround{   background: none repeat scroll 0 0 #FFFFFF; margin: 2px auto; width: 568px;}
+.openDetailsPlaces #edit_loc_tab2 #selections .iconMinus {background: url("../images/availability/plus_minus.jpg") no-repeat scroll left bottom transparent;height: 18px;width: 18px;float: left; margin: 13px 17px;}
+.openDetailsPlaces #edit_loc_tab2 #selections .rightPart{float: left; width: 495px;}
+.openDetailsPlaces #edit_loc_tab2 #selections .headline h1 {border-bottom: 1px solid #CCCCCC;font-weight: bold;height: 47px;line-height: 47px;}
+.openDetailsPlaces #edit_loc_tab2 #selections .boldText {font-size: 14px !important;margin: 20px 0 15px;}
+.openDetailsPlaces #edit_loc_tab2 #selections #btn_newEntCategory,.openDetailsPlaces #edit_loc_tab2 #selections #btn_newPersCategory{  color: blue; display: block; margin: 10px 0; text-decoration: underline;}
+.openDetailsPlaces #edit_loc_tab2 #selections #newEntCategoryCreationRow, .openDetailsPlaces #edit_loc_tab2 #selections #newPersCategoryCreationRow{ display: block; margin: 10px 0;}
+.openDetailsPlaces #edit_loc_tab2 #selections #newEntCategoryCreationRow .aligntoMiddle td, .openDetailsPlaces #edit_loc_tab2 #selections #newPersCategoryCreationRow .aligntoMiddle td{height: 30px; vertical-align: middle;}
+.openDetailsPlaces #edit_loc_tab2 #selections .lbl_newCategory {display: block;font-weight: bold; margin: 10px 0;}
+.openDetailsPlaces #edit_loc_tab2 #selections #newEntCategoryCreationRow #poiCategoryNewEntCategoryName, .openDetailsPlaces #edit_loc_tab2 #selections #newPersCategoryCreationRow #poiCategoryNewPersCategoryName{width: 235px;border :1px solid #B4B4B4 !important;}
+
+
+.openDetailsPlaces #edit_loc_tab2 #selections .multi_user_button{float: left;}
+.openDetailsPlaces #edit_loc_tab2 #selections .purple_button{display: block;width: auto; float:left;}
+.openDetailsPlaces #edit_loc_tab2 #selections .purple_button span{display: block; padding: 0px 10px 0px 0px;}
+
+/*tab 3*/
+.openDetailsPlaces #edit_loc_tab3{border: 1px solid #b9b9b9;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionChk{background: url("../images/permissionBox.png") no-repeat 0 0;  width: 234px; height: 277px; float: right;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionChk ul{margin: 15px 0 0 45px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionChk ul li {margin-bottom: 14px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionChk ul li label {padding-left: 7px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsers{float: left; width: 310px;}
+.openDetailsPlaces #edit_loc_tab3 #updateLocPermission{margin: 20px 0;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .listH {height: 30px; line-height: 30px; width: 305px; background: #e5e5e5; margin-bottom: 2px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .listH .ui-icon{display: none!important;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .listH .checkbox{float: left;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .listH .selectableArea{padding: 0 0 0 5px; float:left; width: 285px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .listH .selectableArea .iconArrow{float: left;margin: 9px 0 0 9px; width: 15px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .listH .checkB {float: left; left: 10px; position: relative; top: 4px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll #navigationLoc{height: 275px; overflow: auto; /*padding-right: 12px;*/}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .poiGroup { margin: 0 !important;   padding: 0 !important;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .poiGroup li{height: 29px; border-bottom: 1px solid #F4F4F4; line-height: 29px; margin: 0 0 2px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .poiGroup li .checkB{float: left;left: 10px; position: relative; top: 4px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .poiGroup li .iconArrow{float: left; margin:9px 0 0 14px; width: 15px;}
+.openDetailsPlaces #edit_loc_tab3 #locPermissionUsersScroll .poiGroup li label{float: left;}
+#permissionSearch {margin-bottom: 15px;}
+#permissionSearch input {width:270px; margin-right: 3px;}
+#permissionSearch span, #changeAdminSearchWrapper span  {  display: inline-block !important;height: 18px;position: relative;top: 3px; width: 18px !important;}
+
+
+
+
+/*tab 4*/
+.openDetailsPlaces #edit_loc_tab4{border: 1px solid #b9b9b9; height: 395px;}
+.openDetailsPlaces #edit_loc_tab4 .container{padding: 20px 0 0 20px;}
+.openDetailsPlaces #edit_loc_tab4 .container h1{font-weight: bold; margin-bottom: 20px;}
+.openDetailsPlaces #edit_loc_tab4 .container .text{font-weight: normal;}
+
+
+/*reqPermissions*/
+.reqPermission{}
+.reqPermission .line1{}
+.reqPermission .line1 .label{margin: 0px 10px 0px 0px; float: left; line-height: 34px; font-weight: bold;}
+.reqPermission .line1 .inputArea{border :1px solid #B4B4B4 !important; padding: 5px; float: left; width: 399px;}
+.reqPermission .ReqPerTitle{font-weight: bold; margin: 15px 0;}
+.reqPermission .ReqPerTitle2{font-weight: bold; margin: 0 0 5px 0;}
+.reqPermission .perType{margin: 0 0 15px 20px;}
+.reqPermission .perType li{margin: 0 0 5px 0px;}
+.reqPermission .permissionType{border:1px solid #ACACAC;padding: 10px 15px;}
+.reqPermission .permissionType .line1 #viewLocationFreq, .reqPermission .permissionType .line3 #viewLocationFreq{margin: 0 0 0 8px;}
+.reqPermission .permissionType .line2{padding: 7px 0px 15px 25px;}
+.reqPermission #specific{margin: 10px 0 0;}
+.reqPermission #specific .line4{float: left;}
+.reqPermission #specific .line4 label{padding: 0px; margin: 0px 0px 0px 8px; float: left; line-height: 25px; width: 40px; font-weight: bold;}
+.reqPermission #specific .line4 #date1{padding: 0px; margin: 0px 10px 0px 0px; float: left;}
+.reqPermission #specific .line4 .ui-datepicker-trigger{float: left;}
+.reqPermission #specific .line5{float: left;}
+.reqPermission #specific .line5 label{padding: 0px; margin: 0px 0px 0px 20px; float: left; line-height: 25px; width: 30px; font-weight: bold;}
+.reqPermission #specific .line5 #date2{padding: 0px; margin: 0px 10px 0px 0px; float: left;}
+.reqPermission #specific .line5 .ui-datepicker-trigger{float: left;}
+.reqPermission #specific .line6{clear: both; padding: 15px 0 10px 8px;}
+.reqPermission #specific .line6 .time-wrap{ border: 1px solid #B8B8B8; float: left; margin-right: 10px;}
+.reqPermission #specific .line6 .disabled-input {border: medium none; display: none; height: 22px;line-height: 22px;padding-left: 14px;width: 45px;}
+.reqPermission #specific .line6 .inputs input.time {border: 0 none;}
+.reqPermission #specific .line6 .time-wrap .hours {padding-right: 3px;text-align: right;width: 20px; border: none!important; float: left; height: 20px;}
+.reqPermission #specific .line6 .time-wrap span {float: left;line-height: 22px;}
+.reqPermission #specific .line6 .inputs input.time {border: 0 none;}
+.reqPermission #specific .line6 .time-wrap .mins { padding-left: 3px; text-align: left;  width: 20px;border: none!important;float: left; height: 20px;}
+.reqPermission #specific .line6 span{float: left; line-height: 24px; font-weight: bold; margin-right:5px;}
+.reqPermission #specific .line6 span.normal{font-weight: normal;}
+.reqPermission .purple_button{width: auto;}
+.reqPermission .info {background: url("../images/availability/info.png") no-repeat scroll left bottom transparent; display: inline-block; height: 18px; left: 3px;  position: relative; top: 3px;  width: 18px;}
+.reqPermission .shareMyLocation{border-top: 1px solid #ACACAC; padding: 15px 25px;}
+.reqPermission .shareMyLocation label{padding:0 5px;}
+.reqPermission .shareMyLocationFrequency li{float: left; width: 50%;}
+.reqPermission .shareMyLocationFrequency li span{float: left;}
+.reqPermission .shareMyLocationFrequency li p{float: left; padding-right: 5px; line-height: 22px;}
+.reqPermission #sendSpecialMesTextarea{resize: none; height: 70px; width: 100%;}
+
+.newCategoryPopUp{}
+.newCategoryPopUp #tabs_in_enterpriseCategoryDialog ul.ui-tabs-nav li{background: none repeat scroll 0 0 #E7E7E7 !important;border: 1px solid #B9B9B9 !important;margin-right: 5px;padding: 0;position: relative;top: 1px;width: auto;}
+.newCategoryPopUp #tabs_in_enterpriseCategoryDialog ul.ui-tabs-nav li.ui-tabs-selected{border:1px solid #CCCCCC !important; border-bottom:none!important;position: relative; top: 2px; width: auto;}
+.newCategoryPopUp #tabs_in_enterpriseCategoryDialog ul.ui-tabs-nav li.ui-tabs-selected a{background: #fff;}
+.newCategoryPopUp #tabs_in_enterpriseCategoryDialog ul.ui-tabs-nav li a{padding:  0 10px; line-height: 22px;}
+.newCategoryPopUp #tabs_in_enterpriseCategoryDialog ul.ui-tabs-nav li a{padding:  0 10px; line-height: 22px;}
+
+
+.newCategoryPopUp #tabs-1 {border: 1px solid #B9B9B9; padding: 20px 0 10px;}
+.newCategoryPopUp #tabs-2 {border: 1px solid #B9B9B9; padding: 20px 0 10px;}
+
+.newCategoryPopUp .ui-tabs-nav{margin: 0px; padding: 0px; width: auto;}
+.newCategoryPopUp #categoryDetailForm .lm{  display: block; font-weight: bold; padding: 0 10px 0 0; text-align: right; width: 145px;}
+.newCategoryPopUp #categoryDetailForm table td{padding: 0px 0px 15px;}
+.newCategoryPopUp #categoryDetailForm table input { border: 1px solid #B4B4B4;height: 25px;line-height: 25px;width: 270px; padding-left: 5px;}
+.newCategoryPopUp #categoryDetailForm #categoryDetailForm_categoryDescription{resize: none; width: 265px; padding: 5px; border: 1px solid #B4B4B4 !important;}
+.newCategoryPopUp #navigationCat {overflow-x:hidden;overflow-y:auto;height:275px; padding-right: 15px;}
+.newCategoryPopUp #navigationCat li{border: medium none !important; margin-bottom: 2px; width: 305px; background: none!important;}
+.newCategoryPopUp #navigationCat li:hover{background:#E7E7E7;}
+.newCategoryPopUp #catPermissionUsers, .newCategoryPopUp #catPermissionChk{float: left;}
+.newCategoryPopUp #catPermissionChk li {background: none repeat scroll 0 0 transparent !important; border: medium none !important; margin-bottom: 14px;}
+.newCategoryPopUp #updateCatPermission .cover{background: url("../images/permissionBox.png") no-repeat scroll 0 0 transparent;float: left;height: 277px;width: 234px;margin-left: 10px}
+.newCategoryPopUp #catPermissionChk{margin: 10px 0 0 35px;}
+.newCategoryPopUp #catPermissionUsers{margin-left: 13px;}
+.newCategoryPopUp .openCloseCat { margin-left: 4px;}
+.newCategoryPopUp .groupElement .container span{ margin-left: 4px;}
+.newCategoryPopUp .groupElement .container .openCloseCat{margin-left: 9px;}
+.groupElement {width:100% !important;}
+
+.newCategoryPopUp #tabs_in_personalCategoryDialog ul.ui-tabs-nav li{background: none repeat scroll 0 0 #E7E7E7 !important;border: 1px solid #B9B9B9 !important;margin-right: 5px;padding: 0;position: relative;top: 1px;width: auto;}
+.newCategoryPopUp #tabs_in_personalCategoryDialog ul.ui-tabs-nav li.ui-tabs-selected{border:1px solid #CCCCCC !important; border-bottom:none!important;position: relative; top: 2px; width: auto;}
+.newCategoryPopUp #tabs_in_personalCategoryDialog ul.ui-tabs-nav li.ui-tabs-selected a{background: #fff;}
+.newCategoryPopUp #tabs_in_personalCategoryDialog ul.ui-tabs-nav li a{padding:  0 10px; line-height: 22px;}
+.newCategoryPopUp #tab-1 {border: 1px solid #B9B9B9; padding: 20px 0 10px;}
+.newCategoryPopUp #tab-2 {border: 1px solid #B9B9B9; padding: 20px 0 10px;}
+.newCategoryPopUp #tab-2 #updateCategorySharing{padding: 10px;}
+.newCategoryPopUp #tab-2 #navigationCatShareLeft{width: 225px;}
+.newCategoryPopUp #tab-2 .box{border:solid 1px #E8ECF7; padding: 5px;}
+.newCategoryPopUp #tab-2 .accordionStyles{background: #fff;}
+
+.toChangeAdmin > td > span {float:left;}
+
+#wp_autocomplete > ul{background:none;background-color:#ffffff !important;}
+#wp_autocomplete > ul > li{background:none; background-color:#ffffff !important; width:254px; border:1px solid #ccc; border-top:0; padding:7px 10px;}
+
+#menuMap{ display: none; position: absolute; z-index:1000; font-family: Arial, Helvetica, sans-serif; font-size: 12px;}
+#menuMap ul{background: url("../images/rightClickBackground.png") no-repeat scroll 0px 0px transparent; float: left; height: 151px; padding: 8px 0px 5px 5px;}
+#menuMap .rightPart{float: left; background: url("../images/rightClickBackground.png") no-repeat scroll 100% 0px transparent; width: 9px; height: 151px;}
+#menuMap li.but {height: 22px;line-height: 22px; padding: 0 10px;}
+#menuMap li.but:hover{padding: 	 0;}
+#menuMap li.line{ margin: 2px 0; background: url("../images/rightClickSeperator.png") no-repeat scroll 100% 0px transparent; height: 2px;}
+#menuMap .onHover:hover{background: url("../images/rightClickHoverState.png") no-repeat scroll left bottom transparent; padding-left: 10px;}
+#menuMap .onHover:hover span {background: url("../images/rightClickHoverState.png") no-repeat scroll right top transparent; height: 22px; line-height: 22px; padding-right: 10px; display: block;}
+
+.timeVisPro .ui-selectmenu-status{padding: 4px 0 0 6px;}
+#locReportTableDiv{position:absolute; right:0px; top:0px; z-index:1002; width: 334px;}
+#locReportTableDiv #reportTopCover{background:url(../images/view_report_box.png) 0 0; width: 334px;}
+#locReportTableDiv #reportTopCover .header{width: 268px; margin: 0 auto; padding: 20px 0 0;}
+#locReportTableDiv #reportTopCover .openClosePart{width: 268px; margin: 0 auto;}
+#locReportTableDiv #reportTopCover .header .icon{ background: url(../images/arrow_right.png) 0 0 no-repeat; display: block; width: 9px; height: 9px; position: relative; float: left; margin: 5px;}
+#locReportTableDiv #reportTopCover .header .icon.on{background: url(../images/arrow_down.png) 0 0 no-repeat;}
+#locReportTableDiv #reportTopCover .header .openCloseHead{ float: left;}
+#locReportTableDiv #reportTopCover .header .closeReport{float: right; background: url(../images/dialog_close_button.png) no-repeat scroll right 0 transparent; padding: 0 22px 0 0; color: #666666; font-size: 16px;}
+#locReportTableDiv #reportTopCover .bodyCover{max-height: 145px; height:auto !important; height: 145px; overflow-y: auto; margin: 10px 0; padding: 0 10px;}
+#locReportTableDiv #reportTopCover .locReportTable{width: 100%;}
+#locReportTableDiv #reportTopCover .locReportTable .reportRow{height: 30px; line-height: 30px; border-bottom: 1px solid #F4F4F4;}
+#locReportTableDiv #reportTopCover .locReportTable .reportRow:hover{background: #ebebeb;}
+#locReportTableDiv #reportTopCover .locReportTable .reportRow .colors{width: 20px;}
+#locReportTableDiv #reportTopCover .locReportTable .reportRow .colors .locReportUserIcon{width: 16px; height: 16px;}
+#locReportTableDiv #reportTopCover .locReportTable .reportRow .colors .locReportUserIcon.locReportUserIconAqua{background: #2aa8af;}
+#locReportTableDiv #reportTopCover .locReportTable .reportRow .colors .locReportUserIcon.locReportUserIconOrange{background: #dd8747;}
+#locReportTableDiv #reportTopCover .locReportTable .reportRow .colors .locReportUserIcon.locReportUserIconGreen{background: #b6c146;}
+#locReportTableDiv #reportTopCover .locReportTable .reportRow .colors .locReportUserIcon.locReportUserIconPurple{background: #962a77;}
+#locReportTableDiv #reportTopCover .locReportTable .reportRow .colors .locReportUserIcon.locReportUserIconYellow{background: #f6d754;}
+#locReportTableDiv .buttonsForReport .multi_user_button{ float: left;}
+#locReportTableDiv .buttonsForReport .purple_button{float: right; width: auto;}
+#locReportTableDiv .buttonsForReport #locationReportExportType-button{float: right;}
+#locReportTableDiv .buttonsForReport .purple_button span{display: block; padding: 0 15px 0 5px;}
+#locReportTableDiv #reportBottomCover{background:url(../images/view_report_box.png) 0 100%; width: 334px; height: 25px;}
+
+.startViewReport{text-align: center;} 
+
+#header #btn_username{float: left;}
+#header #changeVisibiityIcon{float: left; margin: 23px 0 0 15px; cursor: pointer;}
+#header #changeVisibiityIcon #myVis{background: url(../images/myVisibilityIconSmall.png) 0 100% no-repeat; width: 14px; height: 14px; float: left;}
+#header #changeVisibiityIcon #myVis.on{background: url(../images/myVisibilityIconSmall.png) 0 0 no-repeat;}
+#header #changeVisibiityIcon .arrow{ background: url(../images/arrow_down.png) 0 0 no-repeat; width: 9px; height: 9px; float: left; margin: 3px 0 0 10px;}
+
+#header #changeVisibiityBox{position: absolute; top:0; left: 0; z-index: 9999; display: none; top:5px;}
+#header #changeVisibiityBox .partLeft{background: url(../images/myVisibilityBg.png) 0 0 no-repeat; float: left;height: 150px;}
+#header #changeVisibiityBox span{float: left;}
+#header #changeVisibiityBox .fixed{float: right; padding: 8px 0 0; width: 34px;}
+#header #changeVisibiityBox #myVis{background: url(../images/myVisibilityIconSmall.png) 0 100% no-repeat; width: 14px; height: 14px; float: left; margin: 8px 0 0 15px;}
+#header #changeVisibiityBox #myVis.on{background: url(../images/myVisibilityIconSmall.png) 0 0 no-repeat;}
+#header #changeVisibiityBox .arrow{ background: url(../images/arrow_down.png) 0 0 no-repeat; width: 9px; height: 9px; float: left; margin: 11px 0 0 11px;}
+
+#header #changeVisibiityBox .partLeft .list{padding: 10px 0 0;}
+#header #changeVisibiityBox .partLeft .list li{float: none; margin: 0 0 0 20px; line-height: 32px; background: none; border-bottom: 1px solid #EBEBEB; cursor: pointer; padding: 0 10px;}
+#header #changeVisibiityBox .partLeft .list li.lastIteam{border: none;}
+#header #changeVisibiityBox .partLeft .list li.row:hover{background: #ebebeb;}
+#header #changeVisibiityBox .partLeft .list li .iconOn{background: url(../images/myVisibilityIconSmall.png) 0 0 no-repeat; width: 14px; height: 14px;}
+#header #changeVisibiityBox .partLeft .list li .iconOff{background: url(../images/myVisibilityIconSmall.png) 0 100% no-repeat; width: 14px; height: 14px;}
+#header #changeVisibiityBox .partRight{width: 16px; background: url(../images/myVisibilityBg.png) 100% 0 no-repeat; float: left; height: 150px;}
+
+#header #changeVisibiityBox .visCheck, #header #changeVisibiityBox .invisCheck{background: url('../images/header/icons.png') no-repeat scroll 0 -34px; height: 13px; width: 13px; margin: 0 0 0 7px; display: none;}
+
+#meetingMessageDetailContent .formTable {margin: 20px 0 0;}
+#meetingMessageDetailContent .formTable td b{ font-weight: bold; margin: 0 5px 0 0;}
+#meetingMessageDetailContent .formTable td{padding: 0 0 10px;}
+#meetingMessageDetailContent .formTable td .viewOnMap{text-decoration: none; color:blue; padding-left: 10px;}
+#meetingMessageDetailContent .formTable td #meetinginboxcheckboxes .formTable td{padding: 0 10px 5px 0;}
+#meetingMessageDetailContent .formTable td #meetinginboxbuttons .multi_user_button{float: left;}
+#meetingMessageDetailContent .formTable td #meetinginboxbuttons .purple_button{float: left; width: auto;}
+#meetingMessageDetailContent .formTable td #meetinginboxbuttons .purple_button span{display: block; padding:0 15px 0 5px;}
+
+
+#PrivacyStatements{padding:30px 0 0 0; font-family:arial, verdana, sans-serif !important;}
+#PrivacyStatements #privacyStatementLeft{float:left; width:220px; margin: 0 30px 0 20px; border-right: 1px solid #ccc; height: 210px;}
+#PrivacyStatements #privacyStatementBody{float:left; width:75%;}
+#PrivacyStatements #privacyStatementLeft li{height: 30px; line-height: 30px; position: relative; width: 230px; z-index: 10;}
+#PrivacyStatements #privacyStatementLeft li a{display: block; cursor: pointer; text-decoration: none; color: #000; font-family:arial, verdana, sans-serif !important; font-size:13px;}
+#PrivacyStatements #privacyStatementLeft li a.active{color:#fff; font-weight:bold; background:url(../images/inboxSelector.png) no-repeat 0 0;}
+#PrivacyStatements #privacyStatementLeft li a span{border-top: 1px solid #cccccc;  display: block; padding: 0 0 0 20px; width: 200px; border-top: 1px solid #cccccc;}
+#PrivacyStatements #privacyStatementLeft li.last a span{border-bottom: 1px solid #cccccc;}
+#PrivacyStatements #privacyStatementBody #privacyStatementBox2{display: none;}
+#PrivacyStatements h1{font-size: 18px; font-weight: bold; padding: 0 0 20px; color: #333333;}
+
+
+#PrivacyStatements .content{font-size: 12px; line-height: 18px; color: #333333;}
+#PrivacyStatements .content b{font-size: 16px; font-weight: bold; line-height: 32px; color: #333333;}
+#PrivacyStatements .message{float: left; padding-left: 30px; font-size: 12px; line-height: 18px; color: #333333; padding-left: 20px;}
+#PrivacyStatements #dontShowPrivacySetting,#PrivacyStatements #dontShowPrivacySettingCompany{float: left;}
+#PrivacyStatements #privacyStatementBox2 p{margin-bottom: 10px;}
+
+
+/*#tab-users_count, #tab-assets_count {padding-left: 1px; padding-right: 0; width: 200px; float: left;}*/
+
+#right #legend{top: 0; background: #fff; position: absolute; z-index: 9999; right: 140px; display: none;}
+#right #legend ul{padding: 15px 0 10px;}
+#right #legend ul li {padding: 0 0 5px;}
+#right #legend ul li .name{ float: left; line-height: 15px; padding: 0 10px; font-size: 13px;}
+#right #legend ul li .color{ float: left; height: 15px; margin: 0 0 0 10px; width: 22px; }
+#right #legend ul li .color.green{background: #33B100;}
+#right #legend ul li .color.yellow{background: #FFCA00;}
+#right #legend ul li .color.red{background:#990000;}
+#right #legend ul li .color.black{background:#000000;}
+
+
+
+.multi_user_button_refresh {background: url("../images/dialog_button_grey_left.png") no-repeat scroll left top transparent;cursor: pointer;display: block;height: 29px;padding-left: 10px;text-align: center;}
+.multi_user_button_refresh span {background: url("../images/dialog_button_grey_right.png") no-repeat scroll right top transparent;color: #333333;display: block;font-family: Arial,Helvetica,sans-serif;font-weight: bold;font-size: 0.9em;height: 29px;line-height: 29px;padding-right: 10px;}
+
+#editCategoryGroupAction, #editCategoryGroupActionPer{background: url("../images/dialog_button_grey_left.png") no-repeat scroll left top transparent;cursor: pointer;display: block;height: 29px;padding-left: 10px;text-align: center;}
+#editCategoryGroupAction span, #editCategoryGroupActionPer span{background: url("../images/dialog_button_grey_right.png") no-repeat scroll right top transparent;color: #333333;display: block;font-family: Arial,Helvetica,sans-serif;font-weight: bold;font-size: 0.9em;height: 29px;line-height: 29px;padding-right: 10px;}
+
+#editCategoryGroupAction.inactive, #editCategoryGroupActionPer.inactive{background: url("../images/button_non_active_left-2.png") no-repeat scroll left top transparent;cursor: default;display: block;height: 28px;padding-left: 10px;text-align: center;}
+#editCategoryGroupAction.inactive span, #editCategoryGroupActionPer.inactive span{  background: url("../images/button_non_active_right-2.png") no-repeat scroll right top transparent; color: #858585 !important; display: block; font-family: Arial,Helvetica,sans-serif; font-size: 0.9em; font-weight: bold; height: 28px; line-height: 28px; padding-right: 10px;}
+
+
+#adminRightAction{float: left; width: 120px; }
+#adminRightAction select{width: auto;}
+
+#shareRequest{}
+#shareRequest .selectorForType{margin: 15px 0;}
+#shareRequest .textBold{padding: 0px 10px 0px 0px; font-weight: bold;}
+#shareRequest #shareSpecific{}
+#shareRequest #shareSpecific .excpLabel{float: left;}
+#shareRequest #shareSpecific .dateInputFrom, #shareRequest #shareSpecific .dateInputTo{float: left;}
+#shareRequest #shareSpecific .ui-datepicker-trigger{float: left; margin-right:10px;}
+#shareRequest #shareSpecific #start-time, #shareRequest #shareSpecific #end-time{float: left;}
+#shareRequest #shareSpecific .inputText{width: 20px;}
+.shareMyLocationBox .token-input-list-facebook{width: 250px;}
+
+#dialog_list_errors .why{ background: url("../images/availability/info.png") no-repeat scroll center bottom transparent; display: inline-block; height: 20px; width: 20px; margin: 0px 0 0 10px;}
+#whyDialogStyle{}
+
+#whyDialogStyle p{line-height: 14px; font-size: 12px;}
+
+#personalCategoryDialog{margin-right:-7px; padding-right:0;}
+#personalCategoryDialog .ui-tabs .ui-tabs-panel{padding-left:0; padding-right:0;}
+#personalCategoryDialog .tab0-table{ width:345px; }
+#personalCategoryDialog .ui-tabs .ui-tabs-panel .lm{font-family: arial, verdana, sans-serif !important; font-size: 13px !important; color: #333333 !important; display:block; padding-bottom:8px; width: 120px; text-align: right; padding-right: 10px;}
+#personalCategoryDialog .ui-tabs .ui-tabs-panel .btnSpan .lm{padding-top:5px; padding-bottom:0;}
+#personalCategoryDialog .ui-tabs .ui-tabs-panel .lbasInputText{border: 1px solid #b4b4b4!important; line-height: 14px; margin-bottom: 16px; max-height: 100px; height:16px; padding:3px 8px; width:280px;}
+#personalCategoryDialog .ui-tabs .ui-tabs-panel textarea{font-family: arial; font-size: 13px; line-height: 18px; color: #333333; resize: none; height: 110px; padding: 0 0 0 5px; width: 293px!important; border: 1px solid #b4b4b4!important; line-height: 14px; margin-bottom: 16px; max-height: 100px;}
+
+.ui-dialog-buttonpane.category-btns{}
+.ui-dialog-buttonpane.category-btns .ui-button{float:right; padding-left:10px; margin-left:4px !important;}
+.ui-dialog-buttonpane.category-btns .ui-button span{padding:0 20px 0 10px !important;}
+.ui-dialog-buttonpane.category-btns .ui-button.graphicBtn.violet span{color:#fff;}
+
+#personalCategoryDialog.tabs-wrapper .ui-tabs .ui-tabs-nav{width:auto; padding-bottom:0;}
+#personalCategoryDialog.tabs-wrapper .ui-tabs .ui-tabs-selected:first-child{border-left:1px solid #b9b9b9;}
+#personalCategoryDialog.tabs-wrapper .ui-tabs-panel{padding: 12px 12px 4px 12px; margin-top: -1px;border: 1px solid #b9b9b9; padding: 12px 22px 4px; min-height: 232px; width:427px;}
+#personalCategoryDialog.tabs-wrapper li{width:auto !important; padding-bottom:0; cursor:pointer;}
+#personalCategoryDialog.tabs-wrapper li a{display: block; padding:5px 16px 4px; margin: 0 3px 0 0; border: 1px solid #b9b9b9; border-left: none; cursor: pointer; color: #333; background-color: #e7e7e7; font-weight:normal}
+#personalCategoryDialog.tabs-wrapper li.ui-state-active a{font-weight: bold;background-color: #fff;border-bottom: 1px solid #fff;}
+
+#updateCategorySharing .searchInput{ width:160px; }
+#updateCategorySharing .arrows-container{padding:42px 10px 0}
+#updateCategorySharing .arrows-container > div{margin-bottom:10px;}
+
+ul.group-shared-list {background-color:#fff; margin-left: -8px;}
+ul.group-shared-list li{border-bottom:1px solid #F4F4F4; visibility: visible; padding-left: 8px; }
+ul.group-shared-list li.hidden{border-bottom:1px solid #F4F4F4; height:0 !important; visibility: hidden !important;}
+
+#whyDialogStyle p{line-height: 14px; font-size: 12px;}
+.items_list_buttons .last a.locked:hover{ background:url("../images/userDetail_icons.png") no-repeat scroll -130px 0 transparent;}
+#userActionList-button .ui-selectmenu-status,#userActionList2-button .ui-selectmenu-status, #userActionList3-button .ui-selectmenu-status, #userActionList4-button .ui-selectmenu-status, #userActionList5-button .ui-selectmenu-status, #userActionList6-button .ui-selectmenu-status{padding: 4px 0 4px 10px;}
+#userActionList2-menu{padding-bottom: 10px; overflow-x: hidden;}
+#whoLocatedMeNotify{padding:20px 0 0;}
+#whoLocatedMeNotify #whoLocatedMeNotifyCheck{float: left; margin: 8px 0 0;}
+#whoLocatedMeNotify .smallText{float: left; line-height: 30px!important; padding: 0 10px;}
+#whoLocatedMeNotify #whoLocatedMeNotifySelect-button{float: left; padding-left: 8px;}
+
+#reportTableContent{}
+#reportTableContent #locReportListDiv {overflow-x:hidden;overflow-y:auto; width:100%;}
+#reportTableContent #locReportUserList{"width:100%"}
+#reportTableContent .head{background:#dd0014 url(../images/collapsed.gif) no-repeat scroll 3px 7px; border:1px solid #EBEBEB; padding: 3px 0 3px 15px; color: #fff;}
+#reportTableContent #locReportDetailsTable th{font-size: 14px; line-height: 17px;}
+#reportTableContent #locReportDetailsTable th b{font-weight: bold;}
+#reportTableContent #locReportDetailsTable td{font-size: 15px; line-height: 17px; padding: 2px 0;}
+#reportTableContent #locReportDetailsTable tr{border-bottom:1px solid #CCCCCC;}
+#reportTableContent #paginationPart{background: #fff; text-align:right; background-color: white; font-size: 14px; line-height: 26px; padding: 0 25px;}
+
+#acceptedReqCalendar{margin: 15px 0 0;}
+#acceptedReqCalendar .fc-event-title{display: none;}
+
+#defaultVisibilityProfile .inputText.time { font-weight: bold; width: 22px;}
+.selectAllCover-1{padding: 0 0 0 6px;}
+.selectAllCover-1 label{padding-left: 16px; font-weight: bold;}
+
+.WhoHasLocateMe .ui-dialog-titlebar{padding: 0 6em 0 0.4em!important;}
+#updateCategorySharing .selectedUser{background: #ccc;}
+#tab-users .users ,#tab-assets .users {display: none;}
+
+
+.groupElement div.container{position: relative;}
+.globalSearchButton{  position: absolute; right: 0; top: 0; z-index: 222;}
+.locationNotAvailableLeft:hover span{background-color: #F4F4F4;}
+
+
+.newPersonalCategory #navigationCatShareLeft{ border: 1px solid #B4B4B4; }
+.newPersonalCategory #navigationCatShareRight{ border: 1px solid #B4B4B4; }
+.newPersonalCategory #navigationCatShareRight .accordionStyles{padding-left: 0;}
+.newPersonalCategory #navigationCatShareRight .accordionStyles .openCloseCatxr{padding-left: 8px; }
+.newPersonalCategory #navigationCatShareRight .accordionStyles .groupNameContainerCat ul li{padding-left: 8px; }
+.wp-sharing-group {padding-left:8px !important;}
+.wp-sharing-group .openCloseCatxr {padding-left:0px !important;}
+.locateSingleUser .locateSingleUserLocating{position: relative;}
+
+
+/* TOOLTIP */
+.displayTitleOnToolTip {
+background-color:#000;
+	border:1px solid #fff;
+	padding:10px 15px;
+	width:200px;
+	display:none;
+	color:#fff;
+	text-align:left;
+	font-size:12px;
+
+	/* outline radius for mozilla/firefox only */
+	-moz-box-shadow:0 0 10px #000;
+	-webkit-box-shadow:0 0 10px #000;
+	
+	z-index:9999;
+}
+
+.displayTitleOnArrowToolTipIE {
+	display:none;
+	background:transparent url(../images/black_arrow.png) no-repeat;
+	font-size:10px;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;
+	z-index:9999;
+}
+
+.displayTitleOnArrowToolTip {
+	display:none;
+	background:transparent url(../images/black_arrow.png) no-repeat;
+	font-size:10px;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;
+	z-index:9999;
+}
+
+.displayTitleOnReversedArrowToolTipIE {
+	display:none;
+	background:transparent url(../images/black_arrow_reversed.png) no-repeat;
+	font-size:10px;
+	height:70px;
+	width:210px;
+	padding:25px;
+	color:#fff;
+	z-index:9999;
+}
+
+.displayTitleOnReversedArrowToolTip {
+	display:none;
+	background:transparent url(../images/black_arrow_reversed.png) no-repeat;
+	font-size:10px;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;
+	z-index:9999;
+}
+
+#permanentPeriodicTrackingFrequency{
+	margin: 15px 0;
+}

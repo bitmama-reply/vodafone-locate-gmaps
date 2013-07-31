@@ -1,0 +1,12 @@
+LBASErrorCodes = {
+	// General error codes 1-500
+	CONNECTION_FAILED :500,
+
+	// Mapping Server related error codes 1000-2000
+	GEOCODING_FAILED :1001,
+	REVERSE_GEOCODING_FAILED :1002,
+	POI_SEARCH_FAILED :1003,
+	ROUTING_FAILED :1004,
+	// LBAS related error codes 2000-*
+	MARKER_OPERATION_FAILED :2000
+};

@@ -1,0 +1,211 @@
+/* -------------------------------------------------------------- 
+
+	site.css
+	All the good stuff for site.master lives in here
+
+-------------------------------------------------------------- */
+
+/*	Reset
+	Let's get rid of the browser irregularities                */
+
+@import 'reset.css';
+
+
+/*
+--------------------------------------------------------------
+
+	Common
+	All the bits which are used across masterpages are in here */
+
+@import 'common.css';
+
+/*
+-------------------------------------------------------------- */
+
+
+
+
+/* @generic - Main Structure
+-------------------------------------------------------------- */
+
+
+#bodyContainer #header,
+#bodyContainer #bodyContent,
+#footerWrap #footer
+{
+	width: 968px;
+}
+
+#bodyContainer #contentArea
+{
+	padding-top: 15px;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+
+#bodyContainer #bodyContent .twocolumn #contentAreaLeft
+{
+	float: left;
+	position: relative;
+	width: 240px;
+}
+#bodyContainer #bodyContent .twocolumn #contentAreaRight
+{
+	float: right;
+	width: 490px;
+	position: relative;
+}
+
+#bodyContainer #bodyContent .threecolumn #contentAreaLeft
+{
+	clear: left;
+	float: left;
+	position: relative;
+	width: 234px;
+	padding-right: 12px;
+	margin-right: 12px;
+	border-right: 1px solid #E7E7E7;
+}
+#bodyContainer #bodyContent .threecolumn #contentAreaMiddle
+{
+	float: left;
+	position: relative;
+	width: 235px;
+}
+#bodyContainer #bodyContent .threecolumn #contentAreaRight
+{
+	float: left;
+	width: 234px;
+	position: relative;
+	padding-left: 12px;
+	margin-left: 12px;
+	border-left: 1px solid #E7E7E7;
+}
+
+/*
+#bodyContainer #bodyContent #contentAreaBoth
+{
+	padding: 10px;
+}
+#bodyContainer #bodyContent #contentAreaLeft li,
+#bodyContainer #bodyContent #contentAreaRight li
+{
+	padding: 0.2em 0;
+	line-height: 1.3em;
+}
+*/
+
+
+/* @common - Page with side tabs
+-------------------------------------------------------------- */
+
+#bodyContainer #sideTabs
+{
+	margin-top: 28px;
+	width: 116px;
+	float: left;
+	z-index: 1000;
+}
+
+#bodyContainer #sideTabs ul
+{
+	list-style: none;
+	margin: 0em;
+}
+
+#bodyContainer #sideTabs ul li
+{
+	border-top: solid 1px #D8D8D8;
+	padding: 0.4em 0em 0.4em;
+	font-weight: bold;
+	line-height: 1.1em;
+}
+
+#bodyContainer #sideTabs ul li:first-child
+{
+	border-top: solid 0px #D8D8D8;
+}
+
+#bodyContainer #sideTabs ul li.selected a
+{
+	color: #8A0E0F;
+}
+
+#bodyContainer #tabContent
+{
+	margin-left: 110px;
+	padding-right: 8px;
+	z-index: 2000;
+}
+
+
+/* @section - About/Privacy/Safety  -> move to side tabbed master
+-------------------------------------------------------------- */
+
+#bodyContainer #bodyContent div.print_icon
+{
+	display: block;
+	float: right;
+	width: 27px;
+	text-align: center;
+	padding-top: 27px;
+	background-image: url(/Images/vodafone_icon_print.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+	cursor: pointer;
+}
+
+
+#bodyContainer #bodyContent .aboutContent #contentAreaLeft h3
+{
+/*
+	font-size: 1.7em;
+	margin-bottom: 0.7em;
+*/
+}
+
+
+#bodyContainer #bodyContent .aboutContent #contentAreaLeft,
+#bodyContainer #bodyContent .privacyPolicyContent #contentAreaLeft,
+#bodyContainer #bodyContent .safetyContent #contentAreaLeft
+{
+	padding-left: 15px;
+	width: 485px;
+}
+
+#bodyContainer #bodyContent .privacyPolicyContent #contentAreaLeft
+{
+	width: 220px;
+}
+#bodyContainer #bodyContent .privacyPolicyContent #contentAreaRight
+{
+	width: 485px;
+}
+
+#bodyContainer #popBodyContentWrap .privacyPolicyContent div.menu
+{
+
+}
+#bodyContainer #bodyContent .privacyPolicyContent div.menu ol
+{
+	list-style: none;
+	margin-left: 0px;
+}
+#bodyContainer #bodyContent .privacyPolicyContent ol
+{
+	list-style: none;
+	margin-left: 0px;
+}
+
+#bodyContainer #bodyContent .privacyPolicyContent h3 a,
+#bodyContainer #bodyContent .privacyPolicyContent h3 a:hover
+{
+	color: #666666;
+	text-decoration: none;
+	background-color: transparent;
+}
+
+
+/* @End
+-------------------------------------------------------------- */
+

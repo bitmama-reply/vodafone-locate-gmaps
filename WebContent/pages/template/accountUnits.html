@@ -1,0 +1,23 @@
+<h2 class="no-margin"><#= $.i18n.prop('user.Units') #></h2>
+
+<div class="form-row mid-margin clearfix">
+	<div class="leftInput">
+		<select id="accountUnitsDropdown" class="accountDropdown">
+			<# $.each(data.unitList, function(index, value) { #>
+				<option value="<#= value.key #>"
+					<# if (value.value == data.unit) { #>
+						selected="selected"
+					<# } #>>
+						<#= value.value #>
+					</option>
+			<# }); #>
+		</select>
+	</div>
+	<a class="graphicBtn primary" id="updateUnitsBtn"><span><#= $.i18n.prop('buttons.update') #></span></a>
+
+	<script type="text/javascript">
+		$(function(){
+			$("#accountUnitsDropdown").selectmenu();
+		});
+	</script>
+</div>

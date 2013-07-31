@@ -1,0 +1,1182 @@
+/* --------------------------------------------------------------
+
+	common.css
+	All the bits which are used across masterpages are in here
+
+-------------------------------------------------------------- */
+
+
+
+/* @common - Page structure
+-------------------------------------------------------------- */
+
+
+html,
+body
+{
+	height: 100%;
+}
+#bodyContainer
+{
+	min-height: 100%;
+	height: auto !important;
+	margin: 0 auto -32px;
+	background-color: #F4F4F4;
+}
+#footerWrap,
+.push
+{
+	clear: both;
+	height: 28px;
+}
+#bodyContainer #header,
+#bodyContainer #bodyContent,
+#footerWrap #footer
+{
+	position: relative;
+	margin: 0px auto 0px auto;
+}
+#bodyContainer #bodyContentWrap
+{
+	padding: 5px 0.5em 30px 0.5em;
+}
+
+#bodyContainer #bodyContent
+{
+	color: #666666;
+}
+
+
+
+/* @common - Lists and menus
+-------------------------------------------------------------- */
+
+
+#bodyContainer li
+{
+	padding: 0.2em 0;
+	line-height: 1.3em;
+}
+
+
+
+#bodyContainer ol.arrowList,
+#bodyContainer ul.arrowList,
+#bodyContainer ol.menuList,
+#bodyContainer ul.menuList,
+#bodyContainer ol.masterList,
+#bodyContainer ul.masterList
+{
+	list-style: none;
+	margin: 0px;
+}
+#bodyContainer ol.menuList li ol,
+#bodyContainer ul.menuList li ol,
+#bodyContainer ol.masterList li ol,
+#bodyContainer ul.masterList li ol
+{
+	list-style: decimal;
+}
+#bodyContainer ol.menuList li ul,
+#bodyContainer ul.menuList li ul,
+#bodyContainer ol.masterList li ul,
+#bodyContainer ul.masterList li ul
+{
+	list-style: disc;
+}
+#bodyContainer ol.menuList li ol.menuList,
+#bodyContainer ul.menuList li ol.menuList,
+#bodyContainer ol.menuList li ul.menuList,
+#bodyContainer ul.menuList li ul.menuList,
+#bodyContainer ol.masterList li ol.masterList,
+#bodyContainer ul.masterList li ol.masterList,
+#bodyContainer ol.masterList li ul.masterList,
+#bodyContainer ul.masterList li ul.masterList
+{
+	list-style: none;
+}
+
+#bodyContainer ol.masterList li ol.masterList ol,
+#bodyContainer ul.masterList li ol.masterList ol,
+#bodyContainer ol.masterList li ul.masterList ol,
+#bodyContainer ul.masterList li ul.masterList ol
+{
+	list-style: decimal;
+}
+#bodyContainer ol.masterList li ol.masterList ul,
+#bodyContainer ul.masterList li ol.masterList ul,
+#bodyContainer ol.masterList li ul.masterList ul,
+#bodyContainer ul.masterList li ul.masterList ul
+{
+	list-style: disc;
+}
+
+
+#bodyContainer ol.masterList li ol.masterList ol ul,
+#bodyContainer ul.masterList li ol.masterList ol ul,
+#bodyContainer ol.masterList li ul.masterList ol ul,
+#bodyContainer ul.masterList li ul.masterList ol ul,
+#bodyContainer ol.masterList li ol.masterList ul ul,
+#bodyContainer ul.masterList li ol.masterList ul ul,
+#bodyContainer ol.masterList li ul.masterList ul ul,
+#bodyContainer ul.masterList li ul.masterList ul ul,
+#bodyContainer ol.masterList li ol.masterList ol ol,
+#bodyContainer ul.masterList li ol.masterList ol ol,
+#bodyContainer ol.masterList li ul.masterList ol ol,
+#bodyContainer ul.masterList li ul.masterList ol ol,
+#bodyContainer ol.masterList li ol.masterList ul ol,
+#bodyContainer ul.masterList li ol.masterList ul ol,
+#bodyContainer ol.masterList li ul.masterList ul ol,
+#bodyContainer ul.masterList li ul.masterList ul ol
+{
+	margin-top: 0.7em;
+	margin-bottom: 0.7em;
+}
+
+
+
+#bodyContainer ol.arrowList,
+#bodyContainer ul.arrowList
+{
+	border-top: solid 1px #EDEDED;
+}
+#bodyContainer ol.arrowList li,
+#bodyContainer ul.arrowList li
+{
+	padding: 0px;
+}
+#bodyContainer ol.arrowList li a,
+#bodyContainer ul.arrowList li a
+{
+	display: block;
+	color: #666666;
+	border-bottom: solid 1px #EDEDED;
+	padding: 0.8em 0em 0.8em 15px;
+	background-image: url(Images/vodafone_list_arrow_CC.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+#bodyContainer ol.arrowList li a:hover,
+#bodyContainer ul.arrowList li a:hover
+{
+	color: #FFFFFF;
+}
+
+/* @common - Form Elements
+-------------------------------------------------------------- */
+
+
+input.text,
+input.title,
+textarea,
+select {
+	margin:0.5em 0;
+	border-top: 1px #999999 solid;
+	border-right: 1px #DDDDDD solid;
+	border-bottom: 1px #DDDDDD solid;
+	border-left: 1px #999999 solid;
+}
+input.text:focus,
+input.title:focus,
+textarea:focus,
+select:focus
+{
+	border-top: 1px #0099CC solid;
+	border-right: 1px #CCEBF8 solid;
+	border-bottom: 1px #CCEBF8 solid;
+	border-left: 1px #0099CC solid;
+}
+
+input.formerror,
+input.formerror:focus,
+textarea.formerror,
+textarea.formerror:focus,
+select.formerror,
+select.formerror:focus,
+.formerror select,
+.formerror select:focus
+{
+	border-top: 1px #CC0000 solid;
+	border-right: 1px #E68080 solid;
+	border-bottom: 1px #E68080 solid;
+	border-left: 1px #CC0000 solid;
+}
+
+
+
+#bodyContainer #bodyContent label.text
+{
+	padding-top: 0.6em;
+	padding-left: 0px;
+	width: 280px;
+}
+#bodyContainer label.standard
+{
+	display: block;
+	padding-top: 0.2em;
+	padding-left: 20px;
+}
+
+input.search {
+	background-image: url(Images/vodafone_form_icon_search.gif);
+	background-repeat: no-repeat;
+	background-position: 3px 1px;
+	padding-left: 23px;
+}
+
+
+
+/* @common - Page header
+-------------------------------------------------------------- */
+
+.loginVersion
+{
+	color: #FF0000;
+}
+.loginVersion a
+{
+	color: #FF0000;
+	font-weight: bold;
+}
+#headerWrap
+{
+	background-color: #1D1D1D;
+	padding-left: 0.5em;
+}
+#top-bar-bottom-shadow
+{
+	background-image: url(Images/dropshadow.repeat-x.sprite.png);
+	background-repeat: repeat-x;
+	background-position: 0 -8px;
+	height: 5px;
+}
+
+#header
+{
+}
+
+#header h1 a
+{
+	background-image: url(Images/360_logo_dark_grey.png);
+	height: 60px;
+	width: 100px;
+	display: block;
+	text-indent: -9999em;
+}
+
+#header #vodafoneLogoTitle
+{
+	float: left;
+	vertical-align: middle;
+	font-size: 1.2em;
+	padding: 1em 0px;
+	margin: 0px;
+}
+#header h1 br,
+#header #vodafoneLogoTitle br
+{
+	display: none;
+}
+
+#header #logoffButton
+{
+	display: block;
+	position: absolute;
+	right: 15px;
+	top: 19px;
+	text-align: right;
+	color: #8c8c8c;
+	font-size: 11px;
+}
+
+#header #logoffButton span
+{
+	font-weight: bold;
+}
+
+#header #logoffButton a
+{
+	color: #999999;
+}
+
+/* Page heading banners
+-------------------------------------------------------------- */
+
+
+h2.contentHead
+{
+	display: block;
+	background-color: #8A0E0F;
+	margin-bottom: 0px;
+	padding: 15px 35px;
+}
+h2.contentHead span
+{
+	color: #FFFFFF;
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 35px;
+}
+div.contentIntro
+{
+	background-color: #8A0E0F;
+	color: #FFFFFF;
+	padding: 15px 35px;
+	font-size: 1.1em;
+	line-height: 1.3em;
+	margin-bottom: 10px;
+}
+h2.envelope span
+{
+	background-image: url(Images/vodafone_icon_envelope.png);
+}
+h2.exclaim span
+{
+	background-image: url(Images/vodafone_icon_exclaim.png);
+}
+h2.handset span
+{
+	background-image: url(Images/vodafone_icon_handset.png);
+}
+h2.info span
+{
+	background-image: url(Images/vodafone_icon_info.png);
+}
+h2.padlock span
+{
+	background-image: url(Images/vodafone_icon_padlock.png);
+}
+h2.pen span
+{
+	background-image: url(Images/vodafone_icon_pen.png);
+}
+h2.question span
+{
+	background-image: url(Images/vodafone_icon_question.png);
+}
+h2.speech span
+{
+	background-image: url(Images/vodafone_icon_speech.png);
+}
+
+/* Login failure overlay
+-------------------------------------------------------------- */
+
+#loginFailurePageOverlay
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#loginFailureFrame
+{
+	position: relative;
+	top: 0px;
+	width: 970px;
+	height: 100%;
+	margin: 0px auto 0px auto;
+}
+
+#loginFailureOverlay
+{
+	display: none;
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: #FFFFFF;
+}
+
+#loginFailureMessage
+{
+	display: block;
+	position: relative;
+	top: 30px;
+	left: 640px;
+	height: 50px;
+	z-index: 2001;
+	max-width: 300px;
+	margin-left: 10px;
+	margin-top: 0px;
+	color: #FFFFFF;
+	line-height: 1.3em;
+}
+
+#loginFailureMessage p a,
+#logonValidationMessage p a
+{
+    color: #FFFFFF;
+}
+
+a.failureMessageClose
+{
+	position: absolute;
+	top: 9px;
+	right: 4px;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bolder;
+	z-index: 3000;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a.failureMessageClose:hover
+{
+	background: transparent;
+	color: #CCCCCC;
+	text-decoration: none;
+}
+
+
+
+
+/* @section - Sync -> Move to Sync layout
+-------------------------------------------------------------- */
+
+
+#bodyContainer #bodyContent #contentAreaLeft ol.instructions
+{
+	clear: both;
+	margin-left: 2.4em;
+	padding-top: 1em;
+}
+#bodyContainer #bodyContent #contentAreaLeft ol.instructions li
+{
+	font-size: 1.5em;
+	padding-bottom: 0.75em;
+}
+
+
+#bodyContainer #bodyContent #contentAreaRight .adviceText h3,
+#bodyContainer #bodyContent #contentAreaRight .instructionText h3
+{
+	font-size: 2em;
+	margin-bottom: 0.8em;
+}
+#bodyContainer #bodyContent #contentAreaRight .adviceText,
+#bodyContainer #bodyContent #contentAreaRight .instructionText
+{
+	padding: 1em 1em 0.5em 1em;
+}
+#bodyContainer #bodyContent #contentAreaRight .adviceText
+{
+/*
+	background: #0099CC;
+*/
+	background: #FFFFFF;
+}
+
+#bodyContainer #bodyContent #contentAreaRight .instructionText
+{
+/*
+	background: #99CC00;
+*/
+	background: #FFFFFF;
+}
+#bodyContainer #bodyContent #contentAreaRight .videoImage
+{
+	padding-bottom: 0.5em;
+}
+
+
+#bodyContainer #bodyContent #contentAreaRight .adviceText p,
+#bodyContainer #bodyContent #contentAreaRight .adviceText img,
+#bodyContainer #bodyContent #contentAreaRight .instructionText p,
+#bodyContainer #bodyContent #contentAreaRight .instructionText img
+{
+	padding-bottom: 1em;
+	margin: 0em;
+}
+
+#bodyContainer #bodyContent .plainText
+{
+	padding: 20px 35px;
+
+}
+
+
+
+
+
+
+/* Success, notice and error boxes
+-------------------------------------------------------------- */
+
+
+/*
+.okMessage .dialogueArrowLeftTop,
+*/
+.failureMessage .dialogueArrowLeftTop,
+.noMessage .dialogueArrowLeftTop
+{
+	display: block;
+	width: 7px;
+	height: 15px;
+	left: -7px;
+	background-repeat: no-repeat;
+	position: absolute;
+	background-position: left 8px;
+}
+.failureMessage .dialogueArrowRightTop,
+.noMessage .dialogueArrowRightTop
+{
+	display: block;
+	width: 7px;
+	height: 15px;
+	right: -7px;
+	background-repeat: no-repeat;
+	position: absolute;
+	background-position: right 5px;
+}
+.failureMessage .dialogueArrowTopRight,
+.noMessage .dialogueArrowTopRight
+{
+	display: block;
+	background-repeat: no-repeat;
+	background-position: 95% top;
+	padding-top: 7px;
+}
+.failureMessage .dialogueArrowBottomLeft,
+.noMessage .dialogueArrowBottomLeft
+{
+	display: block;
+	background-repeat: no-repeat;
+	background-position: 8px bottom;
+	padding-bottom: 7px;	
+}
+.okMessage .dialogueArrowLeftTop
+{
+/*
+	background-image: url(Images/vodafone_green_tab_lt.png);
+*/
+}
+.failureMessage .dialogueArrowLeftTop
+{
+	background-image: url(Images/vodafone_blue_tab_lt.png);
+}
+.failureMessage .dialogueArrowRightTop
+{
+	background-image: url(Images/vodafone_blue_tab_rt.png);
+}
+.failureMessage .dialogueArrowTopRight
+{
+	background-image: url(Images/vodafone_blue_tab_tr.png);
+}
+.failureMessage .dialogueArrowBottomLeft
+{
+	background-image: url(Images/vodafone_blue_tab_bl.png);
+}
+.noMessage .dialogueArrowLeftTop
+{
+	background-image: url(Images/vodafone_blue_tab_lt.png);
+}
+
+#superbox .failureMessage,
+#bodyContainer .failureMessage,
+#bodyContainer .okMessage,
+#bodyContainer .noMessage
+{
+	margin-left: 10px;
+	margin-top: 0px;
+	position: absolute;
+	max-width: 220px;
+	color: #FFFFFF;
+	line-height: 1.3em;
+	z-index: 1664;
+}
+#loginFailureFrame .failureMessage h6,
+#bodyContainer .failureMessage h6,
+#bodyContainer .okMessage h6,
+#bodyContainer .noMessage h6
+{
+	color: #FFFFFF;
+}
+#loginFailureFrame .failureMessage p,
+#bodyContainer .failureMessage p,
+#bodyContainer .okMessage p,
+#bodyContainer .noMessage p
+{
+	margin-bottom: 0px;
+}
+#bodyContainer .noMessage
+{
+	display: none;
+}
+#bodyContainer .okMessage
+{
+	width: 18px;
+	height: 28px;
+	background-image: url(Images/vodafone_grey_tick.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+#contentAreaBoth .okMessage
+{
+	width: 18px;
+	height: 28px;
+	left: 110px !important;
+	background-image: url(Images/vodafone_grey_tick.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+
+#superbox span.message
+{
+	padding: 3px 5px;
+	display: block;
+	cursor:default;
+}
+#loginFailureFrame span.message,
+#bodyContainer span.message
+{
+	padding: 5px;
+	display: block;
+	cursor:default;
+}
+
+#superbox .failureMessage span.message,
+#loginFailureFrame .failureMessage span.message,
+#bodyContainer .failureMessage span.message
+{
+	background-color: #8A0E0F;
+}
+#bodyContainer .okMessage span.message
+{
+/*
+	background-color: #00CC33;
+*/
+}
+#bodyContainer .noMessage span.message
+{
+	background-color: #0099CC;
+}
+
+body #loginBox a#registerLink:focus,
+body #loginBox a#registerLink:hover,
+#contentArea a:focus,
+#contentArea a:hover,
+a:focus.specialLink,
+a:hover.specialLink 
+{
+	color: #FFFFFF;
+	background-color: #8A0E0F;
+	text-decoration: none;
+}
+body #loginBox a#registerLink,
+#contentArea a,
+a.specialLink
+{
+	color: #8A0E0F;
+	text-decoration: none;
+}
+
+#contentArea a.anchor:focus,
+#contentArea a.anchor:hover,
+#contentArea a.anchor
+{
+	color: #666666;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+#contentArea h1 a.anchor:focus,
+#contentArea h1 a.anchor:hover,
+#contentArea h1 a.anchor,
+#contentArea h2 a.anchor:focus,
+#contentArea h2 a.anchor:hover,
+#contentArea h2 a.anchor,
+#contentArea h3 a.anchor:focus,
+#contentArea h3 a.anchor:hover,
+#contentArea h3 a.anchor,
+#contentArea h4 a.anchor:focus,
+#contentArea h4 a.anchor:hover,
+#contentArea h4 a.anchor,
+#contentArea h5 a.anchor:focus,
+#contentArea h5 a.anchor:hover,
+#contentArea h5 a.anchor,
+#contentArea h6 a.anchor:focus,
+#contentArea h6 a.anchor:hover,
+#contentArea h6 a.anchor
+{
+	color: #999999;
+}
+
+
+
+/* @common - Clear those blocks!
+-------------------------------------------------------------- */
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.grip     { clear: both; padding: 0px; margin: 0px; }
+.clear     { clear: both; }
+
+
+
+/* @common - Let's hide some things - Hell yeah!
+-------------------------------------------------------------- */
+
+body .hush
+{
+	display: none !important;
+}
+
+
+/* @common - Radio
+-------------------------------------------------------------- */
+
+.ui-helper-hidden-accessible {
+	position: absolute;
+	left: -999em;
+}
+
+.ui-radio-state-disabled,
+.ui-radio-state-checked-disabled,
+.ui-radio-state-disabled-hover,
+.ui-radio-state-checked-disabled-hover {
+	color: #999;
+}
+span.ui-checkbox,
+span.ui-radio
+{
+	display: block;
+	float: left;
+	width: 16px;
+	height: 16px;
+	background-image: url(Images/icon_checkbox3.png);
+	background-repeat: no-repeat;
+	background-position: 0 -40px;
+}
+div.ui-checkbox-error span.ui-checkbox,
+div.ui-radio-error span.ui-radio
+{
+	background-image: url(Images/icon_checkbox3_error.png);
+}
+span.ui-helper-hidden {
+	display: none;
+}
+label {
+	padding: 2px;
+
+}
+span.ui-radio-state-hover,
+span.ui-checkbox-state-hover {
+	background-position: 0 -114px;
+}
+
+span.ui-checkbox-state-checked {
+	background-position: 0 -1px;
+}
+
+span.ui-checkbox-state-checked-hover {
+	background-position: 0 -75px;
+}
+span.ui-radio-state-checked-disabled-hover,
+span.ui-radio-state-checked-disabled,
+span.ui-radio-state-checked {
+	background-position: 0 -161px;
+}
+
+
+span.ui-radio-state-checked-hover {
+	background-position: 0 -200px;
+}
+
+input.unstyledCheckbox
+{
+	float: left;
+	margin: 0px;
+}
+
+
+
+/* @common - Recaptcha
+-------------------------------------------------------------- */
+
+
+.recaptcha_items
+{
+	display: none;
+}
+
+#recaptcha_response_field
+{
+	float: left;
+}
+
+#recaptcha_image
+{
+	display: block;
+	float: left;
+	width:300px;
+	height:57px;
+}
+
+#recaptcha_image .recaptcha_audio_cant_hear_link
+{
+	display: block;
+}
+
+#recaptcha_buttons
+{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	float: left;
+}
+
+#recaptcha_buttons li
+{
+	display: block;
+	padding: 1em 0px 0px 0.5em;
+}
+
+#recaptcha_buttons li a
+{
+
+}
+
+
+
+/* @common - Superbox
+-------------------------------------------------------------- */
+
+
+/* Base Superbox Styles */
+#superbox-overlay {position:fixed;top:0;left:0;z-index:9998;width:100%;height:100%;}
+#superbox-wrapper {position:fixed;z-index:9999;top:0;display:table;width:100%;height:100%;}
+#superbox-container {position:relative;display:table-cell;width:100%;height:100%;margin:0;padding:0;vertical-align:middle;}
+#superbox {margin:0 auto;padding:0;}
+#superbox-container .loading {margin:0;text-align:center;}
+
+/* IE7 */
+*:first-child+html #superbox-container {position:absolute;top:50%;display:block;height:auto;}
+*:first-child+html #superbox {position:relative;top:-50%;display:block;}
+
+/* Default Theme */
+#superbox-overlay {background:#000;}
+#superbox-container .loading {text-align:center;font-size:40px;color:#fff;}
+#superbox
+{
+	padding: 6px 2px 2px 6px;
+	background-image: url(Images/vodafone_bg_ED_40.png);
+	background-repeat: repeat;
+}
+#superbox-innerbox {padding: 0px 0;}
+#superbox.image {text-align:center;}
+#superbox .close,
+#superbox .nextprev {overflow:hidden;margin:0;}
+
+#superbox-titlebox
+{
+	background: #FFFFFF;
+	min-height: 20px;
+	padding: 8px 4px 10px 10px;
+}
+#superbox-rule
+{
+	border-bottom: 1px solid #CCCCCC;
+	margin-right: 15px;
+}
+#superbox-rule hr
+{
+	display: none;
+}
+#superbox .box-title
+{
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	font-size: 1.2em;
+	color: #666666;
+	height: 20px;
+	font-weight: bold;
+	line-height: 1.2em;
+}
+
+#superbox .close a
+{
+	position: absolute;
+	top: 9px;
+	right: 14px;
+	color: #CCCCCC;
+	font-size: 20px;
+	font-weight: bolder;
+	z-index: 2000;
+	cursor: pointer;
+}
+
+#superbox .close a:hover
+{
+	background: transparent;
+	color:#8A0E0F;
+	text-decoration: none;
+}
+
+#superbox #closeMessage
+{
+	position: absolute;
+	top: -17px;
+	right: -13px;
+	z-index: 2001;
+	cursor: pointer;
+}
+
+
+/* @common - Buttons
+-------------------------------------------------------------- */
+
+
+p.buttons
+{
+    line-height: 0.7em;
+}
+
+.buttons input,
+.buttons .buttonStyle,
+.buttons .cancelStyle,
+.buttons .disabledStyle
+{
+    float: right;
+    margin-right: 0px;
+}
+.buttons .buttonStyle:hover,
+.buttons .cancelStyle:hover,
+.buttons .disabledStyle:hover
+{
+    margin-right: 0px;
+}
+a.buttonStyle
+{
+	color: #FFFFFF !important;
+	display: block;
+	float: left;
+	height: auto;
+	margin-left: 5px;
+	padding-right: 10px;	/* sliding doors padding */
+	text-decoration: none;
+	cursor: pointer;
+	background-color: #666666;
+	font-size: 0.9em;
+	font-weight: bold;
+	line-height: 0.8em;
+}
+a.buttonStyle span
+{
+	display: block;
+	height: auto;
+	padding: 5px 0 5px 10px;
+	background-color: #666666;
+}
+a.buttonStyle:hover,
+a.buttonStyle:focus
+{
+	background-color: #8A0E0F !important;
+	color: #FCFCFC;
+}
+a.buttonStyle:hover span,
+a.buttonStyle:focus span
+{
+	background-color: #8A0E0F !important;
+}
+a.buttonStyle:active
+{
+	color: #EEEEEE;
+	outline: none;	/* hide dotted outline in Firefox */
+}
+a.buttonStyle:active span
+{
+
+}
+
+a.cancelStyle
+{
+	color: #666666 !important;
+	display: block;
+	float: left;
+	height: auto;
+	margin-left: 5px;
+	padding-right: 10px;	/* sliding doors padding */
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 0.9em;
+	font-weight: bold;
+	line-height: 0.8em;
+}
+a.cancelStyle span
+{
+	display: block;
+	height: auto;
+	padding: 5px 0 5px 10px;
+}
+a.cancelStyle:hover
+{
+	background-color: #FFFFFF !important;
+	color: #0099CC !important;
+}
+a.cancelStyle:hover span
+{
+	background-color: #FFFFFF !important;
+	color: #0099CC !important;
+}
+a.cancelStyle:active
+{
+	color: #0099CC;
+	outline: none;	/* hide dotted outline in Firefox */
+}
+a.cancelStyle:active span
+{
+
+}
+
+a.disabledStyle
+{
+	color: #FFFFFF !important;
+	display: block;
+	float: left;
+	height: auto;
+	margin-left: 5px;
+	padding-right: 10px;	/* sliding doors padding */
+	text-decoration: none;
+	cursor: pointer;
+	background-color: #BBBBBB;
+	font-size: 0.9em;
+	font-weight: bold;
+	line-height: 0.8em;
+	cursor: default;
+}
+a.disabledStyle span
+{
+	display: block;
+	height: auto;
+	padding: 5px 0 5px 10px;
+	background-color: #BBBBBB;
+}
+a.disabledStyle:hover,
+a.disabledStyle:focus
+{
+	background-color: #BBBBBB !important;
+	color: #FCFCFC;
+}
+a.disabledStyle:hover span,
+a.disabledStyle:focus span
+{
+	background-color: #BBBBBB !important;
+}
+a.disabledStyle:active
+{
+	color: #FCFCFC;
+	outline: none;	/* hide dotted outline in Firefox */
+}
+a.disabledStyle:active span
+{
+
+}
+
+
+/* @common - Drop Shadows
+-------------------------------------------------------------- */
+
+
+body .dropShadowBackground
+{
+	background: #FFFFFF;
+	padding: 10px 10px 10px 10px;
+	border-top: 1px #DDDDDD solid;
+	border-right: 1px #CCCCCC solid;
+	border-bottom: 1px #CCCCCC solid;
+	border-left: 1px #DDDDDD solid;
+
+}
+body #bodyContainer .dropShadowBackground .dropShadowBackground .dropShadowBackground,
+body #bodyContainer .dropShadowBackground .dropShadowBackground
+{
+	background-color: transparent !important;
+}
+
+
+.dropShadowWrapper .dropShadowWrapper .dropShadowCorner,
+.dropShadowWrapper .dropShadowWrapper .dropShadowEdgeX,
+.dropShadowWrapper .dropShadowWrapper .dropShadowEdgeY
+{
+	display: none;
+}
+.dropShadowWrapper .dropShadowWrapper.activeDropShadow .dropShadowCorner,
+.dropShadowWrapper .dropShadowWrapper.activeDropShadow .dropShadowEdgeX,
+.dropShadowWrapper .dropShadowWrapper.activeDropShadow .dropShadowEdgeY
+{
+	display: block;
+}
+
+.dropShadowWrapper { position: relative; padding: 5px 9px 9px 5px; }
+.dropShadowWrapper.activeDropShadow .dropShadowEdgeX,
+.dropShadowWrapper.activeDropShadow .dropShadowEdgeY,
+.dropShadowWrapper.activeDropShadow .dropShadowCorner { position: absolute; }
+
+.dropShadowWrapper.activeDropShadow .dropShadowCorner
+{
+	width: 16px;
+	height: 16px;
+	background-image: url(Images/dropshadows.sprite.png);
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+}
+.dropShadowWrapper.activeDropShadow .dropShadowCorner.dropShadowTopLeft { background-position: 0 -44px; top: 0; left: 0; }
+.dropShadowWrapper.activeDropShadow .dropShadowCorner.dropShadowTopRight { background-position: -17px -44px; top: 0; right: 0; }
+.dropShadowWrapper.activeDropShadow .dropShadowCorner.dropShadowBottomLeft { background-position: -34px -44px; bottom: 0; left: 0; }
+.dropShadowWrapper.activeDropShadow .dropShadowCorner.dropShadowBottomRight { background-position: -51px -44px; bottom: 0; right: 0; }
+.dropShadowWrapper.activeDropShadow .dropShadowEdgeY { background: url(Images/dropshadow.repeat-y.sprite.png) repeat-y scroll; }
+.dropShadowWrapper.activeDropShadow .dropShadowEdgeY.dropShadowLeft { width: 5px; background-position: 0px 0px; top: 16px; bottom: 16px; left: 0; }
+.dropShadowWrapper.activeDropShadow .dropShadowEdgeY.dropShadowRight { width: 9px; background-position: -6px 0px; top: 16px; bottom: 16px; right: 0; }
+.dropShadowWrapper.activeDropShadow .dropShadowEdgeX { background: url(Images/dropshadow.repeat-x.sprite.png) repeat-x scroll; }
+.dropShadowWrapper.activeDropShadow .dropShadowEdgeX.dropShadowTop { height: 5px; background-position: 0px 0px; top: 0; left: 16px; right: 16px; }
+.dropShadowWrapper.activeDropShadow .dropShadowEdgeX.dropShadowBottom { height: 9px; background-position: 0px -6px; bottom: 0; left: 16px; right: 16px; }
+.dropShadowWrapper.activeDropShadow .dropShadowContent { background: #fff; padding: 0px; }
+
+
+
+
+
+
+/* @common - Text Key Labels
+-------------------------------------------------------------- */
+
+.textKeyLabel
+{
+	display: none;
+	position: absolute;
+	border: 1px solid black;
+	background-color: #C0C090;
+	color: #FFFFFF;
+	font-size: small;
+	font-weight: normal;
+	line-height: normal;
+}
+
+.showTextKeysButton
+{
+	cursor: pointer;
+	font-weight: bold;
+	width: 120px;
+	position: relative;
+	z-index: 0;
+	float: left;
+}
+
+
+
+/* @End
+-------------------------------------------------------------- */

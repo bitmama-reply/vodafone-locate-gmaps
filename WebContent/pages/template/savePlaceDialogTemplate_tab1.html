@@ -1,0 +1,259 @@
+<script>
+$(function(){
+	$("#enterpriseOpen").hide();
+	$("#enterprise").show();
+	$("#personal").hide();
+	$("#personalOpen").show();
+	
+	if(userConf.rights.create_enterprise_categories){
+		$(".openClose").click(function(){
+			var clickedName = $(this).attr("id");
+			
+			if(clickedName == "enterprise"){
+				$("#enterpriseOpen").show();
+				$("#enterprise").hide();
+				$("#personalOpen").hide();
+				$("#personal").show();
+				
+			}
+			
+			else if(clickedName == "personal"){
+				$("#personalOpen").show();
+				$("#enterprise").show();
+				$("#personal").hide();
+				$("#enterpriseOpen").hide();
+			}
+			
+		});		
+	}else{
+		$("#enterprise").css({'opacity':0.5})
+	}
+	
+	
+
+	$('#enterprise.openClose h1 ,#enterpriseOpen .headline h1').text( $.i18n.prop('category.enterprise') );
+	$('#personal.openClose h1 ,#personalOpen .headline h1').text( $.i18n.prop('category.personal') );
+	$('#selectLocationCategoryForm .boldText').text( $.i18n.prop('select.a.category') );
+});
+</script>
+<form id="selectLocationCategoryForm" name="selectLocationCategoryForm" action="updateLocationCategory" method="post">
+	<input type="hidden" name="poiId" value="-1" id="selectLocationCategoryForm_poiId"/>
+	<input type="hidden" name="poiType" value="-1" id="selectLocationCategoryForm_poiType"/>
+	
+	<ul id="selections">
+		<li id="enterprise" class="openClose clearfix">
+			<div class="iconPlus"></div>
+			<h1>enterprise</h1>
+		</li>
+		<li id="enterpriseOpen">
+			<div class="backGround clearfix">
+				<div class="iconMinus"></div>
+				<div class="rightPart">
+					<div class="headline"><h1>Enterprise</h1></div>
+					<p class="boldText"> Select a Category </p>
+					<div id="selectEntCategoriesCheckContainer"></div>
+					<table>
+						<tr id ="newEntCategoryCreationLink">
+							<td colspan="2">
+								<a href="javascript:void(0);" id="btn_newEntCategory"  class="lbl_newCategory"></a>
+							</td>
+						</tr>
+						<tr id ="newEntCategoryCreationRow" style="display:none;">
+							<td colspan="2" align="left">
+								<table width="500">
+									<tr >
+										<td colspan="4">
+											<span class="lbl_newCategory"></span>
+										</td>
+									</tr>
+									<tr class="aligntoMiddle">
+										<td>
+											<input type="text" name="" maxlength="50" id="poiCategoryNewEntCategoryName" class="lbasInputText"/>
+										</td>
+										<td width ="22">
+											<span id = "poiCategoryNewEntCategoryNameVld"></span>
+										</td>
+										<td>
+											<a id="btn_createEntCategory" class="purple_button" href="javascript:void(0);">
+													<span class="btn_create"></span>
+											</a>
+											&nbsp; 
+											<a id="btn_cancelEntCategory" class="multi_user_button" href="javascript:void(0);">
+												<span class="btn_cancel"></span>
+											</a>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			
+		</li>
+		<li id="personal" class="openClose clearfix">
+			<div class="iconPlus"></div>
+			<h1>Personal</h1>
+		</li>
+		<li id="personalOpen">
+			<div class="backGround clearfix">
+				<div class="iconMinus"></div>
+				<div class="rightPart">
+					<div class="headline"><h1>Personal</h1></div>
+					<p class="boldText"> Select a Category </p>
+					<div id="selectPersCategoriesCheckContainer"></div>
+					<table>
+							<tr id ="newPersCategoryCreationLink">
+					<td colspan="2">
+						<a href="javascript:void(0);" id="btn_newPersCategory" class="lbl_newCategory"></a>
+					</td>
+				</tr>
+				<tr id ="newPersCategoryCreationRow" style="display:none;">
+					<td colspan="2" align="left">
+						<table width="500">
+							<tr>
+								<td colspan="4">
+								 	<span class="lbl_newCategory"></span>
+								</td>
+							</tr>
+							<tr class="aligntoMiddle">
+								<td>
+									<input type="text" name="" maxlength="50" id="poiCategoryNewPersCategoryName" class="lbasInputText"/>
+								</td>
+								<td width ="22">
+									<span id="poiCategoryNewPersCategoryNameVld"></span>
+								</td>
+								<td>
+									<a id="btn_createPersCategory" class="purple_button" href="javascript:void(0);">
+											<span class="btn_create"></span>
+									</a>
+									<a id="btn_cancelPersCategory" id="selectLocationCategoryForm_" class="multi_user_button" href="javascript:void(0);">
+										<span class="btn_cancel"></span>
+									</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+					</table>
+				</div>
+			</div>
+			
+		</li>
+	</ul>
+<!--
+	<div style="display:none;">
+	<div id="POICategorySelector">
+		<span id="entCategoryExpandCollapse">
+			<input type="radio" name="categoryType" value="0" id="radioCategoryTypeId1" checked/>
+			<label for="radioCategoryTypeId1" id="lbl_radioCategoryTypeId1"></label>
+		</span>
+		<span  id="persCategoryExpandCollapse"  class="modHeader blueBG" >
+			<input type="radio" name="categoryType" value="1" id="radioCategoryTypeId2"/>
+			<label for="radioCategoryTypeId2" id="lbl_radioCategoryTypeId2"></label>
+		</span>
+	</div>	
+	
+	
+	
+	<div id="enterprise">
+		<div id="selectEntCategoryDiv">
+			<table>
+				<tr>
+					<td colspan="2">
+						<span class="lbl_selectCategory"></span>
+					</td>
+				</tr>
+				<tr >
+					<td id="selectEntCategoriesCheckContainer" colspan="2"></td>
+				</tr>
+				<tr id ="newEntCategoryCreationLink">
+					<td colspan="2">
+						<a href="javascript:void(0);" id="btn_newEntCategory"  class="lbl_newCategory"></a>
+					</td>
+				</tr>
+				<tr id ="newEntCategoryCreationRow" style="display:none;">
+					<td colspan="2" align="left">
+						<table>
+							<tr >
+								<td colspan="4">
+									<span class="lbl_newCategory"></span>
+								</td>
+							</tr>
+							<tr >
+								<td>
+									<input type="text" name="" maxlength="50" id="poiCategoryNewEntCategoryName" class="lbasInputText"/>
+								</td>
+								<td width ="22">
+									<span id = "poiCategoryNewEntCategoryNameVld"></span>
+								</td>
+								<td>
+									<a id="btn_createEntCategory" href="javascript:void(0);">
+											<span class="btn_create"></span>
+									</a>
+									&nbsp; 
+									<a id="btn_cancelEntCategory" href="javascript:void(0);">
+										<span class="btn_cancel"></span>
+									</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div id="personal">
+		<div id="selectPersCategoryDiv">
+			<table>
+				<tr>
+					<td colspan="2">
+					<span class="lbl_selectCategory"></span>
+					</td>
+				</tr>
+				<tr >
+					<td id="selectPersCategoriesCheckContainer"  colspan="2"></td>
+				</tr>
+				<tr id ="newPersCategoryCreationLink">
+					<td colspan="2">
+						<a href="javascript:void(0);" id="btn_newPersCategory" class="lbl_newCategory"></a>
+					</td>
+				</tr>
+				<tr id ="newPersCategoryCreationRow" style="display:none;">
+					<td colspan="2" align="left">
+						<table>
+							<tr >
+								<td colspan="4">
+								 	<span class="lbl_newCategory"></span>
+								</td>
+							</tr>
+							<tr >
+								<td>
+									<input type="text" name="" maxlength="50" id="poiCategoryNewPersCategoryName" class="lbasInputText"/>
+								</td>
+								<td width ="22">
+									<span id="poiCategoryNewPersCategoryNameVld"></span>
+								</td>
+								<td>
+									<a id="btn_createPersCategory" href="javascript:void(0);">
+											<span class="btn_create"></span>
+									</a>&nbsp; 
+									<a id="btn_cancelPersCategory" id="selectLocationCategoryForm_" href="javascript:void(0);"">
+										<span class="btn_cancel"></span>
+									</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	</div>
+	 display none -->
+
+
+
+</form>

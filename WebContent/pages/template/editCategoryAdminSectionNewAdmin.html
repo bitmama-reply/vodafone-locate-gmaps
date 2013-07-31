@@ -1,0 +1,159 @@
+
+
+
+<script type="text/javascript">
+	jQuery('#navigationCatAdmin').accordion({
+		active: false,
+		header: '.head',
+		navigation: true,
+		autoHeight:false,
+		animated:false,
+		collapsible :true,
+		icons :{
+			'header' :'ui-icon-plus',
+			'headerSelected' :'ui-icon-minus'
+		}
+	});
+
+	var selectedUserId;
+	var selectedUserFullName;
+	var selectedUserGroup;
+	
+	function select(value){		
+	  console.log("select xxxxxxxxx");
+	  console.log(value);
+		if(value == 0){		
+			creatorId = selectedUserId;
+			$.ajax({
+				type :'GET',
+				url :'json/updatePoiCategoryAdmin.action',
+				data :{ 
+					selectedAdminId: selectedUserId ,
+					creator: selectedUserFullName,
+					categoryId :$('#categoryDetailForm input[name=categoryId]').val()
+					},
+				success :function(data) {
+					if (checkResponseSuccess(data)) {
+						$('#tabs-3').empty();
+						getAdminOfCategory();
+					}
+				}
+			});
+		}
+		else if(value == 1){
+			$.ajax({
+				type :'GET',
+				url :'json/addNewAdminForPoiCategory.action',
+				data :{
+					selectedAdminId: selectedUserId ,
+					categoryId :$('#categoryDetailForm input[name=categoryId]').val()
+					},
+				cache :false,
+				success :function(data) {
+					if (checkResponseSuccess(data)) {
+						$('#tabs-3').empty();
+						getAdminOfCategory();
+					}
+				}
+			});
+		}
+	}
+
+	function selectAdmin(userId, fullName, groupId)
+	{	
+	  console.log("selectedUserId", userId);
+		selectedUserId = userId;
+		selectedUserFullName = fullName;
+		selectedUserGroup = groupId;
+		document.getElementById("catAdminselected").innerHTML=unescape(selectedUserFullName);
+	}
+
+	function cancelBtnClicked(){
+		$('#tabs-3').empty();
+		getAdminOfCategory();
+	}
+</script>
+
+<form id="changeCategoryAdmin" name="changeCategoryAdmin" action="changeCategoryAdmin" method="post"> 
+
+		<div>
+		<h2><b><lm name="categoryAdmin.ChangeAdmin"/></b></h2>
+		</div>
+		<table align="center" class="formTable" width="400">
+			<tr>
+				<td>
+					<div  style="height:250px;margin-bottom:1em;">
+						<div class="modHeader blueBG">
+						<h2><lm name="changeCategoryAdmin.UsersGroups"/></h2>
+						</div>
+	
+						
+						
+						<div id="changeAdminSearchWrapper">
+  						<input type="text" id="changeCategoryAdminUserSearch"  value="Search" class="searchInput" style="color:grey;width:180px;"  size="31" 
+  						onfocus="if (this.value== $.i18n.prop('general.Search')) { this.style.color='black'; this.value=''; }"
+  						onblur="if (this.value=='') { this.style.color='#7E7E7E'; this.value=$.i18n.prop('general.Search'); }" onkeypress="return event.keyCode!=13"/>
+  						<span class="search-ico magnifier"></span>
+						</div>
+	
+						<div id="navigationCatAdmin" class="lbasAccordion">
+							<div id ="changeCatAdminScroll" style="position:relative;overflow-x:hidden;overflow-y:auto;height:200px">	
+							<# for(var i=0; i < json.poiCategoryAdminsByGroups.length; i++) { #>
+							
+								<div id ="group<#=json.poiCategoryAdminsByGroups[i].groupId #>" class="teststyle row">
+									<a class="head" href="javascript:;"><#=json.poiCategoryAdminsByGroups[i].groupName #>(<#=json.poiCategoryAdminsByGroups[i].userCount #> )</a>
+									
+									<ul>			
+										<# for(var x=0; x < json.poiCategoryAdminsByGroups[i].users.length; x++) { #>
+											<li class="teststyle" style="display:block;" id ="user<#= json.poiCategoryAdminsByGroups[i].users[x].id #>" >
+												<a href="javascript:;" class="teststyle" onclick="selectAdmin('<#= json.poiCategoryAdminsByGroups[i].users[x].id #>', '<#= escape(json.poiCategoryAdminsByGroups[i].users[x].name) #>', '<#= json.poiCategoryAdminsByGroups[i].users[x].groupId #>');"><#= json.poiCategoryAdminsByGroups[i].users[x].name #></a>
+												</li>
+										<# } #>								
+									</ul>
+								</div>
+							<# } #>							
+						</div>
+							
+						</div>
+					</div>
+				</td>
+
+				<td width ="20">
+					
+				</td>
+				<td width="200" colspan="10">
+					<table cellspacing="1" class="categoryTable" style="width:140px; margin-left:20px;">
+						<thead>
+							<tr>
+								<th style="text-align:left;">
+									<b>
+										<lm name="changeCategoryAdmin.newAdmin" />
+									</b>
+								</th>
+							</tr>
+						</thead>
+						<tbody style="height:200px;">
+							<tr>
+	      						<td id ="catAdminselected" align="left" width="250" height="100"></td>
+							</tr>
+						</tbody>
+					</table>								
+				</td>
+			</tr>
+		</table>	
+		<table width ="100%">
+			<tr>
+				<td>
+					<a class="purple_button" style="color: #FFFFFF;" href="javascript:void(0);" onclick="select(1);">
+						<span><lm name="buttons.select"/></span>
+					</a>					
+					&nbsp;
+					<a class="multi_user_button" style="color: #FFFFFF;" href="javascript:void(0);" onclick="cancelBtnClicked();">
+						<span><lm name="buttons.cancel"/></span>
+					</a>					
+				</td>
+			</tr>
+		</table>		
+	</form>
+
+

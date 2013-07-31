@@ -1,0 +1,49 @@
+<div id="moveToNewGroupUserList">
+	<table>
+		<tr>
+			<td valign="top" style="padding-top:6px">
+			<# if(method == "admin") { #>
+				<b><#= $.i18n.prop('admin.move.title') #>: </b>
+			<# } else { #>
+				<b><#= $.i18n.prop('user.selectedUsers') #>: </b>
+			<# } #>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+				 	<# for(var i=0; i < selectedUserList.length; i++) { var user=selectedUserList[i]; #>
+					<li id="<#= user.split(":")[0] #>">
+						<#= user.split(":")[1] #>
+					</li>
+				 	<# } #>
+			 	</ul>
+			</td>
+		</tr>
+	</table>  
+</div>
+<br/>
+<table>
+	<tr>
+		<td>
+			<b><#= $.i18n.prop('user.ToGroup') #>: </b>
+		</td>
+	</tr>
+	</tr>
+		<td>	
+			<select id="userMoveGroups" name="userMoveGroups">
+				<# for(var i=0; i < json.userGroups.length; i++) { var action=json.userGroups[i]; #>
+					<option value="<#= action.id #>"><#= action.name #></option>
+				<# } #>
+			</select>
+<!--
+			<# if(method == "admin") { #>
+				<a class="textBtnRed" style="color: #FFFFFF;" href="javascript:void(0);" onclick="moveUsersToNewGroup();"><span class='btnSpan'><#= $.i18n.prop('buttons.apply') #></span></a>
+			<# } else { #>
+				<a class="textBtnRed" style="color: #FFFFFF;" href="javascript:void(0);" onclick="moveUsersToNewGroup();"><span class='btnSpan'><#= $.i18n.prop('buttons.save') #></span></a>
+			<# } #>
+		</td>
+-->		
+	</tr>
+	
+</table>

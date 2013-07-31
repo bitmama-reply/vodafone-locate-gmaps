@@ -1,0 +1,87 @@
+
+<form id="updateLocPermission" name="updateLocPermission" action="updateLocPermission" method="post" class="clearfix">
+	<input type="hidden" name="creator" value="1" id="updateLocPermission_creator"/>
+		
+			
+				<h2 id="#savePlace_allUSersAndGroup"></h2>
+			
+				<script>
+					$(function(){
+						$("#locPermissionChk").css('opacity', '0.5');
+					});
+				</script>
+				<div id ="locPermissionChk">
+					<ul>
+						<li>
+							<h1 id ="locPermissionHeader"></h1>
+						</li>
+						<li>
+              <img src="/images/ch_un_g.png" onclick="changePermissions(this,0,'view');" id="changePermissions0"/>
+              <label id="lbl_changePermissions0" for="changePermissions0">View Location</label>
+            </li>
+            <li>
+              <img src="/images/ch_un_g.png" onclick="changePermissions(this,1,'rate');" id="changePermissions1"/>
+              <label id="lbl_changePermissions1" for="changePermissions1">Rate Location</label>
+            </li>
+            <li>
+              <img src="/images/ch_un_g.png" onclick="changePermissions(this,2,'editPermission');" id="changePermissions2"/>
+              <label id="lbl_changePermissions2" for="changePermissions2">Edit Permissions</label>
+            </li>
+            <li>
+              <img src="/images/ch_un_g.png" onclick="changePermissions(this,3,'editDetails');" id="changePermissions3"/>
+              <label id="lbl_changePermissions3" for="changePermissions3">Edit Details</label>
+            </li>
+            <li>
+              <img src="/images/ch_un_g.png" onclick="changePermissions(this,4,'delete');" id="changePermissions4"/>
+              <label id="lbl_changePermissions4" for="changePermissions4">Delete Location</label>
+            </li>
+            <li>
+              <img src="/images/ch_un_g.png" onclick="changePermissions(this,5,'share');" id="changePermissions5"/>
+              <label id="lbl_changePermissions5" for="changePermissions5">Share Location</label>
+            </li>
+						<li>
+              <img src="/images/ch_un_g.png" onclick="changePermissions(this,6,'changeCategory');" id="changePermissions6"/>
+              <label id="lbl_changePermissions6" for="changePermissions6">Change Category</label>
+            </li>
+            
+						<!--<li>
+							<img src="/images/ch_un_g.png" onclick="changePermissions(this,0);" id="changePermissions0"/>
+							<label id="lbl_changePermissions0" for="changePermissions_this_0"></label>
+						</li>
+						<li>
+							<img src="/images/ch_un_g.png" onclick="changePermissions(this,1);" id="changePermissions1"/>
+							<label id="lbl_changePermissions1" for="changePermissions1"></label>
+						</li>
+						<li>
+								<img src="/images/ch_un_g.png" onclick="changePermissions(this,2);" id="changePermissions2"/>
+								<label id="lbl_changePermissions2" for="changePermissions2"></label>
+						</li>
+						<li>
+							<img src="/images/ch_un_g.png" onclick="changePermissions(this,3);" id="changePermissions3"/>
+							<label id="lbl_changePermissions3" for="changePermissions3"></label>
+						</li>
+						<li>
+							<img src="/images/ch_un_g.png" onclick="changePermissions(this,4);" id="changePermissions4"/>
+							<label id="lbl_changePermissions4" for="changePermissions4"></label>
+						</li>
+						<li>
+							<img src="/images/ch_un_g.png" onclick="changePermissions(this,5);" id="changePermissions5"/>
+							<label id="lbl_changePermissions5" for="changePermissions5"></label>
+						</li>
+						<li>
+							<img src="/images/ch_un_g.png" onclick="changePermissions(this,6);" id="changePermissions6"/>
+							<label id="lbl_changePermissions6" for="changePermissions6"></label>
+						</li>-->
+					</ul>
+				</div>
+				<div  id="locPermissionUsers">
+					<div id="permissionSearch">
+						<input type="text" id="permissionSearchInput" value="" onkeypress="return event.keyCode!=13" onblur="if (this.value=='') { this.style.color='#7E7E7E'; this.value=$.i18n.prop('general.Search'); }" onfocus="if (this.value==$.i18n.prop('general.Search')) { this.style.color='black'; this.value=''; }" />
+            <span  class="search-ico magnifier"></span>
+            <div id="wp_autocomplete"></div>
+					</div>
+					<div id ="locPermissionUsersScroll">
+						<div id="navigationLoc"></div>
+					</div>
+				</div>
+</form>

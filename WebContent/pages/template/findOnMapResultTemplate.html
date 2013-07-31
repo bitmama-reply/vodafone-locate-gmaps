@@ -1,0 +1,43 @@
+<script type="text/javascript">
+       var centerpHeight = $('#centerP').css('height');
+       $('#idGenericPOIResults').css('height', centerpHeight - 155 + 'px');
+</script>
+<br><br>
+<div class="modBorder" style="width:%100px;">
+	<p style="margin-left:8px;margin-top:0px;margin-bottom:6px;font-weight:bold;"><#= searchResultHeader #></p>
+
+	<# if(searchResult.length>0) { #>
+		<div id="idGenericPOIResults" class="scroll-pane" style="overflow-x:hidden;overflow-y:auto"> 
+			<ul class="places" style="display: block;">
+
+			<# for(var i=0; i < searchResult.length; i++) { 
+			
+					var top = searchResult[i];
+					var address = top.address;
+					var latitude = top.latitude;
+					var longitude = top.longitude;
+					var city = top.city;
+					var country = top.country;
+					var distanceFromUser = top.distanceFromUser;
+			#>
+					
+					<li>
+					<div class="placesList accordionStyles">
+					<input id="poicheckbox-id<#= i+1 #>" class="places" type="checkbox" value="<#= address #>:<#= address #>:<#= latitude #>:<#= longitude #>:<#= city #>:<#= country #>:">
+					<span style="cursor: pointer;">
+						<# if(address.length>30){ #>
+		                	<#= address.substr(0,26) #>...
+	                    <# } else { #>
+	                        <#= address #>
+	                    <# } #>
+					</span>
+					</div>
+					</li>
+				
+			<# } #>
+		</div>
+	<# } #>
+</div>
+
+<div class=modFooter></div>
+

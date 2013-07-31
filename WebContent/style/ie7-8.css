@@ -1,0 +1,170 @@
+/**************/
+/* IE 7 & 8 */
+/**************/
+	#loginUserName{height:24px!important; padding:8px 0 0 5px;}
+	#loginPassword{height:24px!important; padding:8px 0 0 5px;}
+	#ui-datepicker-div{height: 175px!important;}
+/**************/
+/* IE 8 Hacks */
+/**************/
+
+@media \0screen{
+	
+	.usersList .items_list_buttons li{margin-right:2px;}
+	.usersList .items_list_buttons li.last{margin-right:0px;}
+	#u1_popup_contentDiv{left:3px;}
+
+	.action_button_bar > li > a{padding-left:8px; }
+	.action_button_bar > li > a > span{padding-right:8px; } 
+	.token-input-dropdown-facebook {z-index:99999!important;}
+	.items_list_buttons li{margin-right:1px!important;}
+	.search_container .check-button, .search_container .check-button:hover{margin: 9px 11px 0 10px;}
+	#tab-users .search_container .ui-selectmenu, #tab-assets .search_container .ui-selectmenu{width: 292px !important;}
+	
+	#messageDiv #tab-inbox-requests #selectMulti{margin: 20px 0 15px;} 
+	#privacy #whoLocate-container #searchFilter .tools .search .modBorder #searchPeople{margin: 2px 0px 0px 3px;}
+	#left .groupId {position:relative; top:2px;}
+	#left .user {position:relative; top:2px;}
+
+}
+
+
+/**************/
+/* IE 7 Hacks */
+/**************/
+
+/*
+	 *:first-child+html .search_container{width: 350px;}
+*/
+
+*:first-child+html #tab-users .search_container .ui-selectmenu, *:first-child+html #tab-assets .search_container .ui-selectmenu {width: 270px; }
+*:first-child+html .search_container .ui-selectmenu-parent > span {margin-left:-6px;}
+*:first-child+html ul.action_button_bar li{margin-left:5px;}
+*:first-child+html .multi_user_button_inactive span{padding-right:9px;}
+*:first-child+html .groupUsercount{margin-right:15px;}
+*:first-child+html .contents .group .groupId{margin-top:4px;}
+*:first-child+html .groupElement .container .user{float: left; margin-top:4px;}
+
+*:first-child+html .action_button_bar > li > a{padding-left:8px; }
+*:first-child+html .action_button_bar > li > a > span{padding-right:8px; }
+*:first-child+html div.contents{margin-top:22px;}
+*:first-child+html div.contents ul li span.groupName{float:left; line-height: 26px;}
+*:first-child+html .group .check-button{float:left; margin-top: 9px;}
+*:first-child+html input.groupId{float:left;}
+*:first-child+html .openClose{float:left; line-height: 10px; margin-left: 5px;}
+
+*:first-child+html .usersList .check-button{float: left; margin-top: 9px;}
+*:first-child+html .ui-helper-hidden-accessible{float: left;}
+*:first-child+html .globalSearchButton{float:right; margin-right:5px;}
+*:first-child+html .users li .container span{float:left;}
+*:first-child+html .users .openClose{padding-left:0; margin-top: 6px; }
+
+*:first-child+html .search_container .search-wrap .searchReset{top:-25px;}
+*:first-child+html .search_container ul.x-input li span span.searchLoading{top:-25px; left:300px;}
+
+*:first-child+html .items_list_buttons{margin-bottom:10px!important; }
+*:first-child+html .items_list_buttons li .map_buttons_left_panel{padding-right: 7px;}
+*:first-child+html li.locked .map_buttons_left_panel span{padding-right: 31px;}
+*:first-child+html .items_list_buttons li a{padding: 0;}
+*:first-child+html .items_list_buttons li a:hover{background-position-y: -37px;}
+*:first-child+html .items_list_buttons li.third a:hover{background-position:-87px -37px;}
+*:first-child+html .items_list_buttons li.last a:hover{background-position:-130px -37px;}
+*:first-child+html .map_buttons_left_panel:hover span,
+*:first-child+html .map_buttons_left_panel:active span,
+*:first-child+html .map_buttons_left_panel_active span,
+*:first-child+html .map_buttons_left_panel_active:hover span{}
+*:first-child+html .map_buttons_left_panel:hover{background-position:left -54px; }
+*:first-child+html .items_list_buttons li .map_buttons_left_panel span{padding-top:4px; }
+
+*:first-child+html .search_container .x-input{height: 65px;}
+
+*:first-child+html .group .check-button, 
+*:first-child+html .usersList .check-button{position: static;}
+
+*:first-child+html .toolTipBottom li{float: left;}
+*:first-child+html #map{overflow:hidden;}
+*:first-child+html .searchReset{left:298px; top:-23px;}
+*:first-child+html #search .searchReset{left:0; }
+*:first-child+html .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset{float:left; margin-left:200px;}
+*:first-child+html .locateSingleUserLocating .globalSearchButton{float:none; margin-left:150px;}
+
+*:first-child+html .locateSingleUser{}
+*:first-child+html .locateSingleUser .bd{width:382px;}
+*:first-child+html .locateSingleUser .bd .c{width:400px;}
+*:first-child+html .locateSingleUser .ui-dialog-buttonset{float:right!important;}
+
+*:first-child+html .undefined{}
+*:first-child+html .undefined .hd{width:386px;}
+*:first-child+html .undefined .bd{width:390px;}
+*:first-child+html .undefined .bd .c{width:400px;}
+*:first-child+html .undefined .ft{width:382px;}
+*:first-child+html .undefined .ui-dialog-titlebar span{top: 25px;}
+*:first-child+html .undefined .ui-dialog-buttonset{float:right!important;}
+*:first-child+html .undefined .ui-dialog-buttonset > .ui-state-focus{padding-left:9px;}
+
+*:first-child+html .noClose .bd{width:485px;}
+*:first-child+html .noClose .bd .c{width:500px;}
+*:first-child+html .noClose .ui-dialog-titlebar span{top: 25px;}
+
+*:first-child+html .itemDetails{}
+*:first-child+html .itemDetails .hd{width:360px;}
+*:first-child+html .itemDetails .bd{width:360px;}
+*:first-child+html .itemDetails .bd .c{width:374px;}
+*:first-child+html .itemDetails .ft{width:356px;}
+*:first-child+html .itemDetails .ui-dialog-titlebar span{top: 45px;}
+
+*:first-child+html .dialogError{}
+*:first-child+html .dialogError .hd{width:520px;}
+*:first-child+html .dialogError .bd{width:520px;}
+*:first-child+html .dialogError .bd .c{width:534px;}
+*:first-child+html .dialogError .ft{width:516px;}
+*:first-child+html .dialogError .ui-dialog-titlebar span{top: 45px;}
+
+*:first-child+html .dialog .ui-dialog-titlebar .ui-icon-closethick{cursor:pointer;}
+*:first-child+html .ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only.ui-state-focus.multi_user_button{width:60px;}
+*:first-child+html #sendMessage td.subject-m span.LV_invalid{margin:0 5px 0 0;}
+
+*:first-child+html .token-input-dropdown-facebook {z-index:9999;}
+*:first-child+html .LV_validation_message{display:none;}
+
+
+*:first-child+html .inboxTbRowCell.four{width: 141px;}
+*:first-child+html .inboxTableCover .inboxTbRowCell {border-bottom:1px solid #E4E4E4;}
+*:first-child+html .inboxTbRowCell.first .selector{top:-6px!important;}
+*:first-child+html .inboxTbRowCell.first .read_unread{top:-5px!important;} 
+*:first-child+html .inboxTbRowCell.first .bold{top:-7px!important; margin:7px 0 0!important;} 
+
+*:first-child+html #calendarDatepicker .ui-datepicker-next.ui-corner-all{left:200px;} 
+*:first-child+html #calendarDatepicker .ui-datepicker-next{top:11px;}
+
+*:first-child+html #privacy #whomILocate-container #searchFilter .tools .search{width:245px; }
+*:first-child+html #privacy #whomILocate-container #searchFilter .tools .search #searchPeople{border-color:transparent; margin-top: 3px; }
+
+*:first-child+html #privacy #whoLocate-container #searchFilter .tools .search .modBorder{width: 245px;}
+*:first-child+html #privacy #whoLocate-container #searchFilter .tools .search .modBorder #searchPeople{border-color:transparent; margin-top: 3px; }
+*:first-child+html #messages .searchPart #searchMessageArea #searchMessageInput{border: transparent;}
+
+*:first-child+html #availabilityDiv .tab-profiles{float:left;}
+*:first-child+html #availabilityDiv .linkProfiles{float:left;}
+*:first-child+html #availabilityDiv .linkProfiles span{float: left;}
+*:first-child+html #privacy #availabilityDiv #whoLocate #profiles #locating tr td.first .info{margin-top:0;}
+*:first-child+html .excpLabel{float:left; line-height:30px;}
+
+
+*:first-child+html #tab-places .subtabsCover #fom_single_search{overflow: hidden;}
+*:first-child+html #tab-routes #routePointTable .pointLabel{width: 40px;}
+*:first-child+html #tab-places .subtabsCover #fom_single_search{position: relative;}
+*:first-child+html #tab-places .subtabsCover .searchMagnifier{position: absolute;top: 4px; left: 300px; }
+*:first-child+html #tab-places .subtabsCover .placesSearch #search_places{width: 265px; padding-right:50px; padding-top: 5px;}
+*:first-child+html #messages .searchPart{width: 285px;}
+
+*:first-child+html #tab-places .group input.placeId{float:left; position: static; margin-top: 4px;}
+*:first-child+html #tab-places .group .openClose{float:left; margin-top: 5px; margin-right: 5px;}
+*:first-child+html #tab-places .group .groupNameContainer{float:left;}
+
+*:first-child+html #tab-places .container input.place{float: left; margin-top: 4px;}
+*:first-child+html #tab-places .container span{float:left;}
+*:first-child+html #tab-places .container .openCloseP{margin: 10px;}
+
+*:first-child+html div.contents ul li{padding-bottom: 1px;}
+*:first-child+html .fc-agenda .fc-agenda-axis{text-align: right;}

@@ -1,0 +1,183 @@
+<form id="shareRequest" action="shareRequest">
+<div>
+		<div id="shareLocationUserList">
+			<table>
+	        	<tr>
+					<td style="vertical-align: middle;">
+						<label for="shareWith"><#= $.i18n.prop('shareMyLocation.toUsers') #>: </label>
+					</td>
+					<td>
+						<input type="text" maxlength="50" name="shareWith" class="inputText" id="shareWith">
+					</td>
+					<div class="token-input-dropdown-facebook" style="display:none;"></div>
+				</tr>
+			</table>  
+		</div>
+		<table class="selectorForType">
+			<tr>
+				<td><b><#= $.i18n.prop('shareMyLocation.duration') #>: </b></td>
+				<td>
+					<# 	var radioList=$.i18n.prop('shareMyLocation.viewLocationList').split("|"); 
+						for(var i=0; i < radioList.length; i++) { var radioItem=radioList[i].split(":"); #>    
+					    	<input type="radio" onclick="selectDuration('<#= radioItem[1] #>');" value="<#= radioItem[1] #>" 
+					       	<# if(i==0){ #>  checked="checked" <# } #> id="radioList<#= radioItem[1] #>" name="viewLocation">
+					       		<label for="radioList<#= radioItem[1] #>"><#= radioItem[0] #></label>
+		    		<# } #>	   
+				</td>
+			</tr>
+		</table>			
+	
+
+		<div id="shareSpecificProfile" style="padding:0 0 10px;">
+		    <select id="shareSpecificProfileSelect" name="shareSpecificProfileSelect">
+
+		    </select>
+		</div>
+		
+		<div id="shareSpecific" style="display:none">
+		    <div class="part1 clearfix">
+		      <label for="date1" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.from') #>:</label>
+		      <input type="text" id="date1" class="dateInputFrom" maxlength="15" size="13" />
+		      <div class="time-wrap" id="start-time">
+		        <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+						<span>:</span>
+						<input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+				  </div>
+		    </div>
+		    <div class="part2 clearfix">
+		      <label for="date2" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.to') #>:</label>
+		      <input type="text" id="date2" class="dateInputTo" maxlength="15" size="13" />
+		      <div class="time-wrap" id="end-time">
+		        <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+						<span>:</span>
+						<input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+				  </div>
+		    </div>
+
+
+
+		</div>
+		
+		
+		<table>
+			<tr>
+				<td style="width:25px;"><input type="checkbox" id="shareFrequencyCheck" onclick="clickShareFrequency(this);"/></td>
+				<td><span class="textBold"><#= $.i18n.prop('locationRequest.frequency') #>: </span></td>
+				<td>
+				    <select id="shareFrequency" name="shareFrequency">
+					<# for(var i=viewLocationFrequency; i < 101; i=i+10) {  #>
+						<option value="<#= i #>"><#= i #> <#= $.i18n.prop('locationRequest.minute') #></option>
+					<# } #>
+	                </select>
+				</td>		
+			</tr>
+		</table>
+
+</div>
+</form>
+
+<script language="JavaScript" type="text/javascript">
+	
+	$('#shareFrequency').selectmenu({
+      change: function() {
+        if( $('#shareFrequencyCheck').is(':checked') ){
+
+        }else{
+	        $('#shareFrequencyCheck').click();
+        }
+      }
+    });
+    
+    $.ajax({
+      url :'getMyVisibilityProfiles.action',
+      type :'POST',
+      async :false,
+      cache: false,
+      dataType :'json',
+      success :function(json) {
+        if (checkResponseSuccess(json)) {
+         	$.each(json.profileSettingsList, function(i, val){
+           	$('#shareSpecificProfileSelect').append('<option value="'+val.visibilityProfileId+'">'+val.visibilityProfileName+'</option>');
+         	});                
+            $('#shareSpecificProfileSelect').selectmenu();
+            $('#shareFrequency-menu').css({'overflow-y':'auto' , 'height':120});
+        }
+      }
+    });
+
+   /*checking inputs*/
+    checkTheInputTime();
+          		
+    /* get time into the fields */  			
+    var currentTime = new Date();
+    currentTime.setHours(9);
+		$('#start-time .hours').val(currentTime.getHoursFormatted());
+		$('#start-time .mins').val('00');
+    currentTime.setHours(17);
+		$('#end-time .hours').val(currentTime.getHoursFormatted());
+		$('#end-time .mins').val('00');
+
+
+/*
+		if ( $('#start-time .mins').val().length == 1 ){
+			var curTime = $('#start-time .mins').val();
+			$('#start-time .mins').val('0'+curTime);
+		}
+		if ( $('#end-time .mins').val().length == 1 ){
+			var curTime = $('#end-time .mins').val();
+			$('#end-time .mins').val('0'+curTime);
+		}
+*/
+
+		
+		/*date picker*/
+    var d = new Date();
+    $( "#date1" ).datepicker({
+      showOn: "button",	
+      buttonImage: "images/availability/my_availability_calendar_icon.png",
+      buttonImageOnly: true,
+      buttonText: "calendar",
+      showOtherMonths: true,
+      dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+      firstDay: +1,
+      dateFormat: "dd/mm/yy",
+      onSelect: function(dateText, inst) {
+        $("#dialog #date1").val($.trim(dateText));
+      },
+      beforeShow: function(input, inst) {
+        inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+      }
+    }).datepicker('setDate', d);
+
+    $( "#date2" ).datepicker({
+      showOn: "button",
+      buttonImage: "images/availability/my_availability_calendar_icon.png",
+      dateFormat: "dd/mm/yy",
+      buttonImageOnly: true,
+      buttonText: "calendar",
+      showOtherMonths: true,
+      dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+      firstDay: +1,
+      onSelect: function(dateText, inst) {
+          $("#dialog #date2").val($.trim(dateText));
+      },
+      beforeShow: function(input, inst) {
+        inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+      }
+    }).datepicker('setDate', d);		
+    
+    
+/*
+	var d = new Date();
+  d.setHours(d.getHours() + 1);
+  var dateTimeCheck = new Date();
+  if(d.getDate() !== dateTimeCheck.getDate()){
+    dateTimeCheck.setDate(dateTimeCheck.getDate()+1);
+
+    $(".dateInputFrom").datepicker('setDate', new Date(dateTimeCheck));
+    $(".dateInputTo").datepicker('setDate', new Date(dateTimeCheck));    
+  }
+*/
+    
+    
+</script>

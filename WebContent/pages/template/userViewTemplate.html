@@ -1,0 +1,19 @@
+<ul>
+
+<# if(json.roleId != 6){ #>
+	<li><b><#= $.i18n.prop('userEdit.Email') #></b><#= json.email #></li>
+<# } #>
+	<li><b><#= $.i18n.prop('userEdit.Mobile') #></b><#= json.msisdn #></li>
+	<li><b><#= $.i18n.prop('userEdit.Groups') #></b><#= json.selectedGroup #></li>
+	<li><b><#= $.i18n.prop('userEdit.companyName') #></b><#= (json.companyName || '&nbsp') #></li>
+	<li><b><#= $.i18n.prop('userEdit.companyAddress') #></b><#= (json.companyAddress || '&nbsp') #></li>
+
+
+<# if(json.roleId == 6){ #>
+	<li><b><#= $.i18n.prop('assetEdit.allocatedTo') #></b><#= json.allocatedToFullName #></li>
+	<li><b><#= $.i18n.prop('assetEdit.identificationNumber') #></b><#= json.identificationNumber #></li>
+	<li></li>
+<# }#>
+
+</ul>
+

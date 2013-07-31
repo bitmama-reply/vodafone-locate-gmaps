@@ -1,0 +1,60 @@
+<div id="toolTipContainer_<#= user.userId #>" class="toolTipContainer">
+  <div class="toolTipHeader">
+    <span class="toolTipLeft"><#= user.fullname #></span>
+    <span class="toolTipRight"><a href="javascript:void(0);" id="btn_tooltip_close_<#= user.userId #>"><span><#= $.i18n.prop('dialog.label.close')#></span> <img src="images/dialog_close_button.png"></a></span>
+  </div>
+
+  <div class="toolTipContent" class="clearfix">
+    <ul style="float:left; width:10%; display:none;">
+      <li>
+        <img src="images/pin_red.png">
+      </li>
+    </ul>
+    
+    <ul class="toolTipLeft">
+      <li><#= $.i18n.prop('location.tooltip.current.location') #></li>
+      <li><#= $.i18n.prop('location.tooltip.updated') #> <#= lastTrackTime  #></li>
+      <li><#= $.i18n.prop('location.tooltip.local.time') #> <span id="localTime"><#= localTime #></span></li>
+      <li><#= $.i18n.prop('location.tooltip.accuracy') #><#= $.i18n.prop('location.tooltip.accuracy.meter') #>: <#= radius #></li>
+      <li>&nbsp;</li>
+      <# if(address != null) { #>
+         <li><#= address.split(',').join('<br/>') #></li>
+      <# } #>
+      <li>
+        (<#= longitude.substring(0, longitude.length-1) #> <#= $.i18n.prop('location.tooltip.short.east') #>
+        &nbsp;
+        <#= latitude.substring(0, latitude.length-1) #> <#= $.i18n.prop('location.tooltip.short.north') #>)
+      </li>
+    </ul>
+
+     <ul class="toolTipRight">
+        <li>
+          <a id="btn_tooltip_showNearestUsers_<#= user.userId #>" href="javascript:void(0);"><#= $.i18n.prop('tooltip.showNearestUsers')#></a>
+        </li>
+        <li>&nbsp;</li>
+      <li>
+        <a id="btn_tooltip_savePlace_<#= user.userId #>" href="javascript:void(0);"><#= $.i18n.prop('tooltip.savePlace')#></a>
+        </li>
+        <li>&nbsp;</li>
+        <li>
+          <a id="btn_tooltip_getDirection_<#= user.userId #>" href="javascript:void(0);"><#= $.i18n.prop('tooltip.getDirections')#></a>
+        </li>
+        <li>&nbsp;</li>
+      <li>
+        <a id="btn_tooltip_setUpMeeting_<#= user.userId #>" href="javascript:void(0);"><#= $.i18n.prop('tooltip.setupMeeting')#></a>
+      </li>
+    </ul>
+
+     <ul class="toolTipBottom">
+       <li>
+         <a id="btn_tooltip_sendMessage_<#= user.userId #>" href="javascript:void(0);" class="map_button"><span><#= $.i18n.prop('user.actionList.6') #></span></a>
+       </li>
+       <li>
+         <a id="btn_tooltip_createReport_<#= user.userId #>" href="javascript:void(0);" class="map_button"><span><#= $.i18n.prop('user.actionList.7') #></span></a>
+       </li>
+       <li>
+         <a id="btn_tooltip_moreInfo_<#= user.userId #>" href="javascript:void(0);" class="map_button"><span><#= $.i18n.prop('user.actionList.3') #></span></a>
+       </li>
+     </ul>
+  </div>
+</div>

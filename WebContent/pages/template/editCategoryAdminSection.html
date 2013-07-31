@@ -1,0 +1,64 @@
+<form id="CategoryAdmin" name="CategoryAdmin" action="CategoryAdmin" method="post"> 
+	
+	<table id="catadmintable" cellspacing="1" class="categoryTable">
+		<thead>
+			<tr>
+				<th>
+					<b>
+						<lm name="categoryAdmin.CurrentAdmin"/>
+					</b>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+	  			<td id ="creator<#= data.currentAdmin.id #>" align="left" width="250">
+	  				<span style="float: left">
+		  				<#= data.currentAdmin.name #>
+		  			</span>
+	  			<span style="float: right">
+					<a href="javascript:void(0);" onclick="changeCategoryAdm();" id="changeCategoryAdm" class="changestyle" style="color:#0077B7;">
+						<lm name="user.change"/>
+					</a>
+				</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<td>&nbsp;&nbsp;&nbsp;</td>
+	<td>&nbsp;&nbsp;&nbsp;</td>
+	
+	<div style="overflow-x:hidden;overflow-y:auto;width:270px;">
+	
+		<table cellspacing="1" class="categoryTable">
+			<thead>
+				<tr>
+					<th width="250">
+						<b>
+							<lm name="categoryAdmin.OtherUsersWithAdminRights"/>
+						</b>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<# for(var i=0; i < data.categoryAdmins.length; i++) { #>
+					<tr>		
+						<td align="left" width="250">	
+							<span style="float: left">
+								<#= data.categoryAdmins[i].name #>
+							</span>
+							<span style="float: right">
+								<a href="javascript:void(0);" onclick="openSendMessageDialogFromPrivacyPage('<#= escape(data.categoryAdmins[i].name) #>', <#= data.categoryAdmins[i].id #>);" class="changestyle" style="color:#0077B7;"><lm name='categoryAdmin.Message'/></a>
+							</span>
+						</td>	
+					</tr>
+				<# } #>					
+			</tbody>
+		</table>
+	</div>
+	
+	<a href="javascript:void(0);" onclick="getUsersForAdminChange('','add');" class="changestyle" style="color:#0077B7;">
+		<lm name="changeCategoryAdmin.addNewUser"/>
+	</a>
+</form>

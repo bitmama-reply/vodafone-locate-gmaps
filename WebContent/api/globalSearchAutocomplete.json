@@ -1,0 +1,95 @@
+{
+    "errorText": null,
+    "q": "test",
+    "maxUsers": 10,
+    "maxAssets": 10,
+    "maxPlaces": 10,
+    "maxRoutes": 10,
+    "users": {
+        "tot": 10,
+        "results": [
+            {
+                "id": 1,
+                "name": "USER 10",
+                "locatable": 1
+            },
+             {
+                "id": 11,
+                "name": "USER 11",
+                "locatable": 1
+            },
+             {
+                "id": 12,
+                "name": "USER 12",
+                "locatable": 1
+            },
+             {
+                "id": 13,
+                "name": "USER 13",
+                "locatable": 1
+            },
+             {
+                "id": 14,
+                "name": "USER 14",
+                "locatable": 1
+            }
+            
+        ]
+    },
+    "assets": {
+        "tot": 20,
+        "results": [
+            {
+                "id": "2",
+                "name": "ASSET 20",
+                "locatable": 1
+            },
+            {
+                "id": "2",
+                "name": "ASSET 21",
+                "locatable": 1
+            },
+            {
+                "id": "2",
+                "name": "ASSET 22",
+                "locatable": 1
+            },
+            {
+                "id": "2",
+                "name": "ASSET 23",
+                "locatable": 1
+            },
+            {
+                "id": "2",
+                "name": "ASSET 24",
+                "locatable": 1
+            }
+        ]
+    },
+    "places": {
+        "tot": 30,
+        "results": [
+            {
+                "id": 30,
+                "name": "PLACE 30"
+            },
+             {
+                "id": 31,
+                "name": "PLACE 31"
+            }
+        ]
+    },
+    "routes": {
+        "tot": 40,
+        "results": [
+            {
+                "id": 40,
+                "name": "ROUTE 40"
+            },
+            {
+                "id": 41,
+                "name": "ROUTE 41"
+            }
+        ]
+    }
+}

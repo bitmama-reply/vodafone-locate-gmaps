@@ -1,0 +1,47 @@
+<table id="locReportDetailsTable" border="1" cellpadding="0" cellspacing="0" class="locReportList" style="width:100%; background-color: white">
+		<thead>
+			<tr style="text-align:left;">
+				<th><b><#= $.i18n.prop('locationReport.column.time') #></b></th>
+				<th><b><#= $.i18n.prop('locationReport.column.distance') #></b></th>
+				<th><b><#= $.i18n.prop('locationReport.column.street') #></b></th>
+				<th><b><#= $.i18n.prop('locationReport.column.city') #></b></th>
+				<th><b><#= $.i18n.prop('locationReport.column.country') #></b></th>
+				<th><b><#= $.i18n.prop('locationReport.column.latitude') #></b></th>
+				<th><b><#= $.i18n.prop('locationReport.column.longitude') #></b></th>
+				<th><b><#= $.i18n.prop('locationReport.column.radius') #></b></th>
+			</tr>
+		</thead>
+		<tbody>
+          <# for(var rowstatus=0; rowstatus < locationReport.length; rowstatus++) { var top = locationReport[rowstatus]; #>
+			<tr>
+				<td><#= getDateWithSecond( top.timestamp )#></td>
+				<# if (top.distance>=0) { #>
+					<td><#= top.distance #>  m</td>
+				<# } else { #>
+					<td>-</td>
+				<# } #> 
+				<td><#= top.street #></td>
+				<td><#= top.city #></td>
+				<td><#= top.country #></td>
+				<td><#= top.latitude #></td>
+				<td><#= top.longitude #></td>
+				<td><#= top.radius #></td>
+			</tr>
+ 			<# count++; } #>
+		</tbody>
+</table>
+
+<div id="paginationPart" style="text-align:right; padding-right: 2em; background-color: white">
+	    
+    <!--a href="javascript:void(0);" style="text-decoration: none;font-weight:bold;color:#666666"><#= listSize #>-<#= listIndex #>-<#= pageSize #>-<#= listPageSize #></a-->
+    
+	<# if(listIndex != 0) { #>     
+    <a href="javascript:void(0);" onclick="loadLocationReports(<#= userId #>,<#= listIndex-1 #>)" style="text-decoration: none;font-weight:bold;color:#666666"><#= $.i18n.prop('buttons.previous') #></a>
+   <# } #>
+    
+    <span><#= $.i18n.prop('general.result') #> <#= listIndex*pageSize+1 #>-<#= listIndex*pageSize+listPageSize #> <#= $.i18n.prop('inbox.paging.of') #> <#= listSize #></span>
+   
+    <# if((listIndex+1) * pageSize < listSize) { #>
+    <a href="javascript:void(0);" onclick="loadLocationReports(<#= userId #>,<#= listIndex+1 #>)" style="text-decoration: none;font-weight:bold;color:#666666"><#= $.i18n.prop('buttons.next') #></a>
+   <# } #>       
+</div>

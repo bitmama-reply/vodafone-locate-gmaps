@@ -1,0 +1,135 @@
+<div id="groupAdminView">
+	<form id="groupAdmin" >
+		<input type="hidden" name="newGroupAdmin" value="0"/>
+		<input type="hidden" id="groupId" value="<#= json.lbasGroup.id #>" name="id"/>
+		<table style="width:100%">
+			<thead>
+				<tr>
+					<th><b><#= $.i18n.prop('categoryAdmin.CurrentAdmin') #></b></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr >
+					<td>
+						<span id="groupAdminChangeLink"> <span id="groupAdminName" style="float: left"> 
+							<# if (json.groupAdmin !=null) { #>
+								<#= json.groupAdmin.fullName #>
+							<# } #> 
+						</span> 
+						<# if (json.changeGroupAdmin){#>  
+							<# if(json.usersHasAdminRole != null && json.usersHasAdminRole.length>0){ #> 
+								<a href="javascript:void(0);" onclick="$('#groupAdminChangeLink').hide();$('#groupAdminChangeCombo').show(); return false;" class="button"><#= $.i18n.prop('buttons.change') #></a> 
+							<# } #> 
+						<# } #> 
+						</span> 
+						<# if (json.changeGroupAdmin && json.usersHasAdminRole != null){#> 
+							<span id = "groupAdminChangeCombo" style="display:none;">
+								<select id="groupAdminChangeSelect"">
+								<# for(var i=0;i
+									<json.usersHasAdminRole.length;i++){ var u=json.usersHasAdminRole[i]; #>
+									<option value="<#= u.user_id #>" ><#= u.fullName #></option>
+								<# } #>
+								</select> 
+								<a id="groupAdminChangeOk" class="button" onclick="selectGroupAdminChange(); return false;">
+									<#= $.i18n.prop('buttons.ok') #>
+								</a> 
+								<a id="groupAdminChangeCancel" class="button" onclick="$('#groupAdminChangeCombo').hide();$('#groupAdminChangeSelect').hide();$('#groupAdminChangeOk').hide();$('#groupAdminChangeCancel').hide();$('#groupAdminChangeLink').show(); return false;">
+									<#= $.i18n.prop('buttons.cancel') #>
+								</a> 
+							</span> 
+						<# } #> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br/>
+		<br/>
+		<div>
+			<# if(json.usersHasAdminRole != null && json.usersHasAdminRole.length>0){ #>
+			<table style="width:100%">
+				<thead>
+					<tr>
+						<th colspan="2">
+							<b><#= $.i18n.prop('categoryAdmin.OtherUsersWithAdminRights') #></b>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<# for(var i=0; i<json.usersHasAdminRole.length;i++){ var u=json.usersHasAdminRole[i]; #>
+						<tr>
+							<td>
+								<#= u.fullName #>
+							</td>
+							<td>
+								<a href="javascript:void(0);" onclick="openSendMessageDialogFromPrivacyPage('<#= u.fullName #>',<#= u.user_id #>); return false;" class="refstyle" style="text-decoration:none"><#= $.i18n.prop('categoryAdmin.Message') #></a>
+							</td>
+						</tr>
+					<# } #>
+				</tbody>
+			</table>
+			<# } #>
+		</div>
+	</form>
+</div>
+<div id="groupAdminChange" style="display:none">
+	<form id="updateGroupAdmin">
+		<input type="hidden" id="groupId" value="<#= json.lbasGroup.id #>" name="id"/>
+		<table align="center" class="formTable" width="400">
+			<tr>
+				<td>
+				<div  style="height:200px;margin-bottom:1em;overflow-x:auto">
+					<div class="modHeader blueBG">
+						<h2><#= $.i18n.prop('changeCategoryAdmin.UsersGroups') #></h2>
+					</div>
+					<#= $.i18n.prop('buttons.search') #> <img src="images/search_g.png" />
+					<input type="text" name="textArea3" style="color:grey;width:235px;" size="31" />
+					<# if(json.usersHasAdminRole != null) { #>
+					<div id="navigationGroupAdmin" class="lbasAccordion" style="width:250px;">
+						<div id ="group<#= json.lbasGroup.id #>" class="teststyle">
+							<a class="head" href="javascript:;"><#= json.lbasGroup.name #>&nbsp;(<#= json.usersHasAdminRole.length #>)</a>
+							<ul>
+								<# for(var i=0;i
+								<json.usersHasAdminRole.length;i++){ #>
+									<li id ="user<#= json.usersHasAdminRole[i].user_id #>" class="teststyle" style="display:block;">
+										<a href="javascript:;" class="teststyle" onclick="selectAdmin(<#= json.usersHasAdminRole[i].user_id #>,'<#= json.usersHasAdminRole[i].fullName #>', '<#= json.lbasGroup.id #>'); return false;"><#= json.usersHasAdminRole[i].fullName #></a>
+									</li>
+									<# } #>
+							</ul>
+						</div>
+					</div>
+					<# } #>
+				</div></td>
+				<td colspan="10">
+					<table>
+						<thead>
+							<tr>
+								<th>
+									<b><#= $.i18n.prop('changeCategoryAdmin.newAdmin') #></b>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td id ="groupAdminSelected">
+									<#= json.selectedAdminName #>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a class="button" href="javascript:void(0);" onclick="$('#groupAdminChange').hide();$('#groupAdminView').show(); return false;">
+						<#= $.i18n.prop('buttons.cancel') #>
+					</a>
+				</td>
+				<td>
+					<a class="button" href="javascript:void(0);" onclick="selectGroupAdminChange(); return false;">
+						<#= $.i18n.prop('buttons.select') #>
+					</a>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

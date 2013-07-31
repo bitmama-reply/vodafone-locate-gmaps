@@ -1,0 +1,186 @@
+<form id="requestReportPermission" action="requestReportPermission" theme="simple">	
+  <div id="casetrue">	   	
+    <div class="part1 clearfix">
+      <label for="date1" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.from') #>:</label>
+      <input type="text" id="date1" class="dateInputFrom" maxlength="15" size="13" />
+<!--       <input type='text' id='time1' class="timeFrom" maxlength="15" size="7"/> -->
+      <div class="time-wrap" id="start-time">
+        <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+				<span>:</span>
+				<input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+		  </div>
+    </div>
+    <div class="part2 clearfix">
+      <label for="date2" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.to') #>:</label>
+      <input type="text" id="date2" class="dateInputTo" maxlength="15" size="13" />
+      <!-- <input type='text' id='time2' class="timeTo" maxlength="15" size="7"/> -->
+      <div class="time-wrap" id="end-time">
+        <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+				<span>:</span>
+				<input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+		  </div>
+    </div>
+  </div>
+  
+</form>
+
+<script>
+  $(document).ready(function() {
+    
+    /*checking inputs*/
+    checkTheInputTime();
+          		
+    /* get time into the fields */  			
+    var currentTime = new Date();
+		var hours = currentTime.getHours();
+		var minutes = currentTime.getMinutes();
+/* 		$('#time1').val(hours +" : "+ minutes); */
+		$('#start-time .hours').val(hours-1);
+		$('#start-time .mins').val(minutes);
+		$('#end-time .hours').val(hours);
+		$('#end-time .mins').val(minutes);		
+
+		if ( $('#start-time .mins').val().length == 1 ){
+			var curTime = $('#start-time .mins').val();
+			$('#start-time .mins').val('0'+curTime);
+		}
+		if ( $('#end-time .mins').val().length == 1 ){
+			var curTime = $('#end-time .mins').val();
+			$('#end-time .mins').val('0'+curTime);
+		}
+		/*date picker*/
+	var d = new Date();
+	d.setDate(d.getDate() - 1);
+
+    $( ".dateInputFrom" ).datepicker({
+      showOn: "button",	
+      buttonImage: "images/availability/my_availability_calendar_icon.png",
+      buttonImageOnly: true,
+      buttonText: "calendar",
+      showOtherMonths: true,
+      dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+      firstDay: +1,
+      dateFormat: "dd/mm/yy",
+      onSelect: function(dateText, inst) {
+        $("#dialog #date1").val($.trim(dateText));
+      },
+      beforeShow: function(input, inst) {
+        inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+      }
+
+    }).datepicker('setDate', d);
+    var d = new Date();
+   	d.setDate(d.getDate());
+
+    $( ".dateInputTo" ).datepicker({
+      showOn: "button",
+      buttonImage: "images/availability/my_availability_calendar_icon.png",
+      dateFormat: "dd/mm/yy",
+      buttonImageOnly: true,
+      buttonText: "calendar",
+      showOtherMonths: true,
+      dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+      firstDay: +1,
+      onSelect: function(dateText, inst) {
+          $("#dialog #date2").val($.trim(dateText));
+      },
+      beforeShow: function(input, inst) {
+        inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+      }
+
+    }).datepicker('setDate', d);
+			
+
+			/*tooltip images*/
+			
+			$('.image1').hover(function(){
+				var btns = {};
+        /*utils.closeDialog();*/
+
+        utils && utils.dialog({
+            title : $.i18n.prop('locationReports.PopUp.title'),
+            content: '<div id="locationReportsPopUp"><p style="margin:0 0 10px;">'+$.i18n.prop('locationReports.PopUp.text')+'</p><div style="width:248px; height:233px;"> <img style="margin:0 0 10px;" src="images/locationReportsPopUpSample.jpg" alt="sample imaage" /></div></div>',
+            buttons : btns,
+            css : "noCloseNoOk hoverCalendars"
+        });
+
+        /* POSITION DIALOG */
+				$('.hoverCalendars').css({'width': 305});
+        if( $.browser.msie && $.browser.version == 7 ){
+					/*$('.hoverCalendars .bd. .c .s').css({'width': 321});*/
+					$('.hoverCalendars').css({'width': 305}); 
+        }
+				var hovCal = $(this).offset();
+				var calHeight = $(".hoverCalendars").outerHeight();
+				var calWidth = $(".hoverCalendars").outerWidth();
+				var hovCalLeft = hovCal.left+15;
+        var hovCalTop = hovCal.top;
+				var windowWidth = $(window).width();
+				
+				if( calWidth + hovCalLeft > windowWidth ){
+					hovCalLeft = hovCal.left-calWidth;
+					$(".hoverCalendars").addClass("oppositeSide");
+				}    
+                    
+        $('.hoverCalendars').css({
+            'top':  hovCalTop - (calHeight/2) +10,
+            'left': hovCalLeft,
+        });
+
+				return false;		
+			},function(){
+        $(".hoverCalendars").hide().remove();
+      });
+            
+			$('.image2').hover(function(){
+			var btns = {};
+      utils && utils.dialog({
+          title : "",
+          content: '<div id="locationReportsPopUp"><p class="line1">'+$.i18n.prop('locationReportsPopUp.secondImage.part1')+'</p><p class="line2">'+$.i18n.prop('locationReportsPopUp.secondImage.part2')+'</p><p class="line3">'+$.i18n.prop('locationReportsPopUp.secondImage.part3')+'</p> </div>',
+          buttons : btns,
+          css : "noCloseNoOk hoverCalendars"
+      });
+
+      /* POSITION DIALOG */
+      $('.hoverCalendars').css({'width': 310});
+      if( $.browser.msie && $.browser.version == 7 ){
+					/*$('.hoverCalendars .bd. .c .s').css({'width': 321});*/
+					$('.hoverCalendars').css({'width': 310}); 
+      }
+      var hovCal = $(this).offset();
+      var calHeight = $(".hoverCalendars").outerHeight();
+      var calWidth = $(".hoverCalendars").outerWidth();
+      var hovCalLeft = hovCal.left+15;
+      var hovCalTop = hovCal.top;
+      var windowWidth = $(window).width();
+		
+      if( calWidth + hovCalLeft > windowWidth ){
+        hovCalLeft = hovCal.left-calWidth;
+				$(".hoverCalendars").addClass("oppositeSide");
+			}    
+                    
+      $('.hoverCalendars').css({
+          'top':  hovCalTop - (calHeight/2) +30,
+          'left': hovCalLeft,
+      });
+
+				return false;		
+			},function(){
+
+        $(".hoverCalendars").hide().remove();
+      });
+    
+    $('.ui-button').each(function(){
+      var button = $(this);
+      if ($(this).find('.ui-button-text').text().toLowerCase() == $.i18n.prop('buttons.request').toLowerCase()) {
+        button.removeClass("multi_user_button").addClass("purple_button").css({"width":"auto"});
+      }
+    });
+
+    
+    /*$('.ui-button').eq(1).removeClass("multi_user_button").addClass("purple_button").css({"width":"auto"});*/
+    $(".locationReportRequestPermission").css({'width':500+'!important'});		
+    /*$("#ui-dialog-title-dialog").html( $.i18n.prop('user.action.createReport') );*/
+  });/* dom ready */
+        
+</script>

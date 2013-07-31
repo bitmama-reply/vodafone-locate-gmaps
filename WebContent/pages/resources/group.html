@@ -1,0 +1,13 @@
+<script id="groupTemplate" type="text/x-jquery-tmpl">
+{{#each groupList}}
+<div class="group" id="group-{{=$id}}">
+	<div class="groupHeader">
+		<input type="checkbox" id="{{=$id}}"><label for="{{=$id}}">"{{=$name}}"</label> 
+		<span class="groupPlus">+</span>
+	</div>
+	<ul style="display: block;">
+		<li></li>
+	</ul>
+</div>
+{{/each}}
+</script>

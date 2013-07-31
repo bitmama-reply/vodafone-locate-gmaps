@@ -1,0 +1,165 @@
+<div class="asset-edit-form">
+	<form id="saveAsset" action="addNewAsset">
+		<input type="hidden" id="lbasAsset.user_id" name="lbasAsset.user_id" value="<#= json.lbasUser.user_id #>">
+		<input type="hidden" id="lbasAsset.id" name="lbasAsset.id" value="<#= json.lbasUser.user_id #>">
+		<input type="hidden" id="assetAllocatedTo" name="lbasAsset.allocatedTo" value="<#= json.lbasUser.allocatedTo #>">
+    
+    <div id="error-view-asset" class="box-error-message">
+      <div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+    </div>
+    
+		<div class="asset-fields-wrapper">
+			<table class="centered-table">
+				<tbody>
+					<tr>
+						<th><#= $.i18n.prop('admin.userlist.column.name') #></th>
+						<td>
+							<input name="lbasAsset.name" id="lbasAsset.name" type="text" class="graphic-input vldRequired vldMaxLength40" value="<#= json.lbasUser.name #>"/>
+						</td>
+					</tr>
+					<tr>
+						<th><#= $.i18n.prop('admin.assetList.column.model') #></th>
+						<td>
+							<input name="lbasAsset.surname" id="lbasAsset.surname" type="text" class="graphic-input vldRequired vldMaxLength40" value="<#= json.lbasUser.surname #>"/>
+						</td>
+					</tr>
+					<tr>
+						<th><#= $.i18n.prop('admin.list.IDNumber') #></th>
+						<td>
+							<input name="lbasAsset.identificationNumber" type="text" class="graphic-input vldMaxLength20" value="<#= json.lbasUser.identificationNumber #>"/>
+						</td>
+					</tr>
+					<tr>
+						<th><#= $.i18n.prop('assetEdit.allocatedTo') #></th>
+						<td>
+							<input name="lbasAsset.allocatedToFullName" id="allocatedToFullName" type="text" class="graphic-input vldRequired vldMaxLength50" value="<#= json.lbasUser.allocatedToFullName #>"/>
+						</td>
+					</tr>
+					<tr>
+						<th><#= $.i18n.prop('lbasUser.msisdn') #></th>
+						<td class="asset-msisdn-wrapper">
+							<# if (json.lbasUser.user_id == 0 && json.companyIsProvisioned) { #>
+								<select id="userEditMobile" name="lbasAsset.msisdn" onchange="selectedPreUserChanged(this);" class="vldRequired vldPhone" style="width:130px">
+									<# for (var i=0; i < json.availableMsisdns.length; i++) { #>
+										<option value="<#= json.availableMsisdns[i] #>"><#= json.availableMsisdns[i] #></option>
+									<# } #>
+								</select>
+							<# } else { #>
+								<# if (json.lbasUser.user_id == 0) { #>
+									<input name="lbasAsset.msisdn" type="text" title="<#= $.i18n.prop('tip.user.telephone.format') #>" class="graphic-input vldRequired vldPhone" value="<#= json.lbasUser.msisdn #>"/>
+								<# } else { #>
+									<input name="lbasAsset.msisdn-disabled" disabled="disabled" type="text" class="graphic-input disabled" value="<#= json.lbasUser.msisdn #>"/>
+									<input type="hidden" name="lbasAsset.msisdn" value="<#= json.lbasUser.msisdn #>" />
+								<# } #>
+							<# } #>
+						</td>
+					</tr>
+					<tr>
+						<th>&nbsp;</th>
+						<td class="checkbox-wrapper">
+							<label>
+								<# if(json.lbasUser.agpsEnabled){ #>
+									<input id="id_agps_enabled" type="checkbox" checked="checked" name="lbasAsset.agpsEnabled" value="true" title="<#= $.i18n.prop('tip.user.agps') #>">
+								<# }else { #>
+									<input id="id_agps_enabled" type="checkbox" name="lbasAsset.agpsEnabled" value="false" title="<#= $.i18n.prop('tip.user.agps') #>">
+								<# } #>
+								 <#= $.i18n.prop('userEdit.agpsEnabled') #>
+							</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="asset-form-box">
+				<h4><#= $.i18n.prop('userEdit.Groups') #></h4>
+				<div class="clearfix asset-group-form-block">
+
+					<select id="saveAsset_selectedGroup" name="selectedGroup" id="selectedGroup" class="vldRequired"  >
+						<option value=""><#= $.i18n.prop('buttons.select') #></option>
+						<# for (var i=0; i < json.groupList.length; i++) {
+							var action=json.groupList[i],
+								id = (action.id != undefined) ? action.id : action.key,
+								name = (action.name != undefined) ? action.name : action.value; #>
+							<option value="<#= id #>"<# if (json.lbasUser.group_id == id) { #> selected="selected"<# } #>><#= name #></option>
+						<# } #>
+					</select>
+					<a href="javascript:void(0);" class="link-new left"><#= $.i18n.prop('userEdit.Create.New.Group') #></a>
+				</div>
+			</div>
+
+			<div class="asset-form-box">
+				<h4><#= $.i18n.prop('userEdit.Permissions') #></h4>
+
+				<label class="checkbox-wrapper">
+					<# if(json.lbasUser.active){ #>
+						<input type="checkbox" value="true" name="lbasAsset.active" checked="checked" />
+					<#}else {#>
+						<input type="checkbox" value="false" name="lbasAsset.active" />
+					<#}#>
+					 <#= $.i18n.prop('assetEdit.activate') #>
+				</label>
+			</div>
+
+			<div class="asset-form-box">
+				<h4><#= $.i18n.prop('permanent.periodic.tracking') #></h4>
+				
+				<# console.log(json); if(json.tracking == true){ #>				
+					<input type="checkbox" id="permanentPeriodicTracking" checked="checked" />
+				<# } else { #>
+					<input type="checkbox" id="permanentPeriodicTracking" />
+				<# } #>
+
+				<label for="permanentPeriodicTracking"><#= $.i18n.prop('permanent.periodic.tracking') #></label>
+				
+				<select id="permanentPeriodicTrackingFrequency">
+					<# 
+						var timeArray = [10,20,30,40,50,60,180,360,720,1440];
+						for (var i=0; i < timeArray.length; i++){
+						var newTime = timeArray[i] < 60 ? timeArray[i] : timeArray[i]/60;
+					#>
+							<# if(timeArray[i] === json.frequency){	#>
+								<option selected="selected" value="<#= newTime #>"> <#= newTime #> <#= timeArray[i] < 60 ?  $.i18n.prop('locationRequest.minute') : $.i18n.prop('locationRequest.hour') #></option>
+							<# } else{ #>
+								<option value="<#= newTime #>"> <#= newTime #> <#= timeArray[i] < 60 ?  $.i18n.prop('locationRequest.minute') : $.i18n.prop('locationRequest.hour') #></option>
+							<# } #>
+
+					<# } #>					
+    
+				</select>
+			</div>
+
+			<div class="asset-form-box">
+				<h4><#= $.i18n.prop('user.cdf') #></h4>
+
+				<table class="centered-table">
+					<tbody class="cdf-asset-edit-tbody">
+					<# if(json.lbasUser.customDataFields != null && json.lbasUser.customDataFields.length > 0) { #>
+						<# for(var x = 0; x < json.lbasUser.customDataFields.length ; x++) { #>
+							<tr>
+								<th><#= json.lbasUser.customDataFields[x].name #></th>
+								<td><input id="<#= json.lbasUser.customDataFields[x].id #>" name="CDF_<#= json.lbasUser.customDataFields[x].id #>" type="text" value="<#= json.lbasUser.customDataFields[x].value #>" class="graphic-input vldMaxLength40"/></td>
+							</tr>
+						<# } #>
+					<# } #>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+		<div class="overlay-actions-wrapper">
+
+			<a href="javascript:void(0);" class="send-button graphicBtn violet">
+				<# if(json.lbasUser.user_id > 0){ #>
+					<span><#= $.i18n.prop('buttons.save') #></span>
+				<# } else { #>
+					<span><#= $.i18n.prop('buttons.create') #></span>
+				<# } #>
+			</a>
+
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	registerValidations("saveAsset");
+</script>

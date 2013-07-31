@@ -1,0 +1,653 @@
+<style type="text/css">
+* html .token-input-list-facebook { 
+   height: expression( this.scrollHeight > 30 ? "auto" : "30" ); /* sets min-height for IE */
+}
+.token-input-list-facebook{ 
+   max-height: 30px; /* sets max-height value for all standards-compliant browsers */
+   max-width: 330px;
+}
+</style>
+
+<script type="text/javascript">
+	/*
+    var userNameMap=new Object();;
+    
+	$().ready(function() {	
+		$("#messageTo2").autocomplete("userSearchAutocomplete", {
+			width: 260,
+			selectFirst: false,	
+			multiple: true,	
+			parse: function(data) {		
+				  var parsed = new Array();
+				  var json = data;
+				  var resultList  = json.resultList;		
+				  for(var i=0; i<resultList.length; i++){				  				
+					  parsed[i] = { data:new Array(resultList[i].value), value:resultList[i].key, result:resultList[i].value };
+				  }
+				  return parsed;
+				}		
+		});
+		
+		$("#messageTo2").result(function(event, data, formatted) {
+			userNameMap[''+data]=formatted;
+		});
+	});
+
+
+	function requestUserLocationPermission(){
+		var serializedFormData = $('#requestLocationPermission').serialize();	
+		$.ajax({type: 'POST',
+				url: 'requestLocPermission',											
+				data: serializedFormData,
+				success: function(ajaxCevap) {		
+			       $("#requestLocationPermissionDialog").dialog('close');
+			       $("#permissionRequiredDialog").dialog('close');								
+				}
+			});
+	}
+
+	registerValidations('sendMessage');
+	*/
+</script>
+
+<div class=demo sizcache="0" sizset="61" style="display: none"><!--edit enterprise category  -->
+<div id="dialogXXX" title="">
+<div id="tabs_in_dialog">
+<ul>
+	<li id="edit_ecat_tab1_list_item"><a id="tab1" href="#tabs-1" onclick="$('#catgrCancelButn').css('display', ''); $('#catgrEEditButn').css('display', '');">
+		<span class="lm" key="editEnterpriseCategoryDialog.Details"><#= $.i18n.prop('editEnterpriseCategoryDialog.Details') #></a></span>
+	</li>
+	<li id="edit_ecat_tab2_list_item"><a id="tab2" href="#tabs-2"	onclick="openCategoryPermissionsTab();">
+		<span class="lm" key="editEnterpriseCategoryDialog.Permissions"><#= $.i18n.prop('editEnterpriseCategoryDialog.Permissions') #></a></span>
+	</li>
+	<li id ="edit_ecat_tab3_list_item"><a id="tab3" href="#tabs-3" onclick="getAdminOfCategory();">
+		<span class="lm" key="editEnterpriseCategoryDialog.Admin"><#= $.i18n.prop('editEnterpriseCategoryDialog.Admin') #></a></span>
+	</li>
+</ul>
+
+<div id="tabs-1">
+</div>
+
+<div id="tabs-2"></div>
+
+<div id="tabs-3"></div>
+
+<table width="100%">
+<tr>
+<td align="right">
+	   	<a id ="cancelCategoryButton" href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnGrey"  onclick="$('span.ui-icon-closethick:last').click();"  > 	                          
+			<span class='btnSpan' id="catgrCancelButn">
+				<span class="lm" key="buttons.cancel"><#= $.i18n.prop('buttons.cancel') #></span>
+			</span>                     	
+	    </a>&nbsp;
+		
+		<a id ="updateCategoryButton" class="textBtnRed" style="color: #FFFFFF;" href="javascript:void(0);" onclick="if (lbasValidate('categoryDetailForm')) AjxUpdateCategory();">
+			<span class='btnSpan' id="catgrEEditButn">
+				<span class="lm" key="buttons.save"><#= $.i18n.prop('buttons.save') #></span>
+			</span>
+		</a>
+</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</div>
+</div>
+
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!--edit personal category  -->
+	<div id="personalCategoryDialogXXX" title="">
+	    <div id="tabs_in_personalCategoryDialog">
+	        <ul>
+	            <li><a id="tab1" href="#tab-1"><#= $.i18n.prop('editPersonalCategoryDialog.Details') #></a></li>
+	            <li><a id="tab2" href="#tab-2" ><#= $.i18n.prop('editPersonalCategoryDialog.Permissions') #></a></li>
+
+	        </ul>
+
+		    <div id="tab-1" >
+
+		    </div>
+
+			<div id="tab-2">
+
+	  		</div>
+
+	    </div>
+	    <table width="100%">
+		<tr>
+		<td align="right">
+		
+		<span id ="cancelCategoryButton" >
+		   	<a href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnGrey"  onclick="$('span.ui-icon-closethick:last').click();"  > 	                          
+				<span class='btnSpan'>
+					<span class="lm" key="buttons.update"><#= $.i18n.prop('buttons.cancel') #></span>
+				</span>                     	
+		    </a>
+		</span>&nbsp;
+		<span id ="updateCategoryButton" >
+			<a class="textBtnRed" style="color: #FFFFFF;" href="javascript:void(0);" onclick="if (lbasValidate('categoryDetailForm')) AjxUpdateCategory();">
+				<span class='btnSpan' id="catgrEditButn">
+					<span class="lm" key="buttons.save"><#= $.i18n.prop('buttons.save') #></span>
+				</span>
+			</a>
+		</span>
+		</td>
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		</table>
+	</div>
+</div>
+
+
+
+<input type="hidden" id="selectedLocationId" name="selectedLocationId">
+<input type="hidden" id="selectedLocationType" name="selectedLocationType">
+
+<div  style="display:none" ><!--edit location  -->
+				<div id="edit_loc_dialogx" title="">
+				    <div id="tabs_in_edit_loc">
+				        <ul>				        				       
+				            <li id ="edit_loc_tab1_list_item"><a id="edit_loc_tab1_link" href="#edit_loc_tab1" onclick="openEditLocTab1();"><#= $.i18n.prop('location.details') #></a></li>				            
+				            <li id ="edit_loc_tab2_list_item"><a id="edit_loc_tab2_link" href="#edit_loc_tab2" onclick ="openEditLocTab2();"><#= $.i18n.prop('location.categories') #></a></li>
+				            <li id ="edit_loc_tab3_list_item" ><a id="edit_loc_tab3_link" href="#edit_loc_tab3" onclick ="openEditLocTab3();"><#= $.i18n.prop('location.permissions') #></a></li>
+							<li id ="edit_loc_tab4_list_item"><a id="edit_loc_tab4_link" href="#edit_loc_tab4" onclick ="openEditLocTab4();"><#= $.i18n.prop('location.admin') #></a></li>
+				        </ul>
+
+				        <div id="edit_loc_tab1">				        	   
+				        </div>				        
+						<div id="edit_loc_tab2">				        	
+				        </div>
+				        <div id="edit_loc_tab3">				        	
+				        </div>
+				        <div id="edit_loc_tab4">
+				        </div>				        
+				     </div>
+				     <table width="100%">
+				     	<tr>
+						<td  align="right" >
+							<a id ="cancelButton"href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnGrey"  onclick="$('span.ui-icon-closethick:last').click();return false;" >                          	                          
+								<span class='btnSpan'>
+									<span class="lm" key="buttons.update" style="color:#FFFFFF;"><#= $.i18n.prop('buttons.cancel') #></span>                     	
+								</span>
+							</a>&nbsp;	
+							<a id ="updateLocationButton" href="javascript:void(0);" style="color: #FFFFFF;display:none;" class="textBtnRed" tabindex="20" >                          	                          
+								<span class='btnSpan'>
+									<span class="lm" key="buttons.save" style="color:#FFFFFF;"><#= $.i18n.prop('buttons.save') #></span>
+								</span>                     	
+							</a>&nbsp;
+							<a id ="addLocationButton" href="javascript:void(0);" style="color: #FFFFFF;display:none;" class="textBtnRed"  onclick="if (lbasValidate('updateLocationDetail'))AjxSaveNewLocation();" tabindex="20" >                          	                          
+								<span class='btnSpan'>
+									<span class="lm" key="buttons.save" style="color:#FFFFFF;"><#= $.i18n.prop('buttons.save') #></span>
+								</span>                     	
+							</a>&nbsp;
+						</td>
+						</tr>
+						<tr><td>&nbsp;</td></tr>	
+					</table>
+				     
+				
+				</div>
+		
+</div>	
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- location request  -->
+	<div id="locationRequestDialog" title="">
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- location request  -->
+	<div id="locationReportDialog" title="">
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- location request  -->
+	<div id="visibilityEditTimeDialog" title="">
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- share my location  -->
+	<div id="shareMyLocationDialog" title="">
+
+
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- share with 3rd party  -->
+	<div id="share3rdPartyDialog" title="">
+	</div>
+</div>
+
+
+<div class=demo sizcache="0" sizset="61" style="display:none">
+	<div id="closerUsersDialog" title="">
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none">
+	<div id="saveAssetsAsPlacesDialog" title="">
+		<div id="saveAssetsAsPlacesContent">
+		</div>
+		<table width="100%">
+	     	<tr>
+			<td  align="right" >
+				<a href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnGrey"  onclick="$('span.ui-icon-closethick:last').click(); $('#saveAssetsAsPlacesContent').html('');" >                          	                          
+					<span class='btnSpan'>
+						<span class="lm" key="buttons.cancel" style="color:#FFFFFF;"><#= $.i18n.prop('buttons.cancel') #></span>                     	
+					</span>
+				</a>&nbsp;	
+				<a href="javascript:void(0);" style="color: #FFFFFF;" class="textBtnRed"  onclick="saveAssetsAsPlaces();" tabindex="20" >                          	                          
+					<span class='btnSpan'>
+						<span class="lm" key="buttons.save" style="color:#FFFFFF;"><#= $.i18n.prop('buttons.save') #></span>
+					</span>                     	
+				</a>&nbsp;
+			</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>	
+		</table>
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- send message  -->
+<div id="sendMessageDialog" title="">
+<form id="sendMessage" action="sendMessage" theme="simple">
+
+<input type="hidden" id="selectedUserAndGroups" name="selectedUserAndGroups">
+   <table cellpadding="9" cellspacing="9" class="sendMessageTable">
+	
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('messages.to') #></label></td>
+		</tr>
+		
+		<tr>
+			<td><input type="text" id="messageTo" class="inputText" name="messageTo" size="50" maxlength="50" readonly="false"/></td>
+		</tr>
+		
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('messages.Subject') #></label></td>
+		</tr>
+		
+		<tr>
+			<td><input type="text" id="messageSubject" name ="messageSubject" size="50" maxlength="40" style="width:100%;" cssClass="vldRequired vldMaxLength40" /></td>
+		</tr>
+		
+		<tr>  
+			<td><input type="checkbox" onchange="sendSMSClicked($('#isSmsSend'), $('#messageContent'));" name="isSmsSend" id="isSmsSend" value="true" onclick="this.value=this.checked" checked="checked">&nbsp;<label style="font-weight:bold"><#= $.i18n.prop('message.sendSms') #></label></input></td>
+		</tr>
+		
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('messages.message') #></label>&nbsp;(<span class="charsLeft">160</span>&nbsp;<#= $.i18n.prop('messages.charLeft') #>)</td>
+		</tr>
+		
+		<tr>  
+			<td><textarea id="messageContent" name ="messageContent" cols="50" rows="3" maxlength="160" style="width:100%;" cssClass="vldRequired vldMaxLength160" /></td>
+		</tr>
+
+		<tr align="right">
+		  <td align="right" colspan ="3">
+			   <a href="javascript:void(0);" style="color: #FFFFFF;text-decoration:none" class="textBtnRed"  
+			         onclick="if(lbasValidate('sendMessage')) sendMessageToUsers();" >                          	                          
+				       <span class='btnSpan'>
+				       	<span class="lm" key="messages.send"><#= $.i18n.prop('messages.send') #></span>
+				       </span>                     	
+			   </a>
+			</td>
+		</tr>	
+	
+   </table>
+   </form>
+	</div>
+</div>
+	
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- request location permission  -->
+<div id="requestLocationPermissionDialog" title="">
+<form id="requestLocationPermission" action="requestLocationPermission" theme="simple">	
+<input type="hidden" id="requestedUserId" name="requestedUserId">
+   <table cellpadding="9" cellspacing="9">		
+		<tr>
+			<td><span id="requestedUser"></span></td>
+		</tr>
+   </table>		
+   
+   <table cellpadding="9" cellspacing="9">		
+		
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('messages.message') #></label>&nbsp;(<span class="charsLeft">160</span>&nbsp;<#= $.i18n.prop('messages.charLeft') #>)</td>
+		</tr>
+		
+		<tr>  
+			<td><textarea id="reqPermMessageContent" name ="messageContent" cols="50" rows="3" maxlength="160"/></td>
+		</tr>
+	
+		
+		<tr align="right">
+		  <td align="right" colspan ="3">
+			   <a href="javascript:void(0);" style="color: #FFFFFF;text-decoration:none" class="textBtnRed"  
+			         onclick="requestUserLocationPermission();" >                          	                          
+				       <span class='btnSpan'>
+				       		<span class="lm" key="user.request"><#= $.i18n.prop('user.request') #></span>
+				       </span>                     	
+			   </a>
+			</td>
+		</tr>	
+	
+   </table>
+   </form>
+	</div>
+</div>
+
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- request category permission  -->
+<div id="requestCategoryPermissionDialog" title="">
+<form id="requestCategoryPermission" action="requestCategoryPermission">
+<input type="hidden" id="requestedObjectId" name="requestedObjectId">
+     <table cellpadding="9" cellspacing="9">		
+		
+		<tr>
+			<td><span class="labelStyle"><#= $.i18n.prop('category.needPermissionBecause') #>:</span></td>
+		</tr>	
+		<tr>
+			<td><span class="labelStyle"><#= $.i18n.prop('messages.message') #></span>&nbsp;(<span class="charsLeft">160</span>&nbsp;<#= $.i18n.prop('messages.charLeft') #>)</td>
+		</tr>
+		
+		<tr>  
+			<td><textarea id="reqCPermMessageContent" name ="messageContent" class="lbasTextAreaSmall"  maxLength="160"
+				  onfocus="if (this.style.color!='black') { this.style.color='black'; this.value=''; }"					
+				style="color:grey;"/></td>
+		</tr>
+	
+		
+		<tr align="right">
+		  <td align="right" colspan ="3">
+			   <a href="javascript:void(0);" style="color: #FFFFFF;text-decoration:none" class="textBtnRed"  
+			         onclick="requestCategoryPermission2()" >                          	                          
+				       <span class='btnSpan'>
+				       		<span class="lm" key="buttons.submit"><#= $.i18n.prop('buttons.submit') #></span>
+				       </span>                     	
+			   </a>
+			</td>
+		</tr>	
+   </table>
+   </form>
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- request poi permission  -->
+<div id="requestPoiPermissionDialog" title="">
+<form id="requestPoiPermission" action="requestPoiPermission" theme="simple">
+<input type="hidden" id="requestedPoiId" name="requestedPoiId">
+   <table cellpadding="9" cellspacing="9">		
+		
+		<tr>
+			<td><span class="labelStyle"><#= $.i18n.prop('category.needPermissionBecause') #>:</span></td>
+		</tr>
+		<tr>
+			<td><label style="font-weight:bold"><#= $.i18n.prop('messages.message') #></label>&nbsp;(<span class="charsLeft">160</span>&nbsp;<#= $.i18n.prop('messages.charLeft') #>)</td>
+		</tr>
+		
+		<tr>  
+			<td><textarea id="reqPPermMessageContent" name ="messageContent" 
+					class="lbasTextAreaSmall"  maxLength="160"
+				  onfocus="if (this.style.color!='black') { this.style.color='black'; this.value=''; }"					
+				style="color:grey;"/></td>
+		</tr>
+	
+		
+		<tr align="right">
+		  <td align="right" colspan ="3">
+			   <a href="javascript:void(0);" style="color: #FFFFFF;text-decoration:none" class="textBtnRed"  
+			         onclick="requestPoiPermission2()" >                          	                          
+				       <span class='btnSpan'>
+				       		<span class="lm" key="buttons.submit"><#= $.i18n.prop('buttons.submit') #></span>
+				       </span>                     	
+			   </a>
+			</td>
+		</tr>	
+	
+   </table>
+   </form>
+	</div>
+</div>
+
+<div id="view_loc_request_dialog" title=""><!-- view location request  -->
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- view meeting  -->
+	<div id="viewMeetingDialog" title="" >
+
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- new meeting   -->
+	<div id="meetingNewDialog" title="">
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- upload file -->
+	<div id="UploadFileDialog" title="" />
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display: none">
+
+<div id="meetingWaitForRouteDialog" title="">
+<div id="waitforRoute" align="center">
+<table align="center">
+	<tr align="center">
+		<td align="center"><b><lm name="meetings.route.wait" /></b></td>
+	</tr>
+	<tr>
+		<td>&nbsp</td>
+	</tr>
+
+	<tr align="center">
+		<td align="center"><img src="images/ajax-loader.gif"></td>
+	</tr>
+</table>
+
+</div>
+
+</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!--permission required  -->
+<div id="permissionRequiredDialog" title="">
+<form id="permissionRequired" action="permissionRequired" >
+<input type="hidden" id="permRequestedUserId" name="permRequestedUserId">
+   <table cellpadding="9" cellspacing="9">		
+		<tr>
+			<td><span id="permRequestedUser"></span></td>
+			<td style="padding-left:90px">
+			<a id="permissionRequiredLink" href="javascript:void(0);" class="changestyle" style="text-decoration:none">
+			<span class="lm" key ="locationReport.request.permission"><#= $.i18n.prop('locationReport.request.permission') #></span>
+			</a>
+			</td>
+		</tr>
+   </table>		
+</form>
+</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- location not available -->
+<div id="locationNotAvailableDialog">
+<form id="locationRequired" action="locationRequired" theme="simple">
+   <table cellpadding="9" cellspacing="9">		
+		<tr>
+			<td><span id="locationNotAvailableUser"></span></td>
+		</tr>
+   </table>		
+</form>
+</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- move to new group  -->
+	<div id="moveToNewGroupDialog" title="">
+
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- group edit  -->
+				<div id="edit_group_dialog">
+				   
+				    <div id="tabs_in_edit_group">
+				        <ul>
+				            <li><a id="edit_group_tab0_link" style="font-weight:bold" href="#edit_group_tab0"><#= $.i18n.prop('groupEdit.GroupDetails') #></a></li>
+				            <li><a id="edit_group_tab1_link" style="font-weight:bold" href="#edit_group_tab1"><#= $.i18n.prop('groupEdit.GroupMembers') #></a></li>
+				            <li><a id="edit_group_tab2_link" style="font-weight:bold" href="#edit_group_tab2"><#= $.i18n.prop('groupEdit.Permissions') #></a></li>
+							<li><a id="edit_group_tab3_link" style="font-weight:bold" href="#edit_group_tab3"><#= $.i18n.prop('groupEdit.Admin') #></a></li>
+				        </ul>
+
+                        <div id="edit_group_tab0">	             
+				        </div>	
+				        <div id="edit_group_tab1">	             
+				        </div>				        
+						<div id="edit_group_tab2">				        	
+				        </div>
+				        <div id="edit_group_tab3">
+				        </div>
+				    
+				     </div>
+				     
+				          <br/>
+				      <div id="editGroupDialogUpdateButton" style="position:absolute;right:15px;">   
+						  <a href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnRed"  onclick="updateUserGroup();" >                          	                          
+				            <span class='btnSpan'>
+				            	<span class="lm" key="buttons.save"><#= $.i18n.prop('buttons.save') #></span>
+				            </span>                     	
+			   		      </a>
+			   		     </div> 
+			   		  <div style="height:20px">
+			   		  </div>
+			   		     
+				</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none">
+	<div id="edit_user_dialog">	
+		 <div id="tabs_in_edit_user">
+	        <ul>				        				       
+	            <li id ="edit_user_tab1_list_item"><a id="edit_user_tab1_link" href="#edit_user_tab1" onclick="$('#edit_user_tab1').show();"><#= $.i18n.prop('location.details') #></a></li>				            
+	            <li id ="edit_user_tab2_list_item"><a id="edit_user_tab2_link" href="#edit_user_tab2" onclick ="$('#edit_user_tab2').show();"><#= $.i18n.prop('userEdit.Groups') #></a></li>
+	            <li id ="edit_user_tab3_list_item" ><a id="edit_user_tab3_link" href="#edit_user_tab3" onclick ="$('#edit_user_tab3').show();"><#= $.i18n.prop('location.permissions') #></a></li>
+	            <li id ="edit_user_tab4_list_item" ><a id="edit_user_tab4_link" href="#edit_user_tab4" onclick ="$('#edit_user_tab4').show();"><#= $.i18n.prop('user.cdf') #></a></li>
+	        </ul>
+
+	        <div id="edit_user_tab1">				        	   
+	        </div>				        
+			<div id="edit_user_tab2">				        	
+	        </div>
+	        <div id="edit_user_tab3">				        	
+	        </div>	
+	        <div id="edit_user_tab4">				        	
+	        </div>				        
+	     </div>
+	     <table id="editUserDialogButtons" style="display:none" width="100%">
+	     	<tr>
+				<td  align="right" >
+					<a href="javascript:void(0);"  style="color:#FFFFFF;text-decoration:none" class="textBtnRed"  onclick="if(lbasValidate('userDetailForm')) AjxSaveUser();">                          	                          
+						<span class='btnSpan'>
+							<span id="editUserSaveButton" class="lm" key="buttons.save" style="color:#FFFFFF;display:none;"><#= $.i18n.prop('buttons.save') #></span>  
+							<span id="createUserSaveButton" class="lm" key="buttons.create" style="color:#FFFFFF;display:none;"><#= $.i18n.prop('buttons.create') #></span>                  	
+						</span>
+					</a>
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>	
+		</table>
+	</div>
+	<div id="edit_asset_dialog">	
+	</div>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none"><!-- new group  -->
+	<div id="new_group_dialog" title="New group">
+	
+	</div>
+</div>
+
+<div id="declineConfirmation" style="display:none" title="Decline"><!-- delete confirm  -->
+	<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span>
+	<span class="lm" key ="confirmation.decline"><#= $.i18n.prop('confirmation.decline') #></span></p>
+</div>
+
+<div id="deleteConfirmation" style="display:none" title='<#=$.i18n.prop('confirmation.delete.title')#>'><!-- delete confirm  -->
+	<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span>
+	<span class="lm" key ="confirmation.delete"><#= $.i18n.prop('confirmation.delete') #></span></p>
+</div>
+
+<div id="selectUserConfirmation" style="display:none" title="Select User"><!-- select user confirm  -->
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+	<span class="lm" key ="warning.select.user"><#= $.i18n.prop('warning.select.user') #></span></p>
+</div>
+
+<div id="selectConfirmation" style="display:none" title="Select Category"><!-- select confirmation  -->
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span></p>
+</div>
+
+<div id="selectGroupConfirm" style="display:none" title="Select Group"><!--select group   -->
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Please select a group from left menu.</p>
+</div>
+
+<div id="genericConfirmation" style="display:none" title="Confirmation"><!-- delete confirm  -->
+	<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span></p>
+</div>
+
+<div id="userChangePasswordDialog" style="display:none">
+<form id="userChangePassword" action="userChangePassword">
+	<table width="100%">		
+		<tr>
+			<td colspan="2"><div id="changePswddMsj"><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span><#= $.i18n.prop('info.password.change') #></div></td>
+		</tr>
+		<tr>
+			<td class="labelStyle" ><#= $.i18n.prop('userNewPassword') #></td>
+			<td><input type="password" id="upsw1" maxlength="15" onpaste="return false;"
+				class="lbasInputText vldRequired" name="userNewPassword" title="<#= $.i18n.prop('tip.user.pwd.instruction') #>" /></td>			
+		</tr>
+		<tr>
+			<td class="labelStyle"><#= $.i18n.prop('userRetypeNewPassword') #></td>
+			<td><input type="password" id="upsw2" maxlength="15" onpaste="return false;"
+				class="lbasInputText vldRequired" name="userRetypeNewPassword" title="<#= $.i18n.prop('tip.user.pwd.instruction') #>" /></td>			
+		</tr>
+		<tr>
+			<td colspan ="2" align ="right">
+			 <a href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnRed"  onclick="registerValidations('userChangePassword'); if(lbasValidate('userChangePassword'))updateUserPassword();" >                          	                          
+		       <span class='btnSpan'>
+		       		<span class="lm" key="buttons.change"><#= $.i18n.prop('buttons.change') #></span>
+		       </span>                     	
+	   		</a>
+			</td>
+		</tr>
+	</table>
+</form>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none">
+	<div id="addTimeExceptionDialog" title="">
+	</div>
+</div>
+
+<!-- asagidaki infoText i parent i ile birlikte kullanmalisin -->
+<div id="userRenewPasswordConfirmationDialog" style="display:none" title="Info">
+	<p>
+		<span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 50px 0;"></span>
+		<div id="infoText">					
+		</div>		
+	</p>
+</div>
+
+<div class=demo sizcache="0" sizset="61" style="display:none">
+	<div id="cancelPermissionInformationDialog" style="height: 250px; width: 400px;" title=""></div>
+</div>
+<div class=demo sizcache="0" sizset="61" style="display:none">
+	<div id="locationRequestInformationDialog" style="height: 250px; width: 400px;" title=""></div>
+</div>
+<div id="nearestUsersDialog" style="display:none">
+	<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span></p>
+	<span class="lm" key="nearestUsers.dialog.first"><#= $.i18n.prop('nearestUsers.dialog.first') #> </span>
+	<select>
+  		<option>1</option>
+  		<option>2</option>
+  		<option>5</option>
+  		<option>10</option>
+  		<option>50</option>
+  		<option>100</option>
+	</select>
+	<span class="lm" key="nearestUsers.dialog.second"> <#= $.i18n.prop('nearestUsers.dialog.second') #></span>
+</div>

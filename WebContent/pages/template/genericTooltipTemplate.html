@@ -1,0 +1,19 @@
+<div class="toolTipContainer">
+  <div class="toolTipHeader">
+    <span class="toolTipLeft"><#= header #></span>
+    <span class="toolTipRight"><a href="javascript:void(0);" onclick="mainMarkerManager.closeTooltip('<#= markerId #>');" id="btn_tooltip_close_<#= markerId #>"><span><#= $.i18n.prop('dialog.label.close')#></span> <img src="images/dialog_close_button.png"></a></span>
+  </div>
+  <div class="toolTipContent" class="clearfix">
+    <#= content #>
+  </div>
+</div>
+<!--
+<div class="tooltipHeader"><#= header #></div>
+<div class="content">
+   <p><#= content #></p>
+   <p><a id="closerUsersLink<#= markerId #>" class="tooltipMenuItem standartLink" style="display:none"><#= $.i18n.prop('users.at.same.location') #> </a></p>
+</div>
+<br/>
+<div class="poiTooltipCloser" onclick="mainMarkerManager.closeTooltip('<#= markerId #>');"></div>
+
+-->

@@ -1,0 +1,47 @@
+<form id="categoryDetailForm" method="post" action="/reply/getCategoryDetail" name="categoryDetailForm">
+	<input id="pathId" type="hidden" value="cat_vf_uncategorized.png" name="categoryIconPath" />
+	<input id="iconId" type="hidden" value="0" name="categoryIconId" />
+	<input id="typeId" type="hidden" value="0" name="categoryType" />
+	<input id="categoryDetailForm_categoryId" type="hidden" value="0" name="categoryId" />
+	
+	<table class="tab0-table">
+		<tbody>
+			<tr>
+				<td>
+					<span class="lm" key="categoryDetail.CategoryName">Category name</span>
+				</td>
+				<td>
+					<input id="categoryDetailForm_categoryName" class="lbasInputText vldRequired vldMaxLength50" type="text" value="" maxlength="50" name="categoryName" />
+				</td>
+				<td width="22">
+					<span id="categoryNameVld" style="position:relative;top:4px;"></span>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top;">
+					<span class="lm desc" key="categoryDetail.CategoryDescription">Description</span>
+				</td>
+				<td>
+					<textarea id="categoryDetailForm_categoryDescription" rows="8" cols="30" name="categoryDescription"></textarea>
+				</td>
+			</tr><!--
+			<tr >
+				<td>
+					<span class="lm" key="categoryDetail.CategoryIcon">Category Icon</span>
+				</td>
+				<td>
+					<img id="categoryImage" src="/reply/images/cat_vf_uncategorized.png" onclick="openSelectIconDialog(0,'category','categoryIconPath');" title="Change Icon" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<a class="textBtnGrey" onclick="openUploadFileDialog('image','category');" style="color: #FFFFFF;" href="javascript:void(0);">
+						<span class="btnSpan">
+							<span class="lm" key="buttons.uploadIcon">Upload Icon</span>
+						</span>
+					</a>
+				</td>
+			</tr>-->
+		</tbody>
+	</table>
+</form>

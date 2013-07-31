@@ -1,0 +1,25 @@
+<div id="tooltipContainer<#= tooltipId #>" class="toolTipContainer toolTipGroupContainer">
+  <div class="toolTipHeader">
+    <span class="toolTipLeft"><#= $.i18n.prop('user.peopleInThisLocation', neighbourList.length) #></span>
+    <span class="toolTipRight"><a href="javascript:void(0);" id="btn_tooltip_close_group_<#= tooltipId #>"><span><#= $.i18n.prop('dialog.label.close')#></span> <img src="images/dialog_close_button.png"></a></span>
+  </div>
+
+  <div class="toolTipContent" class="clearfix">
+	<div class='contents contents-list-grouped'>
+		<ul class='users'>
+			 <# for(id in neighbourList) {
+			 	var content = neighbourList[id].markerOpts.contentHtml; 
+			 	var name = content.split('<span class="toolTipLeft">')[1].split('</span>')[0];
+			 #>
+				<li>
+					<div class="usersList groupElement">
+						<div class="container">
+	                    	<span class="name-item"><#= name #></span><a href="javascript:void(0);" class="globalSearchButton viewGroupTooltipUser" data-id="<#= neighbourList[id].markerOpts.id #>"><span class="globalSearchText locationAvailableRight"><#= $.i18n.prop('buttons.show')#></span></a>
+	                    </div>
+	                </div>
+	            </li>
+			 <# } #>
+		</ul>
+	</div>
+  </div>
+</div>

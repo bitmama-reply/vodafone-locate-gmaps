@@ -1,0 +1,152 @@
+<# if(json.poilist.length > 0) {  categorySize=json.poilist.length+1; #>
+
+
+
+<ul class="places">
+                <# for(var rowstatus=0; rowstatus < json.poilist.length; rowstatus++) {                
+                   var top = json.poilist[rowstatus];
+                   var tmpname = (top.name == null ? '' : top.name) ; 
+                   if (top.credentials.view) {
+                     currentPois[top.id] = {
+                        id:top.id,
+                        lat:top.latitude,
+                        lon:top.longitude,
+                        radius:top.radius,
+                        micon:top.micon,
+                        name: tmpname
+                     };
+                   } 
+                   #>
+                   
+                   
+                   <li>
+                    <div id="item_1113621351701" class="placesList groupElement">
+                    <div class="container" style="text-decoration: none; cursor: default;">
+                    <input id="u1113621351701" class="place" type="checkbox" value="1113621351701">
+                    <span id="open_item_details_1113621351701">
+                    <img class="openClose" src="images/arrow_right.png">
+                    </span>
+                    <span id="item_name_1113621351701" class="nameUser" style="text-decoration: none; cursor: default;">111</span>
+                    <a class="globalSearchButton locationPlacesLeft" href="#">
+                    <span class="globalSearchText locationPlacesRight">Show</span>
+                    </a>
+                    <ul id="items_list_buttons_1113621351701" class="items_list_buttons clearfix" style="display: none;">
+                    <li class="first">PRINT</li>
+                    </ul>
+                    </div>
+                    </div>
+                    </li>
+
+                   
+                   
+                   <li>
+                    <div id= class="placesList accordionStyles">
+                    <div class="placesList accordionStyles" >
+                   
+                   
+                 <li id="<#= top.id #>"
+                     onmouseover="$('#editPoi<#= top.id #><#= rowstatus+1 #>').show();" 
+                     onmouseout="$('#editPoi<#= top.id #><#= rowstatus+1 #>').hide();">              
+                    
+                    <# if (top.credentials.view) { #> 
+             <# var tmpname = (top.name == null ? '' : top.name) ; #>
+            <input type="checkbox" id="poicheckbox-id<#= top.type #>" name="checkbox1"  value="<#= top.id #>:<#= top.latitude #>:<#= top.longitude #>:<#= top.type #>:<#= categoryId #>:<#= json.listIndex #>:<#= json.poiCount #>:<#= tmpname #>:<#= top.credentials.editPermission #>:<#= top.credentials.edit #>:<#= top.credentials.changeCategory #>:<#= top.credentials.remove #>" onchange="clickPoiOrCatgCheckBox(this)" />
+              <# }  #>
+                    
+                    
+                     <!--<td id="poiCheck<#= top.type #>_<#= rowstatus+1 #>" style="height: 40px; margin: 0;" class="tdDotBr">&nbsp;
+           <# if (top.credentials.view) { #> 
+             <# var tmpname = (top.name == null ? '' : top.name) ; #>
+            <input type="checkbox" id="poicheckbox-id<#= top.type #>" name="checkbox1"  value="<#= top.id #>:<#= top.latitude #>:<#= top.longitude #>:<#= top.type #>:<#= categoryId #>:<#= json.listIndex #>:<#= json.poiCount #>:<#= tmpname #>:<#= top.credentials.editPermission #>:<#= top.credentials.edit #>:<#= top.credentials.changeCategory #>:<#= top.credentials.remove #>" onchange="clickPoiOrCatgCheckBox(this)" />
+              <# }  #>
+            </td>-->
+                  
+          <!--<# if(json.iconList.indexOf(top.iconId) > -1){ #>
+          <td class="poiItemIc tdDotBr" style="<# if(!top.credentials.view){ #>cursor:auto<# } #>">
+          <img id="locImage<#= top.id #>" src="showImage?imageId=<#=top.iconId#>" alt="show poi on map"
+            <# if(top.credentials.view){ #> onclick="showPoiDetailOnMap([<#= top.id #>])" style="cursor:pointer;"<# } #> />
+          </td>
+          <# } else { #>
+          <td class="poiItemIc tdDotBr" style="<# if(!top.credentials.view){ #>cursor:auto<# } #>">
+          <!-- <img id="locImage<#= top.id #>" src="images/<#= top.iconName #>" alt="show poi on map"
+            <# if(top.credentials.view){ #> onclick="showPoiDetailOnMap([<#= top.id #>])" style="cursor:pointer;"<# } #> /> 
+          </td>
+                    <# } #>   --> 
+                        
+                        <span  <# if(top.credentials.view){ #>onclick="showPoiDetailOnMap([<#= top.id #>])" style="cursor:pointer;" <# } #>>
+                          <b>
+                          <# var tmpname = (top.name == null ? '' : top.name) ; #>
+                          <span id = "locName<#= top.id #>" title="<#= tmpname #>"> 
+                          <# if (top.name !=null && top.name.length > 21){ #>
+                            <#= top.name.substr(0,17) #>...
+                            <# } else { #>
+                              <# if (top.name != null) { #>
+                                 <#= top.name #>
+                               <# } #>
+                            <# } #>
+                          </span></b>
+                            <# if(top.address !=null && top.credentials.view){ #>
+                            <# if(json.distanceFromUser){ #><p style="font-size:9px;font-weight:bold;margin-top:3px;margin-bottom:3px"><#= top.distance #> <#= $.i18n.prop('poi.fromYou') #></p><# } #>
+                          <p id="locAddress<#= top.id #>" style="font-size:9px" title="<#= top.address #>">
+                          <# if(top.address.length>25){ #>
+                            <#= top.address.substr(0,25) #>...
+                            <# } else { #>
+                               <#= top.address #>
+                            <# } #>
+                             </p>
+                             <# } else if(!top.credentials.view) { 
+                              var tmpname = (top.name == null ? '' : top.name) ;
+                             #>
+                            <p> <a href="#" class="standartLink"
+                style="font-size:9px;text-align:right"
+                onclick="openRequestPoiPermissionDialog(<#= top.id #>,'<#= tmpname #>')">
+                <#= $.i18n.prop('category.RequestPermission') #>
+                </a>
+                </p>
+                <# } #> 
+                        </span>
+                     
+                     <span class="poiActionTd tdDotBr" align="left">&nbsp;
+                      <#  if (top.type==1 || lbasRightManager.checkRight('add_enterprise_location')) { #> 
+                          <div id="editPoi<#= top.id #><#= rowstatus+1 #>" style="display:none;" >
+              
+              <# if (top.credentials.edit) { #>
+              <# var tmp = (top.name == null ? '' : top.name) ; 
+                var poi_name = escapeHtmlEntity(tmp); #>
+                               <span style="cursor:pointer;margin:0;padding:0" onclick="openEditLocationDialog(<#= top.id #>,'<#= poi_name #>',<#= top.type #>,true,<#= top.credentials.editPermission#>,<#= top.credentials.edit#>,<#= top.credentials.changeCategory#>);"><img src="<#= contextPath #>/images/edit_resize1.png" /></span>
+              <# } #>
+                          </div>
+                        <# } #>
+                   </span>
+                 </li> 
+                <# } #>                
+                </div>
+              </ul>
+  <!-- <div class=modFooter></div> -->
+ <# } #>
+<!--
+<# if(json.searchActive) { #> 
+<div class=modFooter></div>
+<# if(personalTabContent.style.display == 'none') { #>
+<div id="hideMultiActions0" style="" class="multiSelectAction" >
+<# } if (enterpriseTabContent.style.display == 'none') { #>
+<div id="hideMultiActions1" style="" class="multiSelectAction" >
+<# } #>
+  <table cellpadding="6" cellspacing="6" align="right" style="margin-right:5px">
+  <tr>
+  <td align="left">
+           <# poiCategActions=json.actionList; #>          
+           <select id="catgAndPoiActions" name="actionMultiple" style="width:114px;" onchange="showSelectedCategory(<#= json.type #>);return false;">
+            <option value="-1" class="lm" key ="general.actions"><#= $.i18n.prop('general.actions') #></option>
+          <# for(var i=0; i < json.actionList.length; i++) { var action=json.actionList[i]; #>
+             <# if(action.key == 4 || action.key == 6) { #>
+                <option value="<#= action.key #>" class="lm" key ="categoryOrPoi.actionList.<#= action.key #>"  ><#= action.value #></option>            
+             <# } #>
+          <# } #>   
+         </select>          
+     </td>
+     </tr>
+   </table>      
+</div>
+ <# } #>
+ -->

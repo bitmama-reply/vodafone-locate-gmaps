@@ -1,0 +1,90 @@
+{
+    "actionList": [
+        {
+            "key": "1",
+            "value": "Delete"
+        },
+        {
+            "key": "3",
+            "value": "Export to pdf"
+        },
+        {
+            "key": "4",
+            "value": "Add new Category"
+        },
+        {
+            "key": "5",
+            "value": "Show on Map"
+        },
+        {
+            "key": "7",
+            "value": "Edit"
+        }
+    ],
+    "categoryId": 6613224739941,
+    "categoryList": [],
+    "distanceFromUser": false,
+    "errorText": null,
+    "firstPoiId": 0,
+    "iconList": [],
+    "listIndex": 0,
+    "listPageSize": 8,
+    "listSize": 1,
+    "poiCount": 1,
+    "poilist": [
+        {
+            "address": "S109, Amsterdam, North Holland Amsterdam 1083, NLD",
+            "credentials": {
+                "changeCategory": false,
+                "edit": true,
+                "editPermission": true,
+                "extensions": [],
+                "id": 0,
+                "poiId": 6613224740411,
+                "rate": false,
+                "remove": false,
+                "share": false,
+                "user": 0,
+                "view": true
+            },
+            "distance": null,
+            "iconId": 0,
+            "iconName": "cat_vf_uncategorized.png",
+            "id": 6613224740411,
+            "latitude": 52.3356864,
+            "longitude": 4.8916481,
+            "micon": "marker_cat_vf_uncategorized.png",
+            "name": "poi_ery",
+            "radius": 0,
+            "rating": 0,
+            "type": 0
+        }
+    ],
+    "selectedCategoryList": [],
+    "selectedPoiCategory": {
+        "company": 1,
+        "creator": 1,
+        "credentials": {
+            "addPOI": false,
+            "categoryId": 6613224739941,
+            "edit": false,
+            "editPermission": false,
+            "extensions": [],
+            "id": -1,
+            "remove": false,
+            "removePOI": false,
+            "share": false,
+            "user": 113219399891,
+            "view": true
+        },
+        "detail": "test_category",
+        "extensions": [],
+        "iconId": 0,
+        "iconName": "cat_vf_uncategorized.png",
+        "id": 6613224739941,
+        "name": "category_ery",
+        "poiCount": 1,
+        "type": 0
+    },
+    "type": 0
+}

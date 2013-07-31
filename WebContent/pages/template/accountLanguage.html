@@ -1,0 +1,23 @@
+<h2 class="no-margin"><#= $.i18n.prop('user.lang') #></h2>
+
+<div class="form-row mid-margin clearfix">
+	<div class="leftInput">
+		<select id="accountLanguageDropdown" class="accountDropdown">
+			<# $.each(data.langList, function(index, value) { #>
+				<option value="<#= value.key #>"
+					<# if (value.value == data.lang) { #>
+						selected="selected"
+					<# } #>>
+						<#= value.value #>
+					</option>
+			<# }); #>
+		</select>
+	</div>
+	<a class="graphicBtn primary" id="updateLanguageBtn"><span><#= $.i18n.prop('buttons.update') #></span></a>
+
+	<script type="text/javascript">
+		$(function(){
+			$("#accountLanguageDropdown").selectmenu();
+		});
+	</script>
+</div>

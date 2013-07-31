@@ -1,0 +1,80 @@
+<form id="updateGroupName">
+	<table cellpadding="9" cellspacing="9" style="width:100%">
+		<input type="hidden" id="groupId" value="<#= json.lbasGroup.id #>" name="lbasGroup.id">
+		<input type="hidden" id="isNewUserpage" value="<#= json.isNewUserpage #>" name="isNewUserpage">
+		<tr>
+			<td>
+				<label for="lbasGroupname" style="font-weight:bold"><#= $.i18n.prop('groupName.groupName') #></label>
+			</td>
+			<td>
+				<input type="text" id="lbasGroupname" value="<#= json.lbasGroup.name #>" name="lbasGroup.name" class="vldRequired vldMaxLength100"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="lbasGroup.description2" style="font-weight:bold"><#= $.i18n.prop('groupDetails.description') #></label>
+			</td>
+			<td>			
+				<textarea id="lbasGroup.description2" rows="3" cols="20" name="lbasGroup.description" class="vldMaxLength50"><#= json.lbasGroup.description #></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label style="font-weight:bold"><#= $.i18n.prop('groupDetails.icon') #></label>
+			</td>
+			<td> 
+				<input type="hidden" id="groupIconId" value="<#= json.lbasGroup.iconId #>" name="lbasGroup.iconId">
+				<# if(json.selectedGroupIcon != null) { #>
+					<# if(json.selectedGroupIcon.scaledImageExists == false) { #> 
+						<img id='groupImage' onclick="openSelectIconDialog(1,'group','categoryIconPath');"src="<#= contextPath #>/images/<#= json.selectedGroupIcon.path #>" /> 
+					<# } else { #> 
+						<img id='groupImage' onclick="openSelectIconDialog(1,'group','categoryIconPath');"src="showImage?imageId=<#=json.selectedGroupIcon.icon_id#>" /> 
+					<# } #>
+				<# } else { #> 
+					<img id='groupImage' onclick="openSelectIconDialog(1,'group','categoryIconPath');"src="<#= contextPath #>/images/cat_vf_uncategorized.png" /> 
+				<# } #> 
+				
+				<a href="javascript:void(0);" onclick="openUploadFileDialog('image','group');"> 
+					<#= $.i18n.prop('buttons.uploadIcon') #> 
+				</a>
+				
+			</td>
+		</tr>
+		<!--
+		<tr>
+			<td colspan="2" style="vertical-align: top;">
+				<a href="javascript:void(0);" onclick="openUploadFileDialog('image','group');"> 
+					<#= $.i18n.prop('buttons.uploadIcon') #> 
+				</a>
+			</td>
+		</tr>
+		-->
+		<tr>
+			<# if(json.lbasGroup.id == 0) { #>
+				<# if(json.isNewUserpage == 0 || json.isNewUserpage == 3) { #> 
+					<td>
+						<label style="font-weight:bold"><#= $.i18n.prop('groupDetails.assetGroup') #></label>
+					</td>
+					<td> 
+						<# if(json.opcoAssetEnabled) { #>
+							<input type="checkbox" value="false"  name="lbasGroup.assetGroup"  onclick="this.value=this.checked; getGroupMembers();"/>
+						<# } else { #>
+							<input type="checkbox" value="false"  name="lbasGroup.assetGroup"  onclick="this.value=this.checked;" disabled="true"/>
+						<# } #> </td>
+				<# } #>
+			<# } else { #> <td><label style="font-weight:bold"><#= $.i18n.prop('groupDetails.assetGroup') #></label></td>
+				<td> 
+					<# if(json.lbasGroup.assetGroup){ #>
+						<input type="checkbox" value="true"  name="lbasGroup.assetGroup" checked="checked" disabled ="disabled" onclick="this.value=this.checked;"/>
+					<# }else { #>
+						<input type="checkbox" value="false" name="lbasGroup.assetGroup"  disabled ="disabled" onclick="this.value=this.checked;"/>
+					<# } #>
+			<# } #> 
+			</td>
+		</tr>
+	</table>
+	<div id ="iconsDiv"></div>
+</form>
+<script type="text/javascript">
+	registerValidations("updateGroupName");
+</script>

@@ -1,0 +1,350 @@
+<div class="tooltip-alert-generic-left tooltip-alert-meetingSubject"><span></span></div>
+<div class="tooltip-alert-generic-left tooltip-alert-meetingLocationFullAddress"><span></span></div>
+
+<form id="createMeeting" action="createMeeting">
+   <div id="error-view-sendmessage" class="box-error-message">
+      <div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+    </div>
+
+	<div class="inputs first clearfix">
+		<label><#= $.i18n.prop('meetings.subject') #></label>
+		<input type="text" id="meetingSubject" name="meetingSubject" maxlength="40"  class="inputText vldRequired" value="" />
+		<span id="meetingSubjectVld"/>
+	</div>
+
+	<div class="inputs location clearfix">
+		<label><#= $.i18n.prop('meetings.location') #> </label>
+		<div class="wrap">
+		  <input type="text" id="nameOfaLocation" name="nameOfaLocation"  class="inputText"/>
+		  <span class=""></span>
+		</div>
+	</div>
+
+	<div id="meetingDateTime">
+
+	  <div class="inputs clearfix">
+	    <label><#= $.i18n.prop('meetings.start') #></label>
+	    <input type="text" id="start-date" name="" maxlength="40"  class="inputText date vldRequired" value="" />
+	    <label class="short left-padding"><#= $.i18n.prop('meetings.at') #></label>
+	    <div class="time-wrap" id="start-time">
+	     <input class="disabled-input inputText" value="" />
+	     <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+	     <span>:</span>
+	     <input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+	    </div>
+	  </div>
+
+	  <div class="inputs clearfix">
+	    <label><#= $.i18n.prop('meetings.end') #></label>
+	    <input type="text" id="end-date" name="" maxlength="40"  class="inputText date vldRequired" value="" />
+	    <label class="short left-padding"><#= $.i18n.prop('meetings.at') #></label>
+	    <div class="time-wrap" id="end-time">
+	     <input class="disabled-input inputText" value="" />
+	     <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+	     <span>:</span>
+	     <input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+	    </div>
+	    <div class="all-day-wrap">
+	     <input class="short" type="checkbox" id="meetingCheckboxAllDay"  value="true" name="meetingCheckboxAllDay" onclick="this.value=this.checked; meetingAllDaySelected(this, null, null);"/></td>
+	     <label class="short"><#= $.i18n.prop('meetings.allDay') #></label>
+			</div>
+	  </div>
+
+	</div>
+
+	<div class="inputs clearfix">
+	  <label><#= $.i18n.prop('meetings.details') #></label>
+	  <textarea class="inputText vldMaxLength250" id="meetingDetails" rows="4" cols="" name="meetingDetails" />
+	</div>
+
+	<div id="meetingAttendees" class="inputs clearfix">
+		<label><#= $.i18n.prop('meetings.attendees') #></label>
+		<textarea class="inputText vldMaxLength250" id="messageTo" rows="4" cols="" name="meetingUsers" draggable="false"  />
+		<div title="meetingUsers" style="display: none;"></div>
+		<div class="token-input-dropdown-facebook" style="display: none;"></div>
+	</div>
+
+	<div id="emailAttendees" class="inputs clearfix">
+		<label><#= $.i18n.prop('email') #><a class="why" href="javascript:void(0);"></a></label>	
+		<div id="emailAttendeesCover">  
+			<ul id="emailAttendeesList"></ul>
+		  	<div id="emailAttendeesInputCover" class="clearfix">
+				<input type="text" id="emailAttendeesInput" class="" value="" />
+				<a id="emailAttendeesAdd" href="#">+</a>
+		  	</div>
+	
+		</div>
+
+	</div>	
+
+	<div class="inputs clearfix check-list">
+	  <input class="short" type="checkbox" id="checkboxShowEta"  value="true" name="checkboxShowEta" checked="checked" onclick="this.value=this.checked;"/>
+	  <label class="short"><#= $.i18n.prop('meetings.viewShowEta') #></label>
+	  <input class="short" type="checkbox" id="checkboxShowLocation"  value="true" name="checkboxShowLocation" checked="checked" onclick="this.value=this.checked;"/>
+	  <label class="short"><#= $.i18n.prop('meetings.viewShowLocation') #></label>
+	  <input class="short" type="checkbox" id="checkboxWarnETA"  value="true" name="checkboxWarnETA" checked="checked" onclick="this.value=this.checked;"/>
+	  <label class="short last"><#= $.i18n.prop('meetings.warnAboutETA') #></label>
+	</div>
+
+	<div class="buttons">
+	 <ul class="action buttons_class clearfix">
+	   <li>
+	     <button type="button" class="send ui-button ui-widget purple_button ui-button-text-only no-border" role="button" aria-disabled="false" id="inboxLocationRequestAcceptButton">
+	       <span class="ui-button-text" style="line-height:2.5em !important"><#= $.i18n.prop('message.save') #></span>
+	     </button>
+	   </li>
+	   <li>
+	     <button type="button" class="cancel ui-button ui-widget ui-button-text-only no-border" role="button" aria-disabled="false" id="inboxLocationRequestRejectButton">
+	       <span class="ui-button-text" style="line-height:2.5em !important"><#= $.i18n.prop('message.cancel') #></span>
+	     </button>
+	   </li>
+	 </ul>
+	</div>
+
+
+</form>
+
+<script>
+	$(function(){
+		var input = $('#emailAttendeesInput'),
+		inputText, status,
+		filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		
+		$('#emailAttendeesAdd').hide();
+		input.keyup(function(e){
+			inputText = $(this).attr('value');
+			if (!filter.test(inputText)) {
+
+				status= false;
+				$('#emailAttendeesAdd').hide();
+			}else{
+
+				$('#emailAttendeesAdd').show();
+				status= true;
+			}
+		});
+		$('#emailAttendeesAdd').click(function(e){
+			e.preventDefault();
+
+			if(status){
+				$('<li class="token-input-token-facebook"> <span style="display: inline-block"; class="user-name">'+ inputText +'</span><a href="#" onclick="$(this).parent().remove(); return false;">×</a></li>').appendTo($('#emailAttendeesList'));
+				input.attr('value','');
+				$('#emailAttendeesAdd').hide();	
+				input.focus();
+			}
+			
+		});
+		$('#emailAttendeesCover').click(function(e){
+			input.focus();
+			e.preventDefault();	
+		});
+				
+				
+		$('.why').hover(function(e){
+			e.preventDefault();
+			var btns = {};
+		
+		    utils && utils.dialog({
+		        title : '', /* $.i18n.prop('locationReports.PopUp.title'), */
+		        content: '<div id="whyDialogStyle"><p>'+$.i18n.prop('calendar.questionMark')+'</p> </div>',
+		        buttons : btns,
+		        css : "noCloseNoOk hoverCalendars"
+		    });
+		
+		    /* POSITION DIALOG */
+			$('.hoverCalendars').css({'width': 200});
+			var hovCal = $(this).offset();
+			var calHeight = $(".hoverCalendars").outerHeight();
+			var calWidth = $(".hoverCalendars").outerWidth();
+			var hovCalLeft = hovCal.left+15;
+		    var hovCalTop = hovCal.top;
+			var windowWidth = $(window).width();
+			
+			if( calWidth + hovCalLeft > windowWidth ){
+				hovCalLeft = hovCal.left-calWidth;
+				$(".hoverCalendars").addClass("oppositeSide");
+			}    
+		        
+		    $('.hoverCalendars').css({
+		        'top':  hovCalTop - (calHeight/2) +10,
+		        'left': hovCalLeft,
+		    });
+		    
+		},function(){		
+		    $(".hoverCalendars").hide().remove();
+		});
+				
+				
+				
+	});
+</script>
+		<!--
+
+
+
+			<table style="width:96%;">
+				<tr>
+					<b><#= $.i18n.prop('meetings.time') #>: </b>
+				</tr>
+				<tr>
+					<td width="20">
+						<#= $.i18n.prop('meetings.start') #>:
+					</td>
+					<td width="10">
+
+						<# var minList=$.i18n.prop('general.minList').split(","); #>
+						<# var hourList=$.i18n.prop('general.hourList').split(","); #>
+						<# var dayList=$.i18n.prop('general.dayList').split(","); #>
+						<# var monthList=$.i18n.prop('general.monthList').split(","); #>
+						<# var d=new Date(); var yearList= new Array(d.getFullYear(),d.getFullYear()+1); #>
+
+						<select id="dayFromMeeting" name="dayFromMeeting" value="">
+				           <# for(var i=0; i < dayList.length; i++) {  #>
+					          <option value="<#= dayList[i] #>"><#= dayList[i] #></option>
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+
+						<select id="monthFromMeeting" name="monthFromMeeting" value="">
+				           <# for(var i=0; i < monthList.length; i++) {  #>
+				    		<option value="<#= monthList[i]-1 #>"><#= monthList[i] #></option>
+				           <# } #>
+                        </select>
+
+					</td>
+					<td width="10">
+
+						<select id="yearFromMeeting" name="yearFromMeeting" value="">
+				           <# for(var i=0; i < yearList.length; i++) {  #>
+				    		<option value="<#= yearList[i] #>"><#= yearList[i] #></option>
+				           <# } #>
+                        </select>
+
+					</td>
+					<td width="10">
+						<input type="hidden"  id="datepickerStart"     />
+					</td>
+
+					<td width="10">
+						<span id="hourMinTextFromMeeting"><#= $.i18n.prop('locationRequest.at') #>: </span>
+					</td>
+					<td width="10">
+						<select id="hourFromMeeting" name="hourFromMeeting" value="">
+				           <# for(var i=0; i < hourList.length; i++) {  #>
+				    		<option value="<#= hourList[i] #>"><#= hourList[i] #></option>
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+
+						<select id="minuteFromMeeting" name="minuteFromMeeting" value="">
+				           <# for(var i=0; i < minList.length; i++) {  #>
+				    		<option value="<#= minList[i] #>"><#= minList[i] #></option>
+				           <# } #>
+                        </select>
+
+					</td>
+				</tr>
+
+				<tr>
+					<td width="20">
+						<#= $.i18n.prop('meetings.end') #>:
+					</td>
+					<td  width="10">
+
+						<select id="dayToMeeting" name="dayToMeeting" value="">
+				           <# for(var i=0; i < dayList.length; i++) {  #>
+					          <option value="<#= dayList[i] #>"><#= dayList[i] #></option>
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+						<select id="monthToMeeting" name="monthToMeeting" value="">
+				           <# for(var i=0; i < monthList.length; i++) {  #>
+				    		<option value="<#= monthList[i]-1 #>"><#= monthList[i] #></option>
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+						<select id="yearToMeeting" name="yearToMeeting" value="">
+				           <# for(var i=0; i < yearList.length; i++) {  #>
+				    		<option value="<#= yearList[i] #>"><#= yearList[i] #></option>
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+					<input type="hidden"  id="datepickerStop" />
+
+					</td>
+					<td width="10">
+						<span id="hourMinTextToMeeting"><#= $.i18n.prop('locationRequest.at') #>: </span>
+					</td>
+					<td width="10">
+
+						<select id="hourToMeeting" name="hourToMeeting" value="">
+				           <# for(var i=0; i < hourList.length; i++) {  #>
+				    		<option value="<#= hourList[i] #>"><#= hourList[i] #></option>
+				           <# } #>
+                        </select>
+
+					</td>
+					<td width="10">
+
+						<select id="minuteToMeeting" name="minuteToMeeting" value="">
+				           <# for(var i=0; i < minList.length; i++) {  #>
+				    		<option value="<#= minList[i] #>"><#= minList[i] #></option>
+				           <# } #>
+                        </select>
+
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan=1></td>
+					<td><input type="checkbox" id="meetingCheckboxAllDay"  value="true" name="meetingCheckboxAllDay" onclick="this.value=this.checked; meetingAllDaySelected(this, null, null);"/></td>
+					<td><#= $.i18n.prop('meetings.allDay') #></td>
+				</tr>
+			</table>
+
+			<b><#= $.i18n.prop('meetings.details') #>: </b><br>
+			<b>
+			 <textarea style="width:93%;" class="inputText vldMaxLength250" id="meetingDetails" rows="4" cols="" name="meetingDetails" />
+			</b>
+		</div>
+
+		<div id="meetingAttendees">
+			<b><#= $.i18n.prop('meetings.attendees') #>: </b><br>
+			<b>
+				<textarea style="width:93%;" class="inputText vldMaxLength250" id="meetingUsers" rows="4" cols="" name="meetingUsers" />
+			</b>
+		</div>
+
+		<div>
+			<table>	<tr>
+				<td><b><input type="checkbox" id="checkboxShowEta"  value="true" name="checkboxShowEta" checked="checked" onclick="this.value=this.checked;"/>
+						<#= $.i18n.prop('meetings.viewShowEta') #></b></td>
+						<td><b>
+						 <input type="checkbox" id="checkboxShowLocation"  value="true" name="checkboxShowLocation" checked="checked" onclick="this.value=this.checked;"/>
+						<#= $.i18n.prop('meetings.viewShowLocation') #></b></td>
+
+						<td><b>
+						 <input type="checkbox" id="checkboxWarnETA"  value="true" name="checkboxWarnETA" checked="checked" onclick="this.value=this.checked;"/>
+						<#= $.i18n.prop('meetings.warnAboutETA') #></b></td>
+				</tr>
+				</table>
+		</div>
+	</div>
+-->
+
+	<!--
+	<div id="saveBtn">
+		<a class="button" href="javascript:void(0);" onclick="$('#meetingNewDialog').dialog('close');">
+			<#= $.i18n.prop('buttons.cancel') #>
+		</a>
+		<a class="button" href="javascript:void(0);" onclick="if (lbasValidate('secondpart'))preSaveMeeting(true);">
+			<#= $.i18n.prop('buttons.send') #>
+		</a>
+	</div>
+	 -->
+<!-- </form> -->

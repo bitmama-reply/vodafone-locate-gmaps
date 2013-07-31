@@ -1,0 +1,23 @@
+<div id="requestPermissionMessageDetailContent" class="inboxMessageContentDiv">
+
+    <b style="padding-left:15px"><#= json.detailTitle #></b>
+			
+	<table  align="center" class="formTable" cellpadding="15" cellspacing="15">
+		
+		<tr>
+			<td><b><#= $.i18n.prop('messageDetail.from') #>: </b><#= json.from #> </td>
+		</tr>
+		
+		<tr>
+			<td><#= json.content #></td>
+		</tr>
+
+		<# if(json.messageBoxTypeName == 'INBOX' || json.messageBoxTypeName == 'TRASH') { #>
+			<tr>
+      			<a href="javascript:void(0);" onclick="showCategoryDetail(<#= json.poiCategoryId #>,'<#= json.categoryName #>',<#= json.categoryPoiCount #>);"><#= $.i18n.prop('category.edit') #></a>
+			</tr>
+		<# } #>
+	</table>
+		
+</div>
+ 

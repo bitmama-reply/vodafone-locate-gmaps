@@ -1,0 +1,63 @@
+<h1><#= $.i18n.prop('admin.AssetManagement') #></h1>
+<div class="admin-asset-wrap">
+	<#= parseTemplate('adminToolbar', { exportFlag: true }) #>
+	<table class="list-content" style="display:none;">
+		<thead>
+			<tr>
+				<th class="first"><input type="checkbox" class="list-select-all" /></th>
+				<th data-sortColumn="name"><span><#= $.i18n.prop('admin.userlist.column.name') #></span></th>
+				<th data-sortColumn="surname"><span><#= $.i18n.prop('admin.assetList.column.model') #></span></th>
+				<th data-sortColumn="identificationNumber"><span><#= $.i18n.prop('admin.list.IDNumber') #></span></th>
+				<th data-sortColumn="allocatedToFullName"><span><#= $.i18n.prop('assetEdit.allocatedTo') #></span></th>
+				<th data-sortColumn="groupName"><span><#= $.i18n.prop('assetEdit.group') #></span></th>
+				<th data-sortColumn="msisdn"><span><#= $.i18n.prop('admin.list.MobileNo') #></span></th>
+				<th data-sortColumn="active"><span><#= $.i18n.prop('companyList.Status') #></span></th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr class="sample-row">
+				<td class="first">
+					<input name="" type="checkbox" value=""/>
+					<input type="hidden" name="id"/>
+				</td>
+				<td class="name"></td>
+				<td class="model"></td>
+				<td class="id-number"></td>
+				<td class="allocated-to"></td>
+				<td class="group"></td>
+				<td class="mobile-no"></td>
+				<td class="status"></td>
+				<td class="actions last">
+					<a class="btn-update" href="javascript:void(0);"><#= $.i18n.prop('buttons.update') #></a>
+					<a class="btn-delete" href="javascript:void(0);"><#= $.i18n.prop('buttons.delete') #></a>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<div class="import-form" style="display:none;">
+		<form action="json/uploadAssetFile.action" method="post" enctype="multipart/form-data">
+			<div class="import-legend-row"><a href="getImportTemplate.action?fileType=asset&amp;uploadType=xls"><#= $.i18n.prop('admin.list.downloadLink', 'TemplateForAssetUpload.xls') #></a></div>
+			<div class="clearfix">
+				<div class="import-legend-row left">
+					<input type="hidden" name="uploadType" value="xls" />
+					<input type="file" name="uploadObj" />
+				</div>
+				<a href="javascript:void(0);" class="upload-button graphicBtn violet right">
+					<span><#= $.i18n.prop('buttons.upload') #></span>
+				</a>
+			</div>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		$(function(){
+			var assetManagement = new AssetManagement();
+			assetManagement.wrapClass = 'admin-asset-wrap';
+			assetManagement.options.deleteText=$.i18n.prop('admin.delete.asset.confirm');
+		});
+	</script>
+</div>

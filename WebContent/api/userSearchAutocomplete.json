@@ -1,0 +1,25 @@
+{
+    "errorText": null,
+    "excludedUser": null,
+    "id_list": null,
+    "q": "om",
+    "resultList": [
+        {
+            "key": "u113219399891",
+            "value": "Omar Adobati 0"
+        },
+        {
+            "key": "u113219399891",
+            "value": "Omar Adobati 1"
+        },
+        {
+            "key": "u113219399891",
+            "value": "Omar Adobati 2"
+        },
+        {
+            "key": "u113219399891",
+            "value": "Omar Adobati 3"
+        }              
+    ],
+    "retrieveAssets": true
+}

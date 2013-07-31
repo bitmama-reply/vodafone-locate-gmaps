@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<link type="text/css" rel="stylesheet" href="../../js/jquery/plugins/cleditor/jquery.cleditor.css" />
+	<link type="text/css" rel="stylesheet" href="../../style/newStyles.css" />
+	<link type="text/css" rel="stylesheet" href="../../style/account.css" />
+	<link type="text/css" rel="stylesheet" href="../../style/styleEnd.css">
+
+	<script type="text/javascript" src="../../js/ext/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="../../js/ext/jquery-ui-1.8.16.custom.min.js"></script>
+	<script type="text/javascript" src="../../js/ext/jquery.i18n.properties-min-1.0.9.js"></script>
+	<script type='text/javascript' src='../../js/jquery/plugins/cleditor/jquery.cleditor.min.js'></script>
+	<script type="text/javascript" src="../../js/lbas_original/common/lbasCommon.js"></script>
+	<script type="text/javascript" src="../../js/lbas/i18n.js"></script>
+	<script type="text/javascript" src="../../js/lbas/utils.js"></script>
+	<script type="text/javascript" src="../../js/lbas_original/users/account.js"></script>
+
+	<style type="text/css">
+	html, body {margin:0;padding:0;overflow:hidden;font-family:Arial,Helvetica,sans-serif;font-style:inherit;font-weight:inherit; font-size:13px; }
+	#container {position:absolute}
+	.purple_button{ padding-left:7px !important; }
+	.purple_button span{
+		display:block;
+		margin-top:-2px;
+	}
+	.ui-dialog .ui-dialog-buttonpane{ padding:1.5em 0 0 10px !important; }
+	.ui-dialog .ui-dialog-titlebar .ui-dialog-title img{ display:none; }
+	</style>
+
+	<script type="text/javascript">
+	$.ajaxSetup({
+		cache: false
+	});
+
+	$(document).ready(function() {
+		localize.init = function(){
+			jQuery.i18n.properties({
+				name:'lbas_locale',
+				path:'../../resources/',
+				mode:'map',
+				language: userLocale || ''
+			});
+		};
+		localize && localize.init();
+
+		$.post('../../json/showCompanyPrivacyStatement.action', {}, function(json) {
+			$("#idCompanyPrivacyStatement").val(''+$('<div/>').html(json.companyPrivacyStatement).text());
+
+			editor = $("#idCompanyPrivacyStatement").cleditor({
+				width:$('#container').width(),
+				height:"400",
+				controls:"bold italic underline strikethrough subscript superscript | font size " +
+				"style | color highlight removeformat | bullets numbering | outdent " +
+				"indent | alignleft center alignright justify"
+			})[0].focus();
+		});
+
+	});
+
+	function showErrorDialog(errorText, modal) {
+		if (errorText) {
+			$("#errorMessagePrivacy [id*='errorTextPrivacy']").text(errorText);
+		}
+		$("#errorMessagePrivacy").dialog( {
+			bgiframe :true,
+			width :300,
+			modal :modal,
+			buttons : {
+				OK : function() {
+					$(this).dialog('close');
+					$(this).dialog('destroy');
+				}
+			},
+			close :function(event, ui) {
+				$("#errorMessagePrivacy").dialog('destroy');
+			}
+		}).height("auto");
+	}
+
+	function AjxUpdateCompanyPrivacy(){
+		privacyStatement=$($('#idCompanyPrivacyStatement').cleditor()[0].$frame).contents().find("body").html();
+		if ($.trim(privacyStatement).length <= 4) {
+			utils.dialogError({ title: $.i18n.prop('dialog.title.error'), content: $.i18n.prop('error.editor.statementRequired') });
+			return;
+		} else if ($.trim(privacyStatement).length>=20000) {
+			utils.dialogError({ title: $.i18n.prop('dialog.title.error'), content: $.i18n.prop('editor.statementTooLong') });
+			return;
+		}
+
+		$.post('updateCompanyPrivacy.action', {
+			companyPrivacyStatement: $($('#idCompanyPrivacyStatement').cleditor()[0].$frame).contents().find("body").html()
+		}, function(data){
+			if (data == undefined || (data != undefined && data.infoMessage != undefined)){
+				//window.parent.jQuery('#btn_map').click();
+				window.parent.jQuery('#adminNav .adminMenu li').last().find('a').click();
+			}else if (data.fieldErrors != undefined){
+				utils.dialogError({ title: $.i18n.prop('dialog.title.error'), content: data.fieldErrors.companyPrivacyStatement[0] });
+			}
+		});
+		return false;
+	}
+	</script>
+
+</head>
+<body>
+
+	<div id="errorMessagePrivacy" style="display:none" title="Error">
+		<p>
+			<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
+			<div id="errorTextPrivacy"></div>
+		</p>
+	</div>
+
+	<div id="container" style="width:95%">
+		<textarea id="idCompanyPrivacyStatement" name="idcompanyPrivacyStatement"></textarea>
+		<div style="top:420px;right:50px;position:absolute">
+			<a href="javascript:void(0);" class="graphicBtn violet" onclick="AjxUpdateCompanyPrivacy();" style="text-decoration:none;">
+				<span>Update</span>
+			</a>
+		</div>
+	</div>
+
+</body>
+</html>

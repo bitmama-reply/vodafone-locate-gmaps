@@ -1,0 +1,25 @@
+<form id="requestLocationPermission" action="requestLocationPermission" theme="simple">	
+	<input type="hidden" id="userId" name="userId" value="<#= locationReport.user_id #>">
+   	<table cellpadding="9" cellspacing="9">		
+		<tr>
+			<td>
+				<span id="requestedUser"><#= locationReport.fullName #></span>
+			</td>
+		</tr>
+   </table>		
+   
+   <table>
+		<tr>  
+			<td>
+				<textarea id="messageContent" name ="messageContent" cols="50" rows="3" maxlength="160"/>
+			</td>
+		</tr>
+   </table>
+</form>
+
+<script>
+	$('#messageContent').maxlength( {
+		statusText: $.i18n.prop('messages.charLeft'),
+		maxCharacters: 160	
+	});
+</script>

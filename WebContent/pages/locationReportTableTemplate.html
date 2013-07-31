@@ -1,0 +1,98 @@
+<div id="locReportTableDiv" class="report">
+	<div id='reportTopCover'>
+		<div class='header clearfix'>
+			<a href="javascript:void(0);" class="icon on"></a>
+			<div class='openCloseHead'><#= $.i18n.prop('locationReport.title') #></div>
+			<a href="javascript:void(0);" class="closeReport">Close</a>								
+		</div>
+		<div class="openClosePart">
+			<div class='bodyCover'>
+			<table class="locReportTable" cellpadding="0" cellspacing="0">
+				<tbody id=locReportTableDetail>
+			          <# var userIds='';
+			             for (var rowstatus=0; rowstatus < locReportTableList.length; rowstatus++) { 
+			          	 	var top = locReportTableList[rowstatus];
+			          	 	top.userFullName = top.userFullName || top.name;
+			          	 	top.userId = top.userId || top.id;                			
+			          #>
+	
+						<tr class='reportRow'>	
+							<td class="namePart" id="locReportUser<#= top.userId #>">
+							<input type="checkbox" checked="checked" id="<#= top.userId #>" name="<#= top.userFullName #>" value="<#= top.userId #>:<#= top.userFullName #>"/>
+							<#= (top.userFullName || top.name) #>
+							</td>
+							<td class="colors">
+							<# if (top.icon == 'people_aqua-01.png' || top.icon == 'asset_aqua-01.png') { #>
+								<div class="locReportUserIcon locReportUserIconAqua"></div>
+							<# } else if (top.icon == 'People_orange-01.png' || top.icon == 'asset_orange-01.png') { #>
+								<div class="locReportUserIcon locReportUserIconOrange"></div>
+							<# } else if (top.icon == 'People_green-01.png' || top.icon == 'asset_green-01.png') { #>
+								<div class="locReportUserIcon locReportUserIconGreen"></div>
+							<# } else if (top.icon == 'people_purple-01.png' || top.icon == 'asset_purple-01.png') { #>
+								<div class="locReportUserIcon locReportUserIconPurple"></div>
+							<# } else { #>
+								<div class="locReportUserIcon locReportUserIconYellow"></div>
+							<# } #>
+							</td>
+						</tr>	
+					 <# 
+					 		userIds = userIds + top.userId+','; 	
+					 	} 					 	
+					 	if (userIds.length > 1) {
+					 		userIds = userIds.substring(0,userIds.length-1);
+					 	}
+					 	var d = new Date(); 
+					 	var clientTimeZoneOffSetInMiliSecond = -d.getTimezoneOffset() * 60000; 
+					 #>
+				</tbody>
+			</table>
+			
+		</div> <!-- bodyCover -->
+			<div class="buttonsForReport clearfix">
+		
+			<a href="javascript:void(0);" class="multi_user_button" onclick="printRoute('locationReport'); return false;">
+				<span>
+					<#= $.i18n.prop('locationReport.print') #>
+				</span>
+			</a>
+			
+			<a class="purple_button" href="javascript:void(0);" onclick="exportLocationReport(<#= clientTimeZoneOffSetInMiliSecond #>, <#= startdate #>, <#= enddate #>); return false;">
+				<span>
+					<#= $.i18n.prop('locationReport.report') #>
+				</span>
+			</a>
+			
+		 	<select id="locationReportExportType">
+				<option value="pdf" selected>.pdf</option>
+				<option value="kml">.kml</option>
+				<option value="gml">.gml</option>
+				<option value="csv">.csv</option>
+				<option value="xls">.xls</option>
+				<option value="xml">.xml</option>
+			</select>
+			<!--<a href="javascript:void(0);" onclick="clearMapForLocationReport(); return false;"><#= $.i18n.prop('locationReport.clearmap') #> | </a> -->
+			<!-- <a href="javascript:void(0);" onclick="viewReport(<#= startdate #>, <#= enddate #>); return false;"><#= $.i18n.prop('locationReport.viewReport') #></a> -->
+		</div><!-- buttonsForReport -->
+		</div><!-- openClosePart -->
+	</div>
+	<div id='reportBottomCover'></div>
+
+	
+</div>	
+<script type="text/javascript">
+	$(function(){
+		
+		$("#locationReportExportType").selectmenu();
+		
+		$('#locReportTableDiv .icon ,#locReportTableDiv .openCloseHead').on('click', function(){
+			$('#locReportTableDiv .icon').toggleClass('on');
+			$('#locReportTableDiv .openClosePart').slideToggle();
+			return false;
+		});
+		$('#locReportTableDiv .closeReport').on('click', function(){
+			$('#locReportTableDiv').fadeOut('fast').remove();
+			$('#locReportListDiv').parent().hide().remove();
+			return false;
+		});
+	});
+</script>

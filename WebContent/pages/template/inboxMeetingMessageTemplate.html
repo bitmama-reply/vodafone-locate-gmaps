@@ -1,0 +1,129 @@
+<script type="text/javascript">
+$().ready(function() { 
+	prepareMeetingTimeStrOnWireFrame("meetingTimeInbox",<#= json.startTime #>,<#= json.stopTime #> );
+});
+</script>
+
+<div id="meetingMessageDetailContent" align="left" class="inboxMessageContentDiv">
+	
+	<div class="toolsMessage clearfix">
+		<a class="goBack" onclick="hideMessageContent(this);"><#= $.i18n.prop('messages.backToList') #></a>
+		<# if(lbasRightManager && lbasRightManager.checkRight('send_messages')) { #>
+		  <a onclick="openComposeMessageDialogFromInbox()" class="inboxActionLink newMsg"><span><#= $.i18n.prop('messages.newMessage') #></span></a>
+		<# } #> 
+	</div>
+	
+	<div class="head">
+		<div class="clearfix">
+			<h2><#= json.detailTitle #></h2>
+			
+<!--
+			<ul class="messageTools clearfix">
+				<li>
+					<a onclick="deleteMessage(1,<#= json.messageId #>);" class="inboxActionLink marginLeft"><span><#= $.i18n.prop('message.Delete') #></span></a>
+				</li>
+				<li>
+					<a onclick="forwardMessage(<#= json.messageId #>, 0 ,1);" class="inboxActionLink"><span><#= $.i18n.prop('message.Forward') #></span></a>
+				</li>
+				<li>
+					<a onclick="replyToMessage(<#= json.messageId #>, 'all');" class="inboxActionLink"><span><#= $.i18n.prop('message.ReplyAll') #></span></a>
+				</li>
+				<li>
+					<a onclick="replyToMessage(<#= json.messageId #>, 'single');" class="inboxActionLink"><span><#= $.i18n.prop('message.Reply') #></span></a>
+				</li>
+			</ul>
+-->
+			
+			
+		</div>
+		<div class="clearfix">
+			<h3 class="from">
+				<#= $.i18n.prop('messageDetail.from') #>: <span><#= json.from #></span> 
+		  </h3>
+		  <h3 class="to">
+		    <!-- json.toUserId -->
+				<#= $.i18n.prop('messageDetail.to') #>: <span><#= json.to #></span>
+			</h3>
+			
+			<p class="sentTime"><#= $.i18n.prop('messageDetail.sent') #>:&nbsp;</p>
+			
+		</div>
+	</div>
+
+	
+	
+	<table class="formTable">
+		<tr>
+			<td>
+				<b><#= $.i18n.prop('messageDetail.when') #>: </b><span id ="meetingTimeInbox"></span>
+			</td>
+	
+		</tr>
+		<tr>
+			<td><b><#= $.i18n.prop('messageDetail.where') #>: </b><#= json.where #>
+			<# if(!json.deleted) { #>
+				<# if(json.where !== null) { #>
+					<a href="javascript:void(0);" class="viewOnMap" onclick="locateUserAndMeeting('<#= json.id #>',currentUser);"><#= $.i18n.prop('meetings.viewonmap') #></a>
+				<# } #>					
+			<# } #>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<# if(!json.deleted) { #>
+			 		<b><#= $.i18n.prop('messageDetail.requestAnswerStatus') #>: </b>
+			 	<# } else { #>
+			 		<b><#= $.i18n.prop('messageDetail.meetingStatus') #>: </b>
+			 	<# } #>
+			 	
+			 	<span id="meetingRequestAnswerStatusId"><#= json.requestAnswerStatus #></span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<b><#= $.i18n.prop('meetings.attendees') #>: </b>
+				<span id="meetingRequestAttendeContentId"><#= json.meetingAttendeeContent #></span>
+			</td>		
+		</tr>
+		<tr>
+			<td>
+				<b><#= $.i18n.prop('categoryDetail.CategoryDescription') #>: </b><#= json.meetingDetailContent #>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<# if( json.answerStatus === 0 && json.requestAnswerStatus !== $.i18n.prop('messageDetail.REARRANGED') ) {#>  	
+				<div id="meetinginboxcheckboxes">
+					<table class="formTable">		
+						<tr>		
+							<td><input type="checkbox" id="showEta_<#= json.id #>" name="showEta"/></td><td><#= $.i18n.prop('messageDetail.showMyETA') #></td>
+							<td><input type="checkbox" id="showLocation_<#= json.id #>" name="showLocation"/></td><td><#= $.i18n.prop('messageDetail.showMyLocation') #></td>
+							<td><input type="checkbox" id="showWarn_<#= json.id #>" name="showWarn"/></td><td><#= $.i18n.prop('messageDetail.warnAboutETA') #></td>
+						</tr>
+					</table>
+				</div>
+<!--
+					<div id="meetinginboxbuttons" >
+						<a href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnGrey" onclick="answerMeetingRequest('<#= json.id #>',false,$('#showEta_<#= json.id #>'),$('#showLocation_<#= json.id #>'),$('#showWarn_<#= json.id #>'));">		                   	                                          	                        
+							<span class="btnSpan"><lm name="buttons.reject"/></span>               	
+						</a>&nbsp;
+						<a href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnGrey" onclick="preAcceptMeetingRequest('<#= json.id #>',true,$('#showEta_<#= json.id #>'),$('#showLocation_<#= json.id #>'),$('#showWarn_<#= json.id #>'));">	                        
+							<span class="btnSpan"><lm name="buttons.accept"/></span>
+						</a>
+					</div>
+-->
+				
+					<div id="meetinginboxbuttons" class="clearfix">
+						<a href="javascript:void(0);"  class="multi_user_button" onclick="answerMeetingRequest('<#= json.id #>',false,$('#showEta_<#= json.id #>'),$('#showLocation_<#= json.id #>'),$('#showWarn_<#= json.id #>') ,<#=json.startTime #> ,<#= json.stopTime #>); return false;">		                                                        
+							<span class="btnSpan"><lm name="buttons.reject"/><#= $.i18n.prop('buttons.reject') #></span>               	
+						</a>
+						<a href="javascript:void(0);"  class="purple_button" onclick="preAcceptMeetingRequest('<#= json.id #>',true,$('#showEta_<#= json.id #>'),$('#showLocation_<#= json.id #>'),$('#showWarn_<#= json.id #>'),<#=json.startTime #> ,<#= json.stopTime #>); return false;">	                        
+							<span class="btnSpan"><lm name="buttons.accept"/><#= $.i18n.prop('buttons.accept') #></span>
+						</a>
+					</div>
+				<# } #>
+			</td>
+		</tr>
+	</table>
+</div>

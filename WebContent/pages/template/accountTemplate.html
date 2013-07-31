@@ -1,0 +1,60 @@
+
+	<div id="accountNav">
+		<ul class="accountMenu">
+
+			<li>
+				<a data-tpl="accountDetails">
+					<span><#= $.i18n.prop('user.menu.details') #></span>
+				</a>
+			</li>
+
+			<li>
+<!-- 				<a data-tpl="accountPassword"> -->
+				<a data-tpl="accountChangePassword">
+					<span><#= $.i18n.prop('user.password') #></span>
+				</a>
+			</li>
+
+			<li>
+				<a data-tpl="accountGroups">
+					<span><#= $.i18n.prop('user.menu.groups') #></span>
+				</a>
+			</li>
+
+			<li>
+				<a data-tpl="accountTimeZone">
+					<span><#= $.i18n.prop('user.menu.timezone') #></span>
+				</a>
+			</li>
+
+			<li>
+				<a data-tpl="accountUnits">
+					<span><#= $.i18n.prop('user.Units') #></span>
+				</a>
+			</li>
+
+			<li>
+				<a data-tpl="accountTemperature">
+					<span><#= $.i18n.prop('user.Temperature') #></span>
+				</a>
+			</li>
+
+			<li>
+				<a data-tpl="accountWorkAddress">
+					<span><#= $.i18n.prop('user.WorkAddress') #></span>
+				</a>
+			</li>
+
+			<li class="last">
+				<a data-tpl="accountLanguage">
+					<span><#= $.i18n.prop('user.lang') #></span>
+				</a>
+			</li>
+
+		</ul>
+	</div>
+
+	<div id="accountContent">
+		<h1 class="underline"><#= $.i18n.prop('welcome.myAccount') #></h1>
+		<div class="inside"></div>
+	</div>

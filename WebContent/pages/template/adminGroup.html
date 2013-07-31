@@ -1,0 +1,42 @@
+<h1><#= $.i18n.prop('admin.GroupManagement') #></h1>
+
+<div class="admin-group-wrap">
+	<#= parseTemplate('adminToolbar', { exportFlag: false }) #>
+
+	<table class="list-content" style="display:none;">
+
+		<thead>
+			<tr>
+				<th class="first"><input type="checkbox" class="list-select-all" /></th>
+				<th data-sortColumn="name"><span><#= $.i18n.prop('admin.userlist.column.name') #></span></th>
+				<th data-sortColumn="active"><span><#= $.i18n.prop('companyList.Status') #></span></th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr class="sample-row">
+				<td class="first">
+					<input name="" type="checkbox" value=""/>
+					<input type="hidden" name="id"/>
+				</td>
+				<td class="name"></td>
+				<td class="status"></td>
+				<td class="actions last">
+					<a class="btn-update" href="javascript:void(0);"><#= $.i18n.prop('buttons.update') #></a>
+					<a class="btn-delete" href="javascript:void(0);"><#= $.i18n.prop('buttons.delete') #></a>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<script type="text/javascript">
+		$(function(){
+			var groupManagement = new GroupManagement();
+			groupManagement.wrapClass = 'admin-group-wrap';
+			groupManagement.options.deleteText=$.i18n.prop('admin.delete.group.confirm');
+			
+		});
+	</script>
+</div>

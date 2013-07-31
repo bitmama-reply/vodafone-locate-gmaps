@@ -1,0 +1,73 @@
+<form id="updateGroupPermissions">
+	<table id = "groupEditRightTable" cellpadding="9" cellspacing="9">
+		<input type="hidden" id="groupstate" value="<#= json.lbasGroup.state #>" name="lbasGroup.state"/>
+		<tr>
+			<td> <# if(json.lbasGroup.add_enterprise_location){	 #>
+			<input type="checkbox" value="true" name="lbasGroup.add_enterprise_location" checked="checked" onclick="this.value=this.checked;addEnterpriseClicked(this.checked,1);"/>
+			<# }else{ #>
+			<input type="checkbox" value="false" name="lbasGroup.add_enterprise_location" onclick="this.value=this.checked;addEnterpriseClicked(this.checked,1);"/>
+			<# } #> </td>
+			<td><#= $.i18n.prop('groupPermission.AddEnterpriseLocations') #></td>
+			<td width ="22">&nbsp</td>
+			<td> <# if(json.lbasGroup.create_enterprise_categories){ #>
+			<input type="checkbox" value="true" name="lbasGroup.create_enterprise_categories" checked="checked" onclick="this.value=this.checked;"/>
+			<# }else{ #>
+			<input type="checkbox" value="false" name="lbasGroup.create_enterprise_categories" onclick="this.value=this.checked;"/>
+			<# } #> </td>
+			<td><#= $.i18n.prop('groupPermission.CreateEnterpriseCategory') #></td>
+		</tr>
+		<tr>
+			<td> <# if(json.lbasGroup.create_edit_users){ #>
+			<input type="checkbox" value="true" name="lbasGroup.create_edit_users" checked="checked" onclick="this.value=this.checked;"/>
+			<# }else{ #>
+			<input type="checkbox" value="false" name="lbasGroup.create_edit_users" onclick="this.value=this.checked;"/>
+			<# } #> </td>
+			<td><#= $.i18n.prop('groupPermission.CreateEditUsers') #></td>
+			<td width ="22">&nbsp</td>
+			<td> <# if(json.lbasGroup.create_edit_groups){ #>
+			<input type="checkbox" value="true" name="lbasGroup.create_edit_groups" checked="checked" onclick="this.value=this.checked;"/>
+			<# }else{ #>
+			<input type="checkbox" value="false" name="lbasGroup.create_edit_groups" onclick="this.value=this.checked;"/>
+			<# } #> </td>
+			<td><#= $.i18n.prop('groupPermission.CreateEditGroups') #></td>
+		</tr>
+		<tr>
+			<td> <# if(json.lbasGroup.request_current_location){ #>
+			<input type="checkbox" value="true" name="lbasGroup.request_current_location" checked="checked" onclick="this.value=this.checked;"/>
+			<# }else{ #>
+			<input type="checkbox" value="false" name="lbasGroup.request_current_location" onclick="this.value=this.checked;"/>
+			<# } #> </td>
+			<td><#= $.i18n.prop('groupPermission.RequestLocation') #></td>
+			<td width ="22">&nbsp</td>
+			<td> <# if(json.lbasGroup.request_location_report){ #>
+			<input type="checkbox" value="true" name="lbasGroup.request_location_report" checked="checked" onclick="this.value=this.checked;"/>
+			<# }else{ #>
+			<input type="checkbox" value="false" name="lbasGroup.request_location_report" onclick="this.value=this.checked;"/>
+			<# } #> </td>
+			<td><#= $.i18n.prop('groupPermission.RequestLocationReport') #></td>
+		</tr>
+		<tr>
+			<td> <# if(json.lbasGroup.view_enterprise_locations){ #>
+			<input type="checkbox" value="true" name="lbasGroup.view_enterprise_locations" checked="checked" onclick="this.value=this.checked;viewEnterpriseClicked(this.checked, 1);"/>
+			<# }else{ #>
+			<input type="checkbox" value="false" name="lbasGroup.view_enterprise_locations" onclick="this.value=this.checked;viewEnterpriseClicked(this.checked, 1);"/>
+			<# } #> </td>
+			<td><#= $.i18n.prop('groupPermission.ViewEnterpriseLocations') #></td>
+			<td width ="22">&nbsp</td>
+			<td> <# if(json.lbasGroup.create_meetings){ #>
+			<input type="checkbox" value="true" name="lbasGroup.create_meetings" checked="checked" onclick="this.value=this.checked;"/>
+			<# }else{ #>
+			<input type="checkbox" value="false" name="lbasGroup.create_meetings" onclick="this.value=this.checked;"/>
+			<# } #> </td>
+			<td><#= $.i18n.prop('groupPermission.CreateMeetings') #></td>
+		</tr>
+		<tr>
+			<td> <# if(json.lbasGroup.send_messages){ #>
+			<input type="checkbox" value="true" name="lbasGroup.send_messages" checked="checked" onclick="this.value=this.checked;"/>
+			<# }else{ #>
+			<input type="checkbox" value="false" name="lbasGroup.send_messages" onclick="this.value=this.checked;"/>
+			<# } #> </td>
+			<td><#= $.i18n.prop('groupPermission.SendMessages') #></td>
+		</tr>
+	</table>
+</form>

@@ -1,0 +1,40 @@
+<div class="toolbar-panel clearfix">
+
+	<div class="search-box">
+		<span>
+			<input class="search ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" />
+			<span class="searchMagnifier">&nbsp;</span>
+		</span>
+	</div>
+
+	<div class="right actions-list-box" style="display:none;">
+		<label><#= $.i18n.prop('general.actions') #>:</label>
+		<div class="actions-list-wrapper no-selected viewed">
+			<select class="actions-list">
+				<# if (exportFlag) { #>
+					<option value="xls"><#= $.i18n.prop('admin.list.export.excel') #></option>
+					<option value="csv"><#= $.i18n.prop('admin.list.export.csv') #></option>
+					<option value="xml"><#= $.i18n.prop('admin.list.export.xml') #></option>
+					<option value="pdf"><#= $.i18n.prop('admin.list.export.pdf') #></option>
+				<# } #>
+			</select>
+		</div>
+		<div class="actions-list-wrapper for-selected">
+			<select class="actions-list">
+				<# if (exportFlag) { #>
+					<option value="xls"><#= $.i18n.prop('admin.list.export.excel') #></option>
+					<option value="csv"><#= $.i18n.prop('admin.list.export.csv') #></option>
+					<option value="xml"><#= $.i18n.prop('admin.list.export.xml') #></option>
+					<option value="pdf"><#= $.i18n.prop('admin.list.export.pdf') #></option>
+				<# } #>
+			</select>
+		</div>
+		<a href="javascript:void(0);" class="graphicBtn little toolbar-apply"><span><#= $.i18n.prop('buttons.apply') #></span></a>
+	</div>
+
+</div>
+
+<div class="list-toolbar toolbar-panel-info clearfix">
+	<div class="list-count"></div>
+	<div class="list-paging"></div>
+</div>

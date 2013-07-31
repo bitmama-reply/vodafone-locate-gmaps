@@ -1,0 +1,35 @@
+<div class="modBorder">
+	<div class="modCopy" style="overflow:auto">
+              <table id="recentRoutesTable" class="recentRoutesTable" cellpadding="0" cellspacing="0">
+				<# var routeNL;for(var i=0; i < json.recentRouteList.length; i++) { var top = json.recentRouteList[i]; #>	   
+				<tr class="recentRoutesTr" 
+					onmouseout="$(this).removeClass('recentRoutesTrSelected');$(this).addClass('recentRoutesTr');" 
+					onmouseover="$(this).removeClass('recentRoutesTr');$(this).addClass('recentRoutesTrSelected');" 
+					id="<#= top.route_id #>">
+					
+					<td class="tdDotBrHomePage"><img src="images/requested_location.png"></td>                                 
+    				<td class="recentLocation tdDotBrHomePage" style="width:310px"
+    					onclick="splitPointsAndRedrawRoute('<#= top.routePathName #>','<#= top.routePathCoord #>');" >
+                        <b style="color: rgb(102, 102, 102); font-size: 11px;">
+                        <# routeNL=top.routePathName.split(';'); #>
+                        <# if(routeNL.length == 0) { #>
+                        <span>                                                   
+                        <#= $.i18n.prop('errors.no.address') #>                   
+                        </span>
+                        <# } if(routeNL[0] != routeNL[routeNL.length - 1]) { #>
+                        <span>                                                   
+                        <#= routeNL[0] #> <#= $.i18n.prop('locationRequests.content.to') #> <#= routeNL[routeNL.length - 1] #>                   
+                        </span>
+                        <# } else { #>
+                        <span>                                                   
+                        <#= $.i18n.prop('errors.no.address') #>                   
+                        </span>
+                        <# } #>
+                        </b>
+                        <p style="font-size:10px"><#= top.routeDistance/1000 #> kms</p>
+                     </td>
+                </tr>                                                             
+               <# } #>
+              </table>         
+	</div>
+</div>

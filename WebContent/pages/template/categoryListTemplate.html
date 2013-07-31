@@ -1,0 +1,166 @@
+<script type="text/javascript">
+var centerpHeight = parseInt($('#centerP').css('height'));
+$('#catgList'+<#= json.type #>).css('height', centerpHeight-155 + 'px');
+</script>
+<div id="catgList<#= json.type #>" class="modBorder" style="overflow-x:hidden;overflow-y:auto">
+  <div class="modHeader petrolBG">
+  	  <div id="breadCrumb" style="cursor:pointer" onclick="listLocation()">
+			<div class="triangle" style="margin-top:2px"></div>
+			<div style="float: left; width: 80px; height: 20px; background-color: #8DC8CF; color: white; text-align: center;margin-top:2px">
+			<div class="leftMenBackLink"><h2 class='btnSpan lm' key='category.AllLocations'><#= $.i18n.prop('category.AllLocations') #></h2></div>
+			</div>
+	  </div>	
+ 
+	  <# if(json.type ==1) { #><div><h2 style="margin-top:2px" class='btnSpan lm' key='category.PersonalLocations' ><#= $.i18n.prop('category.PersonalLocations') #></h2></div>
+	  <# } else if(json.type ==0) { #><div><h2 style="margin-top:2px" class='btnSpan lm' key='category.EnterpriseLocations'><#= $.i18n.prop('category.EnterpriseLocations') #></h2></div><# } #>
+  
+  </div>
+  
+  <!--<div id="hideMulti<#= json.type #>" style="display:none;" class="hideSelection" >
+    <table width="%100">
+    	<tbody>
+    		<tr><td><#= $.i18n.prop('category.HideSelection') #></td><td align="right" ><div onclick="hideAllCategoryChecks(<#= json.type #>);" class="hideSelectionCloseBtn"></div></tr>
+    	</tbody>
+    </table>
+  </div>-->
+  
+  <table id="categoryTable" class="catgTable" cellpadding="0" cellspacing="0">
+	<tbody>
+	   <# categorySize=json.categoryArr.length+1; if(json.categoryArr.length > 0) {    
+	      var showSelectMulti=true; #>
+	
+          <# for(var rowstatus=0; rowstatus < json.categoryArr.length; rowstatus++) { var top = json.categoryArr[rowstatus]; #>
+
+				<# if(!top.credentials.view && top.id != -1) { #>
+					<tr style="background-color: #F1F0F1;">
+						<td id="categoryCheck<#= json.type #>_<#= rowstatus+1 #>" class="tdDotBr"
+						style="height:40px;margin:0;">&nbsp;</td>
+						
+						<# if(json.scaledImageIdList.indexOf(top.iconId) > -1) { #>
+						<td style="height: 40px; margin: 0;padding-left:24px" class="tdDotBr" colspan="2">
+							<img src="showImage?imageId=<#=top.iconId#>" />
+						</td>
+						<# } else { #>
+						<td style="height: 40px; margin: 0;padding-left:24px" class="tdDotBr" colspan="2"><img src="<#= contextPath #>/images/<#= top.iconName #>"></td>
+						<# } #>
+						
+						<td class="locationCategory tdDotBr" style="color: #7E7E7E">
+						   <#= top.name #>
+						</td>
+						<td  class="tdDotBr lm" style="height: 40px; margin: 0; width: 75px"><a
+							href="javascript:void(0);" class="standartLink"
+							style="font-size:9px;text-align:right"
+							key="category.RequestPermission"
+							onclick="openRequestCategoryPermissionDialog(<#= top.id #>,'<#= top.name #>')">
+							<#= $.i18n.prop('category.RequestPermission') #>
+						</a></td>
+					</tr>
+				 <# } #>	
+				 
+				
+				<# if(top.credentials.view || top.id == -1) { #>
+					<tr id="<#= top.id #>" style="background-color:#EFEFEF;"
+						onmouseover="this.style.backgroundColor='#FFFFFF';$('#editCategory<#= rowstatus+1 #>').show();"
+						onmouseout="this.style.backgroundColor='#EFEFEF';$('#editCategory<#= rowstatus+1 #>').hide();">
+						
+						<td style="height:14px;width:8px;cursor:pointer" class="tdDotBr" <# if(top.poiCount > 0) { #> onclick="loadPoisUnderCategory(<#= top.type #>,<#= top.id #>,0,<#= top.poiCount #>,0,false)"<# } #>>&nbsp;<# if(top.poiCount > 0) { #><img id="cacIcon<#= top.id #>" src="<#= contextPath #>/images/expand_window.png" class="lbasAccordionIcon" /><# } #></td>
+						
+						<td id="categoryCheck<#= json.type #>_<#= rowstatus+1 #>" style="height:40px;margin:0;" class="tdDotBr"> 
+						   &nbsp;
+							<#
+						   	var tmp = top.name; 
+							var category_name = tmp.replace("'", "\\'"); #>
+							  <input type="checkbox" id="categorycheckbox-id<#= top.id #>" name="checkbox1" value="<#= top.id #>:<#= top.type #>:<#= json.listIndex #>:<#= top.poiCount #>:'<#= category_name #>':<#= top.credentials.edit #>:<#= top.credentials.remove #>:<#= top.credentials.editPermission #>" name="checkbox1" onchange="clickPoiOrCatgCheckBox(this)"/>
+						</td>
+	
+						<td style="height:40px;margin:0;cursor:pointer;padding-left:4px" class="tdDotBr" <# if(top.poiCount >0) { #> onclick="loadPoisUnderCategory(<#= top.type #>,<#= top.id #>,0,<#= top.poiCount #>,0,false)" <# } #>>
+						  
+						  <# if(json.scaledImageIdList.indexOf(top.iconId) > -1) { #>
+						  <img src="showImage?imageId=<#=top.iconId#>" />
+						  <# } else { #>
+						  <img src="<#= contextPath #>/images/<#= top.iconName #>" />
+						  <# } #>
+						</td>
+						
+						  
+					    <td class="locationCategory tdDotBr" <# if(top.poiCount >0) { #> onclick="loadPoisUnderCategory(<#= top.type #>,<#= top.id #>,0,<#= top.poiCount #>,0,false)" style="cursor:pointer"<# } #>>
+					    <b>
+					    	<# if(top.name.length>13){ #>
+	                          <#= top.name.substr(0,13) #>...
+                            <# } else { #>
+                               <#= top.name #>
+                            <# } #>
+						  (<#= top.poiCount #>)</b>
+                     	</td>
+						 
+						
+						<# if(top.credentials.edit) { #>
+							<td style="height:40px;margin:0;width:68px" class="tdDotBr">
+							&nbsp;
+							
+							<div id="editCategory<#= rowstatus+1 #>" style="margin-right:10px;display:none;" onclick=""> 
+							
+							<# if(top.type == 1) { #>
+								<span style="cursor: pointer;"
+								 onclick="openPersonalEditCategoryDialog(<#= top.type #>,<#= top.id #>,'<#= top.name #>' ,<#= top.poiCount #>); return false;">
+								   <img src="./images/edit_resize1.png" />
+								</span>
+							<# } else if(lbasRightManager.checkRight('add_enterprise_location')) { #>
+								<span style="cursor: pointer;"
+								  onclick="openEnterpriseEditCategoryDialog(<#= top.type #>,<#= top.id #>,'<#= top.name #>' ,<#= top.poiCount #>,<#= top.credentials.editPermission #>); return false;">
+								   <img src="./images/edit_resize1.png" /></span>
+							<# } #>
+							
+							</div>
+							</td>
+						<# } else {#>
+						
+							<td style="height: 40px; margin: 0; width: 68px" class="tdDotBr">&nbsp;
+								<div style="margin-right: 10px; display: none;">
+								 <span style="cursor: pointer;"></span> <span style="cursor: pointer;"></span>
+								</div>
+							</td>
+						<# } #>	
+					</tr>
+					  <tr>
+					     <td id="catgPois_<#= top.id #>" colspan="5" class="catgPois"></td>
+					  </tr>
+				<# } #>
+
+			 <# } #>
+		 <# } #>
+	</tbody>
+</table>              
+	<br/>
+	
+	</div>
+	
+	<div class=modFooter></div>
+	<# if(showSelectMulti && json.categoryArr.length > 0) { #>
+     
+        <div id="hideMultiActions<#= json.type #>" style="" class="multiSelectAction" >
+        
+		  <table cellpadding="6" cellspacing="6" align="right" style="margin-right:5px">
+			<tr>
+			<td align="left">
+			     <# poiCategActions=json.actionList; #>			     
+			     <select id="catgAndPoiActions" name="actionMultiple" style="width:114px;" onchange="showSelectedCategory(<#= json.type #>);return false;">
+			     	<option value="-1" class="lm" key ="general.actions"><#= $.i18n.prop('general.actions') #></option>
+					<# for(var i=0; i < json.actionList.length; i++) { var action=json.actionList[i]; #>
+					   <# if(action.key == 4 || action.key == 6) { #>
+					   		<option value="<#= action.key #>" class="lm" key ="categoryOrPoi.actionList.<#= action.key #>"  ><#= action.value #></option>					   
+					   <# } #>
+					<# } #>		
+				 </select>    
+				 &nbsp;
+
+	           	 <a href="javascript:void(0);" class="<#=($.browser.msie && $.browser.version=="6.0")?'textBtnGrey_ie':'textBtnGrey'#>" onclick="loadCategories(<#= json.type #>,0);return false;">		                   	                                          	                        		            
+		         	<span class="btnSpan">
+		            	<span class="lm" key="category.Refresh" style="color:#FFFFFF;"><#= $.i18n.prop('category.Refresh') #></span>                     	
+		         	</span>                     	
+	           	 </a>
+	         </td>
+	         </tr>
+	       </table>    	 
+	    </div>
+     <# } #>

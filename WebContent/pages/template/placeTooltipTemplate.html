@@ -1,0 +1,121 @@
+<style>
+    .extra-info-table th {
+      text-align:left;
+      padding-right:10px;
+    }
+</style>
+<div id="toolTipContainer_<#= place.id #>" class="toolTipContainer">
+  <div class="toolTipHeader">
+    <span class="toolTipLeft"><# if ( place.name != null ) { #> <#= place.name #> <# } else { #> <#= $.i18n.prop('location.address') #> <# } #></span>
+    <span class="toolTipRight"><a href="javascript:void(0);" id="btn_tooltip_close_<#= place.id #>"><span><#= $.i18n.prop('dialog.label.close')#></span> <img src="images/dialog_close_button.png"></a></span>
+  </div>
+  <div class="toolTipContent" class="clearfix">
+    <ul style="float:left; width:10%; display:none;">
+      <li>
+        <img src="images/pin_red.png">
+      </li>
+    </ul>
+    
+    <ul class="toolTipLeft">
+        <li>
+            <div id="starRating_<#= place.id #>" class="starRating_<#= place.id #>">
+                <ul class="star-rating small-star" style="width: 50px;">
+                <li class="star">
+                <a style="width: 20%; z-index: 6;" title="1/5" href="#1">1</a>
+                </li>
+                <li class="star">
+                <a style="width: 40%; z-index: 5;" title="2/5" href="#2">2</a>
+                </li>
+                <li class="star">
+                <a style="width: 60%; z-index: 4;" title="3/5" href="#3">3</a>
+                </li>
+                <li class="star">
+                <a style="width: 80%; z-index: 3;" title="4/5" href="#4">4</a>
+                </li>
+                <li class="star">
+                <a style="width: 100%; z-index: 2;" title="5/5" href="#5">5</a>
+                </li>
+                </ul>
+            </div>
+            <span id="rate"></span>&nbsp;<#= $.i18n.prop('location.tooltip.person.rate') #>
+        </li>
+        <li>&nbsp;</li>
+        
+     
+      
+      <# if(address != null) { #>
+         <li><#= address.split(',').join('<br/>') #></li>
+      <# } #>
+      <li>&nbsp;</li>
+      <li>
+        (<#= longitude.substring(0, longitude.length-1) #> <#= $.i18n.prop('location.tooltip.short.east') #>
+        &nbsp;
+        <#= latitude.substring(0, latitude.length-1) #> <#= $.i18n.prop('location.tooltip.short.north') #>)
+      </li>
+      <li id="extra" style="display:none;">
+          <table class="extra-info-table">
+                <tr>
+                    <th><b><#= $.i18n.prop('poi.phone') #>:</b></th>
+                    <td id="PhonePlace"></td>
+                </tr>
+                <tr>
+                    <th><b><#= $.i18n.prop('poi.fax') #>:</b></th>
+                    <td id="FaxPlace"></td>
+                </tr>
+                <tr>
+                    <th><b><#= $.i18n.prop('poi.email') #>:</b></th>
+                    <td id="EmailPlace"></td>
+                </tr>
+                <tr>
+                    <th><b><#= $.i18n.prop('poi.website') #>:</b></th>
+                    <td id="WebsitePlace"></td>
+                </tr>
+                <tr>
+                    <th><b><#= $.i18n.prop('poi.openHours') #>:</b></th>
+                    <td id="OperhoursPlace"></td>
+                </tr>
+            </table>
+      </li>
+    </ul>
+      
+     <ul class="toolTipRight">
+        <li>
+          <a id="btn_tooltip_showNearestUsers_<#= place.id #>" href="javascript:void(0);"><#= $.i18n.prop('tooltip.showNearestUsers')#></a>
+        </li>
+        <li>&nbsp;</li>
+      <li class="savePlace">
+        <a id="btn_tooltip_savePlace_<#= place.id #>" href="javascript:void(0);"><#= $.i18n.prop('tooltip.savePlace')#></a>
+        </li>
+        <li>&nbsp;</li>
+        <li>
+          <a id="btn_tooltip_getDirection_<#= place.id #>" href="javascript:void(0);"><#= $.i18n.prop('tooltip.getDirections')#></a>
+        </li>
+        <li>&nbsp;</li>
+      <li>
+        <a id="btn_tooltip_setUpMeeting_<#= place.id #>" href="javascript:void(0);"><#= $.i18n.prop('tooltip.setupMeeting')#></a>
+      </li>
+      
+    </ul>
+     <ul class="toolTipLeft">
+         <li><br><br></li>
+       <li>
+         <a id="btn_tooltip_moreInfo_<#= place.id #>" href="javascript:void(0);" class="map_button" title=""><span><#= $.i18n.prop('place.moreinfo') #></span></a>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <a id="btn_tooltip_share_<#= place.id #>" href="javascript:void(0);" class="map_button" title=""><span><#= $.i18n.prop('place.share') #></span></a>
+       </li>
+        
+     </ul>
+      
+      <ul class="toolTipRight">
+          <li><br><br></li>
+      <li>
+         <a id="btn_tooltip_edit_<#= place.id #>" href="javascript:void(0);" class="map_button"><span><#= $.i18n.prop('place.edit') #></span></a>
+       </li>
+       </ul>
+      
+  </div>
+</div>
+
+<#
+	  localize && localize.tooltip();
+ #>

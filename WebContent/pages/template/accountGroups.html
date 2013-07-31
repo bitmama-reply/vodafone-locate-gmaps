@@ -1,0 +1,24 @@
+<h2 class="no-margin"><#= $.i18n.prop('user.menu.groups') #></h2>
+
+<div class="form-row mid-margin clearfix">
+	<div class="leftInput">
+		<select id="accountGroupDropdown" class="accountDropdown">
+			<# for (var xx = 0; xx < data.groupList.length; xx++) { #>
+				<option value="<#= data.groupList[xx].key #>"
+					<# if (data.groupList[xx].value == data.groupName) { #>
+						selected="selected"
+					<# } #>>
+						<#= data.groupList[xx].value #>
+					</option>
+			<# } #>
+		</select>
+	</div>
+	<a class="graphicBtn primary" id="updateGroupBtn"><span><#= $.i18n.prop('buttons.update') #></span></a>
+
+	<script type="text/javascript">
+		$(function(){
+			$("#accountGroupDropdown").selectmenu();
+		});
+	</script>
+</div>
+

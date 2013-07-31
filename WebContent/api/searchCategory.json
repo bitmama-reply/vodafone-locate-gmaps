@@ -1,0 +1,58 @@
+{
+    "actionList": [
+        {
+            "key": "1",
+            "value": "Delete"
+        },
+        {
+            "key": "3",
+            "value": "Export to pdf"
+        },
+        {
+            "key": "4",
+            "value": "Add new Category"
+        },
+        {
+            "key": "5",
+            "value": "Show on Map"
+        },
+        {
+            "key": "7",
+            "value": "Edit"
+        }
+    ],
+    "categoryArr": [
+        {
+            "company": 1,
+            "creator": 1,
+            "credentials": {
+                "addPOI": false,
+                "categoryId": 6613113275471,
+                "edit": false,
+                "editPermission": false,
+                "extensions": [],
+                "id": -1,
+                "remove": false,
+                "removePOI": false,
+                "share": false,
+                "user": 113219399891,
+                "view": true
+            },
+            "detail": "VF1",
+            "extensions": [],
+            "iconId": 1,
+            "iconName": "cat_vf_airport.png",
+            "id": 6613113275471,
+            "name": "category_ery",
+            "poiCount": 100,
+            "type": 0
+        }
+    ],
+    "categoryId": 6613113275471,
+    "errorText": null,
+    "listIndex": 0,
+    "listPageSize": 8,
+    "listSize": 0,
+    "scaledImageIdList": [],
+    "type": 0
+}

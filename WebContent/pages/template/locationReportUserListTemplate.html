@@ -1,0 +1,26 @@
+<!--
+<style type="text/css">
+* html div#locReportListDiv { 
+   height: expression( this.scrollHeight < 200 ? "auto" : "200" ); /* sets min-height for IE */
+}
+div#locReportListDiv { 
+   max-height: 200px; /* sets max-height value for all standards-compliant browsers */
+}
+</style>
+-->
+
+
+<div id="locReportListDiv">
+   
+	<div id="locReportUserList" class="lbasAccordion">
+						 
+		<# 
+			for (var key in locationReport) {
+		#>
+			   <div class="head" onclick="selectLocReportUser(<#= key #>, 0);">
+		           <#= locationReport[key][0].user.fullName #> &nbsp; <img id="locReportIcon<#= key #>" src="<#= contextPath #>/images/arrow_right4x7.gif" class="lbasAccordionIcon"/>
+			   </div>   
+			   <ul id="locReportContent<#= key #>" class="contentData"></ul>
+		<# } #>
+	</div>
+</div> 

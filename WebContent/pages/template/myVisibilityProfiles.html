@@ -1,0 +1,173 @@
+<style type='text/css'>
+
+    #calSave{background: url("images/dialog_button_purple_left.png") no-repeat scroll left top transparent; display: block;	height: 28px;	padding-left: 10px;	text-align: center; margin-top:20px; float:left; }
+    #calSave span{background: url("images/dialog_button_purple_right.png") no-repeat scroll right top transparent; color: #fff; display: block; font-weight: bold; font-size: 0.9em; height: 28px; line-height: 28px; padding-right: 10px;}
+    #calSave:hover {background-position: left -30px;}
+    #calSave:hover span {background-position: right -30px;}
+    
+    #calClear{background: url("images/dialog_button_purple_left.png") no-repeat scroll left top transparent; display: block;	height: 28px;	padding-left: 10px;	text-align: center; margin-top:20px; float:left; }
+    #calClear span{background: url("images/dialog_button_purple_right.png") no-repeat scroll right top transparent; color: #fff; display: block; font-weight: bold; font-size: 0.9em; height: 28px; line-height: 28px; padding-right: 10px;}
+    #calClear:hover {background-position: left -30px;}
+    #calClear:hover span {background-position: right -30px;}
+
+</style>
+
+
+<div id="visibilityProfiles-container">
+<#
+    var visibility;
+    $.each(json, function(index,value) {
+        if (index  === "profileSettingsList")
+            visibility = value;
+    });
+#>
+    <div class="headerTop">
+        <h1 class="underline"> <#= $.i18n.prop('privacyAndControl.myVisibilityProfiles') #></h1>
+        <p><#= $.i18n.prop('myVisibility.defineVisibilityConfiguration') #></p>
+    </div>
+        <!-- TABS PROFILES -->
+        <ul>
+            <#      for(count=0;count<visibility.length;count++) { var visProfile=visibility[count];   #>
+                <li class="tab-profiles"><a class="linkProfiles" href="#tabProfiles_<#= visProfile.visibilityProfileId #>" id="tabVis_<#= visProfile.visibilityProfileId #>"><span name="<#= visProfile.visibilityProfileName #>"><#= visProfile.visibilityProfileName #></span></a><span class="closeBT" title="<#= $.i18n.prop('myVisibilityDeleteProfile') #>" style="float: left; margin: 0.8em -0.2em 0 -2.5em; cursor: pointer;" id="btDel_<#= visProfile.visibilityProfileId #>">X</span></li>
+            <#  } #>
+            <li class="tab-profiles">
+            	<a class="linkProfiles" href="#" id="tabVis_0" onmouseover="this.style.cursor='pointer'">
+            		<span><img src="images/visibilityTabsPlus.png" alt="plus" /></span>
+            	</a>
+            </li>
+        </ul>
+		<div class="ulcover"></div>
+        <!-- DIV PROFILES -->
+    <div id="profiles-viewer" >
+    <#  for(count=0;count<visibility.length;count++) { var visibilityDiv=visibility[count];  #>
+              <div id="tabProfiles_<#= visibilityDiv.visibilityProfileId #>" assignedUsersCount="<#=visibilityDiv.assignedUsersCount #>">
+                      <ul>
+                          <li>
+                              <div id="whoListUsers">
+                                  <div id="plusBox" class="clearfixP" profiles="<#= visibilityDiv.visibilityProfileId #>" assignedNumber="<#=visibilityDiv.assignedUsersCount #>">
+                                      <a href="javascript:void(0);" id="plus"></a>
+                                      <div class="text"><span class="number"><!--<#=visibilityDiv.assignedUsersCount #>--></span></#=visibilityDiv.assignedUsersCount></span>&nbsp;<#= $.i18n.prop('myVisibility.seeLocation') #> </div>
+                                  </div>
+
+                                  <div id="profiles" class="Pro<#= visibilityDiv.visibilityProfileId #>">
+                                      <div class="innerBorder">
+                                          <div id="minusBox" class="clearfixM" profiles="<#= visibilityDiv.visibilityProfileId #>" assignedNumber="<#=visibilityDiv.assignedUsersCount #>">
+                                              <a href="javascript:void(0);" id="minus"></a> <div class="text"><span class="number"><!--<#=visibilityDiv.assignedUsersCount #>--></span> <#= $.i18n.prop('myVisibility.seeLocation') #></div>
+                                          </div>
+                                          <div class="tableCover">
+                                              <table id="listUsers" >
+                                                  <tbody>
+                                                  <#
+                                                      var userList;
+                                                     userList = listVisibilityProfile(visibilityDiv.visibilityProfileId);
+                                                      #>
+                                                      <# $.each(userList.profileUsers, function(){ #>
+                                                          <tr  class="makeHover">
+                                                            <td class="first">  <p class="name"><#=this.name #>  <#=this.surname #> </p>  </td>
+                                                            <td class="second">  <a href="javascript:void(0);" id="removeUser" style="display:none;"  onclick="deleteLocationPermission( <#= this.id #>, <#= this.id #>);return false;" class="delete"></a>
+                                                            <td class="third"><a href="javascript:void(0);" id="editUser" onclick="return false;" style="display:none;" class="edit"></a>
+                                                          </tr>
+                                                      <#}); #>
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+              </div>
+                
+    <#  } #>
+    </div>
+        
+    <div id="buttonSaveClear" class="clearfix">
+    	<h1><#= $.i18n.prop('myVisibility.visibilityHours') #></h1>
+        <a id="calSave"><span><#= $.i18n.prop('buttons.save') #></span></a>
+        <a id="calClear"><span><#= $.i18n.prop('buttons.cancel') #></span></a>
+    </div>
+    <ul id="workOrFull">
+      <a href="javascript:void(0);" id="workingTime" class="selected" title="<#= $.i18n.prop('avability.workingTime') #>"><#= $.i18n.prop('avability.workingTime') #></a>
+      <a href="javascript:void(0);" id="fullTime" title="<#= $.i18n.prop('avability.fullTime') #>"><#= $.i18n.prop('avability.fullTime') #></a>    	
+    </ul>
+    <div id='calendarVis'></div>
+   
+    <div id="confirmDelete" style="display:none">
+        <h1 class="dialog_text"><#= $.i18n.prop('myVisibility.removePermission') #>?</h1>
+        <h2><#= $.i18n.prop('myVisibility.removeIf1') #>   <#= $.i18n.prop('myVisibility.removeIf2') #>:</h2>
+        <ul>
+        	<li>- <#= $.i18n.prop('myVisibility.locateYou') #></li>
+        	<li>- <#= $.i18n.prop('myVisibility.produceReports') #></li>
+        </ul>
+        <div class="button_class dialog_action">
+            <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.remove') #></span></button>
+            <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+        </div>
+    </div>
+    
+    <# for(count=0;count<visibility.length;count++) { var visibilityDiv=visibility[count];  #>
+        <div id="confirmDeleteProfile_<#= visibilityDiv.visibilityProfileId #>" style="display:none">
+            <h1 class="dialog_text"><#= $.i18n.prop('avability.deleteProfile.headline') #> '<#= visibilityDiv.visibilityProfileName #>' ?</h1>
+            
+            <# if (visibilityDiv.assignedUsersCount > 0) { #>
+                <h2>
+                	<#= $.i18n.prop('avability.deleteProfile.message1/2') #>
+	                    <#= $("#tabProfiles_" + visibilityDiv.visibilityProfileId).attr('assignedUsersCount') #>
+                    <#= $.i18n.prop('avability.deleteProfile.message2/2') #>
+                </h2>
+				<p class="smallText"><#= $.i18n.prop('avability.deleteProfile.choose') #></p>                
+                
+                <div class="blockFirst">
+                	<div class="part1">
+	                	<input type="radio" id="chkDelProfile" name="chkDelProfile" value="AssignDifferentProfile" checked>
+	                		<span><#= $.i18n.prop('avability.deleteProfile.option1') #></span>
+                	</div>
+                	<div class="part2">
+	                	<select id="visPro" class="visProDropDown" nme="visPro">
+	                    	<#  for(countX=0;countX<visibility.length;countX++) { var visProfile=visibility[countX];   #>
+  	                    	   <#  if(visibilityDiv.visibilityProfileName  !== visProfile.visibilityProfileName ){ #>
+  	                    	      <option value="<#= visProfile.visibilityProfileId #>"><#= visProfile.visibilityProfileName #>
+    	                    	<#  } #>  	                    	      
+	                    	<#  } #>
+	                	</select>
+	                </div>	
+                </div>
+                <div class="blockSecond clearfix">
+                	<input type="radio" id="chkDelProfile" name="chkDelProfile"  value="RemovePermission">
+                	<div class="part">
+                		<p class="part1"><#= $.i18n.prop('avability.deleteProfile.option2') #></p>
+                		<p class="part2"><#= $.i18n.prop('avability.deleteProfile.option2.subtext') #></p>
+                	</div> 
+                </div>	
+            <# } #>
+            <div class="button_class dialog_action">
+                <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.remove') #></span></button>
+                <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+            </div>
+        </div>
+    <#  } #>  
+    
+    <div id="AddVisibility" title="Tab data" style="display:none">
+        <div class="errorsDisplay clearfix">
+        	<div class="error"></div>
+        	<div class="message"><h1></h1></div> 
+        </div>
+        <form>
+        <!--<h1 class="dialog_text"><#= $.i18n.prop('myVisibility.addPermission') #>?</h1>-->
+        </br>
+        <label for="tab_title" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.name') #>:</label>
+        <input type='text' id='tab_title' name="tab_title" class="nameInput" maxlength="50" size="40" />
+        
+        <div class="button_class dialog_action">
+            <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.save') #></span></button>
+            <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+        </div>
+        </form>
+    </div>
+<script type='text/javascript'>
+    $(document).ready(function(){
+      
+      configureMyVisibilityProfile();
+      
+    });
+</script>

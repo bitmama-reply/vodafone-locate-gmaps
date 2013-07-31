@@ -1,0 +1,28 @@
+
+        <ul class="availabilityMenu">
+
+            <li id="availabilityMe" >
+                <a 	onclick="loadAvailability();" class="available active">
+                	<span> <#= $.i18n.prop('privacyAndControl.myAvailability') #> </span>
+                </a>
+            </li>
+
+            <li class="visibilityMe">
+                <a 	onclick="loadVisibilityProfiles();" class="visibility">
+                	<span><#= $.i18n.prop('privacyAndControl.myVisibilityProfiles') #> </span>
+                </a>
+            </li>
+
+            <li class="locateMe">
+                <a 	onclick="loadWhoCanLocateMe();" class="peopleLocateMe">
+					<span><#= $.i18n.prop('privacyAndControl.whoCanLocateMe') #> (<span id="whoCanLocateMeNumber"><#= json.numberOfUsersWhoCanLocateMe #></span>)</span>
+				</a>
+            </li>
+
+            <li class="locateOthers">
+                <a 	onclick="loadWhomICanLocate();" class="peopleLocateOthers">   
+                	<span><#= $.i18n.prop('privacyAndControl.whomICanLocate') #> (<#= json.numberOfUsersWhomICanLocate #>)</span> 
+                </a>
+            </li>
+
+        </ul>

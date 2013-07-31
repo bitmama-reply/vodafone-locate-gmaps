@@ -1,0 +1,20 @@
+<div class="toolTipContainer">
+
+	<div class="tooltipHeader">
+		<div class="littleTooltipCloser" onclick="mainMarkerManager.closeTooltip('<#= markerId #>');"><img src="images/x_icon_large.png"></div>
+		<span class="littleTooltipTitle"><#= time #></span>
+	</div>
+
+	<div class="content">
+	   <#= content #>
+	</div>
+
+	<br/>
+
+	<div class="hr"></div>
+
+	<div class="tooltipMenu littleTooltipAction">
+	   <a onclick="openSaveLocationDialogFromLatLon($.i18n.prop('tooltipmain.SaveLocation'), <#= latitude #>, <#= longitude #>);" class="tooltipMenuItem standartLink"><#= $.i18n.prop('tooltipmain.SaveLocation') #></a> 
+	</div>
+
+</div>

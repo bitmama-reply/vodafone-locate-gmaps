@@ -1,0 +1,37 @@
+<div class="toolTipContainer">
+  <div class="toolTipHeader">
+    <span class="toolTipLeft"><#= header #></span>
+    <span class="toolTipRight"><a href="javascript:void(0);" id="btn_tooltip_close_<#= place.id #>"><span><#= $.i18n.prop('dialog.label.close')#></span> <img src="images/dialog_close_button.png"></a></span>
+  </div>
+  <div class="toolTipContent" class="clearfix">
+    <#= content #>
+    
+     <# if(changeMeeting) { #>     
+  <a onclick="updateViewMeeting(<#= meetingId #>, false);" class="tooltipMenuItem standartLink"><#= $.i18n.prop('meetings.change') #></a>
+ <# } #>
+  </div>
+</div>
+
+
+<!--
+<div class="tooltipHeader"><#= header #></div>
+
+<div id="poiShortDescription">
+   <div><#= content #></div>
+</div>
+
+<br/>
+
+<div class="hr"></div>
+
+<div class="poiTooltipCloser" onclick="mainMarkerManager.closeTooltip('<#= markerId #>');"></div>
+
+<div class="tooltipMenu">
+ 
+ <# if(changeMeeting) { #>	   
+  <a onclick="updateViewMeeting(<#= meetingId #>, false);" class="tooltipMenuItem standartLink"><#= $.i18n.prop('meetings.change') #></a>
+ <# } #>
+ 
+</div>
+-->
+

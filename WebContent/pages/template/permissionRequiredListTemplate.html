@@ -1,0 +1,18 @@
+<h1 class="error"><#= $.i18n.prop('locationReport.permission.required') #></h1>
+<table>
+    <tbody>
+        <# for(var rowstatus=0; rowstatus < permissionRequiredList.length; rowstatus++) { var top = permissionRequiredList[rowstatus]; #>
+            <tr>	
+                <td id="permissionRequiredUser<#= rowstatus+1 #>">
+                    <#= top.name #>
+                </td>
+                <td>
+                    <a href="javascript:void(0);" class="button" onclick="openRequestLocationPermissionDialog(<#= top.id #>,'<#= top.name #>', '<#=top#>');">
+                        <#= $.i18n.prop('locationReport.request.permission') #>
+                    </a>
+                </td>
+            </tr>	
+        <# } #>
+    </tbody>
+</table>
+

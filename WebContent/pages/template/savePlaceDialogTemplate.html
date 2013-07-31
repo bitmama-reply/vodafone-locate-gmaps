@@ -1,0 +1,47 @@
+<div id="edit_loc_dialog" title="">
+    <div id="tabs_in_edit_loc">
+        <ul>				        				       
+            <li id ="edit_loc_tab1_list_item">
+            	<a id="edit_loc_tab1_link" href="#edit_loc_tab1"></a>
+            </li>				            
+            <li id ="edit_loc_tab2_list_item">
+            	<a id="edit_loc_tab2_link" href="#edit_loc_tab2"></a>
+            </li>
+            <li id ="edit_loc_tab3_list_item" >
+            	<a id="edit_loc_tab3_link" href="#edit_loc_tab3"></a>
+            </li>
+            <li id ="edit_loc_tab4_list_item">
+                <a id="edit_loc_tab4_link" href="#edit_loc_tab4"></a>
+            </li>
+        </ul>
+		<div id="error-view-sendmessage" class="box-error-message">
+			<div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+		</div>
+        <div id="edit_loc_tab1"></div>
+		<div id="edit_loc_tab2"></div>
+        <div id="edit_loc_tab3"></div>
+        <div id="edit_loc_tab4"> </div>
+     </div>
+     <table width="100%">
+     	<tr>
+		<td  align="right" >
+			<a href="javascript:void(0);"  style="color: #FFFFFF;" class="textBtnGrey"  onclick="$('span.ui-icon-closethick:last').click();" >                          	                          
+				<span class='btnSpan'>
+					CANCEL<#= $.i18n.prop('buttons.cancel') #>
+				</span>                     	
+			</a>&nbsp;	
+			<a href="javascript:void(0);" id="updateLocationButton">                          	                          
+				<span class='btnSpan'>
+					UPDATE<#= $.i18n.prop('buttons.update') #>
+				</span>                     	
+			</a>&nbsp;
+			<a id ="addLocationButton" href="javascript:void(0);"  onclick="if (lbasValidate('updateLocationDetail'))AjxSaveNewLocation();">                          	                          
+				<span class='btnSpan'>
+					SAVE<#= $.i18n.prop('buttons.save') #>
+				</span>                     	
+			</a>&nbsp;
+		</td>
+		</tr>
+	<tr><td>&nbsp;</td></tr>	
+	</table>
+</div>

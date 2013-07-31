@@ -1,0 +1,18 @@
+{
+    "errorText": null,
+    "poiSearchList": null,
+    "q": "voda",
+    "searchList": [
+        {
+            "id": 6613113275471,
+            "name": "Vodafone Shop",
+            "type": 1
+        },
+        {
+            "id": 513226383321,
+            "name": "Vodafone, Calle Alcalde José Emilio García Gómez, Santa Cruz de Tenerife, Santa Cruz de Tenerife Santa Cruz de Tenerife ESP",
+            "type": 2
+        }
+    ],
+    "type": 0
+}

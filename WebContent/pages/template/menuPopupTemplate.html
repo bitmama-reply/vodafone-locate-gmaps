@@ -1,0 +1,10 @@
+<div class="menu-popup-wrapper">
+<!--   <p class="title"><#= $.i18n.prop('welcome.Mail')#><span class="number"><#= totMailCnt #></span><img width="10px" src="images/arrow_down_grey.png" /></p> -->
+  <p class="title"><a href="#tab-inbox-messages" class="inbox"></a></p>
+  <ul class="tab-access">
+    <li><a href="#tab-inbox-messages" class="inbox"><span><#= $.i18n.prop('message.Messages') #>&nbsp;<label class="mex-cnt"><#= mailCnt #></label></span></a></li>
+    <li><a href="#tab-inbox-requests" class="inbox"><span><#= $.i18n.prop('message.IncomingRequests') #>&nbsp;(<label class="req-cnt"></label>)</span></a></li>
+    <li><a href="#tab-sent-messages" class="sent"><span><#= $.i18n.prop('message.sent.mex') #>&nbsp;<label class="sent-cnt"></label></span></a></li>
+    <li><a href="#tab-sent-requests" class="sent"><span><#= $.i18n.prop('message.sent.req') #>&nbsp;(<label class="req-sent-cnt"></label>)</span></a></li>
+  </ul>
+</div>

@@ -1,0 +1,278 @@
+<style type="text/css">
+* html .token-input-list-facebook { 
+   height: expression( this.scrollHeight > 100 ? "auto" : "100px" ); /* sets min-height for IE */
+}
+.token-input-list-facebook{ 
+	 max-height: 100% !important;
+}
+
+.p{ 
+position:absolute;
+margin-top:-7px; 
+margin-left:0px;
+cursor:pointer; 
+background-color: white;
+}
+</style>
+
+<script language="JavaScript" type="text/javascript">
+$(document).ready(function() {
+  $('#searchRoute').autocomplete({
+        source: function(req, resp) {
+          var options = {
+            container: '#tab-routes',
+            show: true
+          };
+          IsSearching = true;
+          routeSearch.autocomplete(req, resp, options);
+        },
+        delay: 1000
+      }).keyup(function(event) {
+          var val = $(this).val();
+          val = $.trim(val);
+          if((val.length === 0) || (val == $.i18n.prop('general.Search'))) {
+            $('#tab-routes span.searchReset').addClass('searchMagnifier').removeClass('searchReset');
+            if (event.keyCode != 32 && event.keyCode != 8) {
+              /*storeSelected('tab-routes');*/
+              $('#tab-routes .contents').empty();
+              getSavedRoutes();
+              /*groups && groups.getGroupsList({}, false);*/
+            }
+          }else {
+            $('#tab-routes span.searchMagnifier').removeClass('searchMagnifier').addClass('searchLoading');
+          }
+      }).keypress(function(event) {
+        if (event.keyCode == 8 && $(this).val().length == 1) {
+          $('#tab-routes .contents').empty();
+          getSavedRoutes();
+          /*storeSelected('tab-routes');*/
+          /*groups && groups.getGroupsList({}, false);*/
+        }
+      }).blur(function(event) {
+        var val = $(this).val();
+        val = $.trim(val);
+        if ((val.length == 0) || (val == $.i18n.prop('general.Search'))) {
+          $(this).val($.i18n.prop('general.Search'));
+          $('#tab-routes span.searchReset').addClass('searchMagnifier').removeClass('searchReset');
+        }
+      });
+
+	$('#idSavedRoutesScrollPane').css({
+		'height':$(window).height()-390,
+		'overflow-x': 'hidden',
+		'overflow-y': 'auto'
+	});
+	$('#idSavedRoutesScrollPane .contents').css({height:'auto'});
+});
+$(window).resize(function(){
+	$('#idSavedRoutesScrollPane').css({
+		'height':$(window).height()-390,
+		'overflow-x': 'hidden',
+		'overflow-y': 'auto'
+	});  	
+	$('#idSavedRoutesScrollPane .contents').css({height:'auto'});
+});
+/*
+	var topPos = $("#idSavedRoutesScrollPane").offset();
+	var screenHeight = $(window).height();
+	
+	$("#idSavedRoutesScrollPane").css({
+		"height":screenHeight - topPos.top-50,
+		"overflow-y": "scroll"
+	});
+*/
+	
+	/*
+
+		   $("#searchRoute").autocomplete("searchSavedRoutes", {
+			width :215,
+			cacheLength :1,
+			selectFirst :false,
+			minChars :1,
+			parse : function(data) {
+				var parsed = new Array();
+				var json = data;
+				var poiList = json.savedRoutes;
+				if(poiList!=null){
+				for ( var i = 0; i < poiList.length; i++) {
+					parsed[i] = {
+						data :new Array(poiList[i].name, poiList[i].id),
+						value :poiList[i].name,
+						result :poiList[i].name
+					};
+				}
+				}
+				return parsed;
+			}
+
+		});
+*/
+
+
+
+ /*
+  $('#searchRoute').result(function(event, data, formatted) {
+	    getSavedRoute(data[1])
+	});	
+*/
+
+</script>  
+<# if(savedRoutes.length > 0) { #>
+<div class="modBodyRoute">
+	<div class="modCopyRoute">   
+	
+	<table>
+		<tr>
+			<td>
+				<!--<input type="text" id="searchRoute"   class="searchInput"
+				value="<#= $.i18n.prop('general.Search') #>" size="10" 
+				onfocus="if (this.value==$.i18n.prop('general.Search')) { this.style.color='black'; this.value=''; }"
+				onblur="if (this.value=='') { this.style.color='#7E7E7E'; this.value=$.i18n.prop('general.Search'); }"
+				style="color:grey;width:215px;cursor:text" />-->
+			</td>
+			<td align="right">                  
+				<!--<img src="images/search_g.png" id="search" class="p"  onclick="searchSavedRoutes()">
+                                <span onclick="getSavedRoutes();" id="searchReset" style="display:none;">X</span>-->
+			</td>
+		</tr>
+	</table>				
+					          
+	<div>
+			<div id="idSavedRoutesScrollPane">
+                        <div class="contents" >
+                            <ul class="places" style="display: block;">
+                                <# for(var i=0; i < savedRoutes.length; i++) { var top = savedRoutes[i]; #>
+                                    <li>
+                                        <div id="item_<#= top.id#>" class="placesList groupElement">
+                                        	
+                                            <div class="container" style="text-decoration: none; cursor: default;">
+                                            	 <a id="item_name_<#= top.id#>" class="globalSearchButton locationPlacesLeft" href="javascript:void(0);">
+                                            	<span class="globalSearchText locationPlacesRight"> <#=$.i18n.prop("buttons.show")#> </span>
+                                        	</a>
+                                                <input type="checkbox" class="route" id="savedRouteCheckbox-id<#= top.id#>" name="savedRouteID" value="<#= top.id #>" onclick="EnableDisableButtonsRouting()"/>
+                                                <span id="open_item_details_<#= top.id#>" class="openClose"><img src="images/arrow_right.png" class="x"/></span>
+                                                <span class="routeDetail" id="open_item_details_<#= top.id#>" style="text-decoration: none; cursor: default;"><#= top.name.substring(0, 21) #></span>
+                                                <ul id="item_details_<#= top.id#>" class="item_details" style="display:none; line-height: 1em; padding-left: 0">
+                                                    <!--<li>
+                                                        <span class="label"><#= $.i18n.prop('places.Distance') #>:</span><span><#= top.distance#></span>
+                                                    </li>-->
+                                                    <li>
+                                                        <span class="label"><#= $.i18n.prop('places.Duration') #>:</span><#= top.duration#> (<#= top.mode#>)
+                                                    </li>
+                                                    <li>
+                                                        <div class="actions">
+                                                            <ul class="action_button_bar clearfix">
+                                                                <li>
+                                                                    <a id="btn_routes_Print" href="javascript:void(0);" title="<#=$.i18n.prop("buttons.print")#>" class="iconPrint"></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a id="btn_routes_Share" href="javascript:void(0);" title="<#=$.i18n.prop("buttons.share")#>" class="iconShare" routeID="<#= top.id#>"></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a id="btn_routes_Delete" href="javascript:void(0);" title="<#=$.i18n.prop("buttons.delete")#>" class="iconDelete" routeID="<#= top.id#>"></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                           
+                                        </div>
+                                    </li>
+                                <# } #>	
+                            </ul>
+                        </div>
+                        
+                        <!--
+                        <table cellspacing="1" class="savedRoutesTable" width="%100" style="margin-top:2px;">
+					<thead>
+						<tr>
+							<th><#= $.i18n.prop('routing.Name') #></th>
+							<th><#= $.i18n.prop('routing.Duration') #></th>
+							<th><#= $.i18n.prop('routing.Date') #></th>
+						</tr>
+					</thead>
+					<tbody>
+						<# for(var i=0; i < savedRoutes.length; i++) { var top = savedRoutes[i]; #>
+							<tr>
+                                                            <td><input type="checkbox" id="savedRouteCheckbox-id<#= top.id#>" name="savedRouteID" value="<#= top.id #>"/><#= top.name.substring(0, 21) #></td>
+                                                            <td align="center"><#= top.duration #></td>
+                                                            <td align="center"><#= top.date #></td>
+							</tr>
+						<# } #>						
+					</tbody>
+				</table>
+                        -->
+			</div>
+			<div id="idShareRouteDiv"  style="padding-top:2px;display:none;">
+				<div id="error-view-shareroute" class="box-error-message">
+					<div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+				</div>
+				<table style="width:100%;">
+					<tr></tr>
+						<td>
+							 <p class="text"><#= $.i18n.prop('welcome.Users') #>: </p>
+					 	</td>
+					</tr>
+					<tr >
+						<td>
+							<b>
+							<input type="text" id="messageTo" name="shareWith" value="" class="inputText" />
+							</b>						
+						</td>
+					</tr>
+						
+					<tr height="30">
+						<td align="right" height="100%">					
+							<a class="textBtnGrey purple_button" href="javascript:void(0);" id="btShareRoute" >
+								<span class="lm" key="buttons.share"><#= $.i18n.prop('buttons.share') #></span>
+							</a>
+							<a class="textBtnGrey multi_user_button" id="cancelBtn" href="javascript:void(0);">
+								<span class="lm" key="buttons.cancel"><#= $.i18n.prop('buttons.cancel') #></span>
+							</a>
+							
+						</td>					
+					</tr>
+				</table>
+			</div>
+                
+                        
+			<div id="savedRoutesActionsDiv">
+                            <ul class="action_button_bar clearfix">
+                                <li>
+                                    <a id="btn_routes_Delete_All" href="javascript:void(0);" class="multi_user_button_inactive">
+                                        <span>Delete</span>
+                                    </a>
+                                </li>
+                            </ul>
+			<!--
+                                 <table cellpadding="6" cellspacing="6" align="right">
+					<tr>
+						<td align="left">		
+							<select id="savedRoutesActions" onchange="processSavedRouteAction();">
+							<option value="-1" class="lm" key ="general.actions"><#= $.i18n.prop('general.actions') #></option>
+							<# for(var i=0; actionList && i < actionList.length; i++) { var action=actionList[i]; #>
+							   <option value="<#= action.key #>"><#= action.value #></option>
+							<# } #>
+							</select>
+						</td>
+			    	</tr>
+				</table>  
+   -->
+			</div>
+		</div>
+	</div>
+</div>
+<# } else { #>
+<div class="modBodyRoute">
+	<div class="modCopyRoute">   
+	
+	<table>
+		<tr>
+			<td><br>&nbsp;<br><#= $.i18n.prop('no.available.route') #></td>
+		</tr>
+	
+	</div>
+</div>
+<# } #>

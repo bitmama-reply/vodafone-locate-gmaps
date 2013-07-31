@@ -1,0 +1,33 @@
+<form id="3rdPartyShare" action="#" theme="simple" >
+	<div id="error-view-share" class="box-error-message">
+		<div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+	</div>
+	<table>
+		<tr>
+			<td>
+				<input class="lbasInputText vldEmailOrPhone"  type="text"  id="emailOrSms" onblur="if (this.value==''){ this.style.color='#7E7E7E'; this.value=$.i18n.prop('tooltipshare.emailOrSmsTextValue'); }" onfocus="if (this.value==$.i18n.prop('tooltipshare.emailOrSmsTextValue')) { this.style.color='black'; this.value=''; }" value="<#= $.i18n.prop('tooltipshare.emailOrSmsTextValue') #>" />
+			</td>
+			<td width ="22">
+				<span id="emailOrSmsVld"></span>
+			</td>
+			<td>	
+				<a href="javascript:void(0);" class="multi_user_button specialPos" onclick="addNewRow($('#emailOrSms').val()); return false;" > 
+						<span class="lm" key="buttons.add"><#= $.i18n.prop('buttons.add') #></span>
+				</a>
+			</td>
+		</tr>
+		<tr id="3rdPartyShareTr">
+			<td>
+				<table id="shareTable"></table>
+			</td>
+		</tr>
+	</table>
+	
+			<a href="javascript:void(0);"  class="purple_button button inactive" style="opacity:0.5;" onclick="share3rdParty({name:'<#= poiDetail.name #>', address:'<#= poiDetail.address #>',  latitude:'<#= poiDetail.latitude #>', longitude:'<#= poiDetail.longitude #>',  radius:'<#= poiDetail.radius #>',  id:'<#= poiDetail.id #>' }); return false;" >
+				<span  class='lm' key="buttons.share"><#= $.i18n.prop('buttons.share') #></span>
+			</a>
+			<a href="javascript:void(0);"  class="multi_user_button button" onclick="utils.closeDialog(); return false;" >
+				<span  class='lm' key="buttons.cancel"><#= $.i18n.prop('buttons.cancel') #></span>
+			</a>
+</form>
+

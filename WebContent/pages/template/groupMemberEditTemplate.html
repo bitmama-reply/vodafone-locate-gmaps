@@ -1,0 +1,83 @@
+<!--
+<script language="JavaScript" type="text/javascript">
+	$().ready(function() {
+
+		edit_group_tab1Ready();
+
+	});
+
+</script>
+-->
+<form id="updateGroupMembers">
+	<input type="hidden" name="groupMemberCount" id ="groupMemberCount" value="<#= json.groupMemberCount #>"/>
+	<table id="usersTable" style="width:100%">
+		<tbody>
+			<tr>
+				<td colspan="3"><label for="dogBreeds" class="horizontalLabel"></label></td>
+			</tr>
+			<tr>
+				<td>
+				<div class="pickListSelected">
+					<div class="modHeader blueBG">
+						<h2><#= $.i18n.prop('groupMembers.AllUsers') #></h2>
+					</div>
+					<div>
+						<# if (!aPage) { #> 
+							<img src="images/search_g.png" />
+						<# } else { #> 
+							<img src="images/search_g.png" />
+						<# } #>
+						<input type="text" name="search" id="groupMemberUserSearch"  class="searchInput"
+						value="" size="10" 	onfocus="if (this.value==$.i18n.prop('buttons.search')) { this.style.color='black'; this.value=''; }"
+						onblur="if (this.value=='') { this.style.color='#7E7E7E'; this.value=$.i18n.prop('buttons.search'); }"
+						style="color:grey;" />
+					</div>
+					<select multiple="multiple" class="pickList" id="selected" size="10" name="selectedGroup">
+						<# for(var i in json.userMap) { #> 
+							<option value="<#= i #>">
+								<#= json.userMap[i] #>
+							</option>
+						<# } #>
+					</select>
+				</div></td>
+				<td>
+					<div>
+						<div>
+							<input type="button" title="<#= $.i18n.prop('buttons.ChooseSelectedAndRemove') #>" value=">  " class="button removeButton" name="remove" id="removeUserFromGroup"/>						
+						</div>
+						<div>
+							<input type="button" title="<#= $.i18n.prop('buttons.ChooseAvailableAndAdd') #>" value="<  " class="button addButton" name="add" id="addUserFromGroup"/>
+						</div>
+						<div>
+							<input type="button" title="<#= $.i18n.prop('buttons.ChooseSelectedAndRemove') #>" value=">>  " class="button removeButton" name="remove_all" id="removeUserFromGroup_all"/>						
+						</div>
+						<div>
+							<input type="button" title="<#= $.i18n.prop('buttons.ChooseAvailableAndAdd') #>" value="<<  " class="button addButton" name="add_all" id="addUserFromGroup_all"/>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="pickListAvailable">
+						<div class="modHeader blueBG">
+							<h2><#= $.i18n.prop('groupMembers.GroupMembers') #></h2>
+						</div>
+						<div>
+							<# if (!aPage) { #> <img src="./images/search_g.png" />
+							<# } else { #> <img src="../images/search_g.png" />
+							<# } #>
+							<input type="text" name="search" id="groupMemberUserSearch2"  class="searchInput"
+							value="" size="10" 	onfocus="if (this.value==$.i18n.prop('buttons.search')) { this.style.color='black'; this.value=''; }"
+							onblur="if (this.value=='') { this.style.color='#7E7E7E'; this.value=$.i18n.prop('buttons.search'); }"
+							style="color:grey;" />
+						</div>
+						<select multiple="multiple" class="pickList" id="available" size="10" name="selectedUsers">
+							<# for(var i in json.groupUsersMap) { #> <option value="<#= i #>"><#= json.groupUsersMap[i] #></option>
+							<# } #>
+						</select>
+					</div>
+				</td>
+			</tr>
+			<br/>
+		</tbody>
+	</table>
+</form>

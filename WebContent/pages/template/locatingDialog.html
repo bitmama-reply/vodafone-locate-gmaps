@@ -1,0 +1,56 @@
+<ul id="dialog_list_nearest_locating">
+    <li class="accordionStyles"><#= $.i18n.prop('location.dialog.locatingNear') #></li>
+</ul>
+<ul id="dialog_list_locating">
+	<li class="accordionStyles"><#= $.i18n.prop('location.dialog.locating') #></li>
+</ul>
+
+<ul id="dialog_list_panding">
+	<li class="accordionStyles"><#= $.i18n.prop('location.dialog.pending') #></li>
+</ul>
+
+<ul id="dialog_list_permission_req">
+	<li class="accordionStyles"><#= $.i18n.prop('location.dialog.permission') #></li>
+</ul>
+
+<ul id="dialog_list_errors">
+	<li class="accordionStyles"><#= $.i18n.prop('location.dialog.error') #><a class="why" href="javascript:void(0);"></a></li>
+</ul>
+
+<script>
+	$(function(){
+		$('.why').hover(function(e){
+			e.preventDefault();
+			var btns = {};
+		
+		    utils && utils.dialog({
+		        title : '', /* $.i18n.prop('locationReports.PopUp.title'), */
+		        content: '<div id="whyDialogStyle"><p>'+$.i18n.prop('location.dialog.error.message')+'</p> </div>',
+		        buttons : btns,
+		        css : "noCloseNoOk hoverCalendars"
+		    });
+		
+		    /* POSITION DIALOG */
+			$('.hoverCalendars').css({'width': 200});
+			var hovCal = $(this).offset();
+			var calHeight = $(".hoverCalendars").outerHeight();
+			var calWidth = $(".hoverCalendars").outerWidth();
+			var hovCalLeft = hovCal.left+15;
+		    var hovCalTop = hovCal.top;
+			var windowWidth = $(window).width();
+			
+			if( calWidth + hovCalLeft > windowWidth ){
+				hovCalLeft = hovCal.left-calWidth;
+				$(".hoverCalendars").addClass("oppositeSide");
+			}    
+		        
+		    $('.hoverCalendars').css({
+		        'top':  hovCalTop - (calHeight/2) +10,
+		        'left': hovCalLeft,
+		    });
+		    
+		},function(){		
+		    $(".hoverCalendars").hide().remove();
+		});
+	});
+</script>

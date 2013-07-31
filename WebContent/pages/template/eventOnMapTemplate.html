@@ -1,0 +1,51 @@
+
+<div class="toolTipContainer">
+	<div class="toolTipMeetingHeader">
+		<span class="toolTipLeft"><#= title #></span>
+	</div>
+	<div id="poiShortDescription">
+		<div class="meetingPointContent clearfix">
+			<ul>
+				<li> <strong> <#= $.i18n.prop("messages.Subject") #> </strong> 		<#= subject #> </li>
+				<li> <strong> <#= $.i18n.prop("location.address") #> </strong>		<#= address #> </li>
+				<li> <strong> <#= $.i18n.prop("meetings.start") #> </strong> 	<#= start_date #> </li>
+				<li> <strong> <#= $.i18n.prop("meetings.end") #> </strong> 		<#= end_date #> </li>
+			</ul>
+			<# if(show){ #>
+			<a href="javascript:void(0);" class="editEventFromMap multi_user_button" onclick="editEventFromMap(<#= id #>); return false;">
+				<span>
+					<#= $.i18n.prop("buttons.edit") #>
+				</span>	
+			</a>
+			<# } #>
+		</div>
+	</div>
+</div>
+<style>
+  .toolTipMeetingHeader{border-bottom: 1px solid #CCCCCC; font-size: 18px; line-height: 2em; margin-bottom: 0.7em; font-weight:bold; width: 100%;}
+  .toolTipMeetingHeader .toolTipLeft{padding: 0 0 0 5px; }
+  /*.toolTipMeetingHeader{background: url(../images/bg-tooltip-top.png) no-repeat left top !important;}*/
+	.olFramedCloudPopupContent {font-family: Arial, Helvetica, sans-serif; overflow: hidden;}
+ 	#poiShortDescription{padding: 0 0 0 5px; font-size: 14px; }
+	.meetingPointContent ul li{margin: 0 0 10px;}
+	.infoBox .toolTipContainer{margin: 0 0 -10px;}
+	.editEventFromMap{ float: left;}	
+</style>
+
+<!--
+<div class="hr"></div>
+
+<div class="poiTooltipCloser" onclick="mainMarkerManager.closeTooltip('<#= markerId #>');"></div>
+
+<div class="tooltipMenu">
+  <a onclick="openSaveLocationDialog2('<#= $.i18n.prop('tooltipmain.SaveLocation') #>',<#= latitude #>,<#= longitude #>,'','','','<#= address #>', '', '');" class="tooltipMenuItem standartLink"><#= $.i18n.prop('tooltipmain.SaveLocation') #></a> | 
+  <a onclick="routeFrom('<#= address #>', <#= latitude #>,<#= longitude #>);" class="tooltipMenuItem standartLink"><#= $.i18n.prop('tooltipmain.RouteFrom') #></a> | 
+  <a onclick="routeTo('<#= address #>', <#= latitude #>,<#= longitude #>);" class="tooltipMenuItem standartLink"><#= $.i18n.prop('tooltipmain.RouteTo') #></a>
+  <# if(lbasRightManager.checkRight('create_meetings')){ #>
+  &nbsp;|&nbsp;<a onclick="setAsMeetingLocation(true, <#= latitude #>,<#= longitude #>, '<#= address #>', '<#= name #>');" class="tooltipMenuItem standartLink"><#= $.i18n.prop('meetings.planAMeeting') #></a>
+  <# } #>
+  | 
+  <a onclick="openShare3rdPartyDialog('','<#= address #>', <#= latitude #>,<#= longitude #>,'');" class="tooltipMenuItem standartLink"><#= $.i18n.prop('tooltipshare.title') #></a>
+</div>
+-->
+

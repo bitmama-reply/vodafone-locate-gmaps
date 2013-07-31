@@ -1,0 +1,8 @@
+<div id="locateSingleUserError_<#= data.userId || data.user_id #>" class="locateSingleUserError">   
+  <div><#= data.errorText#></div>  
+  <a class="globalSearchButton reportNotAvailableLeft" href="javascript:void(0);">
+  	<span class="globalSearchText locationAvailableRight reportNotAvailableRight"><#= $.i18n.prop('buttons.ok') #></span>
+  </a> 
+</div>
+
+<!-- onclick="user.removeNotification('#locateSingleUserError_<#= data.userId || data.user_id #>','<#= data.userId || data.user_id #>')"-->

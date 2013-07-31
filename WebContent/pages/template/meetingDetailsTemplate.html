@@ -1,0 +1,43 @@
+<div id="meetingDetails">
+
+	<div class="row" id="location">
+	 <h2><#= $.i18n.prop('meetings.location') #></h2>
+	 <p class="content"></p>
+	</div>
+	
+	<div class="row" id="time">
+	 <h2><#= $.i18n.prop('meetings.time') #></h2>
+	 <p class="content"></p>	 
+	</div>
+	
+	<div class="row" id="details">	
+	 <h2><#= $.i18n.prop('meetings.details') #></h2>
+	 <p class="content"></p>	 
+	</div>
+	
+	<div class="row" id="attendees">
+	 <h2><#= $.i18n.prop('meetings.attendees') #></h2>
+	 <div class="wrap-list">
+	   <ul class="list"></ul>
+	 </div>
+	</div>
+	
+	<div class="btn-list"></div>
+	<div class="delete-popup" style="display:none">
+  	<p class="text"></p>
+  	<div class="buttons">
+  	 <ul class="action buttons_class clearfix">
+  	   <li>
+  	     <button type="button" class="send ui-button ui-widget purple_button ui-button-text-only no-border" role="button" aria-disabled="false" id=""> 
+  	       <span class="ui-button-text" style="line-height:2.5em !important"><#= $.i18n.prop('buttons.delete') #></span>
+  	     </button>
+  	   </li>
+  	   <li>
+  	     <button type="button" class="cancel ui-button ui-widget ui-button-text-only no-border" role="button" aria-disabled="false" id="">
+  	       <span class="ui-button-text" style="line-height:2.5em !important"><#= $.i18n.prop('buttons.cancel') #></span>
+  	     </button>
+  	   </li>
+  	 </ul>
+  	</div>
+	</div>
+</div>

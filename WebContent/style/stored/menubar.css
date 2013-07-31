@@ -1,0 +1,17 @@
+/* button configuration options */
+/* color variables set relative to @menubar_color. 
+You probably don't need to change these. */
+/* styles for button color */
+.menubar {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-size: cover;
+}
+/* basic styles for button size, padding, etc. */
+.menubar {
+  /*   font-family: VodafoneRgRegular, arial, verdana, sans-serif; */
+
+  font-family: arial, verdana, sans-serif;
+}

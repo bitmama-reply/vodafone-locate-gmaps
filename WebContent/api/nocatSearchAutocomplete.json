@@ -1,0 +1,25 @@
+{
+    "errorText": null,
+    "excludedUser": null,
+    "id_list": null,
+    "q": "om",
+    "resultList": [
+        {
+            "key": "u113219399891",
+            "value": "NO CAT 1"
+        },
+        {
+            "key": "u113219399891",
+            "value": "NO CAT  2"
+        },
+        {
+            "key": "u113219399891",
+            "value": "NO CAT  3"
+        },
+        {
+            "key": "u113219399891",
+            "value": "NO CAT  4"
+        }              
+    ],
+    "retrieveAssets": true
+}

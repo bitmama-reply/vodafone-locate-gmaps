@@ -1,0 +1,361 @@
+<script language="javascript">
+	initializeLbasMessages() ;
+	$('#updateLocationDetail_poi_iconName').attr('title', $.i18n.prop('buttons.changeicon'));
+	$("#edit_loc_tab1_link").text($.i18n.prop("editLocationDialog.Details") );
+	$("#edit_loc_tab2_link").text($.i18n.prop("editLocationDialog.Categories") );
+	$("#edit_loc_tab3_link").text($.i18n.prop("editLocationDialog.Permissions") );
+	$("#edit_loc_tab4_link").text($.i18n.prop("editLocationDialog.Admin") );
+
+</script>
+<div class="forScroll">
+<form id="updateLocationDetail" name="updateLocationDetail" action="updateLocationDetail" method="post">
+	<table>
+	<input type="hidden" name="poi.iconId" value="0" id="poiIconId"/>
+	<input type="hidden" name="poi.id" value="0" id="updateLocationDetail_poi_id"/>
+	<input type="hidden" name="poi.type" value="1" id="updateLocationDetail_poi_type"/>
+	<input type="hidden" name="poi.latitude" value="0.0" id="updateLocationDetail_poi_latitude"/>
+	<input type="hidden" name="poi.longitude" value="0.0" id="updateLocationDetail_poi_longitude"/>
+	<input type="hidden" name="categoryType" value="" id="updateLocationDetail_categoryType"/>
+	<input type="hidden" name="categoryIDs" value="" id="updateLocationDetail_categoryIDs"/>
+	
+
+	<tr>
+		<td class="d_label"><lm name="poi.name"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.name" value="" tabindex="1" id="editPoiName" class="graphic-input lbasInputText vldRequired vldMaxLength50"/></td>
+		<td class="d_error"><span id="editPoiNameVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.street"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.street" value="" tabindex="4" id="editPoiStreet" class="graphic-input lbasInputText vldMaxLength100"/></td>
+		<td width ="22"><span id="editPoiStreetVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.houseNo"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.houseNo" value="" tabindex="5" id="editPoiHouseno" class="graphic-input lbasInputText vldMaxLength10"/></td>
+		<td width ="22"><span id="editPoiHousenoVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.city"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.city" value="" tabindex="3" id="editPoiCity" class="graphic-input lbasInputText vldMaxLength20"/></td>
+		<td width ="22"><span id="editPoiCityVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.country"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.country" value="" tabindex="2" id="editPoiCountry" class="graphic-input lbasInputText vldMaxLength20"/></td>
+		<td width ="22"><span id="editPoiCountryVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.postcode"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.postcode" value="" tabindex="6" id="editPoiPostcode" class="graphic-input lbasInputText vldMaxLength16"/></td>
+		<td width ="22"><span id ="editPoiPostcodeVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.address"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.address" value="" tabindex="7" id="editPoiAddress" class="graphic-input lbasInputText vldMaxLength200"/></td>
+		<td width ="22"><span id ="editPoiAddressVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.phone"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.phone" value="" tabindex="8" id="editPoiPhone" class="graphic-input lbasInputText vldMaxLength20 vldPoiPhone"/></td>
+		<td width ="22"><span id ="editPoiPhoneVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.fax"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.fax" value="" tabindex="9" id="editPoiFax" class="graphic-input lbasInputText vldMaxLength16 vldFax"/></td>
+		<td width ="22"><span id ="editPoiFaxVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.language"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.language" value="" tabindex="11" id="editPoiLanguage" class="graphic-input lbasInputText vldMaxLength50 "/></td>
+		<td width ="22"><span id ="editPoiLanguageVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"></td>
+		<td class="d_input">
+			<input type="checkbox" name="editPoiRadiusCheckbox" value="true" id="editPoiRadiusCheckbox" onclick="this.value=this.checked; radiusForPoiChecked(this.value);"/>
+			<input type="hidden" id="__checkbox_editPoiRadiusCheckbox" name="__checkbox_editPoiRadiusCheckbox" value="true" />
+			<lm name="poi.radius"/><label id="updateLocationDetail_" class="labelStyle"></label>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="d_label"><lm name="poi.id"/></td>
+		<td class="d_input">
+			<input disabled="disabled" type="text" name="poi.id" value="" tabindex="7" id="editPoiAddress" class="graphic-input lbasInputText disabled vldMaxLength200"/>
+		</td><!--<td class="d_input"></td>-->
+	</tr>
+
+	<tr>
+		<td class="d_label"><lm name="poi.position"/></td>
+		<td class="d_input position">
+			<lm name="poi.latitude"/><label id="updateLocationDetail_" class="labelStyle"></label> <span id="poiDetailLatitude">0.0</span>
+			<lm name="poi.longitude"/><label id="updateLocationDetail_" class="labelStyle"></label> <span id="poiDetailLongitude">0.0</span>
+		</td>
+	<tr>
+		<td class="d_label"><lm name="poi.email"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.email" value="" tabindex="12" id="editPoiEmail" class="graphic-input lbasInputText vldEmail vldMaxLength200"/></td>
+		<td width ="22"><span id="editPoiEmailVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.website"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><input type="text" name="poi.website" value="" tabindex="13" id="editPoiWebsite" class="graphic-input lbasInputText vldMaxLength200"/></td>
+		<td width ="22"><span id="editPoiWebsiteVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.openHours"/> </td>
+		<td class="d_input">
+			<lm name="poi.from"/><label id="updateLocationDetail_" class="labelStyle"></label>
+			<select name="openFromHour" tabindex="14" id="updateLocationDetail_openFromHour">
+			    <option value="00" selected="selected">00</option>
+			    <option value="01">01</option>
+			    <option value="02">02</option>
+
+			    <option value="03">03</option>
+			    <option value="04">04</option>
+			    <option value="05">05</option>
+			    <option value="06">06</option>
+			    <option value="07">07</option>
+			    <option value="08">08</option>
+
+			    <option value="09">09</option>
+			    <option value="10">10</option>
+			    <option value="11">11</option>
+			    <option value="12">12</option>
+			    <option value="13">13</option>
+			    <option value="14">14</option>
+
+			    <option value="15">15</option>
+			    <option value="16">16</option>
+			    <option value="17">17</option>
+			    <option value="18">18</option>
+			    <option value="19">19</option>
+			    <option value="20">20</option>
+
+			    <option value="21">21</option>
+			    <option value="22">22</option>
+			    <option value="23">23</option>
+			</select>
+
+			<select name="openFromMin" tabindex="15" id="updateLocationDetail_openFromMin">
+			    <option value="00" selected="selected">00</option>
+
+			    <option value="01">01</option>
+			    <option value="02">02</option>
+			    <option value="03">03</option>
+			    <option value="04">04</option>
+			    <option value="05">05</option>
+			    <option value="06">06</option>
+
+			    <option value="07">07</option>
+			    <option value="08">08</option>
+			    <option value="09">09</option>
+			    <option value="10">10</option>
+			    <option value="11">11</option>
+			    <option value="12">12</option>
+
+			    <option value="13">13</option>
+			    <option value="14">14</option>
+			    <option value="15">15</option>
+			    <option value="16">16</option>
+			    <option value="17">17</option>
+			    <option value="18">18</option>
+
+			    <option value="19">19</option>
+			    <option value="20">20</option>
+			    <option value="21">21</option>
+			    <option value="22">22</option>
+			    <option value="23">23</option>
+			    <option value="24">24</option>
+
+			    <option value="25">25</option>
+			    <option value="26">26</option>
+			    <option value="27">27</option>
+			    <option value="28">28</option>
+			    <option value="29">29</option>
+			    <option value="30">30</option>
+
+			    <option value="31">31</option>
+			    <option value="32">32</option>
+			    <option value="33">33</option>
+			    <option value="34">34</option>
+			    <option value="35">35</option>
+			    <option value="36">36</option>
+
+			    <option value="37">37</option>
+			    <option value="38">38</option>
+			    <option value="39">39</option>
+			    <option value="40">40</option>
+			    <option value="41">41</option>
+			    <option value="42">42</option>
+
+			    <option value="43">43</option>
+			    <option value="44">44</option>
+			    <option value="45">45</option>
+			    <option value="46">46</option>
+			    <option value="47">47</option>
+			    <option value="48">48</option>
+
+			    <option value="49">49</option>
+			    <option value="50">50</option>
+			    <option value="51">51</option>
+			    <option value="52">52</option>
+			    <option value="53">53</option>
+			    <option value="54">54</option>
+
+			    <option value="55">55</option>
+			    <option value="56">56</option>
+			    <option value="57">57</option>
+			    <option value="58">58</option>
+			    <option value="59">59</option>
+			</select>
+
+			<lm name="poi.to"/><label id="updateLocationDetail_" class="labelStyle"></label>
+
+			<select name="openToHour" tabindex="16" id="updateLocationDetail_openToHour">
+			    <option value="00" selected="selected">00</option>
+			    <option value="01">01</option>
+			    <option value="02">02</option>
+			    <option value="03">03</option>
+
+			    <option value="04">04</option>
+			    <option value="05">05</option>
+			    <option value="06">06</option>
+			    <option value="07">07</option>
+			    <option value="08">08</option>
+			    <option value="09">09</option>
+
+			    <option value="10">10</option>
+			    <option value="11">11</option>
+			    <option value="12">12</option>
+			    <option value="13">13</option>
+			    <option value="14">14</option>
+			    <option value="15">15</option>
+
+			    <option value="16">16</option>
+			    <option value="17">17</option>
+			    <option value="18">18</option>
+			    <option value="19">19</option>
+			    <option value="20">20</option>
+			    <option value="21">21</option>
+
+			    <option value="22">22</option>
+			    <option value="23">23</option>
+			</select>
+
+			<select name="openToMin" tabindex="17" id="updateLocationDetail_openToMin">
+			    <option value="00" selected="selected">00</option>
+			    <option value="01">01</option>
+
+			    <option value="02">02</option>
+			    <option value="03">03</option>
+			    <option value="04">04</option>
+			    <option value="05">05</option>
+			    <option value="06">06</option>
+			    <option value="07">07</option>
+
+			    <option value="08">08</option>
+			    <option value="09">09</option>
+			    <option value="10">10</option>
+			    <option value="11">11</option>
+			    <option value="12">12</option>
+			    <option value="13">13</option>
+
+			    <option value="14">14</option>
+			    <option value="15">15</option>
+			    <option value="16">16</option>
+			    <option value="17">17</option>
+			    <option value="18">18</option>
+			    <option value="19">19</option>
+
+			    <option value="20">20</option>
+			    <option value="21">21</option>
+			    <option value="22">22</option>
+			    <option value="23">23</option>
+			    <option value="24">24</option>
+			    <option value="25">25</option>
+
+			    <option value="26">26</option>
+			    <option value="27">27</option>
+			    <option value="28">28</option>
+			    <option value="29">29</option>
+			    <option value="30">30</option>
+			    <option value="31">31</option>
+
+			    <option value="32">32</option>
+			    <option value="33">33</option>
+			    <option value="34">34</option>
+			    <option value="35">35</option>
+			    <option value="36">36</option>
+			    <option value="37">37</option>
+
+			    <option value="38">38</option>
+			    <option value="39">39</option>
+			    <option value="40">40</option>
+			    <option value="41">41</option>
+			    <option value="42">42</option>
+			    <option value="43">43</option>
+
+			    <option value="44">44</option>
+			    <option value="45">45</option>
+			    <option value="46">46</option>
+			    <option value="47">47</option>
+			    <option value="48">48</option>
+			    <option value="49">49</option>
+
+			    <option value="50">50</option>
+			    <option value="51">51</option>
+			    <option value="52">52</option>
+			    <option value="53">53</option>
+			    <option value="54">54</option>
+			    <option value="55">55</option>
+
+			    <option value="56">56</option>
+			    <option value="57">57</option>
+			    <option value="58">58</option>
+			    <option value="59">59</option>
+			</select>
+		</td>
+		<td width ="22"></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.shortDescription"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><textarea name="poi.shortDescription" cols="4" rows="" tabindex="18" id="editPoiShortDesc" class="graphic-input lbasTextAreaSmall vldMaxLength200"></textarea></td>
+		<td width ="22"><span id ="editPoiShortDescVld"/></td>
+	</tr>
+	<tr>
+		<td class="d_label"><lm name="poi.longDescription"/><label id="updateLocationDetail_" class="labelStyle"></label></td>
+		<td class="d_input"><textarea name="poi.longDescription" cols="4" rows="" tabindex="19" id="editPoiLongDesc" class="graphic-input lbasTextArea vldMaxLength1255"></textarea></td>
+		<td width ="22"><span id ="editPoiLongDescVld"/></td>
+	</tr>
+	<!--<tr>
+		<td>
+			<lm name="poi.image"/><label id="updateLocationDetail_"></label>
+		</td>
+		<td>
+			<img id="updateLocationDetail_poi_iconName" title="" onclick="openSelectIconDialog(null,'poi','poi.iconName');" name="poi.iconName" src="/reply/images/cat_vf_uncategorized.png"/>
+		</td>
+		<td width ="22">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>
+			<a href="javascript:void(0);" onclick="openUploadFileDialog('image','location');">
+				<span class="btnSpan"><lm name="buttons.uploadIcon"/></span>
+			</a>
+		</td>
+
+	</tr>
+	<tr>
+		<td>
+			<input type="text" name="poi.radius" value="0" tabindex="12" id="editPoiRadius" class="lbasInputText vldIntMax5" style="display:none"/>
+		</td>
+		<td width ="22">
+			<span id ="editPoiRadiusVld"/>
+		</td>
+
+	</tr>
+	-->
+
+	</table>
+</form>
+</div>

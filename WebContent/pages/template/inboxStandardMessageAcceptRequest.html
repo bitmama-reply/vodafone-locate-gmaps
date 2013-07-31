@@ -1,0 +1,149 @@
+<div id="standardMessageDetailContent" class="inboxMessageContentDiv">
+	
+	<div class="toolsMessage clearfix">
+		<a class="goBack" onclick="hideMessageContent(this);"><#= $.i18n.prop('messages.backToList') #></a>
+		<# if(lbasRightManager && lbasRightManager.checkRight('send_messages')) { #>
+		  <a onclick="openComposeMessageDialogFromInbox()" class="inboxActionLink newMsg"><span><#= $.i18n.prop('messages.newMessage') #></span></a>
+		<# } #> 
+	</div>
+	
+	
+	<div class="head">
+		<div class="clearfix">
+			<h2><#= json.detailTitle #></h2>
+			
+			<ul class="messageTools clearfix">
+				<li>
+					<a onclick="deleteMessage(1,<#= json.messageId #>);" class="inboxActionLink marginLeft"><span><#= $.i18n.prop('message.Delete') #></span></a>
+				</li>
+				<li>
+					<a onclick="forwardMessage(<#= json.messageId #>, 0 ,1);" class="inboxActionLink"><span><#= $.i18n.prop('message.Forward') #></span></a>
+				</li>
+				<li>
+					<a onclick="replyToMessage(<#= json.messageId #>, 'all');" class="inboxActionLink"><span><#= $.i18n.prop('message.ReplyAll') #></span></a>
+				</li>
+				<li>
+					<a onclick="replyToMessage(<#= json.messageId #>, 'single');" class="inboxActionLink"><span><#= $.i18n.prop('message.Reply') #></span></a>
+				</li>
+			</ul>
+			
+			
+		</div>
+		<div class="clearfix">
+			<h3 class="from">
+				<#= $.i18n.prop('messageDetail.from') #>: <span><#= json.from #></span> 
+		  </h3>
+		  <h3 class="to">
+		    <!-- json.toUserId -->
+				<#= $.i18n.prop('messageDetail.to') #>: <span><#= json.to #></span>
+			</h3>
+			
+			<p class="sentTime"><#= $.i18n.prop('messageDetail.sent') #>:&nbsp;</p>
+			
+		</div>
+	</div>
+	
+	<div class="content">
+		<#= json.content #>
+	</div>
+	<div id="acceptedReqCalendar"></div>
+</div>
+
+<#        
+	
+    $.each(json, function(name, value) {
+            if (name === "privacySettingList"){
+            	privacySettingListAcceptedRequest = value ;
+            }
+    });
+
+#>
+<script>
+	$(function(){
+
+	    var eventsX = new Array();
+        $.each(privacySettingListAcceptedRequest, function(index, value){
+            var dow = new Date().getDay() - 1;
+            var fromHour = value.fromHour;
+            var fh = fromHour.substring(0, 2);
+            var ft = fromHour.substring(2, 4);
+            var toHour = value.toHour;
+            var th = toHour.substring(0, 2);
+            var tt = toHour.substring(2, 4);
+            var startX, endX;
+/*
+            var todayFrom = new Date().setHours(fh).setMinutes(ft);
+            var todayTo = new Date().setHours(th).setMinutes(tt);
+*/
+            
+            if (dow > value.dayOfWeek)
+            {
+                startX = new Date(y, m, d-(dow - value.dayOfWeek) , fh, ft);
+                endX = new Date(y, m, d-(dow - value.dayOfWeek),th , tt);
+            }
+            else
+            {
+                startX = new Date(); /* (y, m, d+(value.dayOfWeek - dow), fh, ft); */
+                var getToday = startX.getDate()+(value.dayOfWeek - dow);
+                startX.setDate(getToday);
+                startX.setHours(fh);
+                startX.setMinutes(ft);
+                
+/*                 endX = new Date(y, m, d+(value.dayOfWeek - dow), th, tt); */
+                endX = new Date();
+                var getToday2 = endX.getDate()+(value.dayOfWeek - dow);
+                endX.setDate(getToday2);
+                endX.setHours(th);
+                endX.setMinutes(tt);
+            }   
+            var event=null;
+            event = new Object();       
+            event.id = value.rule_id;
+            event.title = 'Event ' + value.rule_id;
+            event.start = startX;
+            event.end = endX;
+            event.allDay = false;
+            eventsX.push(event);
+        });
+                
+        setTimeout(function() {
+	        createTheAcceptedCal(eventsX);
+	        }, 200);
+
+     });
+		function createTheAcceptedCal(eventsX){
+			$('#acceptedReqCalendar').empty(); 
+			$('#acceptedReqCalendar').fullCalendar('destroy');
+			var calendarMes = $('#acceptedReqCalendar').fullCalendar({
+				header : { left: '',    center: '',    right: ''},
+				columnFormat : { week: 'ddd' },
+				firstDay : 1,
+				height: 520,
+				defaultView : 'agendaWeek',
+				allDaySlot : false,
+				axisFormat : 'H:mm',
+				timeFormat: 'H:mm',
+				slotMinutes : 30,
+				minTime:8,
+				maxTime:19,
+				dayNamesShort:$.i18n.prop('calendar.dayNamesShort').split(','),
+				editable: false,
+				eventAfterRender : function(event, element , view) {
+					var newTime = event._start.getHours() +':'+ ( event._start.getMinutes() < 10 ? "0" : "" ) + event._start.getMinutes() +' - '+ event._end.getHours() +':'+ ( event._end.getMinutes() < 10 ? "0" : "" ) + event._end.getMinutes();
+					
+					element.find('.fc-event-time').empty().text(newTime);
+					var width_of_cell = $(".fc-widget-content").outerWidth(); 
+						$(element).css('width',width_of_cell-5);
+				
+						if ($.inArray( event, src ) >= 0 ) {
+				
+						} else {
+							src.push( event);
+						}
+				}
+			});
+			calendarMes.fullCalendar('removeEvents').fullCalendar('removeEventSources').fullCalendar('addEventSource',eventsX);
+			var inboxH = $(document).outerHeight() - $('#messages').offset().top;
+			$('#inbox').css({height: inboxH + 30});
+		}
+</script>

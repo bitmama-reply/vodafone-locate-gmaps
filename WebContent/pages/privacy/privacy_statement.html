@@ -1,0 +1,173 @@
+<style>
+	#companyStatement{width: 960px; padding: 20px;}
+	#companyStatement .lm, .privacyStatement{font-size: 12px; line-height: 18px; color: #333333;}
+	#companyStatement h1{font-size: 28px; font-weight: bold; padding: 0 0 20px; color: #333333;}	
+	#companyStatement h2{font-size: 18px; font-weight: bold; padding: 0 0 20px; color: #333333;}
+	#companyPrivacyAcceptButtons .multi_user_button{float: left;}
+	#companyPrivacyAcceptButtons .purple_button{width: auto; float: left;}
+	#companyPrivacyAcceptButtons .purple_button span{display: block; line-height: 28px; padding: 0px 10px 0 0;}
+
+
+
+</style>
+<div class="ui-layout-center mod3Col ui-layout-pane ui-layout-pane-center open" id="privacyCenterDiv" pane="center">
+<!-- 	position: absolute; left: 0px; top: 105px; z-index: 2; width: 1920px; overflow: auto; visibility: visible; display: block; margin: 0px; right: 0px; bottom: 0px; height: 528px; --> 
+<form method="post" action="submitPrivacyPage" name="submitPrivacyPage" id="submitPrivacyPage">
+
+<input type="hidden" id="submitPrivacyPage_vodafonePrivacyAccepted" value="true" name="vodafonePrivacyAccepted">
+<input type="hidden" id="submitPrivacyPage_vodafoneDontShowCheckboxInitial" value="true" name="vodafoneDontShowCheckboxInitial">
+<input type="hidden" id="submitPrivacyPage_companyPrivacyAccepted" value="false" name="companyPrivacyAccepted">
+<input type="hidden" id="submitPrivacyPage_companyDontShowCheckboxInitial" value="true" name="companyDontShowCheckboxInitial">
+<input type="hidden" id="submitPrivacyPage_loginState" value="PRIVACY" name="loginState">
+<!--
+<input type="hidden" id="submitPrivacyPage_privacyDontShowSetting" value="true" name="privacyDontShowSetting">
+<input type="hidden" id="submitPrivacyPage_statementOwner" value="company" name="statementOwner">
+-->
+
+
+<div id="companyStatement">
+
+
+  <h2><b><span key="privacy.statement.company" class="lm">Company privacy statement</span></b></h2>
+
+	<div class="privacyStatement"></div>
+	
+	
+
+	<input type="checkbox" id="companyDontShowCheckbox" checked="checked" value="true" name="companyDontShowCheckbox">
+	<input type="hidden" value="true" name="__checkbox_companyDontShowCheckbox" id="__checkbox_companyDontShowCheckbox"> <span key="privacy.dontshow" class="lm">Don't show this again</span>
+	
+		
+	<div id="companyPrivacyAcceptButtons">
+	<table><tbody><tr>
+			<td width="500"></td>
+			<td align="right">
+				<a class="multi_user_button" href="./logout.action">
+					<span key="buttons.reject">Reject</span>
+				</a>
+			</td>
+			<td align="right">
+				<a id="acceptPrivacyStatement"  href="javascript:void(0);" style="color: #fff;" class="purple_button">
+			   		<span key="buttons.accept">Accept</span>
+			   	</a>
+			</td>
+	</tr></tbody></table>
+	</div>
+	
+</div>
+	
+<!-- </form> -->
+
+</div> 
+
+<script>
+
+$(function(){
+	var statementOfPrivacy;
+	addPrivacyStateOnPage();
+	
+/*
+    $('#acceptPrivacyStatement').on('click', function(){
+		acceptPrivacyStatement(statementOfPrivacy);
+	});
+*/
+});
+
+
+function addPrivacyStateOnPage(){
+
+	$.ajax({
+    	url :"json/showPrivacyStatementAfterLogin.action",
+    	type :'POST',
+    	success :function(json) {
+
+    		if(json.vodafonePrivacy.showPrivacyPanel){
+	    		$('.privacyStatement').html($('<div/>').html(json.vodafonePrivacy.privacyStatement).text());	    			
+	    		statementOfPrivacy ='vodafone';
+
+			    $('#acceptPrivacyStatement').on('click', function(){
+					acceptPrivacyStatement('vodafone');
+				});
+	    		
+    		}else if(json.companyPrivacy.showPrivacyPanel){
+	    		$('.privacyStatement').html($('<div/>').html(json.companyPrivacy.privacyStatement).text());
+	    		statementOfPrivacy ='company';
+
+	    		
+			    $('#acceptPrivacyStatement').on('click', function(){
+					acceptPrivacyStatement('company');
+				});
+	    		
+    		}
+    	}
+    });	
+
+}
+
+function acceptPrivacyStatement(statementOwner){
+  	statementOwner = statementOwner;
+
+  var  privacyDontShowSetting = $('input[name=companyDontShowCheckbox]').prop('checked');
+  
+
+  
+  
+  $.post("json/acceptPrivacyStatement.action", {
+  			"privacyDontShowSetting":privacyDontShowSetting,
+  			"statementOwner":statementOwner
+  		}, function(data){
+    /*Object { loginState="SUCCESS", submitPage=true}*/
+
+    if (data.submitPage) {
+      document.submitPrivacyPage.submit()
+    }else{
+		$.ajax({
+	    	url :"json/showPrivacyStatementAfterLogin.action",
+	    	type :'POST',
+	    	success :function(json) {
+
+	    			if(!json.companyPrivacy.accepted){
+		    			addPrivacyStateOnPage();
+					}
+				}
+			});
+     }
+  }); 
+}
+
+/*
+  
+  function acceptPrivacyStatement(a){
+  var b;
+  if(a=="vodafone"){
+    b="company"
+  }else{
+    if(a=="company"){
+      b="vodafone"
+    }else{
+      return false
+    }
+  }
+  var c=$("#submitPrivacyPage").serialize();
+  c+="&statementOwner="+a;$.post("/json/acceptPrivacyStatement.action",c,function(d){
+    if(a=="vodafone"){
+      $("#vodafonePrivacyAcceptButtons").hide()
+      }else{
+        if(a=="company"){
+          $("#companyPrivacyAcceptButtons").hide()
+          }
+      }
+      if(d.submitPage){
+        document.submitPrivacyPage.submit()
+        }else{
+          if($("#submitPrivacyPage  input[name="+b+"PrivacyAccepted ]").val()=="false"){
+            $("#"+a+"Statement").hide();
+            $("#"+b+"Statement").show();
+            return false
+            }
+        }
+      },"json")
+}
+*/
+  
+</script>

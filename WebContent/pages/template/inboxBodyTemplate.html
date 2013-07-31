@@ -1,0 +1,523 @@
+<!--
+<input type="text" id="searchMessageInput" class="searchInput" onkeypress ="if(enterPressed(event)){searchInbox('<#= json.messageBoxTypeName #>')}"
+							value="<#=  $.i18n.prop('inbox.searchMessages') #>" size="10"
+							onfocus="if (this.value==''+$.i18n.prop('inbox.searchMessages')) { this.style.color='black'; this.value=''; }"
+							onblur="if (this.value=='') { this.style.color='#7E7E7E'; this.value=''+$.i18n.prop('inbox.searchMessages'); }">
+-->
+
+
+
+<div id="messages-container">
+	<ul>
+	 <# if(json.messageBoxTypeName=='INBOX') { #>
+		<li class="tab-messages"><a href="#tab-inbox-messages" id="tab-mex"><span><#= $.i18n.prop('message.Messages') #>&nbsp;<#= mailCnt #></span></a></li>
+		<li class="tab-requests"><a href="#tab-inbox-requests"><span><#= $.i18n.prop('message.IncomingRequests') #>&nbsp;(<label class="req-cnt"></label>)</span></a></li>
+  <# } else if (json.messageBoxTypeName=='SENT') { #>
+    <li class="tab-messages"><a href="#tab-sent-messages"><span><#= $.i18n.prop('message.sent.mex') #>&nbsp;<label class="sent-cnt"></label></span></a></li>
+		<li class="tab-requests"><a href="#tab-sent-requests"><span><#= $.i18n.prop('message.sent.req') #>&nbsp;(<label class="req-sent-cnt"></label>)</span></a></li>
+  <# } else if (json.messageBoxTypeName=='TRASH') { #>
+    <li class="tab-messages"><a href="#tab-trash" id="tab-trash"><span><#= $.i18n.prop('message.trash') #></span></a></li>
+  <# } #>
+  
+		<!--
+<li class="searchPart">
+			<div id="searchMessageArea" class="modBorder">
+				
+        <input type="text" id="searchMessageInput" class="searchInput"
+							value="" size="10"
+							$.i18n.prop('inbox.search')+" "+$.i18n.prop('inbox.searchMessages')
+							onfocus=""
+							onblur="">
+				<a href="javascript:void(0);" style="color: #FFFFFF;margin-left:0px">
+					<img id="search" src="images/mg_icon_small.png" />
+				</a>
+			</div>
+		</li>
+-->
+	</ul>
+	<div class="ulcover"></div>
+	
+	
+	<div id="message-viewer">
+	 
+	 <!-- TAB MEX -->
+		<div id="tab-inbox-messages">
+			<ul class="headBar clearfix">
+				<li class="selectAll"><input onclick="toggelAllMessages(this);" class="selector" type="checkbox" value="#" id="messages-tab-select-all"></li>
+				
+				<li class="DropDownBox">
+					<select name="messageType" id="message-type">
+						<option value="all" id="opt-messages" ><#= $.i18n.prop('messages.allMessages') #></option>
+						<option value="meetings" id="opt-meetings"><#= $.i18n.prop('messages.Meetings') #></option>
+						<option value="routes" id="opt-routes"><#= $.i18n.prop('messages.SharedRoutes') #></option>
+					</select>
+				</li>
+				
+				<li>
+				 <a href="javascript:void(0);" title="<#= $.i18n.prop('messages.markAsRead') #>" class="inboxActionLink multi_user_button_inactive mark-read"><span><#= $.i18n.prop('message.markAsRead') #></span></a>
+			  </li>
+			  
+			  <li>
+				 <a href="javascript:void(0);" title="<#= $.i18n.prop('messages.markAsUnread') #>" class="inboxActionLink multi_user_button_inactive mark-unread"><span><#= $.i18n.prop('message.markAsUnread') #></span></a>
+			  </li>
+
+				<li>
+				  <a href="javascript:void(0);" title="<#= $.i18n.prop('message.Delete') #>" class="inboxActionLink multi_user_button_inactive mark-delete"><span><#= $.i18n.prop('message.Delete') #></span></a>
+				</li>
+        
+				<# if(lbasRightManager && lbasRightManager.checkRight('send_messages')) { #>
+			    <li class="newMsg">
+			      <a onclick="openComposeMessageDialogFromInbox();return false;" title="<#= $.i18n.prop('messages.newMessage') #>" class="multi_user_button" ><span><#= $.i18n.prop('messages.newMessage') #></span></a>
+				 
+			    </li>
+        <# } #>
+			</ul>
+			<!--
+      <ul class="tools clearfix">
+				<li>
+					<# if(json.messageBoxTypeName=='TRASH') { #>
+						<a href="javascript:void(0);" onclick="deleteMessage(0);return false;" class="inboxActionLink"><span><#= $.i18n.prop('message.Delete') #></span></a>
+					 <# } else { #>
+						<a href="javascript:void(0);" onclick="deleteMessage(1);return false;" class="inboxActionLink"><span><#= $.i18n.prop('message.Delete') #></span></a>
+					<# } #>
+				</li>
+				<li>
+					<a href="javascript:void(0);" onclick="markAsRead(0);return false;" class="inboxActionLink"><span><#= $.i18n.prop('message.markAsRead') #></span></a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" onclick="markAsUnread(0);return false;" class="inboxActionLink"><span><#= $.i18n.prop('message.markAsUnread') #></span></a>
+				</li>
+				<# if(lbasRightManager && lbasRightManager.checkRight('send_messages')) { #>
+				<li class="newMsg">
+				  <a onclick="openComposeMessageDialogFromInbox();return false;" class="inboxActionLink" ><span><#= $.i18n.prop('messages.newMessage') #></span></a>
+				<# } #>
+				</li>
+			</ul>
+      -->
+			
+			
+			<div id="selectMulti" class="clearfix">
+				<h2><#= $.i18n.prop('message.allmessages') #></h2>	
+						  
+	 			<div id="inboxPaging">
+				    <# if(json.page>1) { #>
+				      <a href="javascript:void(0);" class="inboxPagingLink" title="<#= $.i18n.prop('buttons.first') #>" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,1,5);return false" class="standartLink"><img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /></a>
+				      <a href="javascript:void(0);" class="inboxPagingLink" title="<#= $.i18n.prop('buttons.previous') #>" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page-1 #>,5); return false" class="standartLink"><img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /></a>
+				    <# } else { #>
+					  <label> <img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /> </label>
+					  <label> <img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /> </label>
+					<# } #>		
+				       <ul class="page-link-list"></ul>
+				      <!--
+				      <input id="inboxPagInput" type="text" style="width:35px" value="<#= json.page #>" onkeypress ="if(enterPressed(event))loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,$('#inboxPagInput').val(),5);" />&nbsp;<#= $.i18n.prop('inbox.paging.of') #>&nbsp;<#= json.total #>
+				    -->
+				    
+				    <# if(json.page < json.totalPages) { #>
+				      <a class="inboxPagingLink" title="<#= $.i18n.prop('buttons.next') #>" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page+1 #>,5)" class="standartLink"><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></a>
+			          <a class="inboxPagingLink" title="<#= $.i18n.prop('buttons.last') #>" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.totalPages #>,5)" class="standartLink"><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></a>
+				    <# } else { #>
+					  <label><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></label>
+					  <label><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></label>
+					<# } #>
+       			</div>	
+			</div>
+			
+		
+			<div id="messageListContent">
+			
+			 <!-- INBOX -->
+				<table class="fixedArea">
+					<tbody>
+						<tr>
+							<td valign="middle" class="first"> <!--x--> </td>
+							<td valign="middle" class="second"><#= $.i18n.prop('message.tabletitle.from') #> </td>
+							<td valign="middle" class="third"><#= $.i18n.prop('message.tabletitle.subject') #> </td>
+							<td valign="middle" class="four"><#= $.i18n.prop('message.tabletitle.date') #> </td>
+					    </tr>
+				    </tbody>  
+			 	 </table>
+			 	 <div class="inboxTableCover">
+          <table class="inboxTable" id="inboxTable" cellpadding="0" cellspacing="0" width="100%">
+          	<tbody>
+          	  <# for(var i=0; i < json.messageList.length; i++) { var top = json.messageList[i];#> 
+          		<tr class="inboxTbTRRowCell" onmouseout="if (!$(this).hasClass('inboxTbTRRowCellSelected')) this.className='inboxTbTRRowCell';" onmouseover="if (!$(this).hasClass('inboxTbTRRowCellSelected')) this.className='inboxTbTRRowCellHover';" class="inboxTbTRRowCell">
+                     <td class="inboxTbRowCell first" valign="middle">
+                     		<input class="selector" type="checkbox" value="<#= top.id #>"> 
+                     		<!--<div class="arrow"></div>-->
+                     		<div class="read_unread <# if(!top.read) { #> bold <# } #>"></div>
+                     </td>
+                     <td onclick="showMessageContent(<#= top.id #>,<#= top.read #>,this)" class="inboxTbRowCell second <# if(!top.read) { #> bold <# } #>">
+                     		<#= top.userFromName #>
+                     </td>
+                     <td onclick="showMessageContent(<#= top.id #>,<#= top.read #>,this)" class="inboxTbRowCell third <# if(!top.read) { #> bold <# } #>">
+          				<#= top.subject #>
+          		   </td>
+                     <td onclick="showMessageContent(<#= top.id #>,<#= top.read #>,this)" class="inboxTbRowCell four <# if(!top.read) { #> bold <# } #>">
+                     		<#= getDate(top.sendTime) #>
+                     		
+                     </td>
+                  </tr>
+                <# } #>
+          	</tbody>
+          </table>
+				</div>
+
+		      
+			
+			</div>
+			
+				
+			<div id="messageDetail"></div>
+			
+			<div id="messageUserFromToId" style="display:none"></div>
+			
+			<!--<div id="sendMeMailContent" >
+				<# if(json.sendMeMailCheckbox){ #>
+				<input type="checkbox" id="sendMeMailCheckbox" name="sendMeMailCheckbox" value="true" onclick="this.value=this.checked" checked="checked"/>
+				<# }else{ #>
+				<input type="checkbox" id="sendMeMailCheckbox" name="sendMeMailCheckbox" value="false" onclick="this.value=this.checked"/>
+				<# } #>
+				<lm name="privacy.sendMeMailCheckbox"></lm>
+				<select id="sendMeMailPeriod" name="sendMeMailPeriod" class="lm" key="privacy.sendMeUpdatePeriodList" >
+					<# for(var i=0; json.sendMeMailPeriodList && i < json.sendMeMailPeriodList.length; i++) {  #>
+			  		<option value="<#= json.sendMeMailPeriodList[i].key #>" <#if(json.sendMeMailPeriod==json.sendMeMailPeriodList[i].key){#>selected="selected"<#}#>><#= json.sendMeMailPeriodList[i].value #></option>
+			        <# } #>
+			    </select>
+			    &nbsp;
+			   	<a class="textBtnGrey" href="javascript:void(0);" onclick="AjxUpdateSendMeMail();" tabindex="20" >                          	                          
+			       <span class="btnSpan">
+		           		<span class="lm" key="buttons.save"><#= $.i18n.prop('buttons.save') #></span>
+		           </span>                     	
+			   </a>
+			</div>-->
+		</div>
+		<!-- /tab messages -->
+		
+		
+		<!-- TAB IN REQ -->
+
+		<div id="tab-inbox-requests">
+		    <div id="requestDetail"></div>
+		      <div id="selectMulti" class="clearfix">
+    				<h2><#= $.i18n.prop('message.IncomingRequests') #></h2>
+
+    	 			 <div id="inboxPaging">
+
+                         <span id="prevNav"></span>
+                         <span id="inputNav"></span>
+                         <span id="nextNav"></span>
+
+
+    				    <!--<# if(json.page>1) { #>-->
+    				      <!--<a href="javascript:void(0);" class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,1,5);return false" class="standartLink"><img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /></a>-->
+    				      <!--<a href="javascript:void(0);" class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page-1 #>,5); return false" class="standartLink"><img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /></a>-->
+    				    <!--<# } else { #>-->
+    					  <!--<label> <img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /> </label>-->
+    					  <!--<label> <img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /> </label>-->
+    					<!--<# } #>		-->
+    				      <!--<input id="inboxPagInput" type="text" style="width:35px" value="<#= json.page #>" onkeypress ="if(enterPressed(event))loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,$('#inboxPagInput').val(),5);" />&nbsp;<#= $.i18n.prop('inbox.paging.of') #>&nbsp;<#= json.totalPages #>-->
+    				    <!--<# if(json.page < json.totalPages) { #>-->
+    				      <!--<a class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page+1 #>,5)" class="standartLink"><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></a>-->
+    			          <!--<a class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.totalPages #>,5)" class="standartLink"><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></a>-->
+    				    <!--<# } else { #>-->
+    					  <!--<label><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></label>-->
+    					  <!--<label><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></label>-->
+    					<!--<# } #>-->
+            </div>
+			   </div>
+
+		  <div id="requestedListContent">
+            <table id="requestedListHeader" class="fixedArea">
+                <tr>
+                    <td class="first"></td>
+                    <td class="second"><#= $.i18n.prop('message.tabletitle.from') #></td>
+                    <td class="third"><#= $.i18n.prop('message.tabletitle.subject') #></td>
+                    <td class="four"><#= $.i18n.prop('message.tabletitle.date') #> </td>
+                </tr>
+            </table>
+            <div id="requestedListCover">
+                <table id="requestedList" class="inboxTable" width="100%" cellpadding="0" cellspacing="0"></table>
+            </div>
+          </div>
+		    
+		</div>
+		<!-- /requests -->
+		
+		<!-- TAB SENT MESSAGE -->
+		<div id="tab-sent-messages">
+		
+		  <ul class="headBar clearfix">
+				<li class="selectAll"><input onclick="toggelAllMessages(this);" class="selector" type="checkbox" value="#" id="messages-tab-select-all"></li>
+				<li>
+						<a href="javascript:void(0);" title="<#= $.i18n.prop('messages.Delete') #>" class="inboxActionLink multi_user_button_inactive mark-delete"><span><#= $.i18n.prop('message.Delete') #></span></a>
+				</li>
+					<# if(lbasRightManager && lbasRightManager.checkRight('send_messages')) { #>
+				    <li class="newMsg">
+				      <a title="<#= $.i18n.prop('messages.newMessage') #>" onclick="openComposeMessageDialogFromInbox();return false;" class="multi_user_button" ><span><#= $.i18n.prop('messages.newMessage') #></span></a>
+					 
+				    </li>
+          <# } #>
+			</ul>
+		
+		  <div id="selectMulti" class="clearfix">
+				<h2><#= $.i18n.prop('message.sent.mex') #></h2>	
+						  
+	 			<div id="inboxPaging">
+				    <# if(json.page>1) { #>
+				      <a href="javascript:void(0);" class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,1,5); return false;" class="standartLink"><img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /></a>
+				      <a href="javascript:void(0);" class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page-1 #>,5);return false" class="standartLink"><img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /></a>
+				    <# } else { #>
+					  <label> <img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /> </label>
+					  <label> <img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /> </label>
+					<# } #>
+					     <ul class="page-link-list"></ul>		
+				      <!-- <input id="inboxPagInput" type="text" style="width:35px" value="<#= json.page #>" onkeypress ="if(enterPressed(event))loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,$('#inboxPagInput').val(),5);" />&nbsp;<#= $.i18n.prop('inbox.paging.of') #>&nbsp;<#= json.total #> -->
+				      
+				    <# if(json.page < json.totalPages) { #>
+				      <a class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page+1 #>,5)" class="standartLink"><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></a>
+			          <a class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.totalPages #>,5)" class="standartLink"><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></a>
+				    <# } else { #>
+					  <label><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></label>
+					  <label><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></label>
+					<# } #>
+       	</div>	
+			</div>
+		  
+		  
+		  <div id="messageListContent">
+		  
+		    <table class="fixedArea">
+					<tbody>
+						<tr>
+							<td valign="middle" class="first"> </td>
+							<td valign="middle" class="second"><#= $.i18n.prop('message.tabletitle.sent.to') #> </td>
+							<td valign="middle" class="third"><#= $.i18n.prop('message.tabletitle.subject') #> </td>
+							<td valign="middle" class="four"><#= $.i18n.prop('message.tabletitle.date') #> </td>
+					    </tr>
+				    </tbody>  
+			 	 </table>
+			 	 
+			 	 <div class="inboxTableCover">
+  				 <table class="inboxTable" id="sentTable" cellpadding="0" cellspacing="0" width="100%">
+  					<tbody>
+  					  <# for(var i=0; i < json.messageList.length; i++) { var top = json.messageList[i]; #> 
+  						<tr class="inboxTbTRRowCell" onmouseout="if (!$(this).hasClass('inboxTbTRRowCellSelected')) this.className='inboxTbTRRowCell';" onmouseover="if (!$(this).hasClass('inboxTbTRRowCellSelected')) this.className='inboxTbTRRowCellHover';" class="inboxTbTRRowCell">
+  				           <td  class="inboxTbRowCell first"><input class="selector" type="checkbox" value="<#= top.id #>"> </td>
+  				           <td onclick="showMessageContent(<#= top.id #>,true,this)" class="inboxTbRowCell second"><#= top.userToName #></td>
+  				           <td onclick="showMessageContent(<#= top.id #>,true,this)" class="inboxTbRowCell third"><#= top.subject #></td>
+  				           <td  onclick="showMessageContent(<#= top.id #>,true,this)" class="inboxTbRowCell four"><#= getDate(top.sendTime) #></td>
+  				        </tr>
+  				      <# } #>
+  					</tbody>
+  				</table>
+			   </div>
+			 
+		  </div><!-- messageListContent -->
+		  
+		  <div id="messageDetail"></div>
+			<div id="messageUserFromToId" style="display:none"></div>
+			 
+		
+		</div>
+
+
+		<!-- TAB SENT REQ -->
+
+     <div id="tab-sent-requests">
+
+         <div id="requestDetail"></div>
+
+         <ul class="headBar clearfix">
+             <li class="selectAll"><input onclick="toggelAllMessages(this);" class="selector" type="checkbox" value="#" id="messages-tab-select-all-req"></li>
+             <li>
+                 <a href="javascript:void(0);" class="inboxActionLink multi_user_button_inactive mark-delete"><span><#= $.i18n.prop('message.Delete') #></span></a>
+             </li>
+             <li>
+                 <a href="javascript:void(0);" class="inboxActionLink multi_user_button_inactive mark-reminder"><span>  <#= $.i18n.prop('message.sendReminder') #></span></a>
+             </li>
+         </ul>
+
+         <div id="selectMulti" class="clearfix">
+             <h2><#= $.i18n.prop('message.sent.req') #></h2>
+             
+             <!--
+<div id="inboxPaging">
+				    <# if(json.page>1) { #>
+				      <a href="javascript:void(0);" class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,1,5); return false;" class="standartLink"><img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /></a>
+				      <a href="javascript:void(0);" class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page-1 #>,5);return false" class="standartLink"><img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /></a>
+				    <# } else { #>
+					  <label> <img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /> </label>
+					  <label> <img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /> </label>
+					<# } #>		
+				      <input id="inboxPagInput" type="text" style="width:35px" value="<#= json.page #>" onkeypress ="if(enterPressed(event))loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,$('#inboxPagInput').val(),5);" />&nbsp;<#= $.i18n.prop('inbox.paging.of') #>&nbsp;<#= json.totalPages #>
+				    <# if(json.page < json.totalPages) { #>
+				      <a class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page+1 #>,5)" class="standartLink"><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></a>
+			          <a class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.totalPages #>,5)" class="standartLink"><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></a>
+				    <# } else { #>
+					  <label><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></label>
+					  <label><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></label>
+					<# } #>
+       	</div>
+-->	
+
+             <div id="inboxPaging">
+                 <span id="prevNav"></span>
+                 <span id="inputNav"></span>
+                 <span id="nextNav"></span>
+             </div>
+
+         </div>
+
+
+         <div id="requestedListContent">
+           <table id="sentListHeader" class="fixedArea">
+             <tr>
+               <td class="first"></td>
+               <td class="second"><#= $.i18n.prop('message.sentTo') #></td>
+               <td class="third"><#= $.i18n.prop('message.req.subject') #></td>
+               <td class="four"><#= $.i18n.prop('message.status') #> </td>
+               <td class="fifth"><#= $.i18n.prop('messageDetail.date') #> </td>
+             </tr>
+           </table>
+           <div id="sentListCover" class="inboxTableCover">
+            <table class="inboxTable" id="sentList" cellpadding="0" cellspacing="0" width="100%"></table>
+           </div>
+         </div><!-- requestedListContent -->
+        
+        
+        <div id="messageUserFromToId" style="display:none"></div>
+        
+        
+     </div>
+
+
+
+
+		
+		
+		
+		<!-- TAB TRASH -->
+		<div id="tab-trash">
+		  
+		  <ul class="headBar clearfix">
+				<li class="selectAll"><input onclick="toggelAllMessages(this);" class="selector" type="checkbox" value="#" id="messages-tab-select-all"></li>
+				<li>
+				  <a href="javascript:void(0);" title="<#= $.i18n.prop('messages.Delete') #>" class="inboxActionLink multi_user_button_inactive mark-delete"><span><#= $.i18n.prop('messages.Delete') #></span></a>
+				</li>
+				<li>
+          <a href="javascript:void(0);" title="<#= $.i18n.prop('message.remove.from.trash') #>" class="inboxActionLink multi_user_button_inactive mark-move"><span><#= $.i18n.prop('message.remove.from.trash') #></span></a>  
+        </li>
+        <# if(lbasRightManager && lbasRightManager.checkRight('send_messages')) { #>
+				    <li class="newMsg">
+				      <a onclick="openComposeMessageDialogFromInbox();return false;" title="<#= $.i18n.prop('messages.newMessage') #>" class="multi_user_button" ><span><#= $.i18n.prop('messages.newMessage') #></span></a>
+					 
+				    </li>
+          <# } #>
+		  </ul>
+		    
+		    
+		    <div id="selectMulti" class="clearfix">
+				<h2><#= $.i18n.prop('message.trash') #></h2>	
+						  
+	 			<div id="inboxPaging">
+				    <# if(json.page>1) { #>
+				      <a href="javascript:void(0);" class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,1,5);return false;" class="standartLink"><img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /></a>
+				      <a href="javascript:void(0);" class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page-1 #>,5);return false;" class="standartLink"><img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /></a>
+				    <# } else { #>
+					  <label> <img src="images/messages/go_first.png" width="13" height="13" alt="go_first" /> </label>
+					  <label> <img src="images/messages/go_prev.png" width="13" height="13" alt="go_prev" /> </label>
+					<# } #>		
+				      
+				      <ul class="page-link-list"></ul>
+				      <!-- <input id="inboxPagInput" type="text" style="width:35px" value="<#= json.page #>" onkeypress ="if(enterPressed(event))loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,$('#inboxPagInput').val(),5);" />&nbsp;<#= $.i18n.prop('inbox.paging.of') #>&nbsp;<#= json.total #> -->
+				      
+				      
+				    <# if(json.page < json.totalPages) { #>
+				      <a class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.page+1 #>,5);return false;" class="standartLink"><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></a>
+			          <a class="inboxPagingLink" onclick="loadInbox('<#= json.messageBoxTypeName #>',<#= searchActive #>,<#= json.totalPages #>,5);return false;" class="standartLink"><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></a>
+				    <# } else { #>
+					  <label><img src="images/messages/go_next.png" width="13" height="13" alt="go_next" /></label>
+					  <label><img src="images/messages/go_last.png" width="13" height="13" alt="go_last" /></label>
+					<# } #>
+       			</div>	
+			</div>
+		    
+		    <div id="messageListContent">
+		    <table class="fixedArea">
+					<tbody>
+						<tr>
+							<td valign="middle" class="first"> </td>
+							<td valign="middle" class="second"><#= $.i18n.prop('message.tabletitle.from') #> </td>
+							<td valign="middle" class="third"><#= $.i18n.prop('message.tabletitle.subject') #> </td>
+							<td valign="middle" class="four"><#= $.i18n.prop('message.tabletitle.date') #> </td>
+					    </tr>
+				    </tbody>  
+			 	 </table>
+			 	 
+			 	 <div class="inboxTableCover">
+  				 <table class="inboxTable" id="trashTable" cellpadding="0" cellspacing="0" width="100%">
+
+  					<tbody>
+  					  <# for(var i=0; i < json.messageList.length; i++) { var top = json.messageList[i]; #> 
+  						<tr class="inboxTbTRRowCell" onmouseout="if (!$(this).hasClass('inboxTbTRRowCellSelected')) this.className='inboxTbTRRowCell';" onmouseover="if (!$(this).hasClass('inboxTbTRRowCellSelected')) this.className='inboxTbTRRowCellHover';" class="inboxTbTRRowCell">
+  				           <td class="inboxTbRowCell first"><input type="checkbox" class="selector" value="<#= top.id #>"> </td>
+  				           <td onclick="showMessageContent(<#= top.id #>,true,this)" class="inboxTbRowCell second"><#= top.userFromName #></td>
+  				           <td onclick="showMessageContent(<#= top.id #>,true,this)" class="inboxTbRowCell third"><#= top.subject #></td>
+  				           <td onclick="showMessageContent(<#= top.id #>,true,this)" class="inboxTbRowCell four"><#= getDate(top.sendTime) #></td>
+  				        </tr>
+  				      <# } #>
+  					</tbody>
+  					
+  				</table>
+				</div>
+				
+				</div>
+		
+		  
+		  <div id="messageDetail"></div>
+			
+			<div id="messageUserFromToId" style="display:none"></div>
+		
+		
+		</div><!-- trash -->
+	
+	</div><!-- message viewer -->
+	
+	
+</div><!-- messages-container -->
+
+
+<div id="sendMessageDialog" style="display:none"></div>
+<div id="confirmDelete" style="display:none">
+  <h2 class="dialog_text"><#= $.i18n.prop('messages.alert.delete') #>?</h2>
+  <div class="button_class dialog_action">
+    <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.delete') #></span></button>       
+    <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	
+  var ck_el = $('#tab-inbox-messages #inboxTable .inboxTbRowCell input[type=checkbox]');
+	var ck_all = $("#tab-inbox-messages #messages-tab-select-all");
+	var el_num = ck_el.length;
+	
+    ck_el.click(function () {
+  	 var	ck_num = ck_el.filter(':checked').length;
+     if(ck_num> 0){
+       $('.inboxActionLink').removeClass('multi_user_button_inactive');
+     }else{
+       $('.inboxActionLink').addClass('multi_user_button_inactive');
+     }
+     
+/*
+  	 if (ck_num < el_num) {
+    	 ck_all.prop('checked', false);
+  	 }else {
+    	 ck_all.click();
+  	 }  
+*/
+  	});		
+});
+</script>

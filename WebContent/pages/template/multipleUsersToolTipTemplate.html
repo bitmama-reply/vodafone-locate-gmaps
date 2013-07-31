@@ -1,0 +1,15 @@
+<div class="toolTipContainer" id="multipleUsersToolTipTemplate">
+  <div class="toolTipHeader">
+    <span class="toolTipLeft"><#= users.length #> <#= $.i18n.prop('location.users.in.same.location')#></span>
+    <span class="toolTipRight"><a href="javascript:void(0);" id="btn_tooltip_close"><span><#= $.i18n.prop('dialog.label.close')#></span> <img src="images/dialog_close_button.png"></a></span>
+  </div>
+
+  <div class="toolTipContent" class="clearfix">
+    <ul>
+		<# for(var i=0; i<users.length; i++){ #>
+		<#   var u = users[i]; #>
+			<li class="locateUserRow"> <#=u.name #> <a index="<#= i #>" href="javascript:void(0);" id="multiple_user_<#= u.id #>" class="globalSearchButton locationAvailableLeft"><span class="globalSearchText locationAvailableRight"><#= $.i18n.prop('user.actionList.12')#></span></a></li>
+		<# } #>
+		</ul>
+  </div>
+</div>

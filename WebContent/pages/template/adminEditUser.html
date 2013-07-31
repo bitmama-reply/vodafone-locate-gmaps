@@ -1,0 +1,289 @@
+<div class="user-edit-form">
+	<div class="tabs-wrapper user-edit-content">
+
+		<ul class="tabs clearfix">
+			<li class="active" data-index="0"><span><#= $.i18n.prop('location.details') #></span></li>
+			<li data-index="1"><span><#= $.i18n.prop('userEdit.Groups') #></span></li>
+			<li data-index="2"><span><#= $.i18n.prop('location.permissions') #></span></li>
+			<li data-index="3"><span><#= $.i18n.prop('user.cdf') #></span></li>
+		</ul>
+		
+		<div id="error-view-user" class="box-error-message">
+			<div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+		</div>
+
+		<ul class="tabs-content clearfix">
+
+			<li class="active">
+				<form id="userDetailForm">
+					<input type="hidden" id="userId" name="userId" value="<#= json.lbasUser.user_id #>">
+					<input type="hidden" id="lbasUser.user_id" name="lbasUser.user_id" value="<#= json.lbasUser.user_id #>">
+					<input type="hidden" id="companyIsProvisioned" name="companyIsProvisioned" value="<#= json.companyIsProvisioned #>">
+					<table>
+						<tbody>
+							<tr>
+								<th><#= $.i18n.prop('admin.userlist.column.name') #></th>
+								<td>
+									<input name="lbasUser.name" id="lbasUser.name" type="text" class="graphic-input vldRequired vldMaxLength40" value="<#= json.lbasUser.name #>"/>
+								</td>
+							</tr>
+							<tr>
+								<th><#= $.i18n.prop('userEdit.Surname') #></th>
+								<td>
+									<input name="lbasUser.surname" id="lbasUser.surname" type="text" class="graphic-input vldRequired vldMaxLength40" value="<#= json.lbasUser.surname #>"/>
+								</td>
+							</tr>
+							<tr>
+								<th><#= $.i18n.prop('userEdit.Email') #></th>
+								<td>
+									<input name="lbasUser.email" id="lbasUser.email" type="text" class="graphic-input vldRequired vldEmail vldMaxLength100" value="<#= json.lbasUser.email #>"/>
+								</td>
+							</tr>
+							<tr>
+								<th><#= $.i18n.prop('userEdit.Mobile') #></th>
+								<td class="mobile-input-wrapper">
+									<# if (json.lbasUser.user_id == 0 && json.companyIsProvisioned) { #>
+										<select id="userEditMobile" name="lbasUser.msisdn" onchange=" setUserRightsBasedOnGroupAndPreUserModelMap(document.getElementById('saveUser_selectedGroup'), $('#userEditMobile').get(0) );" class="vldRequired vldPhone">
+											<# for (var i=0; i < json.availableMsisdns.length; i++) { #>
+													<option value="<#= json.availableMsisdns[i] #>"><#= json.availableMsisdns[i] #></option>
+											<# } #>
+										</select>
+									<# } else { #>
+										<# if (json.lbasUser.user_id == 0) { #>
+											<input type="text" id="lbasUser.msisdn" value="<#= json.lbasUser.msisdn #>" name="lbasUser.msisdn" class="graphic-input vldRequired vldPhone" title="<#= $.i18n.prop('tip.user.telephone.format') #>"/>
+										<# } else { #>
+											<input name="lbasUser.msisdn-disabled" disabled="disabled" type="text" class="graphic-input disabled" value="<#= json.lbasUser.msisdn #>"/>
+											<input type="hidden" name="lbasUser.msisdn" value="<#= json.lbasUser.msisdn #>" />
+										<# } #>
+									<# } #>
+								</td>
+							</tr>
+							<# if(json.lbasUser.user_id !=0){ #>
+								<tr>
+									<th><#= $.i18n.prop('user.password') #></th>
+									<td class="password-input-wrapper">
+										<a href="javascript:void(0);" onclick="popupUserRenewPasswordConfirmationDialog();" class="standartLink"><#= $.i18n.prop('userEdit.Password') #></a>
+									</td>
+								</tr>
+							<# } #>
+							<tr>
+								<th>&nbsp;</th>
+								<td class="checkbox-wrapper">
+									<label>
+										<# if(json.lbasUser.agpsEnabled){ #>
+											<input id="id_agps_enabled" type="checkbox" checked="checked" name="lbasUser.agpsEnabled" value="true" title="<#= $.i18n.prop('tip.user.agps') #>" />
+										<# }else { #>
+											<input id="id_agps_enabled" type="checkbox" name="lbasUser.agpsEnabled" value="false" title="<#= $.i18n.prop('tip.user.agps') #>"/>
+										<# } #>
+											<#= $.i18n.prop('userEdit.agpsEnabled') #>
+									</label>
+									<label>
+										<# if(json.lbasUser.smsInterfaceEnabled){ #>
+											<input  id="id_sms_interface_enabled" type="checkbox" checked="checked" name="lbasUser.smsInterfaceEnabled" value="true" />
+										<# }else { #>
+											<input  id="id_sms_interface_enabled" type="checkbox" name="lbasUser.smsInterfaceEnabled" value="false" />
+										<# } #>
+											<#= $.i18n.prop('userEdit.smsInterfaceEnabled') #>
+									</label>
+									<# if(json.lbasUser.user_id == 0) { #>
+										<label class="smsOptinNotificationWrapper">
+											<input id="id_sms_opt_notification" type="checkbox" name="smsOptinNotification" value="false" /> <#= $.i18n.prop('userEdit.smsOptinNotification') #>
+										</label>
+									<# } #>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+				<script type="text/javascript">
+					registerValidations("userDetailForm");
+				</script>
+			</li>
+
+			<li class="userGroupsList">
+				<form id="userGroupsForm">
+					<input type="hidden" id="companyIsProvisioned" name="companyIsProvisioned" value="<#= json.companyIsProvisioned #>">
+					<h4><#= $.i18n.prop('userEdit.Groups') #></h4>
+
+					<# if(json.companyIsProvisioned && json.userHasTariff) { #>
+						<select id="saveUser_selectedGroup" class="userGroupsListDropdown" name="selectedGroup" onchange="setUserRightsBasedOnGroup(this, <#= json.companyIsProvisioned #>);selectedPreUserChanged(document.getElementById('userEditMobile'));">
+					<# } else { #>
+						<select id="saveUser_selectedGroup" class="userGroupsListDropdown" name="selectedGroup" onchange="setUserRightsBasedOnGroupAndPreUserModelMap(this , $('#userEditMobile').get(0));">					
+					<# } #>
+						<# for (var i=0; i < json.groupList.length; i++) { var action=json.groupList[i]; var splittedActionValues = action.value.split('|'); var actionValue = splittedActionValues[0]; #>
+							<option id="<#= action.value #>" value="<#= action.key #>"<# if (json.selectedGroup == action.key) { #> selected="selected"<# } #>><#= actionValue #></option>
+						<# } #>
+					</select>
+
+					<a href="javascript:void(0);" class="link-new"><#= $.i18n.prop('userEdit.Create.New.Group') #></a>
+
+					<# /*if (json.editGroup) { #>
+						<select id="saveUser_selectedGroup" name="selectedGroup" onchange="setUserRightsBasedOnGroup(this, <#= json.companyIsProvisioned #>);selectedPreUserChanged(document.getElementById('userEditMobile'));">
+							<# for (var i=0; i < json.groupList.length; i++) { var action=json.groupList[i]; var splittedActionValues = action.value.split('|'); var actionValue = splittedActionValues[0]; #>
+								<option id="<#= action.value #>" value="<#= action.key #>"<# if (json.selectedGroup == action.key) { #> selected="selected"<# } #>><#= actionValue #></option>
+							<# } #>
+						</select>
+					<# } else { #>
+						<# for (var i=0; i < json.groupList.length; i++) { var action=json.groupList[i]; #>
+							<# if (json.selectedGroup == action.key) { #>
+									<span id="saveUserGroupName" title="<#= json.selectedGroup #>"><#= action.value #></span>
+							<# } #>
+						<# } #>
+					<# } #>
+
+					<# if(json.createGroup){ #>
+						<a href="javascript:void(0);" class="link-new"><#= $.i18n.prop('userEdit.Create.New.Group') #></a>
+					<# }*/ #>
+				</form>
+			</li>
+
+			<li>
+				<form id="userPermissionsForm">
+					<input type="hidden" id="companyIsProvisioned" name="companyIsProvisioned" value="<#= json.companyIsProvisioned #>">
+					<h4><#= $.i18n.prop('location.permissions') #></h4>
+					<ul class="checkboxes-permissions-list clearfix">
+						<li>
+							<label>
+								<# if(json.lbasUser.add_enterprise_location){ #>
+									<input type="checkbox" value="true" id="id_add_enterprise_location" name="lbasUser.add_enterprise_location" checked="checked" onclick="addEnterpriseClicked(this.checked,0);"/>
+								<# }else { #>
+									<input type="checkbox" value="false" id="id_add_enterprise_location" name="lbasUser.add_enterprise_location" onclick="addEnterpriseClicked(this.checked,0);"/>
+								<# } #>
+								<#= $.i18n.prop('groupPermission.AddEnterpriseLocations') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasUser.create_enterprise_categories){ #>
+									<input type="checkbox" value="true" id="id_create_enterprise_categories" name="lbasUser.create_enterprise_categories" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_create_enterprise_categories" name="lbasUser.create_enterprise_categories" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.CreateEnterpriseCategory') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasUser.create_edit_users){ #>
+									<input type="checkbox" value="true" id="id_create_edit_users" name="lbasUser.create_edit_users" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_create_edit_users" name="lbasUser.create_edit_users" />
+								<# } #>
+									<#= $.i18n.prop('groupPermission.CreateEditUsers') #>
+								</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasUser.create_edit_groups){ #>
+									<input type="checkbox" value="true" id="id_create_edit_groups" name="lbasUser.create_edit_groups" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_create_edit_groups" name="lbasUser.create_edit_groups" />
+								<# } #>
+									<#= $.i18n.prop('groupPermission.CreateEditGroups') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasUser.request_current_location){ #>
+									<input type="checkbox" value="true" id="id_request_current_location" name="lbasUser.request_current_location" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_request_current_location" name="lbasUser.request_current_location" />
+								<# } #>
+									<#= $.i18n.prop('groupPermission.RequestLocation') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasUser.request_location_report){ #>
+									<input type="checkbox" value="true" id="id_request_location_report" name="lbasUser.request_location_report" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_request_location_report" name="lbasUser.request_location_report" />
+								<# } #>
+									<#= $.i18n.prop('groupPermission.RequestLocationReport') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasUser.view_enterprise_locations){ #>
+									<input type="checkbox" value="true" id="id_view_enterprise_locations" name="lbasUser.view_enterprise_locations" checked="checked" onclick="viewEnterpriseClicked(this.checked, 0);"/>
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_view_enterprise_locations" name="lbasUser.view_enterprise_locations" onclick="viewEnterpriseClicked(this.checked, 0);"/>
+								<# } #>
+									<#= $.i18n.prop('groupPermission.ViewEnterpriseLocations') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasUser.create_meetings){ #>
+									<input type="checkbox" value="true" id="id_create_meetings" name="lbasUser.create_meetings" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_create_meetings" name="lbasUser.create_meetings" />
+								<# } #>
+									<#= $.i18n.prop('groupPermission.CreateMeetings') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasUser.send_messages){ #>
+									<input type="checkbox" value="true" id="id_send_messages" name="lbasUser.send_messages" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_send_messages" name="lbasUser.send_messages" />
+								<# } #>
+									<#= $.i18n.prop('groupPermission.SendMessages') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if (json.lbasUser.be_located) { #>
+									<input type="checkbox" value="true" id="id_be_located" name="lbasUser.be_located" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_be_located" name="lbasUser.be_located" />
+								<# } #>
+									<#= $.i18n.prop('userPermission.BeLocated') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasUser.view_all_groups){ #>
+									<input type="checkbox" value="true" id="id_view_all_groups" name="lbasUser.view_all_groups" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" id="id_view_all_groups" name="lbasUser.view_all_groups" />
+								<# } #>
+									<#= $.i18n.prop('userPermission.viewAllGroups') #>
+							</label>
+						</li>
+					</ul>
+				</form>
+			</li>
+
+			<li class="overflowed-form">
+				<form id="userCDFDataForm" action="saveUser">
+					<table>
+						<tbody class="cdf-user-edit-tbody">
+							<# if(json.lbasUser.customDataFields != null && json.lbasUser.customDataFields.length > 0) { #>
+								<# for(var x = 0; x < json.lbasUser.customDataFields.length ; x++) { #>
+									<tr>
+										<th><#= json.lbasUser.customDataFields[x].name #></th>
+										<td><input id="<#= json.lbasUser.customDataFields[x].id #>" name="CDF_<#= json.lbasUser.customDataFields[x].id #>" type="text" value="<#= json.lbasUser.customDataFields[x].value #>" class="graphic-input vldMaxLength40" /></td>
+									</tr>
+								<# } #>
+							<# } #>
+						</tbody>
+					</table>
+				</form>
+			</li>
+		</ul>
+
+	</div>
+
+	<div class="overlay-actions-wrapper">
+
+		<a href="javascript:void(0);" class="cancel-button graphicBtn little">
+			<span><#= $.i18n.prop('message.cancel') #></span>
+		</a>
+		<a href="javascript:void(0);" class="send-button graphicBtn violet">
+			<span><#= $.i18n.prop('buttons.update') #></span>
+		</a>
+
+	</div>
+</div>

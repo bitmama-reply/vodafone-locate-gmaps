@@ -1,0 +1,1512 @@
+<style>
+	.dateInputFromEE {color: #6B6B6B; height: 23px; line-height: 23px; padding: 0 5px; margin: 0 20px 15px 4px; text-align: center; font-weight: bold;}
+	.dateInputToEE {color: #6B6B6B; height: 23px; line-height: 23px; padding: 0 5px; margin: 0 20px 15px 20px; text-align: center; font-weight: bold;}
+        #privacy #availabilityDiv #whoLocate #profiles #locating .removeLocation {
+            background: url("images/availability/editRemoveIcon.png") no-repeat scroll left top transparent;
+            display: block;
+            height: 26px;
+            width: 25px;
+        }
+        
+        #privacy #availabilityDiv #whoLocate #profiles #locating tr td.second{text-align:left;}
+        
+        #privacy #availabilityDiv #whoLocate #profiles #locating tr td.third{text-align:right;width: 35px;}
+        
+        #privacy #availabilityDiv #whoLocate #profiles #locating tr td.second .info{float:left; width:18px; height:18px; display:block; background:url(images/availability/info.png) no-repeat bottom left; margin:-3px 8px 0;}
+
+</style>
+<div id="availability-container">
+
+    <#
+    var numberPeople, visProfile, excpList, visStatus, visProfile, activeExcp, notifyMeEveryNthLocation ,notifyMeEveryNthLocationCount;
+    var visibilityIds = [], visibilityName = [], definitiveArray=[];
+
+    $.each(json, function() 
+    {
+        $.each(this, function(name, value) {
+        	if (name  === "numberOfUsersWhoCanLocateMeNow")
+                numberOfUsersWhoCanLocateMeNow = value;
+            if (name  === "numberOfUsersWhoCanLocateMe")
+                numberPeople = value;
+            if (name  === "usersWhoCanLocateMe")
+                visProfile = value;
+            if (name  === "allExceptions")
+                excpList = value;
+            if (name === "visible")
+                visStatus = value;
+            if (name === "activeExceptions")
+                activeExcp = value;
+            if (name === "notifyMeEveryNthLocation")
+            	notifyMeEveryNthLocation = value;
+            if (name === "notifyMeEveryNthLocationCount")
+            	notifyMeEveryNthLocationCount = value;      
+            if (name === "locatingHistoryNotifySettings")
+            	locatingHistoryNotifySettings = value;      
+      	
+        });
+    });    
+    #>
+
+    <h1><#= $.i18n.prop('privacyAndControl.myAvailability') #></h1>
+
+    <div id="inactiveException">
+        <div id="statusUser">
+
+            <# if(visStatus === true) { #>
+                <div id='visIcon' style="float:left; background:url(images/availability/avaibleCheck.png) no-repeat top left; width:27px; height:27px; margin:6px 10px 0 0;"></div>
+            <# } else  if(visStatus === false ) { #>
+                <div id='visIcon' style="float:left; background:url(images/availability/availability_icon.png) no-repeat top left; width:27px; height:27px; margin:6px 10px 0 0;"></div>
+            <#  }  #>
+
+            <select id="visibilityStatus" onChange = "selectChange(this.options[this.selectedIndex].value)">
+                <# if(visStatus === true ) { #>
+                    <option value="visible" selected> <#= $.i18n.prop('editVisibility.visible') #> </option>
+                    <option value="invisible"><#= $.i18n.prop('editVisibility.notvisible') #></option>
+                <#  }else if(visStatus === false ) {  #>
+                    <option value="visible"><#= $.i18n.prop('editVisibility.visible') #></option>
+                    <option value="invisible" selected><#= $.i18n.prop('editVisibility.notvisible') #></option>
+                 <#  }  #>
+            </select>
+        </div>
+
+
+        <p class="smallText">
+            <strong>  <#= $.i18n.prop('editVisibility.activeVisibilityProfiles') #></strong>
+            <br />
+            <#= $.i18n.prop('editVisibility.followingProfiles') #>
+            <br />
+            <#= $.i18n.prop('editVisibility.followingProfiles.line2') #>
+            <br />
+            &#149; <#= $.i18n.prop('editVisibility.followingProfiles.line3') #>            
+            <br />
+            &#149; <#= $.i18n.prop('editVisibility.followingProfiles.line4') #>
+        </p>
+
+
+        <div id="whoLocate" >
+
+            <div id="plusBox" class="clearfix">
+                <a href="javascript:void(0);" id="plus"></a>
+                <div class="text"><span class="number"><#= numberOfUsersWhoCanLocateMeNow #></span> <#= $.i18n.prop('editVisibility.seeLocation.people') #> </div>
+            </div>
+
+            <div id="profiles" class="clearfix">
+                <div class="innerBorder">
+                    <div id="minusBox" class="clearfix">
+                        <a href="javascript:void(0);" id="minus"></a> <div class="text"><span class="number"><#= numberOfUsersWhoCanLocateMeNow #></span> <#= $.i18n.prop('editVisibility.seeLocation.people') #></div>
+                    </div>
+                    <div class="tableCover">
+                            <table id="locating">
+                                <tbody>
+                                    <# $.each(visProfile, function(index, value) {  #>
+                                        <tr id="<#= value.temporaryPermission != null ? value.temporaryPermission.id : value.alwaysPermission.permissionId  #>" userid="<#= value.user.id #>" username="<#= value.user.name #> <#= value.user.surname #>">
+                                            <td class="first" width="50%">  
+                                                <p class="name"> <#= value.user.name + " " + value.user.surname #> </p>  
+                                            </td>
+                                            <td class="second">
+                                                <span><#= value.temporaryPermission != null ? value.temporaryPermission.name : value.alwaysPermission.name #></span>&nbsp;
+                                                <# if (value.temporaryPermission != null){ #>
+	                                                <!-- <a href="javascript:void(0);" class="info" profileID="<#= value.temporaryPermission.profileId #>"></a> -->
+	                                                <#= value.temporaryPermission.fromDate #> <#= value.temporaryPermission.fromHour #> - <#= value.temporaryPermission.toDate #> <#= value.temporaryPermission.toHour #>
+                                                <# }else{ #>
+	                                                <a href="javascript:void(0);" class="info" profileID="<#= value.alwaysPermission.profileId #>"></a>                                                
+                                                <# } #>
+                                            </td>
+                                            <td class="third">
+                                                <a href="javascript:void(0);" class="removeLocation"></a>
+                                            </td>
+                                        </tr>
+                                    <# }); #>
+
+                                </tbody>
+                            </table>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="activeException" >
+        <# $.each(activeExcp, function(index, value) { var dateFrom = new Date(value.fromTimeStamp); var dateTo=new Date(value.toTimeStamp); #>
+        <div id="exception-status">
+
+                    <img src="images/availability/avaibleCheck.png">
+                    <span> <#= $.i18n.prop('myVisibility.exception.active') #> <#= value.exceptionName  #> </span>
+        </div>
+
+
+          <p><#= $.i18n.prop('myVisibility.exception.active.message') #></p>
+          <div id="currentException">
+              <span class="titleArrow"> <#= value.exceptionName  #>:</span>
+              <span id="activeExcpFrom"> <#=  dateFrom.getDate() #>/<#=  dateFrom.getMonth()+1  #>/<#=  dateFrom.getFullYear()  #> </span> - <span id="activeExcpTo"> <#=  dateTo.getDate() #>/<#=  dateTo.getMonth()+1   #>/<#=  dateTo.getFullYear()  #></span>
+        </div>
+
+            <# }); #>
+    </div>
+
+    <h1><#= $.i18n.prop('editVisibility.timeOffExceptions') #></h1>
+
+    <p class="smallText"><#= $.i18n.prop('editVisibility.defineException') #>
+    	<br />
+    	<#= $.i18n.prop('editVisibility.exceptionEffect') #>
+    </p>
+
+
+
+    <div class="exceptionsAdd clearfix">
+
+        <div id="exception-contain" class="ui-widget">
+
+            <table id="excp" class="ui-widget ui-widget-content">
+                <thead>
+                <tr class="ui-widget-header ">
+                    <th class="first"><#= $.i18n.prop('editVisibility.exception.table.name') #></th>
+                    <th class="second" colspan="2"><#= $.i18n.prop('editVisibility.exception.table.from') #></th>
+                    <th class="third" colspan="4"><#= $.i18n.prop('editVisibility.exception.table.to') #></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <# for(var countE=0; countE < excpList.length; countE++) { var excpL = excpList[countE]; #>
+
+                    <# var dateArrayFrom = formatExcepDate(excpL.fromTimeStamp); #>
+                    <# var dateArrayTo = formatExcepDate(excpL.toTimeStamp); #>
+
+                        <tr id="<#= excpL.rule_id #>" class="rem" >
+                            <td class="first"> <#= excpL.exceptionName #> </td>
+                            <td class="second"> <#= dateArrayFrom[1] #>/<#= dateArrayFrom[0] #>/<#= dateArrayFrom[2] #>  </td>
+                            <td class="third">  <#= dateArrayFrom[3] #>:<#= dateArrayFrom[4] #> <#= dateArrayFrom[5] #>  </td>
+                            <td class="fourth">  <#= dateArrayTo[1] #>/<#= dateArrayTo[0] #>/<#= dateArrayTo[2] #>  </td>
+                            <td class="fifth">  <#= dateArrayTo[3] #>:<#= dateArrayTo[4] #> <#= dateArrayTo[5] #>  </td>
+                            <td class="sixth">  <a href="javascript:void(0);" id="editExceptionRow" ></a>
+                            <td class="seventh"><a href="javascript:void(0);" id="removeExceptionRow"></a>
+                        </tr>
+                    <# } #>
+
+                </tbody>
+            </table>
+        </div>
+        <a href="javascript:void(0);" id="addExcp"> <span><#= $.i18n.prop('editVisibility.exception.Add') #> <#= $.i18n.prop('editVisibility.exception.addException') #></span></a>
+
+
+        <div id="removeExceptionRow-form">
+            <h2 class="dialog_text"><#= $.i18n.prop('editVisibility.alert.delete') #>?</h2>
+            <div class="button_class dialog_action">
+                <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button"><span style="line-height:2.5em !important; font-weight: bold;" class="ui-button-text"><#= $.i18n.prop('buttons.delete') #></span></button>
+                <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+            </div>
+        </div>
+		<div id="removeCanLocateRow-form">
+		    <h2 class="dialog_text"><#= $.i18n.prop('editWhoCanLocate.alert.delete') #></h2>
+		    <ul>
+		    	<li>- <#= $.i18n.prop('myVisibility.locateYou') #></li>
+		    	<li>- <#= $.i18n.prop('myVisibility.produceReports') #></li>
+		    </ul>
+		    <div class="button_class dialog_action">
+		        <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button"><span style="line-height:2.5em !important; font-weight: bold;" class="ui-button-text"><#= $.i18n.prop('buttons.delete') #></span></button>
+		        <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+		    </div>
+		</div>
+        <div id="editExcp-form">
+            <form>
+                <h1 class="excpTitle"><#= $.i18n.prop('editVisibility.exception.edit') #> <#= $.i18n.prop('editVisibility.exception.addException') #> </h1>
+                <p class="excpText"> <#= $.i18n.prop('editVisibility.exception.timePeriod') #> </p>
+                
+				<div id="error-view-sendmessage" class="box-error-message">
+        			<div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+    			</div>
+    
+                <label for="name" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.name') #>:</label>
+                <input type='text' id='nameEdit' class="nameInput" maxlength="50" size="40" />
+
+
+                <div id="exceptionTimeEdit">
+                    <ul>
+                        <li>
+                            <label for="dateFromEdit" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.from') #>:</label>
+                            <input type="text" id="dateFromEdit" class="dateInputFromEE" maxlength="15" size="13" />
+                            <input type='text' id='timeFromEdit' class="timeInput" maxlength="15" size="7"/>
+                        </li>
+
+                        <li>
+                            <label for="dateToEdit" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.to') #>:</label>
+                            <input type="text" id="dateToEdit" class="dateInputToEE" maxlength="15" size="13"/>
+                            <input type='text' id='timeToEdit' class="timeInput" maxlength="15" size="7"/>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="button_class dialog_action">
+                        <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button"><span style="line-height:2.5em !important; font-weight: bold; " class="ui-button-text"><#= $.i18n.prop('buttons.edit') #></span></button>
+                        <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+                    </div>
+
+            </form>
+        </div>
+
+    </div>
+        <div id="notifications">
+          <h1> <#= $.i18n.prop('notifications.title') #> </h1>
+          
+          <div id="notificationEmail" class="clearfix">
+              <input type="checkbox" id="notificationEmailCheck" value="false">
+              <span class="smallText"> <#= $.i18n.prop('notifications.email.text1') #></span>
+              <select id="notificationEmailSelect">
+                    <option value="0"> <#= $.i18n.prop('notifications.daily') #> </option>
+                    <option value="1"> <#= $.i18n.prop('notifications.weekly') #> </option>
+                    <option value="2"> <#= $.i18n.prop('notifications.monthly') #> </option>
+              </select>
+              <span class="smallText"><#= $.i18n.prop('notifications.email.text2') #></span>
+          </div>
+          
+          <p class="smallText" style="padding:10px 0;"><#= $.i18n.prop('notifications.text') #></p>
+          
+          <div id="notificationSMS" class="clearfix">
+              <input type="checkbox" id="notificationSmsCheck" value="<#= notifyMeEveryNthLocation #>">
+              <span class="smallText"><#= $.i18n.prop('notifications.sms.text1') #> </span>
+              <select id="notificationSmsSelect">
+                    <option value="1" > 1 </option>
+                    <option value="2" > 2 </option>
+                    <option value="3" > 3 </option>
+                    <option value="4" > 4 </option>
+                    <option value="5" > 5 </option>
+                    <option value="10"> 10 </option>
+                    <option value="15"> 15 </option>
+            </select>
+              <span class="smallText"><#= $.i18n.prop('notifications.sms.text2') #> </span>
+          </div>
+          
+        </div>
+            
+    <script type="text/javascript">
+             
+        
+        $(function(){
+            menuBarVisibility();
+           $.ajax({
+	          type:'POST',
+	          url: 'loadSendMeMail.action',
+	          success: function( data ){
+                  if (data.sendMeMailCheckbox){
+	                  $('#notificationEmailCheck').prop("checked", true);
+	                  }
+			       $('#notificationEmailSelect').find('option').each(function(i,val){
+						if ( $(this).attr('value') == data.sendMeMailPeriod ){
+							$(this).attr("selected","selected");
+						}
+
+			       });
+		           $("#notificationEmailSelect").selectmenu({
+		              change: function() {
+		                if ($('#notificationEmailCheck').not(":checked")){
+		        					    $('#notificationEmailCheck').prop("checked", true);
+		        					  }
+		                changeEmailNotification();
+		              }
+					});	
+
+
+	          }  
+           });
+        
+        
+        
+
+
+           $('#notificationEmailCheck').change(function() {
+              changeEmailNotification();
+           });
+
+	       $('#notificationSmsSelect').find('option').each(function(i,val){
+				if ($(this).attr('value') == <#= notifyMeEveryNthLocationCount #> ){
+					$(this).attr("selected","selected");
+				}
+	       });
+
+           if (<#= notifyMeEveryNthLocation #> == true ){
+	           $('#notificationSmsCheck').prop("checked", true);
+           }
+           
+           
+            $("#notificationSmsSelect").selectmenu({
+      					change: function() {
+      					    if ($('#notificationSmsCheck').not(":checked")){
+        					    $('#notificationSmsCheck').prop("checked", true);
+        					  }
+		                changeSmsNotification();
+      					}
+    				});
+
+           $('#notificationSmsCheck').change(function() {
+              changeSmsNotification();
+           });
+
+
+           
+
+           $(".info").click(function(){
+	           return false;
+           });
+           $(".info").hover(
+            function() {
+
+                var btns = {};
+
+                utils.closeDialog();
+
+                utils && utils.dialog({
+                    title : "Profile",
+                    content: '<div id="calendarX">Loading...</div>',
+                    buttons : btns,
+                    css : "noCloseNoOk hoverCalendars"
+                });
+
+                /* POSITION DIALOG */
+				$('.hoverCalendars').css({'width': 360});
+                if( $.browser.msie && $.browser.version == 7 ){
+					$('.hoverCalendars .bd. .c .s').css({'width': 321});
+               		$('.hoverCalendars').css({'width': 360}); 
+               	}
+				var hovCal = $(this).offset();
+				var calHeight = $(".hoverCalendars").outerHeight();
+				var calWidth = $(".hoverCalendars").outerWidth();
+				var hovCalLeft = hovCal.left+15;
+                var hovCalTop = hovCal.top-5;
+				var windowWidth = $(window).width();
+				
+				if( calWidth + hovCalLeft > windowWidth ){
+					hovCalLeft = hovCal.left-calWidth;
+					$(".hoverCalendars").addClass("oppositeSide");
+				}    
+                    
+                $('.hoverCalendars').css({
+                    'top':  hovCalTop - calHeight,
+                    'left': hovCalLeft
+                });
+                var profileId = $(this).attr('profileID');
+                var eventsX = [];
+                var allEvents = loadVisibilityProfilesDetails(profileId);
+                if (allEvents.visibilityProfileDetail != undefined)
+                {
+                    $.each(allEvents.visibilityProfileDetail.privacySettingList, function(index, value)
+                    {
+                        var dow = new Date().getDay() - 1;
+                        var fromHour = value.fromHour;
+                        var fh = fromHour.substring(0, 2);
+                        var ft = fromHour.substring(2, 4);
+                        var toHour = value.toHour;
+                        var th = toHour.substring(0, 2);
+                        var tt = toHour.substring(2, 4);
+
+                        var startX, endX;
+
+                        var todayFrom = new Date(y,m,d, fh, ft);
+                        var todayTo = new Date(y,m,d, th, tt);
+
+                        if (dow > value.dayOfWeek)
+                        {
+                            startX = new Date(y, m, d-(dow - value.dayOfWeek), fh, ft);
+                            endX = new Date(y, m, d-(dow - value.dayOfWeek), th, tt);
+                        }
+                        else
+                        {
+                            startX = new Date(y, m, d+(value.dayOfWeek - dow), fh, ft);
+                            endX = new Date(y, m, d+(value.dayOfWeek - dow), th, tt);
+                        }   
+
+                        event = new Object();       
+                        event.id = value.rule_id;
+                        event.title = 'Event ' + value.rule_id;
+                        event.start = startX;
+                        event.end = endX;
+                        event.allDay = false;
+                        eventsX.push(event);
+                    });
+
+                    $('#calendarX').empty();
+
+                    var calendar = $('#calendarX').fullCalendar({
+
+                        header : { left: '',    center: '',    right: ''},
+                        columnFormat : { week: 'ddd' },
+                        firstDay : 1,
+                        height: 300,
+                        defaultView : 'agendaWeek',
+                        allDaySlot : false,
+                        axisFormat : 'H:mm',
+                        timeFormat: 'H:mm',
+                        slotMinutes : 30,
+                    	minTime:8,
+                    	maxTime:19,
+                    	dayNamesShort:['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+                    	editable: false,
+                    	eventAfterRender : function(event, element , view) {
+            				var width_of_cell = $(".fc-widget-content").outerWidth(); 
+                				$(element).css('width',width_of_cell-5);
+
+                				if ($.inArray( event, src ) >= 0 ) {
+					
+                				} else {
+									src.push( event);
+                				}
+            			}
+                    });
+
+                    calendar.fullCalendar( 'removeEvents').fullCalendar('removeEventSources');
+                    calendar.fullCalendar('addEventSource',eventsX);
+                }
+
+            },
+            function() 
+            {
+
+                utils.closeDialog();
+            }
+            );
+           
+           
+           $(".removeLocation").click(function(){
+	           var currentPermissionId = $(this).parent().parent().attr("id");
+	           var currentUserId = $(this).parent().parent().attr("userid");
+	           var username = $(this).parent().parent().attr("username");
+	           utils.closeDialog();
+
+	           var btns = {};
+	           dialogTitle= "<div class='titleTop'><img src=" + "images/icon_notification.png" + "><span>" + $.i18n.prop('editVisibility.alert.deleteUser')+ " " + username+"</span></div>";
+
+				utils && utils.dialog({
+				    title : dialogTitle,
+				    content: $('#removeCanLocateRow-form').html(),
+				    buttons : btns,
+				    css: 'noClose deleteVisibility'
+				});
+
+           /* POSITION DIALOG*/
+
+           if( $.browser.msie && $.browser.version == 7 ){
+				$('.deleteVisibility .bd. .c').css({'width': 400});
+   			}
+           
+            var dialogWidth = $('.ui-dialog').outerWidth();
+            $('.ui-dialog').css({
+                'top': '250px',
+                'margin-left': -dialogWidth/2,
+                'width':'400px',
+                'left':'50%'
+            });
+            
+            
+
+            $('.ui-dialog').find('button.send')
+                .mousedown(function(e){
+                  e.preventDefault();
+                    $(this).addClass('purple_button_active');
+                    $(this).blur();
+                    DeleteCanLocateDialog(currentPermissionId, currentUserId);
+                    $("tr[id=" + currentPermissionId + "]").remove();
+                    
+                    var howMany = $('.tableCover #locating tr').length;
+                    if ( howMany != 0){
+	                    $('#whoLocate .number').text(howMany);	                    
+                    }else{
+                        $('#whoLocate .number').text('');
+                        $('#whoLocate #plusBox .text, #whoLocate #minusBox .text').text( $.i18n.prop('editVisibility.seeLocation.noUser') );                        
+                    }
+
+                })
+                .mouseup(function(){
+                  $(this).blur();
+                    $(this).removeClass('purple_button_active');
+                })
+                .mouseenter(function(){
+                    $(this).addClass('purple_button_over');
+                })
+                .mouseleave(function(){
+                    $(this).removeClass('purple_button_over');
+                });
+
+
+            $('.ui-dialog').find('button.cancel')
+                .mousedown(function(e){
+                  e.preventDefault();
+                    $(this).addClass('cancelActive');
+                })
+                .mouseup(function(){
+                    $(this).removeClass('cancelActive');
+                })
+                .mouseenter(function(){
+                    $(this).addClass('cancelOver');
+                })
+                .mouseleave(function(){
+                    $(this).removeClass('cancelOver');
+                });
+        return false;
+       });
+           
+           var visibilityStatus = getVisibilityState();
+           
+           if (visibilityStatus.activeExceptions.length == 0) {
+               $("#activeException").hide();
+               $("#inactiveException").show();
+               $("#inactiveException .smallText").show();
+               $("#inactiveException #whoLocate").show();
+           }
+           else{
+               /* $("#inactiveException").hide(); */
+               $("#inactiveException .smallText").hide();
+               $("#inactiveException #whoLocate").hide();
+               $("#activeException").show();
+           }
+
+            $("#plusBox").click(function(){
+                $("#plusBox").hide();
+                $("#profiles").show();
+                setWidthAvalibility();
+                return false;
+            });
+
+            $("#minusBox").click(function(){
+                $("#profiles").hide();
+                $("#plusBox").show();
+                setWidthAvalibility();
+                return false;
+            });
+
+            $(".makeHover").hover(function(){
+                $(this).children("td").addClass("makeHoverThis");
+                $(this).find(".edit").css("visibility","visible");
+                $(this).find(".delete").css("visibility","visible");
+            }, function() {
+                $(this).children("td").removeClass("makeHoverThis");
+                $(this).find(".edit").css("visibility","hidden");
+                $(this).find(".delete").css("visibility","hidden");
+            });
+
+            var startE = new Date(),
+                endE = new Date(),
+                tips = $( ".validateTips" );
+
+			
+
+            $( "#addExcp" )
+                   .click(function() {
+                   
+					 		
+						if($('.addExcpPos').length == 0) {
+
+            					 		utils.closeDialog();
+	                        dialogTitle= "";
+	                        var btns = {};
+	
+	                        utils && utils.dialog({
+	                            title : dialogTitle,
+	                            /*content: $('#addExcp-form').html(),*/
+	                            content : parseTemplate("addExceptionTemplate", {}),
+	                            buttons : btns,
+	                            css: 'noClose addExcpPos'
+	                        });
+	
+	                        /* POSITION DIALOG */
+	                        var dialogWidth = $('.ui-dialog').outerWidth();
+	                        $('.ui-dialog').css({
+	                            'top': '250px',
+	                            'margin-left': -dialogWidth/2,
+	                            'width':'390px',
+	                            'left':'50%'
+	                        });
+	
+	
+	
+	                        $('.ui-dialog').find('button.send')
+	                                .mousedown(function(e){
+	                                  e.preventDefault();
+	                                  $(this).blur();
+	                                    $(this).addClass('purple_button_active');                              
+	                                })
+	                                .mouseup(function(){
+	                                    $(this).removeClass('purple_button_active');
+	                                })
+	                                .mouseenter(function(){
+	                                    $(this).addClass('purple_button_over');
+	                                })
+	                                .mouseleave(function(){
+	                                   $(this).removeClass('purple_button_over');
+	                                });
+	
+	                        $('.ui-dialog').find('button.cancel')
+	                                .mousedown(function(e){
+	                                    e.preventDefault();
+	                                    $(this).addClass('cancelActive');
+	                                    $( ".dateInputFrom" ).datepicker('destroy');
+	                                    $( ".dateInputTo" ).datepicker('destroy');
+	                                })
+	                                .mouseup(function(){
+	                                    $(this).removeClass('cancelActive');
+	                                })
+	                                .mouseenter(function(){
+	                                    $(this).addClass('cancelOver');
+	                                })
+	                                .mouseleave(function(){
+	                                    $(this).removeClass('cancelOver');
+	                                });
+	
+	                        $(".nameInput").focus();							             
+							             
+	                        $("#start-date").datepicker({
+    				                showOn: "button",	
+    				                buttonImage: "images/availability/my_availability_calendar_icon.png",
+    				                buttonImageOnly: true,
+    				                buttonText: "calendar",
+    				                showOtherMonths: true,
+    				                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+    				                firstDay: +1,
+    				                dateFormat: "dd/mm/yy",
+    				                minDate: '0',
+									onSelect: function(date) {
+										$("#end-date").datepicker('setDate', date);
+									},
+    				                beforeShow: function(input, inst) {
+      				                inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+      				              }
+      				            }).datepicker('setDate', new Date());
+							
+							
+	
+	                        
+	                        $("#end-date").datepicker({
+	                            showOn: "button",
+	                            buttonImage: "images/availability/my_availability_calendar_icon.png",
+	                            dateFormat: "dd/mm/yy",
+	                            buttonImageOnly: true,
+	                            buttonText: "calendar",
+	                            showOtherMonths: true,
+	                            dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+	                            firstDay: +1,
+	                            minDate: '0'
+	                        }).datepicker('setDate', new Date());	                        
+	                        
+	                        
+	                        var d = new Date();
+  
+                  	      d.setHours(d.getHours() + 1);
+                  	      $('#exceptionTime .hours').val(d.getHoursFormatted());
+                  	      $('#exceptionTime .mins').val(d.getMinutesFormatted());
+                  	      d.setHours(d.getHours() + 1);
+                  	      $('#exceptionTime #end-time .hours').val(d.getHoursFormatted());
+
+	                        
+	                        
+	                        	/*checking inputs*/
+	                        	checkTheInputTime();
+							           
+	                        $('button.send').bind('click', function(){
+	
+	                            var formParent = $(this).parent().parent();
+	
+	                            var     nameExcp = formParent.children( "#name" ),
+	                                    date1 = formParent.find('#start-date'),
+	                                    date2 = formParent.find('#end-date');
+	                                    /*
+	                                    date1 = formParent.find( "#date1" ),
+	                                    date2 = formParent.find( "#date2" ),
+	                                    time1 = formParent.find( "#time1" ),
+	                                    time2 = formParent.find( "#time2" );
+	                                    */
+	
+	                            var bValid = true;
+	                            if (bValid){
+	
+	                                var day1,month1,year1,hour1,minutes1, day2,month2,year2,hour2,minutes2;
+	
+	                                var dateString1 = date1.val().split('/');
+	
+	                                $.each(dateString1, function (index, value) {
+	                                    if (index===0)
+	                                        day1=value;
+	                                    else
+	                                    if (index===1)
+	                                        month1=value;
+	                                    else
+	                                    if (index===2)
+	                                        year1=value;
+	
+	                                });
+	                                var dateString2 = date2.val().split('/');
+	
+	                                $.each(dateString2, function (index, value) {
+	                                    if (index===0)
+	                                        day2=value;
+	                                    else
+	                                    if (index===1)
+	                                        month2=value;
+	                                    else
+	                                    if (index===2)
+	                                        year2=value;
+	
+	                                });
+	
+	
+	                                startE.setFullYear(year1, month1-1, day1);
+                                  startE.setHours($('#start-time .hours').val(), $('#start-time .mins').val());
+	
+	                                endE.setFullYear(year2, month2-1, day2);
+                                  endE.setHours($('#end-time .hours').val(), $('#end-time .mins').val());
+	
+	                                var time1Final = startE.getTime();
+	                                var time2Final = endE.getTime();
+	                                var time1F = formatExcepTime(startE);
+	                                var time2F = formatExcepTime(endE);	
+	                                /* ADD EXCEPTION API CALL*/
+	                                var addExcpResponse = AddExceptionDialog(nameExcp.val(), startE, endE);
+									if (addExcpResponse == undefined) return;
+	                                $( "#excp tbody" ).append( "<tr id="+ addExcpResponse.ruleId +">" +
+	                                        "<td class="+ "first" +">" + nameExcp.val() + "</td>" +
+	                                        "<td class="+ "second" +">" + day1 + "." + month1 + "." + year1 + "</td>" +
+	                                        "<td class="+ "third" +">" + time1F[0] + ":" + time1F[1] + " " + time1F[2] +"</td>" +
+	                                        "<td class="+ "fourth" +">" + day2 + "." + month2 + "." + year2 + "</td>" +
+	                                        "<td class="+ "fifth" +">" + time2F[0] + ":" + time2F[1] + " " + time2F[2] + "</td>" +
+	                                        "<td class="+ "sixth" +   "><a href=# id=" +"removeExceptionRow"+ "></a>"  +
+	                                        "<td class="+ "seventh" + "><a href=# id=" + "editExceptionRow" + "></a>" +
+	                                        "</tr>" );
+	                                utils.closeDialog();
+
+                       				$("#excp").show();
+	                                $( ".dateInputFrom" ).datepicker('destroy');
+	                                $( ".dateInputTo" ).datepicker('destroy');
+                                  $('#availabilityDiv').empty();
+                                  loadAvailability();
+	                            }
+	                        });
+	                       
+
+						}
+
+                        return false;
+                    });
+
+
+            $( "#removeExceptionRow" )
+                    .live('click', function() {
+                        var currentExceptionId = $(this).parent().parent().attr("id");
+
+                        utils.closeDialog();
+
+                        var btns = {};
+                        dialogTitle= "<img src=" + "images/icon_notification.png" + ">" + $.i18n.prop('editVisibility.alert.deleteTitle');
+
+                        utils && utils.dialog({
+                            title : dialogTitle,
+                            content: $('#removeExceptionRow-form').html(),
+                            buttons : btns,
+                            css: 'noClose'
+                        });
+
+                        /* POSITION DIALOG */
+                        var dialogWidth = $('.ui-dialog').outerWidth();
+                        $('.ui-dialog').css({
+                            'top': '250px',
+                            'margin-left': -dialogWidth/2,
+                            'width':'360px',
+                            'left':'50%'
+                        });
+
+                        $('.ui-dialog').find('button.send')
+                                .mousedown(function(e){
+                                  e.preventDefault();
+                                    $(this).addClass('purple_button_active');
+                                    DeleteExceptionDialog(currentExceptionId);
+                                    $("tr[id=" + currentExceptionId + "]").remove();
+                                    menuBarVisibility();
+                                })
+                                .mouseup(function(){
+                                    $(this).removeClass('purple_button_active');
+                                })
+                                .mouseenter(function(){
+                                    $(this).addClass('purple_button_over');
+                                })
+                                .mouseleave(function(){
+                                    $(this).removeClass('purple_button_over');
+                                });
+
+
+                        $('.ui-dialog').find('button.cancel')
+                                .mousedown(function(e){
+                                  e.preventDefault();
+                                    $(this).addClass('cancelActive');
+                                })
+                                .mouseup(function(){
+                                    $(this).removeClass('cancelActive');
+                                })
+                                .mouseenter(function(){
+                                    $(this).addClass('cancelOver');
+                                })
+                                .mouseleave(function(){
+                                    $(this).removeClass('cancelOver');
+                                });
+                         /* Hide table if there is no exception*/
+                          if ($("#excp tbody tr").length == 0){
+                              $("#excp").hide();
+                              $('#availabilityDiv').empty();
+                              loadAvailability();
+                          }
+                    return false;
+                    });
+
+                    $( "#editExceptionRow" ).live('click', function() {
+                      
+                        var formParent = $(this).parent().parent();
+                        var currentExceptionId = formParent.attr("id");
+                        var currentExceptionName = formParent.children().filter($(".first")).text();
+                        var dateFrom,dateTo,timeFrom,timeTo;
+                        var day1,month1,year1,hour1,minutes1, day2,month2,year2,hour2,minutes2,hour1Temp,hour2Temp;
+
+                        dateFrom = formParent.children().filter($(".second")).text();
+                        timeFrom = formParent.children().filter($(".third")).text();
+                        dateTo = formParent.children().filter($(".fourth")).text();
+                        timeTo = formParent.children().filter($(".fifth")).text();
+                        
+                        utils.closeDialog();
+	                        dialogTitle= "";
+	                        var btns = {};
+	
+	                        utils && utils.dialog({
+	                            title : dialogTitle,
+	                            content : parseTemplate("editExceptionTemplate", {}),
+	                            buttons : btns,
+	                            css: 'noClose editExcpPos'
+	                        });
+	
+	                        /* POSITION DIALOG */
+	                        var dialogWidth = $('.ui-dialog').outerWidth();
+	                        $('.ui-dialog').css({
+	                            'top': '250px',
+	                            'margin-left': -dialogWidth/2,
+	                            'width':'390px',
+	                            'left':'50%'
+	                        });
+	
+                        $('.ui-dialog').find('button.send')
+                          .mousedown(function(e){
+                            e.preventDefault();
+                              $(this).addClass('purple_button_active');                                   
+                          })
+                          .mouseup(function(){
+                              $(this).removeClass('purple_button_active');
+                          })
+                          .mouseenter(function(){
+                              $(this).addClass('purple_button_over');
+                          })
+                          .mouseleave(function(){
+                              $(this).removeClass('purple_button_over');
+                          });
+
+                        $('.ui-dialog').find('button.cancel')
+                          .mousedown(function(e){
+                            e.preventDefault();
+                              $(this).addClass('cancelActive');
+                              $( ".dateInputFrom" ).datepicker('destroy');
+                              $( ".dateInputTo" ).datepicker('destroy');
+                          })
+                          .mouseup(function(){
+                              $(this).removeClass('cancelActive');
+                          })
+                          .mouseenter(function(){
+                              $(this).addClass('cancelOver');
+                          })
+                          .mouseleave(function(){
+                              $(this).removeClass('cancelOver');
+                          });
+
+                        $(".nameInput").focus();
+	                        
+                        var dateString1 = dateFrom.split('.');
+                        $.each(dateString1, function (index, value) {
+                            if (index===0)
+                                day1=value;
+                            else
+                            if (index===1)
+                                month1=value;
+                            else
+                            if (index===2)
+                                year1=value;
+
+                        });
+                        var dateString2 = dateTo.split('.');
+                        $.each(dateString2, function (index, value) {
+                            if (index===0)
+                                day2=value;
+                            else
+                            if (index===1)
+                                month2=value;
+                            else
+                            if (index===2)
+                                year2=value;
+
+                        });
+
+                        var timeTempFrom=timeFrom.trim().split(" ");
+                        var timeString1 = timeTempFrom[0].split(':');
+                        $.each(timeString1, function (index, value) {
+                            if (index===0)
+                                hour1Temp=value;
+                            else
+                            if (index===1)
+                                minutes1=value;
+                        });
+
+                        var meridian="";
+                        if(timeTempFrom[1]==="PM") {
+                            hour1 = hour1Temp %12 + (meridian === "AM"? 0 : 12);
+                        }
+                        else
+                            hour1=hour1Temp;
+
+                        var timeTempTo=timeTo.trim().split(" ");
+                        var timeString2 = timeTempTo[0].split(':');
+                        $.each(timeString2, function (index, value) {
+                            if (index===0)
+                                hour2Temp=value;
+                            else
+                            if (index===1)
+                                minutes2=value;
+                        });
+
+                        if(timeTempTo[1]==="PM"){
+                            hour2 = hour2Temp %12 + (meridian === "AM"? 0 : 12);
+                        }
+                        else
+                            hour2=hour2Temp;
+                        
+                        
+                        
+                        startE.setFullYear(year1, month1-1, day1);
+                        startE.setHours(hour1, minutes1);
+
+                        endE.setFullYear(year2, month2-1, day2);
+                        endE.setHours(hour2, minutes2);
+
+                        var time1Final = startE.getTime();
+                        var time2Final = endE.getTime();
+
+                        var dateFromFinal = day1+'/'+month1+'/'+year1;
+                        var dateToFinal = day2+'/'+month2+'/'+year2;
+                        timeTempFrom=hour1+':'+minutes1;
+                        timeTempTo=hour2+':'+minutes2;
+
+	                      $("#start-date" ).datepicker({
+  	                      showOn: "button",
+                          buttonImage: "images/availability/my_availability_calendar_icon.png",
+                          dateFormat: "dd/mm/yy",
+                          buttonImageOnly: true,
+                          buttonText: "calendar",
+                          showOtherMonths: true,
+                          dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+                          firstDay: +1,
+                          minDate: '0',  
+                          onSelect: function(dateText, inst) {
+                              $("#dialog #dateFromEdit").val($.trim(dateText));
+                          },
+                          beforeShow: function(input, inst){
+                            inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+                            }
+                        }).datepicker('setDate', new Date(time1Final));
+                        
+                        $( "#end-date" ).datepicker({
+                          showOn: "button",
+                          buttonImage: "images/availability/my_availability_calendar_icon.png",
+                          dateFormat: "dd/mm/yy",
+                          buttonImageOnly: true,
+                          buttonText: "calendar",
+                          showOtherMonths: true,
+                          dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+                          firstDay: +1,
+                          minDate: '0',  
+                          onSelect: function(dateText, inst){
+                            $("#dialog #dateToEdit").val($.trim(dateText));
+                            }
+                        }).datepicker('setDate', new Date(time2Final));
+                        
+                        $("#dialog #name").val($.trim(currentExceptionName));
+                        $("#start-time .hours").val(hour1);
+                        $("#start-time .mins").val(minutes1);
+                        $("#end-time .hours").val(hour2);
+                        $("#end-time .mins").val(minutes2);
+                        
+                        checkTheInputTime();
+                        
+                        $('button.send').bind('click', function(){
+                          var formParentDialog = $(this).parent().parent();
+
+                          var nameExcp = formParentDialog.children( "#dialog #name" ),
+                              date1 = formParentDialog.find( "#dateFromEdit" ),
+                              date2 = formParentDialog.find( "#dateToEdit" ),
+                              startTimeH = $("#start-time .hours").val(),
+                              startTimeM = $("#start-time .mins").val(),
+                              endTimeH = $("#end-time .hours").val(),
+                              endTimeM = $("#end-time .mins").val(),
+                              time1 =  startTimeH+":"+startTimeM,
+                              time2 = endTimeH+":"+endTimeM;
+
+                          var timeString1 = time1.split(':');
+                          $.each(timeString1, function (index, value) {
+                              if (index===0)
+                                  hour1=value;
+                              else
+                              if (index===1)
+                                  minutes1=value;
+                          });
+                          var timeString2 = time2.split(':');
+                          $.each(timeString2, function (index, value) {
+                              if (index===0)
+                                  hour2=value;
+                              else
+                              if (index===1)
+                                  minutes2=value;
+                          });
+  
+  
+                          startE.setFullYear(year1, month1-1, day1);
+                          startE.setHours(hour1, minutes1);
+  
+                          endE.setFullYear(year2, month2-1, day2);
+                          endE.setHours(hour2, minutes2);
+  
+                          var time1Final = startE.getTime();
+                          var time2Final = endE.getTime();
+  
+                          var time1F = formatExcepTime(startE);
+                          var time2F = formatExcepTime(endE);   
+                          var editExcpResponse = editExceptionDialog(nameExcp.val(),currentExceptionId, startE, endE);  
+                         formParent.remove();
+                         $("#excp tbody").append(
+                          "<tr id="+ editExcpResponse.ruleId +">" +
+                              "<td class="+ "first" +">" + nameExcp.val() + "</td>" +
+                              "<td class="+ "second" +">" + day1 + "." + month1 + "." + year1 + "</td>" +
+                              "<td class="+ "third" +">" + time1F[0] + ":" + time1F[1] + " " + time1F[2] +"</td>" +
+                              "<td class="+ "fourth" +">" + day2 + "." + month2 + "." + year2 + "</td>" +
+                              "<td class="+ "fifth" +">" + time2F[0] + ":" + time2F[1] + " " + time2F[2] + "</td>" +
+                              "<td class="+ "sixth" +   "><a href=# id=" +"removeExceptionRow"+ "></a>"  +
+                              "<td class="+ "seventh" + "><a href=# id=" + "editExceptionRow" + "></a>"
+                           + "</tr>" );
+                          utils.closeDialog();
+                           
+                          $( ".dateInputFromEE" ).datepicker('destroy');
+                          $( ".dateInputToEE" ).datepicker('destroy');
+                          $('#availabilityDiv').empty();
+                          loadAvailability();
+                          });
+                        
+                        return false;
+                    });
+
+
+
+            $( "#removeActiveException" )
+                    .live('click', function() {
+                        var currentExceptionId = $(this).parent().attr("id");
+
+                        utils.closeDialog();
+
+                        var btns = {};
+                        dialogTitle= "<img src=" + "images/icon_notification.png" + ">" + $.i18n.prop('editVisibility.alert.deleteTitle');
+
+                        utils && utils.dialog({
+                            title : dialogTitle,
+                            content: $('#removeExceptionRow-form').html(),
+                            buttons : btns,
+                            css: 'noClose'
+                        });
+
+                        /* POSITION DIALOG */
+                        var dialogWidth = $('.ui-dialog').outerWidth();
+                        $('.ui-dialog').css({
+                            'top': '250px',
+                            'margin-left': -dialogWidth/2,
+                            'width':'360px',
+                            'left':'50%'
+                        });
+
+                        $('.ui-dialog').find('button.send')
+                                .mousedown(function(e){
+                                  e.preventDefault();
+                                    $(this).addClass('purple_button_active');
+                                    DeleteExceptionDialog(currentExceptionId);
+                                    $("tr[id=" + currentExceptionId + "]").remove();
+                                    $("#activeException").hide();
+                                    $("#inactiveException").show();
+                                    $("#visibilityStatus option[value=visible]").attr('selected', 'selected');
+                                })
+                                .mouseup(function(){
+                                    $(this).removeClass('purple_button_active');
+                                })
+                                .mouseenter(function(){
+                                    $(this).addClass('purple_button_over');
+                                })
+                                .mouseleave(function(){
+                                    $(this).removeClass('purple_button_over');
+                                });
+
+
+                        $('.ui-dialog').find('button.cancel')
+                                .mousedown(function(e){
+                                  e.preventDefault();
+                                    $(this).addClass('cancelActive');
+                                })
+                                .mouseup(function(){
+                                    $(this).removeClass('cancelActive');
+                                })
+                                .mouseenter(function(){
+                                    $(this).addClass('cancelOver');
+                                })
+                                .mouseleave(function(){
+                                    $(this).removeClass('cancelOver');
+                                });
+
+                        return false;
+                    });
+
+
+            $( "#editActiveException" )
+                    .live('click', function() {
+
+                        var currentExceptionId = $(this).parent().attr("id");
+                        var dateFrom,dateTo,timeFrom,timeTo;
+                        var day1,month1,year1,hour1,minutes1, day2,month2,year2,hour2,minutes2,hour1Temp,hour2Temp;
+
+                        var formParent = $("tr[id=" + currentExceptionId + "]");
+                        var currentExceptionName = formParent.children().filter($(".first")).text();
+                        dateFrom = formParent.children().filter($(".second")).text();
+                        timeFrom = formParent.children().filter($(".third")).text();
+                        dateTo = formParent.children().filter($(".fourth")).text();
+                        timeTo = formParent.children().filter($(".fifth")).text();
+
+                        dialogTitle= "";
+                        var btns = {};
+
+                        utils.closeDialog();
+
+                        utils && utils.dialog({
+                            title : dialogTitle,
+                            content: $('#editExcp-form').html(),
+                            buttons : btns,
+                            css: 'noClose'
+                        });
+
+                        /* POSITION DIALOG */
+                        var dialogWidth = $('.ui-dialog').outerWidth();
+                        $('.ui-dialog').css({
+                            'top': '250px',
+                            'margin-left': -dialogWidth/2,
+                            'width':'500px',
+                            'left':'50%'
+                        });
+
+
+                        var dateString1 = dateFrom.split('.');
+                        $.each(dateString1, function (index, value) {
+                            if (index===0)
+                                day1=value;
+                            else
+                            if (index===1)
+                                month1=value;
+                            else
+                            if (index===2)
+                                year1=value;
+
+                        });
+                        var dateString2 = dateTo.split('.');
+                        $.each(dateString2, function (index, value) {
+                            if (index===0)
+                                day2=value;
+                            else
+                            if (index===1)
+                                month2=value;
+                            else
+                            if (index===2)
+                                year2=value;
+
+                        });
+
+                        var timeTempFrom=timeFrom.trim().split(" ");
+                        var timeString1 = timeTempFrom[0].split(':');
+                        $.each(timeString1, function (index, value) {
+                            if (index===0)
+                                hour1Temp=value;
+                            else
+                            if (index===1)
+                                minutes1=value;
+                        });
+
+                        var meridian="";
+                        if(timeTempFrom[1]==="PM") {
+                            hour1 = hour1Temp %12 + (meridian === "AM"? 0 : 12);
+                        }
+                        else
+                            hour1=hour1Temp;
+
+
+                        var timeTempTo=timeTo.trim().split(" ");
+                        var timeString2 = timeTempTo[0].split(':');
+                        $.each(timeString2, function (index, value) {
+                            if (index===0)
+                                hour2Temp=value;
+                            else
+                            if (index===1)
+                                minutes2=value;
+                        });
+                        if(timeTempTo[1]==="PM"){
+                            hour2 = hour2Temp %12 + (meridian === "AM"? 0 : 12);
+                        }
+                        else
+                            hour2=hour2Temp;
+
+                        startE.setFullYear(year1, month1-1, day1);
+                        startE.setHours(hour1, minutes1);
+
+                        endE.setFullYear(year2, month2-1, day2);
+                        endE.setHours(hour2, minutes2);
+
+                        var time1Final = startE.getTime();
+                        var time2Final = endE.getTime();
+
+                        var dateFromFinal = day1+'/'+month1+'/'+year1;
+                        var dateToFinal = day2+'/'+month2+'/'+year2;
+                        timeTempFrom=hour1+':'+minutes1;
+                        timeTempTo=hour2+':'+minutes2;
+
+                        $( ".dateInputFromEE" ).datepicker({
+                            showOn: "button",
+                            buttonImage: "images/availability/my_availability_calendar_icon.png",
+                            dateFormat: "dd/mm/yy",
+                            buttonImageOnly: true,
+                            buttonText: "calendar",
+                            showOtherMonths: true,
+                            dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+                            firstDay: +1,
+                            minDate: '0',  
+                            onSelect: function(dateText, inst) {
+                                $("#dialog #dateFromEdit").val($.trim(dateText));
+                            }
+                        }).datepicker('setDate', new Date(time1Final));
+
+                        $( ".dateInputToEE" ).datepicker({
+                            showOn: "button",
+                            buttonImage: "images/availability/my_availability_calendar_icon.png",
+                            dateFormat: "dd/mm/yy",
+                            buttonImageOnly: true,
+                            buttonText: "calendar",
+                            showOtherMonths: true,
+                            dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+                            firstDay: +1,
+                            minDate: '0',  
+                            onSelect: function(dateText, inst) {
+                                $("#dialog #dateToEdit").val($.trim(dateText));
+                            }
+                        }).datepicker('setDate', new Date(time2Final));
+                        
+
+						$("#dialog #nameEdit").val($.trim(currentExceptionName));
+                        $("#dialog #dateFromEdit").val($.trim(dateFromFinal));
+                        $("#dialog #timeFromEdit").val($.trim(timeTempFrom));
+                        $("#dialog #dateToEdit").val($.trim(dateToFinal));
+                        $("#dialog #timeToEdit").val($.trim(timeTempTo));
+
+
+                        $('.ui-dialog').find('button.send')
+                                .mousedown(function(e){
+                                  e.preventDefault();
+                                    $(this).addClass('purple_button_active');
+                                    
+                                })
+                                .mouseup(function(){
+                                    $(this).removeClass('purple_button_active');
+                                })
+                                .mouseenter(function(){
+                                    $(this).addClass('purple_button_over');
+                                })
+                                .mouseleave(function(){
+                                    $(this).removeClass('purple_button_over');
+                                });
+
+
+                        $('.ui-dialog').find('button.cancel')
+                                .mousedown(function(e){
+                                  e.preventDefault();
+                                    $(this).addClass('cancelActive');
+                                    $( ".dateInputFromEE" ).datepicker('destroy');
+                                    $( ".dateInputToEE" ).datepicker('destroy');
+                                })
+                                .mouseup(function(){
+                                    $(this).removeClass('cancelActive');
+                                })
+                                .mouseenter(function(){
+                                    $(this).addClass('cancelOver');
+                                })
+                                .mouseleave(function(){
+                                    $(this).removeClass('cancelOver');
+                                });
+
+                        $('button.send').bind('click', function(){
+
+                            var formParentDialog = $(this).parent().parent();
+
+                            var     nameExcp = formParentDialog.children( "#nameEdit" ),
+                                    date1 = formParentDialog.find( "#dateFromEdit" ),
+                                    date2 = formParentDialog.find( "#dateToEdit" ),
+                                    time1 = formParentDialog.find( "#timeFromEdit" ),
+                                    time2 = formParentDialog.find( "#timeToEdit" );
+
+                            
+                            var bValid = true;
+                            if (bValid){
+
+                                var day1,month1,year1,hour1,minutes1, day2,month2,year2,hour2,minutes2;
+
+                                var dateString1 = date1.val().split('/');
+                                $.each(dateString1, function (index, value) {
+                                    if (index===0)
+                                        day1=value;
+                                    else
+                                    if (index===1)
+                                        month1=value;
+                                    else
+                                    if (index===2)
+                                        year1=value;
+
+                                });
+                                var dateString2 = date2.val().split('/');
+                                $.each(dateString2, function (index, value) {
+                                    if (index===0)
+                                        day2=value;
+                                    else
+                                    if (index===1)
+                                        month2=value;
+                                    else
+                                    if (index===2)
+                                        year2=value;
+
+                                });
+
+                                var timeString1 = time1.val().split(':');
+                                $.each(timeString1, function (index, value) {
+                                    if (index===0)
+                                        hour1=value;
+                                    else
+                                    if (index===1)
+                                        minutes1=value;
+                                });
+                                var timeString2 = time2.val().split(':');
+                                $.each(timeString2, function (index, value) {
+                                    if (index===0)
+                                        hour2=value;
+                                    else
+                                    if (index===1)
+                                        minutes2=value;
+                                });
+
+
+                                startE.setFullYear(year1, month1-1, day1);
+                                startE.setHours(hour1, minutes1);
+                                
+                                endE.setFullYear(year2, month2-1, day2);
+                                endE.setHours(hour2, minutes2);
+                                
+                                var time1Final = startE.getTime();
+                                var time2Final = endE.getTime();
+                                
+                                var time1F = formatExcepTime(startE);
+                                var time2F = formatExcepTime(endE);
+
+                                var editExcpResponse = editExceptionDialog(nameExcp.val(),currentExceptionId, startE, endE);
+                                
+                                formParent.remove();
+                                $("#excp tbody").append(
+                                        "<tr id=" + editExcpResponse.ruleId +">" +
+                                                "<td class="+ "first" +">" + nameExcp.val() + "</td>" +
+                                                "<td class="+ "second" +">" + day1 + "." + month1 + "." + year1 + "</td>" +
+                                                "<td class="+ "third" +">" + time1F[0] + ":" + time1F[1] + " " + time1F[2] +"</td>" +
+                                                "<td class="+ "fourth" +">" + day2 + "." + month2 + "." + year2 + "</td>" +
+                                                "<td class="+ "fifth" +">" + time2F[0] + ":" + time2F[1] + " " + time2F[2] + "</td>" +
+                                                "<td class="+ "sixth" +   "><a href=# id=" +"removeExceptionRow"+ "></a>"  +
+                                                "<td class="+ "seventh" + "><a href=# id=" + "editExceptionRow" + "></a>"
+                                                + "</tr>" );
+
+                                $("#activeExcpFrom").text(day1 + "/" + month1);
+                                $("#activeExcpTo").text(day2 + "/" + month2);
+                                $("#exception-status .second").attr("id",editExcpResponse.ruleId);
+                                
+                                
+                                utils.closeDialog();
+                                
+                                $( ".dateInputFromEE" ).datepicker('destroy');
+                                $( ".dateInputToEE" ).datepicker('destroy');
+
+                                
+                            }
+                        });
+
+
+                        return false;
+                    });
+					$("#visibilityStatus").selectmenu();
+         
+          var numOfBox = $("#privacy #availabilityDiv #whoLocate #plusBox .text .number").text();
+    	    	 
+        	if (numOfBox == 0){
+        		 $("#privacy #availabilityDiv #whoLocate #plusBox .text").html($.i18n.prop('editVisibility.seeLocation.noUser'));
+        		 $("#privacy #availabilityDiv #whoLocate #minusBox .text").html($.i18n.prop('editVisibility.seeLocation.noUser'));
+        	}else if(numOfBox == 1){
+        		$("#privacy #availabilityDiv #whoLocate #plusBox .text").html(numOfBox +" "+ $.i18n.prop('editVisibility.seeLocation.person'));
+        		$("#privacy #availabilityDiv #whoLocate #minusBox .text").html(numOfBox +" "+ $.i18n.prop('editVisibility.seeLocation.person'));
+        	}else{
+        		$("#privacy #availabilityDiv #whoLocate #plusBox .text .number").html(numOfBox);
+        		$("#privacy #availabilityDiv #whoLocate #minusBox .text .number").html(numOfBox);
+        	}
+        	
+          /* Hide table if there is no exception*/
+          if ($("#excp tbody tr").length == 0){
+              $("#excp").hide();
+          }
+          
+          
+        });
+  function changeSmsNotification(){
+     var ischecked = $("#notificationSmsCheck").is(':checked');
+     var countNumber = parseInt($("#notificationSmsSelect-button .ui-selectmenu-status").text() , 10);
+     	$.ajax({
+    		url :'saveLocatingNotificationSettings.action',
+    		type :'POST',
+	        data :{
+		        locatingCountToNotify : countNumber,
+		        notifyMeEveryNthLocation : ischecked
+        },
+        dataType :'json',
+        success :function(json) {
+        if (checkResponseSuccess(json)) {
+          utils.dialogSuccess(json.infoMessage);
+          }
+        }
+      });
+
+  }
+  
+  function changeEmailNotification(){
+     var ischecked = $("#notificationEmailCheck").is(':checked');
+     var countNumber = $('#notificationEmailSelect').selectmenu("value");
+
+ 	$.ajax({
+		url :'updateSendMeMail.action',
+		type :'POST',
+        data :{
+	        sendMeMailPeriod : countNumber,
+	        sendMeMailCheckbox : ischecked
+	        },
+	    dataType :'json',
+	    success :function(json) {
+		    if (checkResponseSuccess(json)) {
+		          utils.dialogSuccess($.i18n.prop('info.update'));
+			    }
+		}
+	});
+  }  
+</script>

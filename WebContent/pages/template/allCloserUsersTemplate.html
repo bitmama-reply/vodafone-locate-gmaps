@@ -1,0 +1,18 @@
+ <# for ( var key in neighbours) { var neighbourList = neighbours[key]; for(var x = 0; x < neighbourList.length; x++) { 
+ 	var content = neighbourList[x].markerOpts.contentHtml; 
+ 	var index = content.indexOf("tooltipHeader");
+ 	var indexOfFirstEndingDiv = content.indexOf('</div>');
+ 	var name = content.substring(index + "tooltipHeader".length + 2 ,indexOfFirstEndingDiv);
+ #>
+ 		<p>
+ 			<a href="javascript:void(0);" onclick = "changeUserTooltip('<#= neighbourList[x].markerOpts.id #>');"><#= name #></a>
+ 		</p>
+ 		</br>
+ <# } if(size > 1) { #>
+  <div class="hr"></div>
+ <# } } #>
+
+
+
+
+

@@ -1,0 +1,64 @@
+<!--
+<div id="exceptionTime">
+    <ul>
+        <li>
+            <label for="date1" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.from') #>:</label>
+            <input type="text" id="date1" class="dateInputFrom" maxlength="15" size="13" />
+            <input type='text' id='time1' class="timeInput" maxlength="15" size="7"/>
+        </li>
+        <li>
+            <label for="date2" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.to') #>:</label>
+            <input type="text" id="date2" class="dateInputTo" maxlength="15" size="13"/>
+            <input type='text' id='time2' class="timeInput" maxlength="15" size="7"/>
+        </li>
+    </ul>
+</div>
+-->
+
+
+
+
+<div id="addExcp-form">
+  <div class="errorsDisplay"></div>
+  <form>
+    <h1 class="excpTitle"><#= $.i18n.prop('editVisibility.exception.Add') #> <#= $.i18n.prop('editVisibility.exception.addException') #> </h1>
+      <p class="excpText"> <#= $.i18n.prop('editVisibility.exception.timePeriod') #> </p>
+      <div id="error-view-sendmessage" class="box-error-message">
+        	<div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+      </div>
+        <label for="name" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.name') #></label>
+        <input type='text' id='name' class="nameInput" maxlength="50" size="40" />
+        <div id="exceptionTime">
+          <ul>
+            <li>
+              <div class="inputs clearfix">
+                <label><#= $.i18n.prop('meetings.start') #></label>
+                <input type="text" id="start-date" name="" maxlength="40"  class="inputText date vldRequired" value="" />
+                <div class="time-wrap" id="start-time">
+                  <input class="disabled-input inputText" value="" />
+                  <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+                  <span>:</span>
+                  <input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+                </div>
+              </div>
+            </li>
+            <li class="last">
+              <div class="inputs clearfix">
+          	    <label><#= $.i18n.prop('meetings.end') #></label>
+          	    <input type="text" id="end-date" name="" maxlength="40"  class="inputText date vldRequired" value="" />
+          	    <div class="time-wrap" id="end-time">
+          	     <input class="disabled-input inputText" value="" />
+          	     <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+          	     <span>:</span>
+          	     <input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+          	    </div>
+          	 </div>
+            </li>
+          </ul>
+        </div>
+        <div class="button_class dialog_action clearfix">
+            <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button" hidefocus="true"><span hidefocus="true" style="line-height:2.5em !important; font-weight: bold; " class="ui-button-text"><#= $.i18n.prop('buttons.add') #></span></button>
+            <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+        </div>
+  </form>
+</div>

@@ -1,0 +1,37 @@
+<h1><#= $.i18n.prop('admin.LocationManagement') #></h1>
+
+<#= parseTemplate('adminToolbar', { exportFlag: true }) #>
+
+<div class="list-grid-wrapper">
+	<div id="pager2" class="list-toolbar"></div>
+	<table id="list2"></table>
+</div>
+
+<div class="import-form" style="display:none;">
+	<form action="json/uploadPoiCategoryFile.action" method="post" enctype="multipart/form-data">
+		<div class="import-legend-row"><a href="getImportTemplate.action?fileType=poiCategory&amp;uploadType=xls"><#= $.i18n.prop('import.poi.category.text') #></a></div>
+
+		<div class="clearfix">
+			<div class="import-legend-row left">
+				<input type="hidden" name="uploadType" value="xls" />
+				<input type="file" name="uploadObj" />
+			</div>
+
+			<a href="javascript:void(0);" class="upload-button graphicBtn violet right">
+				<span><#= $.i18n.prop('buttons.upload') #></span>
+			</a>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+
+	$(function(){
+		loadAdminCategoryListPlace();		
+	});
+	$(window).resize(function(){
+		$('.ui-jqgrid-btable').each(function(){
+			$(this).trigger( 'reloadGrid' );			
+		});
+	});
+</script>

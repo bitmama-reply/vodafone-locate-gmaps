@@ -1,0 +1,96 @@
+
+<form id="userDetailForm" action="saveUser">
+	<table cellpadding="9" cellspacing="9">
+	
+	<input type="hidden" id="userId" name="userId" value="<#= json.lbasUser.user_id #>">
+	<input type="hidden" id="lbasUser.user_id" name="lbasUser.user_id" value="<#= json.lbasUser.user_id #>">
+	<input type="hidden" id="companyIsProvisioned" name="companyIsProvisioned" value="<#= json.companyIsProvisioned #>">
+	
+	<tr>
+		<td><span class="labelStyle"><#= $.i18n.prop('userEdit.FirstName') #></span></td>
+		<td><input style="width:165px" type="text" id="name" value="<#= json.lbasUser.name #>" name="lbasUser.name" class="vldRequired vldMaxLength40"/></td>
+		<td width ="22"><span id="lbasUser.nameVld"/></td>
+		<td><span class="labelStyle"><#= $.i18n.prop('userEdit.Surname') #></span></td>  
+		<td colspan ="3"><input style="width:165px" type="text" id="surname" value="<#= json.lbasUser.surname #>" name="lbasUser.surname" class="vldRequired vldMaxLength40" /></td>
+		<td width ="22"><span id="surnameVld"/></td>
+	</tr>
+	<tr>	
+		<td><span class="labelStyle"><#= $.i18n.prop('userEdit.Email') #></span></td>
+		<td><input style="width:165px" type="text" id="usEmail" value="<#= json.lbasUser.email #>" name="lbasUser.email" class="vldRequired vldEmail vldMaxLength100" /></td>
+		<td width ="22"><span id="usEmailVld"/></td>
+		<td><span class="labelStyle"><#= $.i18n.prop('userEdit.Mobile') #></span></td>
+		
+			
+		<# if (json.lbasUser.user_id == 0 && json.companyIsProvisioned) { #>
+			<td>
+				<select id="userEditMobile" name="lbasUser.msisdn" onchange="selectedPreUserChanged(this); setUserRightsBasedOnGroup(document.getElementById('saveUser_selectedGroup'),<#= json.companyIsProvisioned #>);" class="vldRequired vldPhone" style="width:130px">
+					<# for (var i=0; i < json.availableMsisdns.length; i++) { #>
+					   		<option value="<#= json.availableMsisdns[i] #>"><#= json.availableMsisdns[i] #></option>
+					<# } #>						
+				</select>
+			</td>
+			<td width ="22"><span id="userEditMobileVld"/></td>
+		<# } else { #>
+			<# if (json.lbasUser.user_id == 0) { #>
+			<td>
+			<input style="width:165px" type="text" id="lbasUser.msisdn" value="<#= json.lbasUser.msisdn #>" name="lbasUser.msisdn" class="vldRequired vldPhone" title="<#= $.i18n.prop('tip.user.telephone.format') #>"/>			
+			</td>
+			<td>&nbsp;</td>
+			<# } else { #>	
+			<td><#= json.lbasUser.msisdn #></td>
+		<# } #>
+		
+	<# } #>	
+	</tr>
+	
+	<tr>	
+		<# if(json.lbasUser.user_id !=0){ #>
+		<td>
+			<span class="labelStyle">
+				<#= $.i18n.prop('userEdit.Password') #>
+			</span>
+		</td>
+		<td>&nbsp;</td>
+		<td> 
+			<a href="javascript:void(0);" onclick="popupUserRenewPasswordConfirmationDialog();" class="standartLink"><#= $.i18n.prop('userEdit.Password') #></a>
+		</td><# } #>	
+	</tr>
+	</table>
+	
+	<table>
+	<tr>
+		<td>
+			<# if(json.lbasUser.agpsEnabled){ #>
+				<input id="id_agps_enabled" type="checkbox" checked="checked" name="lbasUser.agpsEnabled" value="true" onclick="this.value=this.checked;"  title="<#= $.i18n.prop('tip.user.agps') #>" />
+			<# }else { #>
+				<input id="id_agps_enabled" type="checkbox" name="lbasUser.agpsEnabled" value="false" onclick="this.value=this.checked;" title="<#= $.i18n.prop('tip.user.agps') #>"/>
+			<# } #>	
+			&nbsp;<#= $.i18n.prop('userEdit.agpsEnabled') #>	
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<# if(json.lbasUser.smsInterfaceEnabled){ #>
+				<input  id="id_sms_interface_enabled" type="checkbox" checked="checked" name="lbasUser.smsInterfaceEnabled" value="true" onclick="this.value=this.checked;">
+			<# }else { #>
+				<input  id="id_sms_interface_enabled" type="checkbox" name="lbasUser.smsInterfaceEnabled" value="false" onclick="this.value=this.checked;">
+			<# } #>	
+			&nbsp;<#= $.i18n.prop('userEdit.smsInterfaceEnabled') #>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<# if(json.lbasUser.user_id == 0) { #>		
+				<input id="id_sms_opt_notification" type="checkbox" name="smsOptinNotification" value="false" onclick="this.value=this.checked;">
+				&nbsp;<#= $.i18n.prop('userEdit.smsOptinNotification') #>
+			<# } #>			
+		</td>
+	</tr>
+	
+	</table>
+
+</form>
+
+
+
+

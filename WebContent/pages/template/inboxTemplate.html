@@ -1,0 +1,23 @@
+<ul class="messageBoxes">
+	<# if(json.messageBoxList.length>0) { #>           
+		<# for(var rowstatus=0; rowstatus < json.messageBoxList.length; rowstatus++) { var top = json.messageBoxList[rowstatus]; #>
+		<li class="<#= top.messageBoxTypeName #>_menu">
+		
+		
+		
+			<# if(top.messageBoxTypeName=='INBOX') { #>
+				<a onclick="loadInbox('INBOX',0);" class="inbox<# if(json.messageBoxTypeName == 'INBOX') {#> active <# } #>"><span><#= top.name #> (<#= top.unreadMessageCount #>)</span></a>
+			<# } #>
+			
+			<# if(top.messageBoxTypeName=='SENT') { #>
+				<a onclick="loadInbox('SENT',0);" class="sent<# if(json.messageBoxTypeName == 'SENT') {#> active <# } #>"><span><#= top.name #></span></a>
+			<# } #>
+			
+			<# if(top.messageBoxTypeName=='TRASH') { #>
+				<a onclick="loadInbox('TRASH',0);" class="trash<# if(json.messageBoxTypeName == 'TRASH') {#> active <# } #>"><span><#= top.name #></span></a>
+			<# } #>
+		</li>
+		
+		<# } #>
+	<# } #>
+</ul>

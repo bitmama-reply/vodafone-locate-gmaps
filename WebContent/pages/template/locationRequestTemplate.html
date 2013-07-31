@@ -1,0 +1,250 @@
+
+<script type="text/javascript">
+radioValue = "permanent";
+timeInterval = 0;
+restrictChecked = false;
+frequencyChecked = false;
+
+function ShowHideTemporary(value) 
+{
+    value == 'show' ? $('#specific').show() : $('#specific').hide();
+    radioValue = value == 'show' ? 'temporary' : 'permanent';
+}
+
+$(document).ready(function() {
+    
+    $("input[name='viewLocation']").change(function()
+    {
+        $("input[name='viewLocation']").each(function()
+        {
+            $('input[name=viewLocation]:radio:checked').css("background-image", "url(images/rbOn.png)"); 
+            /*
+            if ($(this).attr('checked') == 'checked')
+                $(this).css("background-image", "url(images/rbOn.png)"); 
+            else
+                $(this).css("background-image", "url(images/rbOff.png)"); 
+            */
+        });
+    });
+   
+    
+    
+    $( ".dateInputFrom" ).datepicker({
+        showOn: "button",	
+        buttonImage: "images/availability/my_availability_calendar_icon.png",
+        buttonImageOnly: true,
+        buttonText: "calendar",
+        showOtherMonths: true,
+        dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+        firstDay: +1,
+        dateFormat: "dd/mm/yy",
+        minDate: '0',  
+        onSelect: function(dateText, inst) {
+            $("#dialog #date1").val($.trim(dateText));
+        },
+        beforeShow: function(input, inst){
+	        inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+		}
+    }).datepicker('setDate', new Date());
+
+    $( ".dateInputTo" ).datepicker({
+        showOn: "button",
+        buttonImage: "images/availability/my_availability_calendar_icon.png",
+        dateFormat: "dd/mm/yy",
+        buttonImageOnly: true,
+        buttonText: "calendar",
+        showOtherMonths: true,
+        dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+        firstDay: +1,
+        minDate: '0',  
+        onSelect: function(dateText, inst) {
+            $("#dialog #date2").val($.trim(dateText));
+        },
+        beforeShow: function(input, inst){
+	        inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+		}
+    }).datepicker('setDate', new Date());
+    
+    /*locationRequestDialogReady(<#= startTime #>,<#= stopTime #>,'<#= viewLocation #>');*/
+	var d = new Date();
+  d.setHours(9);
+/*
+  var dateTimeCheck = new Date();
+  if(d.getDate() !== dateTimeCheck.getDate()){
+    dateTimeCheck.setDate(dateTimeCheck.getDate()+1);
+
+    $(".dateInputFrom").datepicker('setDate', new Date(dateTimeCheck));
+    $(".dateInputTo").datepicker('setDate', new Date(dateTimeCheck));    
+  }
+*/
+  $('.line6 .hours').val(d.getHoursFormatted());
+  $('.line6 .mins').val('00');
+  d.setHours(17);
+  $('.line6 #end-time .hours').val(d.getHoursFormatted());
+
+
+	checkTheInputTime();
+	
+	$('.image1').hover(function(){
+		var btns = {};
+	    /*utils.closeDialog();*/
+	
+	    utils && utils.dialog({
+	        title : $.i18n.prop('locationReports.PopUp.title'),
+	        content: '<div id="locationReportsPopUp"><p style="margin:0 0 10px;">'+$.i18n.prop('locationReports.PopUp.text')+'</p><div style="width:248px; height:233px;"> <img style="margin:0 0 10px;" src="images/locationReportsPopUpSample.jpg" alt="sample imaage" /></div></div>',
+	        buttons : btns,
+	        css : "noCloseNoOk hoverCalendars"
+	    });
+	
+	    /* POSITION DIALOG */
+		$('.hoverCalendars').css({'width': 305});
+	    if( $.browser.msie && $.browser.version == 7 ){
+			/*$('.hoverCalendars .bd. .c .s').css({'width': 321});*/
+	   		$('.hoverCalendars').css({'width': 305}); 
+	   	}
+		var hovCal = $(this).offset();
+		var calHeight = $(".hoverCalendars").outerHeight();
+		var calWidth = $(".hoverCalendars").outerWidth();
+		var hovCalLeft = hovCal.left+15;
+	    var hovCalTop = hovCal.top;
+		var windowWidth = $(window).width();
+		
+		if( calWidth + hovCalLeft > windowWidth ){
+			hovCalLeft = hovCal.left-calWidth;
+			$(".hoverCalendars").addClass("oppositeSide");
+		}    
+	        
+	    $('.hoverCalendars').css({
+	        'top':  hovCalTop - (calHeight/2) +10,
+	        'left': hovCalLeft,
+	    });
+	
+		return false;		
+	},function(){
+	
+	    $(".hoverCalendars").hide().remove();
+	});
+	
+	$('#shareFrequency').selectmenu();
+	  $('.ui-selectmenu-menu > ul').css({
+		  overflow:'auto'
+    });
+
+});
+
+</script>
+<form id="locationRequest" action="locationRequest">
+    <input type="hidden" id="locRequestID" name="locationRequestID" value="<#= locationRequestID #>">
+    <ul>
+
+        <li>
+	        <div id="locRequestUserList">
+	            <div class="line1 clearfix">
+		            <span class="label">
+		            	<#= $.i18n.prop('locationRequest.to') #> 
+		            </span>	
+	            <div class="inputArea">
+	                        <ul class="token-input-list-facebook" style="height:50px;border: 0px solid red;">
+	                            <# for(var i=0; i < selectedUserList.length; i++) { var u=selectedUserList[i].split(":"); #>
+	                                <# var username = u[1]; #>
+	                                <li id="<#= u[0] #>" class="token-input-token-facebook">
+	                                    <p><#= u[1] #></p>
+	                                    <span class="token-input-delete-token-facebook" onclick="removeUser('#locRequestUserList',<#= u[0] #>);">x</span>
+	                                </li>
+	                            <# } #>	
+	                        </ul>
+	
+	                    <div class="token-input-dropdown-facebook" style="display:none;"></div>
+	                </div>
+	        	</div><!-- line1 -->
+	        </div>
+        </li><!-- BLOCCO TO -->
+
+        
+
+        <li>
+            <h1 class="ReqPerTitle"> <#= $.i18n.prop('locationRequest.view') #> </h1> 
+            <ul class="perType">
+            	<li>
+					<input type="radio" name="viewLocation" id="viewLocationX" value="location_and_report" checked>
+		            <label for="viewLocation" ><#= $.i18n.prop('request.permission.option1') #></label><a href="javascript:void(0);" class="info image1"></a>
+            	</li>
+            	<li>
+		            <input type="radio"  name="viewLocation" id="viewLocationX" value="location">
+		            <label for="" ><#= $.i18n.prop('request.permission.option2') #></label>
+            	</li>
+            </ul>
+        </li>
+        <li class="shareMyLocation clearfix">
+        	<ul class="shareMyLocationFrequency">
+        		<li>
+		        	<input type="checkbox" id="shareOwnLoc" name="shareOwnLoc">
+		        	<label for="shareOwnLoc"><#= $.i18n.prop('shareMyLocation.title') #></label>
+		        </li>
+		        <li>
+		        	<p> <#= $.i18n.prop('locationRequest.frequency') #> : </p>
+				    <select id="shareFrequency" name="shareFrequency">
+					<# for(var i=viewLocationFrequency; i < 101; i=i+10) {  #>
+						<option value="<#= i #>"><#= i #> <#= $.i18n.prop('locationRequest.minute') #></option>
+					<# } #>
+	                </select>
+		        </li>
+		    </ul>
+        </li>
+<li>
+	
+        <div class="permissionType">
+            <h1 class="ReqPerTitle2"><#= $.i18n.prop('request.permission.permissionType') #> </h1>
+            
+            <div class="line1">
+                <input type="radio" name="viewLocationFreq" id="viewLocationFreq" value="permanent" onclick="ShowHideTemporary('hide')" checked="true"/>
+                <#= $.i18n.prop('privacyAndControl.request.permanent') #>
+            </div>
+            
+			<div class="line2">        
+	    	         <#= $.i18n.prop('request.permission.warning1') #>&nbsp;<#= username #>&nbsp;<#= $.i18n.prop('request.permission.warning2') #> 
+           </div>
+           
+            <div class="line3">
+            	<input type="radio" name="viewLocationFreq" id="viewLocationFreq" value="temporary" onclick="ShowHideTemporary('show')"/>
+            	<#= $.i18n.prop('privacyAndControl.request.temporary') #>
+            </div>
+
+            <div id="specific" style="display:none">
+ 				<div class="line4">
+                            <label for="date1" class="excpLabel"><#= $.i18n.prop('request.permission.start') #></label>
+                            <input type="text" id="date1" class="dateInputFrom" maxlength="15" size="13" />
+				</div>
+				 <div class="line5">
+                            <label for="date2" class="excpLabel"><#= $.i18n.prop('request.permission.end') #></label>
+                            <input type="text" id="date2" class="dateInputTo" maxlength="15" size="13" />
+                 </div>
+                  <div class="line6 clearfix">
+                            <!--Hour<input type='text' id='time1' class="timeFrom" maxlength="15" size="7"/>
+                            to<input type='text' id='time2' class="timeTo" maxlength="15" size="7"/>-->
+							<span><#= $.i18n.prop('request.permission.hours') #></span>
+							<div class="time-wrap" id="start-time">
+						     <input class="disabled-input inputText" value="" />
+						     <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+						     <span>:</span>
+						     <input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+						    </div>
+                            <span><#= $.i18n.prop('request.permission.to') #></span>
+                            <div class="time-wrap" id="end-time">
+						     <input class="disabled-input inputText" value="" />
+						     <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+						     <span>:</span>
+						     <input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+						    </div>
+						    <span class="normal"><#= $.i18n.prop('request.permission.daily') #></span>
+                  </div>
+            </div> <!-- specific -->            
+        </div>
+            <div id="sendSpecialMes">
+	            <h1 class="ReqPerTitle"><#= $.i18n.prop('messages.message') #></h1>
+	            <textarea id="sendSpecialMesTextarea"></textarea>
+            </div>
+
+</li>
+    </ul>
+</form>

@@ -1,0 +1,128 @@
+<!--<div class="popup-alert-m-limit"> When sending a message via SMS the maximum amount of characters is 480 (3 SMS).</div>
+<div class="popup-alert-m-empty"> The message can't be empty. </div>-->
+<div class="tooltip-alert-generic-left tooltip-alert-messageTo"><span></span></div>
+<div class="tooltip-alert-generic-left tooltip-alert-messageSubject"><span></span></div>
+<div class="tooltip-alert-generic-left tooltip-alert-messageContent"><span></span></div>
+<div class="tooltip-alert-generic-left tooltip-icon-limit-message"><span><#= $.i18n.prop('warning.select.limitchars') #></span></div>
+
+
+
+<form action="sendMessage" id="sendMessage">
+	<input type="hidden" name="selectedUserAndGroups" id="selectedUserAndGroups">
+    <div id="error-view-sendmessage" class="box-error-message">
+        <div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+    </div>
+	<table width="100%">
+		<tbody>
+			<tr>
+				<td colspan="2" class="label-row">
+					<label for="messageTo" ><#= $.i18n.prop('message.to') #></label>
+				</td>
+		  </tr>
+			<tr>
+				<td colspan="2">
+					<input type="text" maxlength="50" size="50" name="messageTo" id="messageTo" style="display: none;">
+
+					<div title="messageTo" style="display: none;"></div>
+					<div class="token-input-dropdown-facebook" style="display: none;"></div>
+					<!--
+						<div title="messageTo" style="display: none;"></div>
+						<div class="token-input-dropdown-facebook" style="display: none;"></div>
+					 -->
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="label-row">
+					<label for="messageSubject"><#= $.i18n.prop('message.subject') #></label>
+
+				</td>
+		  </tr>
+			<tr>
+				<td colspan="2" class="subject-m">
+				  <!-- vldRequired vldMaxLength40 -->
+					<input type="text" class="inputText" maxlength="150" size="65" name="messageSubject" id="messageSubject" value="<#= $.i18n.prop('message.noSubject')#>" onfocus="if (this.value == $.i18n.prop('message.noSubject')) {this.value = '';}" onblur="if (this.value == '') {this.value = $.i18n.prop('message.noSubject');}">
+				</td>
+			</tr>
+			<!--<tr>
+				<td colspan="2">
+					<input type="checkbox" checked="checked" onclick="this.value=this.checked" value="true" id="isSmsSend" name="isSmsSend" onchange="sendSMSClicked($('#isSmsSend'), $('#messageContent'));">&nbsp;
+					<label for="isSmsSend">Send SMS</label>
+				</td>
+			</tr>-->
+			<tr>
+
+				<td class="label-row">
+					<label for="messageContent">Message:</label>
+				</td>
+				<td class="label-row">
+          <div class="wrapper-counter-message">
+            <span class="counter-m"></span>
+            <span>&nbsp;/&nbsp;480</span>
+            <span>&nbsp;char</span>
+            <span class="icon-counter"><a class="alert-charts">&nbsp;</a></span>
+            <!--<a class="alert-empty-m">&nbsp;</a>-->
+          </div>
+
+        </td>
+		  </tr>
+		  <tr>
+				<td colspan="2">
+					<textarea class="text-area-m vldRequired vldMaxLength160 inputText"  name="messageContent" id="messageContent"></textarea>
+					<div id="editableDiv" contenteditable="true"></div>
+				</td>
+			</tr>
+			<tr>
+			 <td class="send-sms-check" style="vertical-align:middle; width:50%">
+			  <!--  <input type="checkbox" onclick="this.value=this.checked" value="false" id="isSmsSend" name="isSmsSend" onchange="sendSMSClicked($('#isSmsSend'), $('#messageContent'));"> -->
+			  <input type="checkbox" onclick="this.value=this.checked" onchange="" value="false" id="isSmsSend" name="isSmsSend">
+			  &nbsp;
+					<label for="isSmsSend"><#= $.i18n.prop('message.sendSms') #></label>
+<!-- 					<br /> -->
+
+			 </td>
+			 <td class="buttons_class" style="width:50%;">
+			   <button type="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" role="button" aria-disabled="false"><span class="ui-button-text" style="line-height:2.5em !important"><#= $.i18n.prop('message.send') #></span></button>
+			   <button type="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" role="button" aria-disabled="false" onclick="javascript:utils.closeDialog(this)"><span class="ui-button-text" style="line-height:2.5em !important"><#= $.i18n.prop('message.cancel') #></span></button>
+			 </td>
+			</tr>
+		</tbody>
+	</table>
+
+</form>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+	$('#isSmsSend').customCheckBox();
+	$('div.ui-dialog-content.ui-widget-content').css('position','static');
+
+	var textArea = $('#messageContent'),
+	 	editableDiv = $('#editableDiv'),
+ 		sendButton = $('button.send'),
+ 		isSms = $('#isSmsSend'),
+ 		customCheckbox = $('.send-sms-check .jqTransformCheckboxWrapper'),
+ 		charLimit = composeMessageDialogManager.characterLength.sms;
+
+	isSms.change(function(){
+    composeMessageDialogManager.sendSMSClicked($('#isSmsSend'), $('#messageContent'));
+	});
+
+	customCheckbox.click(function(){
+		var text = textArea.val(),textLength = text.length,maxChar = text.substr(0,charLimit),extraChar = text.substr(charLimit,text.length);
+ 		if(isSms.val()=='false' && textLength > charLimit) {
+			textArea.hide();
+			editableDiv.show().empty().append(maxChar +'<span id="extra">'+extraChar+'</span>').focus();
+   		} else if(isSms.val()=='true' && textLength > charLimit){
+	    	var text = editableDiv.text();
+	    	editableDiv.hide();
+	    	textArea.show().empty().append(text).focus();
+   		}
+ 	});
+	editableDiv.click(function(){
+    	var text = editableDiv.text();
+    	editableDiv.hide();
+    	textArea.show().empty().append(text).focus();
+	});
+
+});
+</script>

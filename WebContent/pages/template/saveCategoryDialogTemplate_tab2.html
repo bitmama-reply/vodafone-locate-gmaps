@@ -1,0 +1,59 @@
+<form id="updateCatPermission" name="updateCatPermission" action="updateCatPermission" method="post" class="clearfix">
+	<input type="hidden" name="creator" value="1" id="updateCatPermission_creator"/>
+	<input type="hidden" name="userIdhidden" value="" id="userIdhidden"/>
+
+	<div id="catPermissionUsers">
+	  <div id="permissionSearch">
+      <input type="text" id="permissionSearchInput" value="" onkeypress="return event.keyCode!=13" onblur="if (this.value=='') { this.style.color='#7E7E7E'; this.value=$.i18n.prop('general.Search'); }" onfocus="if (this.value==$.i18n.prop('general.Search')) { this.style.color='black'; this.value=''; }" />
+      <span  class="search-ico magnifier"></span>
+      <div id="wp_autocomplete"></div>
+    </div>
+    
+		<div id ="catPermissionUsersScroll">
+			<div id="navigationCat"></div>
+		</div>
+	</div>
+	
+	<div class="cover">
+		<ul id="catPermissionChk">
+			<li>
+				<h1 id="#savePlace_allUSersAndGroup" class="title"></h1>
+			</li>
+			<li>
+				<img src="/images/ch_un_g.png" onclick="changePermissions(this,0,'addPOI');" id="changePermissions0"/>
+				<label id="lbl_changePermissions0" for="changePermissions0">Add Places To Category</label>
+			</li>
+			<li>
+				<img src="/images/ch_un_g.png" onclick="changePermissions(this,1,'delete');" id="changePermissions1"/>
+				<label id="lbl_changePermissions1" for="changePermissions1">Delete</label>
+			</li>
+			<li>
+				<img src="/images/ch_un_g.png" onclick="changePermissions(this,2,'deletePOI');" id="changePermissions2"/>
+				<label id="lbl_changePermissions2" for="changePermissions2">Remove place for category</label>
+			</li>
+			<li>
+				<img src="/images/ch_un_g.png" onclick="changePermissions(this,3,'edit');" id="changePermissions3"/>
+				<label id="lbl_changePermissions3" for="changePermissions3">Edit</label>
+			</li>
+			<li>
+				<img src="/images/ch_un_g.png" onclick="changePermissions(this,4,'editPermission');" id="changePermissions4"/>
+				<label id="lbl_changePermissions4" for="changePermissions4">Edit Permissions</label>
+			</li>
+			<li>
+				<img src="/images/ch_un_g.png" onclick="changePermissions(this,5,'sharePOI');" id="changePermissions5"/>
+				<label id="lbl_changePermissions5" for="changePermissions5">Share Location</label>
+			</li>
+			<li>
+				<img src="/images/ch_un_g.png" onclick="changePermissions(this,6,'view');" id="changePermissions6"/>
+				<label id="lbl_changePermissions6" for="changePermissions6">View</label>
+			</li>
+		</ul>
+	</div>
+	
+</form>
+<script>
+	$(function(){
+		$("#catPermissionChk").css('opacity',0.5);
+		$(".title").text($.i18n.prop('location.permissions'));
+	});
+</script>

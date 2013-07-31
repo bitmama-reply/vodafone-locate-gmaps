@@ -1,0 +1,214 @@
+<script type="text/javascript" src="js/jquery/js/jquery-ui-1.8.11.custom.min.js"></script>
+
+<style type="text/css">
+* html .token-input-list-facebook { 
+   height: expression( this.scrollHeight > 70 ? "auto" : "70" ); /* sets min-height for IE */
+}
+.token-input-list-facebook{ 
+   max-height: 70px; /* sets max-height value for all standards-compliant browsers */
+   max-width: 330px;
+}
+
+#nameOfaLocation{ 
+   
+   width: 100%;
+}
+</style>
+
+
+<script type="text/javascript">
+
+$().ready(function() {	
+	newMeetingDialogReady();
+});
+
+function createNewMeetingOK(){
+	if (lbasValidate('secondpart'))
+		preSaveMeeting(true);
+}
+
+</script>
+
+
+<form id="createMeeting" action="createMeeting">
+
+	<div>
+		<b><#= $.i18n.prop('meetings.subject') #>: </b><br>
+		<b><input type="text" id="meetingSubject" name="meetingSubject" maxlength="40"  class="inputText vldRequired" value="" style="width:93%;"/><span id="meetingSubjectVld"/></b>		       
+		<br>
+	</div>
+
+	<div>
+		<b><#= $.i18n.prop('meetings.location') #>: </b><br>
+		<b><input type="text" id="nameOfaLocation" name="nameOfaLocation"  class="inputText" style="width:93%;"/>   </b>   			
+		<br>
+	</div>
+
+
+	<div id="secondpart">
+		<div id="meetingDateTime" style="width:100%;">
+			<table style="width:96%;">
+				<tr>
+					<b><#= $.i18n.prop('meetings.time') #>: </b>
+				</tr>
+				<tr>  
+					<td width="20">
+						<#= $.i18n.prop('meetings.start') #>: 
+					</td>
+					<td width="10">
+						
+						<# var minList=$.i18n.prop('general.minList').split(","); #>
+						<# var hourList=$.i18n.prop('general.hourList').split(","); #>
+						<# var dayList=$.i18n.prop('general.dayList').split(","); #>
+						<# var monthList=$.i18n.prop('general.monthList').split(","); #>
+						<# var d=new Date(); var yearList= new Array(d.getFullYear(),d.getFullYear()+1); #>
+						
+						<select id="dayFromMeeting" name="dayFromMeeting" value="">
+				           <# for(var i=0; i < dayList.length; i++) {  #>
+					          <option value="<#= dayList[i] #>"><#= dayList[i] #></option>  
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+						
+						<select id="monthFromMeeting" name="monthFromMeeting" value="">
+				           <# for(var i=0; i < monthList.length; i++) {  #>
+				    		<option value="<#= monthList[i]-1 #>"><#= monthList[i] #></option>
+				           <# } #>
+                        </select>
+                        
+					</td>
+					<td width="10">
+					
+						<select id="yearFromMeeting" name="yearFromMeeting" value="">
+				           <# for(var i=0; i < yearList.length; i++) {  #>
+				    		<option value="<#= yearList[i] #>"><#= yearList[i] #></option>
+				           <# } #>
+                        </select>
+						
+					</td>		
+					<td width="10">
+						<input type="hidden"  id="datepickerStart"     />
+					</td>
+
+					<td width="10">
+						<span id="hourMinTextFromMeeting"><#= $.i18n.prop('locationRequest.at') #>: </span>
+					</td>
+					<td width="10">
+						<select id="hourFromMeeting" name="hourFromMeeting" value="">
+				           <# for(var i=0; i < hourList.length; i++) {  #>
+				    		<option value="<#= hourList[i] #>"><#= hourList[i] #></option>
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+	
+						<select id="minuteFromMeeting" name="minuteFromMeeting" value="">
+				           <# for(var i=0; i < minList.length; i++) {  #>
+				    		<option value="<#= minList[i] #>"><#= minList[i] #></option>
+				           <# } #>
+                        </select>
+                        
+					</td>											
+				</tr>
+
+				<tr>
+					<td width="20">
+						<#= $.i18n.prop('meetings.end') #>: 
+					</td>
+					<td  width="10">
+						
+						<select id="dayToMeeting" name="dayToMeeting" value="">
+				           <# for(var i=0; i < dayList.length; i++) {  #>
+					          <option value="<#= dayList[i] #>"><#= dayList[i] #></option>  
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+						<select id="monthToMeeting" name="monthToMeeting" value="">
+				           <# for(var i=0; i < monthList.length; i++) {  #>
+				    		<option value="<#= monthList[i]-1 #>"><#= monthList[i] #></option>
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+						<select id="yearToMeeting" name="yearToMeeting" value="">
+				           <# for(var i=0; i < yearList.length; i++) {  #>
+				    		<option value="<#= yearList[i] #>"><#= yearList[i] #></option>
+				           <# } #>
+                        </select>
+					</td>
+					<td width="10">
+					<input type="hidden"  id="datepickerStop" />
+						
+					</td>
+					<td width="10">
+						<span id="hourMinTextToMeeting"><#= $.i18n.prop('locationRequest.at') #>: </span>
+					</td>
+					<td width="10">
+						
+						<select id="hourToMeeting" name="hourToMeeting" value="">
+				           <# for(var i=0; i < hourList.length; i++) {  #>
+				    		<option value="<#= hourList[i] #>"><#= hourList[i] #></option>
+				           <# } #>
+                        </select>
+                        
+					</td>
+					<td width="10">
+					
+						<select id="minuteToMeeting" name="minuteToMeeting" value="">
+				           <# for(var i=0; i < minList.length; i++) {  #>
+				    		<option value="<#= minList[i] #>"><#= minList[i] #></option>
+				           <# } #>
+                        </select>
+                        
+					</td>						
+				</tr>
+				
+				<tr>
+					<td colspan=1></td>
+					<td><input type="checkbox" id="meetingCheckboxAllDay"  value="true" name="meetingCheckboxAllDay" onclick="this.value=this.checked; meetingAllDaySelected(this, null, null);"/></td>
+					<td><#= $.i18n.prop('meetings.allDay') #></td>
+				</tr>
+			</table>
+	
+			<b><#= $.i18n.prop('meetings.details') #>: </b><br>
+			<b>
+			 <textarea style="width:93%;" class="inputText vldMaxLength250" id="meetingDetails" rows="4" cols="" name="meetingDetails" />
+			</b>		       							
+		</div>		
+
+		<div id="meetingAttendees">
+			<b><#= $.i18n.prop('meetings.attendees') #>: </b><br>
+			<b>
+				<textarea style="width:93%;" class="inputText vldMaxLength250" id="meetingUsers" rows="4" cols="" name="meetingUsers" />
+			</b>
+		</div>
+
+		<div>	
+			<table>	<tr>
+				<td><b><input type="checkbox" id="checkboxShowEta"  value="true" name="checkboxShowEta" checked="checked" onclick="this.value=this.checked;"/>
+						<#= $.i18n.prop('meetings.viewShowEta') #></b></td>
+						<td><b>
+						 <input type="checkbox" id="checkboxShowLocation"  value="true" name="checkboxShowLocation" checked="checked" onclick="this.value=this.checked;"/>
+						<#= $.i18n.prop('meetings.viewShowLocation') #></b></td>
+						
+						<td><b>
+						 <input type="checkbox" id="checkboxWarnETA"  value="true" name="checkboxWarnETA" checked="checked" onclick="this.value=this.checked;"/>
+						<#= $.i18n.prop('meetings.warnAboutETA') #></b></td>								
+				</tr>
+				</table>
+		</div>		       
+	</div>
+	
+	<!-- 
+	<div id="saveBtn">
+		<a class="button" href="javascript:void(0);" onclick="$('#meetingNewDialog').dialog('close');">
+			<#= $.i18n.prop('buttons.cancel') #>
+		</a>
+		<a class="button" href="javascript:void(0);" onclick="if (lbasValidate('secondpart'))preSaveMeeting(true);">
+			<#= $.i18n.prop('buttons.send') #>
+		</a>
+	</div>
+	 -->
+</form>

@@ -1,0 +1,351 @@
+<!-- <script type="text/javascript" src="js/ext/jquery.ui.autocomplete.js"></script> -->
+<style>
+    #calendarX {
+        width: 300px;
+        margin: 0 auto;
+        font-size: 10px;
+    }
+    .fc-header-title h2 {
+        font-size: .9em;
+        white-space: normal !important;
+    }
+    .fc-view-month .fc-event, .fc-view-agendaWeek .fc-event {
+        font-size: 0;
+        overflow: hidden;
+        height: 2px;
+    }
+    #calendarX .fc-view-agendaWeek .fc-event-vert {
+        font-size: 0;
+        overflow: hidden;
+        width: 30px !important;
+    }
+    #calendarX .fc-agenda-axis {
+        width: 30px !important;
+        font-size: .8em;
+    }
+
+    .fc-button-content {
+        padding: 0;
+    }​
+    
+</style>
+<div id="whomILocate-container">
+
+    <#
+
+            var usrILocateMe;
+            $.each(json, function(name, value) {
+              if (name === "usersWhomICanLocate")
+                usrILocateMe = value ;                    
+            });
+     #>
+
+        <h1><#= $.i18n.prop('privacyAndControl.whomICanLocate') #> <span> (<#= usrILocateMe.length #>) </span> </h1>
+
+        
+        <div id="searchFilter">
+            <ul class="tools clearfix">
+                <li class="search">
+                    <div id="searchMessageArea" class="modBorder">
+                        <input type="text" id="searchPeople" class="searchInput" onkeypress =""
+                            value="<#= $.i18n.prop('privacyAndControl.search') #>" size="10"
+                            onfocus="if (this.value==''+$.i18n.prop('privacyAndControl.search')) { this.style.color='black'; this.value=''; }"
+                            onblur="if (this.value=='') { this.style.color='#000000'; this.value=''+$.i18n.prop('privacyAndControl.search');  }" />
+                        <a href="javascript:void(0);" id="btReset" style="float: right;  margin: 0 5px 0 0;  position: relative; top: 3px;"  class="search-ico magnifier"></a>
+                        <!--<input type="text" onblur="" onfocus="" size="10" value="" class="searchInput" id="searchMessageInput">
+                            class="searchInput" onkeypress =""
+                               value="<#= $.i18n.prop('privacyAndControl.search') #>" size="10"
+                               onfocus="if (this.value==''+$.i18n.prop('privacyAndControl.search')) { this.style.color='black'; this.value=''; }"
+                               onblur="if (this.value=='') { this.style.color='#000000'; this.value=''+$.i18n.prop('privacyAndControl.search'); }" />
+                        <a href="javascript:void(0);" style="position: relative; top: 4px;" onclick=""><img id="search" src="images/search_g.png" /></a>-->
+                    </div>
+                </li>
+                <li class="filter">
+                	<table class="filtering">
+                		<tr>
+                			<td>
+                				<div class="text"><#= $.i18n.prop('privacyAndControl.filterBy') #> : <strong> <#= $.i18n.prop('privacyAndControl.requestKind') #> </strong></p>
+                			</td>
+                			<td>
+                        <select id="requestType" name="requestType">
+                          <option value="all"><#= $.i18n.prop('privacyAndControl.request.all') #></option>
+                          <option value="permanent"><#= $.i18n.prop('privacyAndControl.request.permanent') #></option>
+                          <option value="temporary"><#= $.i18n.prop('privacyAndControl.request.temporary') #></option>
+                        </select>			
+                			</td>
+                		</tr>
+                	</table>
+                </li>
+            </ul>
+        </div>
+
+        <table id="whomILocateMe" >
+              <tr class="firstLine">
+	                <td class="first"><#= $.i18n.prop('privacyAndControl.people') #></td>
+	                <td class="second"><#= $.i18n.prop('privacyAndControl.locating') #></td>
+	                <td class="third"><#= $.i18n.prop('privacyAndControl.reporting') #></td>
+	                <td class="forth"><#= $.i18n.prop('privacyAndControl.whenICanLocate') #></td>
+	            </tr>
+            <# for(var countWhom=0; countWhom < usrILocateMe.length; countWhom++) { var whom = usrILocateMe[countWhom]; #>
+	            <tr class="makeHover" id="<#= whom.user.id #>" type="<#= whom.temporaryPermission != null ? 'temporary' : 'permanent'#>">
+	                <td class="fifth">
+	                	<div class="image">img</div>
+	                	<p class"text">
+	               			<strong><#= whom.user.name #> <#= whom.user.surname #></strong><br />
+	               			<#= whom.lastLocatedTimeInfo #><!--<a onclick="" class="viewPos"> <#= $.i18n.prop('privacyAndControl.view') #> </a>-->
+	               		</p>	
+	                </td>
+	                <td class="sixth">
+	                    <div class="iconCheck"></div>
+	                </td>
+	                <td class="seventh">
+  	                <# if(whom.alwaysPermission!=null) { #>
+  	                 <div class="<#=  whom.alwaysPermission.frequency > 0 ? 'iconCheck' : '' #>"></div>
+  	                <# } #>
+	                </td>
+                                
+	            		<td class="eight">
+	            		<# if(whom.alwaysPermission!=null) { #>
+	            		 <p class="textt"><#= whom.alwaysPermission.name #></p>
+	            		<# }else if(whom.temporaryPermission != null) { #>
+	            		   <p class="textt"><#= whom.temporaryPermission.fromDate #> <#= whom.temporaryPermission.fromHour #> - <#= whom.temporaryPermission.toDate #> <#= whom.temporaryPermission.toHour #></p>
+	            		<# } #>
+	            		
+	              <# if(whom.user.email!=null) { #>
+	                
+	                <# if(whom.alwaysPermission!=null) { #>
+                   <a href="javascript:void(0);" class="info" profileID="<#= whom.alwaysPermission.profileId #>"></a>
+                  <# } #>
+	                
+	                
+                    
+                  <# } else { #>
+                    
+                  <# } #>
+	            	</td>
+	            	
+	            </tr>
+            <#  }  #>
+        </table>
+</div>
+
+
+<script>
+	$(function () {
+  $("#searchPeople").autocomplete({
+    source: function (request, response) {
+      $.ajax({
+        url: "userSearchAutocomplete.action",
+        dataType: "json",
+        data: {
+          q: request.term
+        },
+        success: function (data) {
+          response($.map(data.resultList, function (item) {
+            return {
+              label: item.name,
+              value: item.name,
+              id: item.id
+            }
+          }));
+          $('.location-searchPeople li:first-child').addClass("first-item");
+          if (data.total == 0) {
+            $(".search-ico").removeClass('loading');
+            $(".search-ico").addClass("search-reset");
+            $('#whomILocateMe tbody tr').hide();
+          }
+        }
+      });
+    },
+    minLength: 1,
+    search: function (event, ui) {
+      $(".search-ico").addClass('loading');
+    },
+    response: function () {
+      $(".search-ico").removeClass('loading');
+    },
+    select: function (event, ui) {
+      $(".search-ico").removeClass('loading');
+      $(".search-ico").addClass("search-reset");
+      $('#whomILocateMe tbody tr').not('#' + ui.item.id.replace('u', '') + ', .firstLine').hide(); /*.css({'display' : 'none'});*/
+    },
+    open: function () {
+      $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+    },
+    close: function () {
+      $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+    }
+  });
+
+  $("#searchPeople").autocomplete("widget").addClass("location-searchPeople");
+
+  $("#requestType").change(function () {
+    var type = $(this).val();
+    $('#whomILocateMe tbody tr').show();
+    if (type != 'all') $('#whomILocateMe tbody tr[type!=' + type + '][class!="firstLine"]').hide();
+
+  });
+
+
+  $("#btReset").click(function () {
+    $('#whomILocateMe tbody tr').show();
+    $(".search-ico").removeClass("search-reset");
+    $("#searchPeople").val('');
+    return false;
+  });
+
+
+  $("#whomILocateMe .info").hover(
+  function () {
+    var btns = {};
+    utils.closeDialog();
+    utils && utils.dialog({
+      title: "Profile",
+      content: '<div id="calendarX">Loading...</div>',
+      buttons: btns,
+      css: "noCloseNoOk hoverCalendars"
+    });
+
+    /* POSITION DIALOG */
+    if ($.browser.msie && $.browser.version == 7) {
+      $('.hoverCalendars .bd. .c .s').css({
+        'width': 321
+      });
+      $('.hoverCalendars').css({
+        'width': 360
+      });
+    }
+    var hovCal = $(this).offset();
+    var calHeight = $(".hoverCalendars").outerHeight();
+    var calWidth = $(".hoverCalendars").outerWidth();
+    var hovCalLeft = hovCal.left + 15;
+    var hovCalTop = hovCal.top;
+    var windowWidth = $(window).width();
+
+    if (calWidth + hovCalLeft > windowWidth) {
+      hovCalLeft = hovCal.left - calWidth;
+      $(".hoverCalendars").addClass("oppositeSide");
+    }
+
+    var profileId = $(this).attr('profileID');
+    var eventsX = [];
+    var allEvents = loadVisibilityProfilesDetails(profileId);
+    if (allEvents && allEvents.visibilityProfileDetail != undefined) {
+      $.each(allEvents.visibilityProfileDetail.privacySettingList, function (index, value) {
+        var dow = new Date().getDay() - 1;
+        var fromHour = value.fromHour;
+        var fh = fromHour.substring(0, 2);
+        var ft = fromHour.substring(2, 4);
+        var toHour = value.toHour;
+        var th = toHour.substring(0, 2);
+        var tt = toHour.substring(2, 4);
+        var startX, endX;
+        var todayFrom = new Date(y, m, d, fh, ft);
+        var todayTo = new Date(y, m, d, th, tt);
+        if (dow > value.dayOfWeek) {
+          startX = new Date(y, m, d - (dow - value.dayOfWeek), fh, ft);
+          endX = new Date(y, m, d - (dow - value.dayOfWeek), th, tt);
+        } else {
+          startX = new Date(y, m, d + (value.dayOfWeek - dow), fh, ft);
+          endX = new Date(y, m, d + (value.dayOfWeek - dow), th, tt);
+        }
+        var event = null;
+        event = new Object();
+        event.id = value.rule_id;
+        event.title = 'Event ' + value.rule_id;
+        event.start = startX;
+        event.end = endX;
+        event.allDay = false;
+        eventsX.push(event);
+      });
+
+      $('#calendarX').empty();
+      var calendar = $('#calendarX').fullCalendar({
+        header: {
+          left: '',
+          center: '',
+          right: ''
+        },
+        columnFormat: {
+          week: 'ddd'
+        },
+        firstDay: 1,
+        height: 300,
+        defaultView: 'agendaWeek',
+        allDaySlot: false,
+        axisFormat: 'H:mm',
+        timeFormat: 'H:mm',
+        slotMinutes: 30,
+        minTime: 8,
+        maxTime: 19,
+        dayNamesShort: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+        editable: false,
+        eventAfterRender: function (event, element, view) {
+          var width_of_cell = $(".fc-widget-content").outerWidth();
+          $(element).css('width', width_of_cell - 5);
+          if ($.inArray(event, src) >= 0) {
+          } else {
+            src.push(event);
+          }
+        }
+      });
+
+      calendar.fullCalendar('removeEvents').fullCalendar('removeEventSources');
+      calendar.fullCalendar('addEventSource', eventsX);
+      $('.hoverCalendars').css({
+        'top': hovCalTop - calHeight,
+        'left': hovCalLeft
+      });
+    } else {
+
+      $('#calendarX').html($.i18n.prop('avability.noProfileFound'));
+      $('.hoverCalendars').css({
+        'top': hovCalTop - 21,
+        'left': hovCalLeft
+      });
+    }
+  }, function () {
+    utils.closeDialog();
+  });
+
+  var date = new Date();
+  var d = date.getDate();
+  var m = date.getMonth();
+  var y = date.getFullYear();
+
+  $("#requestType").selectmenu({
+    change: function () {
+      /*alert('change')*/
+      /*$('#message-type').change();*/
+    }
+  });
+
+  $(".makeHover").hover(function () {
+    $(this).children("td").addClass("makeHoverThis");
+    /*$(this).find(".edit").css("visibility","visible");
+      $(this).find(".delete").css("visibility","visible");*/
+  }, function () {
+    $(this).children("td").removeClass("makeHoverThis");
+    /*$(this).find(".edit").css("visibility","hidden");
+      $(this).find(".delete").css("visibility","hidden");*/
+  });
+
+  /*$(".delete").click(function(){
+      return false;
+    });
+    
+    $(".edit").click(function(){
+      return false;
+    });
+    */
+  $(".info").click(function () {
+    /*
+      utils && utils.dialog({
+                            content : "<div class='successMessageCheck'>Prova elenco aaa</div>",
+                            css: ''
+                        });
+*/
+    return false;
+  });
+});
+</script>

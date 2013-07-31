@@ -1,0 +1,19 @@
+<div align="left" id="requestPermissionMessageDetailContent" class="inboxMessageContentDiv">
+
+  <span><b style="padding-left:15px"><#= json.detailTitle #></b></span>
+			
+	<table class="formTable" cellpadding="15" cellspacing="15">
+		<tr>
+			<td><#= json.content #></td>
+		</tr>
+
+		<# if(json.messageBoxTypeName == 'INBOX' || json.messageBoxTypeName == 'TRASH') { #>
+			<tr>
+      			<td><a href="javascript:void(0);" onclick="shareMyLocation('<#= json.requestFromUserId #>','<#= json.requestFromUserFullName #>',<#= json.messageId #>);"><#= $.i18n.prop('shareMyLocation.title') #></a></td>
+			</tr>
+		<# } #>
+		
+	</table>
+		
+</div>
+ 

@@ -1,0 +1,24 @@
+<h2 class="no-margin"><#= $.i18n.prop('user.Temperature') #></h2>
+
+<div class="form-row mid-margin clearfix">
+	<div class="leftInput">
+		<select id="accountTemperatureDropdown" class="accountDropdown">
+			<# $.each(data.temperatureList, function(index, value) { #>
+				<option value="<#= value.key #>"
+					<# if (value.value == data.temperature) { #>
+						selected="selected"
+					<# } #>>
+						<#= value.value #>
+					</option>
+			<# }); #>
+		</select>
+	</div>
+	<a class="graphicBtn primary" id="updateTemperatureBtn"><span><#= $.i18n.prop('buttons.update') #></span></a>
+
+	<script type="text/javascript">
+		$(function(){
+			$("#accountTemperatureDropdown").selectmenu();
+		});
+	</script>
+</div>
+

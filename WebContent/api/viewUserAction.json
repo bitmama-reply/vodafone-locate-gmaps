@@ -1,0 +1,236 @@
+{
+    "activate": 0,
+    "adminEditsOwn": false,
+    "adminUserActionList": [
+        {
+            "key": "1",
+            "value": "Delete"
+        },
+        {
+            "key": "2",
+            "value": "Message"
+        },
+        {
+            "key": "3",
+            "value": "Move to group"
+        },
+        {
+            "key": "4",
+            "value": "Import"
+        },
+        {
+            "key": "6",
+            "value": "Activate users"
+        },
+        {
+            "key": "7",
+            "value": "Disable users"
+        },
+        {
+            "key": "8",
+            "value": "Add new user"
+        }
+    ],
+    "availableMsisdns": null,
+    "companyIsProvisioned": false,
+    "currentTariff": null,
+    "dbResultWrapperOfCompany": null,
+    "errorText": null,
+    "groupList": [],
+    "lbasUser": {
+        "active": true,
+        "activeText": "active",
+        "add_enterprise_location": true,
+        "ageOfLocation": 0,
+        "agpsEnabled": true,
+        "ban": null,
+        "be_located": true,
+        "city": null,
+        "company_id": 1,
+        "company_privacy_accepted": true,
+        "company_privacy_dont_show": true,
+        "country": null,
+        "create_edit_groups": true,
+        "create_edit_users": false,
+        "create_enterprise_categories": true,
+        "create_meetings": true,
+        "customDataFields": [
+            {
+                "companyId": 0,
+                "desc": null,
+                "id": 1,
+                "name": "company name",
+                "value": ""
+            },
+            {
+                "companyId": 0,
+                "desc": null,
+                "id": 2,
+                "name": "company adress",
+                "value": ""
+            },
+            {
+                "companyId": 0,
+                "desc": null,
+                "id": 3,
+                "name": "date of birth",
+                "value": ""
+            }
+        ],
+        "email": "o.adobati@reply.eu",
+        "errorNum": 0,
+        "eta": null,
+        "extensions": [],
+        "fullName": "Omar Adobati",
+        "group_id": 113199954391,
+        "icon": null,
+        "is_logged_in": false,
+        "language": "en",
+        "last_pos_address": null,
+        "last_pos_date": 0,
+        "latitude": null,
+        "locType": -1,
+        "locate": true,
+        "locationReportNo": -1,
+        "login_key": null,
+        "longitude": null,
+        "msisdn": "4915257907711",
+        "name": "Omar",
+        "nickname": null,
+        "notificationCount": 1,
+        "opcoAreaCode": "49",
+        "opcoDisplayName": null,
+        "optInState": 1,
+        "password": null,
+        "password_change_required": false,
+        "postcode": null,
+        "radius": -1,
+        "region": null,
+        "renewPasswordTime": 0,
+        "report_type": 0,
+        "request_current_location": true,
+        "request_location_report": true,
+        "roamingStatus": 0,
+        "role_id": 2,
+        "send_messages": true,
+        "service_type": 0,
+        "sessionId": null,
+        "smsInterfaceEnabled": false,
+        "state": 0,
+        "status": 0,
+        "surname": "Adobati",
+        "tariffSocCode": null,
+        "temperature": null,
+        "timeZone": "Europe/Berlin",
+        "timeZoneOffset": 60,
+        "units": null,
+        "user_id": 113219399891,
+        "username": null,
+        "view_all_groups": false,
+        "view_enterprise_locations": true,
+        "visibilityOn": true,
+        "vodafone_privacy_accepted": true,
+        "vodafone_privacy_dont_show": true,
+        "work_address": null,
+        "workingHours": null
+    },
+    "lbasUsers": null,
+    "messageText": null,
+    "opcoList": [
+        {
+            "key": "90",
+            "value": "TR"
+        },
+        {
+            "key": "49",
+            "value": "DE"
+        },
+        {
+            "key": "420",
+            "value": "CZ"
+        },
+        {
+            "key": "40",
+            "value": "RO"
+        },
+        {
+            "key": "40",
+            "value": "RO"
+        },
+        {
+            "key": "90",
+            "value": "TR"
+        },
+        {
+            "key": "49",
+            "value": "DE"
+        },
+        {
+            "key": "420",
+            "value": "CZ"
+        },
+        {
+            "key": "40",
+            "value": "RO"
+        },
+        {
+            "key": "40",
+            "value": "RO"
+        },
+        {
+            "key": "40",
+            "value": "RO"
+        },
+        {
+            "key": "34",
+            "value": "ES"
+        },
+        {
+            "key": "31",
+            "value": "NL"
+        },
+        {
+            "key": "44",
+            "value": "UK"
+        },
+        {
+            "key": "39",
+            "value": "IT"
+        },
+        {
+            "key": "43",
+            "value": "AT"
+        },
+        {
+            "key": "40",
+            "value": "RO"
+        },
+        {
+            "key": "34",
+            "value": "ES"
+        },
+        {
+            "key": "31",
+            "value": "NL"
+        },
+        {
+            "key": "44",
+            "value": "UK"
+        },
+        {
+            "key": "39",
+            "value": "IT"
+        },
+        {
+            "key": "43",
+            "value": "AT"
+        }
+    ],
+    "preUserModelMap": {},
+    "searchText": "Search",
+    "selectedGroup": "REPLY",
+    "selectedUserList": [],
+    "uploadObj": null,
+    "uploadObjStatusText": null,
+    "userHasTariff": false
+}

@@ -1,0 +1,24 @@
+<h2 class="no-margin"><#= $.i18n.prop('user.menu.timezone') #></h2>
+
+<div class="form-row mid-margin clearfix">
+	<div class="leftInput">
+		<select id="accountTimeZoneDropdown" class="accountDropdown">
+			<# $.each(data.timeZoneList, function(index, value) { #>
+				<option value="<#= index #>"
+					<# if (value == data.timeZoneDisplay) { #>
+						selected="selected"
+					<# } #>>
+						<#= value #>
+					</option>
+			<# }); #>
+		</select>
+	</div>
+	<a class="graphicBtn primary" id="updateTimeZoneBtn"><span><#= $.i18n.prop('buttons.update') #></span></a>
+
+	<script type="text/javascript">
+		$(function(){
+			$("#accountTimeZoneDropdown").selectmenu();
+		});
+	</script>
+</div>
+

@@ -1,0 +1,79 @@
+<script>
+$().ready(function(){ 
+
+		locationReportDialogReady();
+});
+
+</script>
+
+<div>
+	<table>
+		<tr>
+
+			<td width="20">
+				<b><#= $.i18n.prop('routing.from') #>: </b>
+				<# var minList=$.i18n.prop('general.minList').split(","); #>
+				<# var hourList=$.i18n.prop('general.hourList').split(","); #>
+			</td>
+			
+			<td width="30">
+				<input id="locReportDatePickerStart" name="startDateStr" readOnly="true"/>
+			</td>
+
+			<td>
+	
+				<select id="locReportHourFrom" name="locReportHourFrom" value="">
+		           <# for(var i=0; i < hourList.length; i++) {  #>
+		    		<option value="<#= hourList[i] #>"><#= hourList[i] #></option>
+		           <# } #>
+                      </select>
+                      
+			</td>
+			<td>
+				
+				<select id="locReportMinuteFrom" name="locReportMinuteFrom" value="">
+		           <# for(var i=0; i < minList.length; i++) {  #>
+		    		<option value="<#= minList[i] #>"><#= minList[i] #></option>
+		           <# } #>
+                      </select>
+                      
+			</td>
+
+		</tr>
+
+		<tr>
+
+			<td width="77">
+				<b><#= $.i18n.prop('locationRequest.to') #>: </b>
+			</td>
+
+			<td width="30">
+				<input id="locReportDatePickerStop" name="stopDateStr" readOnly="true"/>							
+			</td>
+
+			<td>
+				
+				<select id="locReportHourTo" name="locReportHourTo" value="">
+		           <# for(var i=0; i < hourList.length; i++) {  #>
+		    		<option value="<#= hourList[i] #>"><#= hourList[i] #></option>
+		           <# } #>
+                      </select>
+                      
+			</td>
+			<td>
+				
+				<select id="locReportMinuteTo" name="locReportMinuteTo" value="">
+		           <# for(var i=0; i < minList.length; i++) {  #>
+		    		<option value="<#= minList[i] #>"><#= minList[i] #></option>
+		           <# } #>
+                      </select>
+                      
+			</td>
+		</tr>
+	</table>
+	
+</div>
+
+
+
+

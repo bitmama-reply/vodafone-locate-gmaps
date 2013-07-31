@@ -1,0 +1,6 @@
+<div id="locateSingleUserError_<#= data.userId || data.user_id #>" class="locateSingleUserError">   
+  <div><#= data.errorText#></div>  
+  <a class="purple_button" href="javascript:void(0);" onclick="user.removeNotification('#locateSingleUserError_<#= data.userId || data.user_id #>','<#= data.userId || data.user_id #>')">
+  	<span><#= $.i18n.prop('buttons.ok') #></span>
+  </a> 
+</div>

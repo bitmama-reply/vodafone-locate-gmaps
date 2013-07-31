@@ -1,0 +1,168 @@
+<h1><#= $.i18n.prop('admin.CompanyManagement') #></h1>
+
+<table>
+	<tr>
+		<th><#= $.i18n.prop('companyList.CompanyName') #>:</th>
+		<td><#= data.lbasCompany.name #></td>
+	</tr>
+	<tr>
+		<th><#= $.i18n.prop('companyList.ContactNumber') #>:</th>
+		<td><#= data.lbasCompany.contactNumber #></td>
+	</tr>
+	<tr>
+		<th><#= $.i18n.prop('companyList.ContactName') #>:</th>
+		<td><#= data.lbasCompany.contactName #></td>
+	</tr>
+	<tr>
+		<th><#= $.i18n.prop('companyList.ContactSurName') #>:</th>
+		<td><#= data.lbasCompany.contactSurname #></td>
+	</tr>
+	<tr>
+		<th><#= $.i18n.prop('companyList.ContactEmail') #>:</th>
+		<td><#= data.lbasCompany.contactEmail #></td>
+	</tr>
+	<tr>
+		<th><#= $.i18n.prop('companyList.Address') #>:</th>
+		<td><#= data.lbasCompany.address #></td>
+	</tr>
+	<tr>
+		<th><#= $.i18n.prop('companyList.City') #>:</th>
+		<td><#= data.lbasCompany.city #></td>
+	</tr>
+</table>
+
+<div class="accordion">
+	<div class="accordion-tab clearfix">
+		<a href="javascript:void(0);" class="plus"></a>
+		<div class="text"><#= $.i18n.prop('user.cdf') #></div>
+	</div>
+
+	<div class="accordion-content clearfix">
+		<div class="innerBorder">
+			<div class="minusWrapper clearfix">
+				<a href="javascript:void(0);" class="minus"></a> <div class="text"><#= $.i18n.prop('user.cdf') #></div>
+			</div>
+			<div class="inside-wrapper">
+				<div class="inside">
+					<table id="cdf-table-list" class="custom-table">
+
+						<thead>
+							<tr>
+								<th><#= $.i18n.prop('companyList.fields') #></th>
+								<th colspan="2"><#= $.i18n.prop('companyList.description') #></th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<# $.each(data.cdfList, function(index, value) {  #>
+								<tr>
+									<td class="middle">
+										<input type="text" name="name" value="<#= value.name #>" />
+									</td>
+									<td>
+										<input type="text" name="desc" value="<#= value.desc #>" />
+									</td>
+									<td class="last">
+										<a href="javascript:void(0);" title="<#= $.i18n.prop('locationPermission.Delete') #>" class="btn-delete delete-cdf" data-cdfId="<#= value.id #>">
+											<#= $.i18n.prop('locationPermission.Delete') #>
+										</a>
+									</td>
+								</tr>
+							<# }); #>
+							<tr id="sample-cdf" class="new">
+								<td class="middle">
+									<input type="text" name="name" value="" />
+								</td>
+								<td>
+									<input type="text" name="desc" value="" />
+								</td>
+								<td class="last">
+									<a href="javascript:void(0);" class="btn-add" id="add-new-cdf" title="<#= $.i18n.prop('companyList.addnewfield') #>">
+										<#= $.i18n.prop('companyList.addnewfield') #>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+
+						<tfoot>
+							<tr>
+								<td colspan="3" class="footer-cdf">
+										<a href="javascript:void(0);" class="graphicBtn violet inactive" id="update-cdf" data-tpl="adminCompany">
+										<span><#= $.i18n.prop('buttons.update') #></span>
+									</a>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<ul class="company-info">
+
+	<li class="clearfix">
+		<label class="info-label"><#= $.i18n.prop('companyList.ageof') #></label>
+		<# $.each(data.ageOfLocationTypeList, function(index, value) { #>
+			<a
+				href="javascript:void(0);"
+				class="radio <# if (value.key == data.lbasCompany.ageOfLocationType) { #> active <# } #>"
+				data-type="<#= value.key #>"
+				data-radio="ageOfLocationType"><#= value.value #></a>
+		<# }); #>
+		<select id="ageOfLocationValue">
+			<# $.each(data.ageofLocationValueList, function(index, value) { #>
+				<option value="<#= value #>"
+					<# if (value == data.lbasCompany.ageOfLocationValue) { #>
+						selected="selected"
+					<# } #>>
+						<#= value #>
+				</option>
+			<# }); #>
+		</select>
+		<script type="text/javascript">
+			$(function(){
+				$("#ageOfLocationValue").selectmenu({
+					change: MasterAdmin.activeSubmit
+				});
+				MasterAdmin.defaultVisibilityProfile();
+				stopLoader();
+			});
+		</script>
+	</li>
+
+	<li class="clearfix">
+		<label class="info-label"><#= $.i18n.prop('companyList.allowedIP') #></label>
+		<input type="text" class="graphic-input" id="allowedIP" value="<#= data.lbasCompany.allowedIP #>" />
+	</li>
+
+</ul>
+
+<div class="accordion">
+	<div class="accordion-tab clearfix">
+		<a href="javascript:void(0);" class="plus"></a>
+		<div class="text"><#= $.i18n.prop('companyList.defaultVisibilityProfile') #></div>
+	</div>
+
+	<div class="accordion-content clearfix">
+		<div class="innerBorder">
+			<div class="minusWrapper clearfix">
+				<a href="javascript:void(0);" class="minus"></a> <div class="text"><#= $.i18n.prop('companyList.defaultVisibilityProfile') #></div>
+			</div>
+			<div class="inside-wrapper">
+				<div class="inside" id="defaultVisibilityProfile">
+					<table>
+					</table>
+<!--
+					<a href="javascript:void(0);" class="graphicBtn violet inactive" id="visibilityProfileButton">
+						<span><#= $.i18n.prop('buttons.update') #></span>
+					</a>
+-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<a href="javascript:void(0);" class="graphicBtn violet inactive right" id="update-company"><span><#= $.i18n.prop('buttons.update') #></span></a>

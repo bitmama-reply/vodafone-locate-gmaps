@@ -1,0 +1,281 @@
+<div class="group-edit-form">
+	<div class="tabs-wrapper group-edit-content">
+
+		<ul class="tabs clearfix">
+			<li class="active" data-index="0"><span><#= $.i18n.prop('location.details') #></span></li>
+			<li data-index="1"><span><#= $.i18n.prop('groupEdit.GroupMembers') #></span></li>
+			<li data-index="2"><span><#= $.i18n.prop('location.permissions') #></span></li>
+			<li data-index="3"><span><#= $.i18n.prop('groupEdit.Admin') #></span></li>
+		</ul>
+		<div id="error-view-group" class="box-error-message">
+			<div class="content-cell"><span><#= $.i18n.prop('error.send.title') #></span><ul id='send-list-wrapper'></ul></div>
+		</div>
+		<ul class="tabs-content clearfix">
+			<li class="active">
+				<form id="updateGroupName">
+					<input type="hidden" id="groupId" value="<#= json.lbasGroup.id #>" name="lbasGroup.id" />
+					<input type="hidden" id="isNewUserpage" value="<#= json.isNewUserpage #>" name="isNewUserpage" />
+					<table>
+						<tbody>
+							<tr>
+								<th><#= $.i18n.prop('groupName.groupName') #></th>
+								<td>
+									<input name="lbasGroup.name" id="lbasGroup.name" type="text" class="graphic-input" value="<#= json.lbasGroup.name #>"/>
+								</td>
+							</tr>
+							<tr>
+								<th><#= $.i18n.prop('company.label.cdfDesc') #></th>
+								<td>
+									<textarea name="lbasGroup.description" id="lbasGroup.description" class="graphic-input"><#= json.lbasGroup.description #></textarea>
+								</td>
+							</tr>
+							<# if(json.lbasGroup.id == 0) { #>
+								<# if(json.isNewUserpage == 0 || json.isNewUserpage == 3) { #>
+									<tr>
+										<th><#= $.i18n.prop('groupDetails.assetGroup') #></th>
+										<td>
+											<# if(json.opcoAssetEnabled) { #>
+												<input type="checkbox" value="false"  name="lbasGroup.assetGroup" />
+											<# } else { #>
+												<input type="checkbox" value="false"  name="lbasGroup.assetGroup" disabled="true" />
+											<# } #>
+										</td>
+									</tr>
+								<# } #>
+							<# } else { #>
+								<tr>
+									<th><#= $.i18n.prop('groupDetails.assetGroup') #></th>
+									<td>
+										<# if(json.lbasGroup.assetGroup){ #>
+											<input type="checkbox" value="true"  name="lbasGroup.assetGroup" checked="checked" disabled="disabled" />
+										<# }else { #>
+											<input type="checkbox" value="false" name="lbasGroup.assetGroup"  disabled="disabled" />
+										<# } #>
+									</td>
+								</tr>
+							<# } #>
+						</tbody>
+					</table>
+				</form>
+				<script type="text/javascript">
+					registerValidations("updateGroupName");
+				</script>
+			</li>
+
+			<li class="userGroupsList clearfix">
+
+				<form id="updateGroupMembers">
+					<input type="hidden" name="groupMemberCount" id ="groupMemberCount" value="<#= json.groupMemberCount #>"/>
+					<div class="pickListSelected">
+						<div class="modHeader blueBG">
+							<h2><#= $.i18n.prop('groupMembers.AllUsers') #></h2>
+						</div>
+						<div class="search-action clearfix">
+							<img src="images/search_g.png" alt="" />
+              <input type="text" name="search" id="groupMemberUserSearch"  class="searchInput" value="" />
+						</div>
+						<select multiple="multiple" class="pickList" id="selected" size="5" name="selectedGroup">
+							<# 
+								if($('.pickListSelected select option').length != 0){
+									$('.pickListSelected select').empty();
+								}
+							#>
+							<# for(var i in json.userMap) { #>
+								<option value="<#= i #>">
+									<#= json.userMap[i] #>
+								</option>
+							<# } #>
+						</select>
+					</div>
+
+					<div class="pickListActions">
+						<a href="javascript:void(0);" class="action-arrow add" title="<#= $.i18n.prop('buttons.ChooseAvailableAndAdd') #>">&gt;</a>
+						<a href="javascript:void(0);" class="action-arrow remove" title="<#= $.i18n.prop('buttons.ChooseSelectedAndRemove') #>">&lt;</a>
+					</div>
+
+					<div class="pickListAvailable">
+						<div class="modHeader blueBG">
+							<h2><#= $.i18n.prop('groupMembers.GroupMembers') #></h2>
+						</div>
+						<div class="search-action clearfix">
+							<img src="images/search_g.png" alt="" />
+							<input type="text" name="search" id="groupMemberUserSearch2"  class="searchInput" value="" />
+						</div>
+						<select multiple="multiple" class="pickList" id="available" size="5" name="selectedUsers">
+							<# for(var i in json.groupUsersMap) { #>
+								<option value="<#= i #>"><#= json.groupUsersMap[i] #></option>
+							<# } #>
+						</select>
+					</div>
+				</form>
+
+			</li>
+
+			<li>
+				<h4><#= $.i18n.prop('location.permissions') #></h4>
+				<form id="updateGroupPermissions">
+					<input type="hidden" id="groupstate" value="<#= json.lbasGroup.state #>" name="lbasGroup.state"/>
+					<ul class="checkboxes-permissions-list clearfix">
+						<li>
+							<label>
+								<# if(json.lbasGroup.add_enterprise_location){	 #>
+									<input type="checkbox" value="true" name="lbasGroup.add_enterprise_location" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" name="lbasGroup.add_enterprise_location" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.AddEnterpriseLocations') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasGroup.create_enterprise_categories){ #>
+									<input type="checkbox" value="true" name="lbasGroup.create_enterprise_categories" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" name="lbasGroup.create_enterprise_categories" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.CreateEnterpriseCategory') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasGroup.create_edit_users){ #>
+									<input type="checkbox" value="true" name="lbasGroup.create_edit_users" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" name="lbasGroup.create_edit_users" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.CreateEditUsers') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasGroup.create_edit_groups){ #>
+									<input type="checkbox" value="true" name="lbasGroup.create_edit_groups" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" name="lbasGroup.create_edit_groups" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.CreateEditGroups') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasGroup.request_current_location){ #>
+									<input type="checkbox" value="true" name="lbasGroup.request_current_location" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" name="lbasGroup.request_current_location" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.RequestLocation') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasGroup.request_location_report){ #>
+									<input type="checkbox" value="true" name="lbasGroup.request_location_report" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" name="lbasGroup.request_location_report" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.RequestLocationReport') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasGroup.view_enterprise_locations){ #>
+									<input type="checkbox" value="true" name="lbasGroup.view_enterprise_locations" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" name="lbasGroup.view_enterprise_locations" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.ViewEnterpriseLocations') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasGroup.create_meetings){ #>
+									<input type="checkbox" value="true" name="lbasGroup.create_meetings" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" name="lbasGroup.create_meetings" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.CreateMeetings') #>
+							</label>
+						</li>
+						<li>
+							<label>
+								<# if(json.lbasGroup.send_messages){ #>
+									<input type="checkbox" value="true" name="lbasGroup.send_messages" checked="checked" />
+								<# }else{ #>
+									<input type="checkbox" value="false" name="lbasGroup.send_messages" />
+								<# } #>
+								<#= $.i18n.prop('groupPermission.SendMessages') #>
+							</label>
+						</li>
+					</ul>
+				</form>
+			</li>
+
+			<li class="overflowed-form">
+
+				<form id="groupAdmin">
+					<input type="hidden" name="newGroupAdmin" value="0"/>
+					<input type="hidden" id="groupId" value="<#= json.lbasGroup.id #>" name="id" />
+
+					<div class="user-admin-group clearfix">
+						<strong style="float:left;"><#= $.i18n.prop('categoryAdmin.CurrentAdmin') #></strong>
+						<span id="groupAdminChangeLink">
+							<span id="groupAdminName">
+								<#
+								 if (json.groupAdmin !=null) { #>
+									<#= json.groupAdmin.fullName #>
+								<# } #>
+							</span>
+							<# if (json.changeGroupAdmin){#>
+								<# if(json.usersHasAdminRole != null && json.usersHasAdminRole.length>0){ #>
+									<a href="javascript:void(0);" id="groupAdminChangeLink" class="multi_user_button" onclick="$('#groupAdminChangeLink').hide();$('#groupAdminChangeCombo').show(); return false;" >
+										<span><#= $.i18n.prop('buttons.change') #></span>
+									</a>
+								<# } #>
+							<# } #> 
+						</span>
+					</div>
+					<# if (json.changeGroupAdmin && json.usersHasAdminRole != null){ #>
+						<span id = "groupAdminChangeCombo" class="clearfix" style="display:none;">
+							<select id="groupAdminChangeSelect">
+								<# for( var i=0; i < json.usersHasAdminRole.length; i++) { var u = json.usersHasAdminRole[i]; #>
+									<option value="<#= u.user_id #>"><#= u.fullName #></option>
+								<# } #>
+							</select>
+							<a id="groupAdminChangeOk" class="multi_user_button" onclick="selectGroupAdminChange(); return false;">
+								<span><#= $.i18n.prop('buttons.ok') #></span>
+							</a>
+							<a id="groupAdminChangeCancel" class="multi_user_button" onclick="$('#groupAdminChangeCombo').hide(); $('#groupAdminChangeLink').show(); return false;">
+								<span>
+									<#= $.i18n.prop('buttons.cancel') #>
+								</span>
+							</a>
+						</span>
+					<# } #>
+
+					<div>
+						<# if(json.usersHasAdminRole != null && json.usersHasAdminRole.length>0){ #>
+							<strong><#= $.i18n.prop('categoryAdmin.OtherUsersWithAdminRights') #></strong>
+							<ul class="users-wadmin-rights">
+								<# for(var i=0; i<json.usersHasAdminRole.length; i++) { var u=json.usersHasAdminRole[i]; #>
+									<li><#= u.fullName #><a href="javascript:void(0);" onclick="openSendMessageDialogFromPrivacyPage('<#= u.fullName #>',<#= u.user_id #>); return false;" class="refstyle" style="text-decoration:none"><#= $.i18n.prop('messages.send.message') #></a></li>
+								<# } #>
+							</ul>
+						<# } #>
+					</div>
+				</form>
+			</li>
+		</ul>
+
+	</div>
+
+	<div class="overlay-actions-wrapper">
+
+		<a href="javascript:void(0);" class="cancel-button graphicBtn little">
+			<span><#= $.i18n.prop('message.cancel') #></span>
+		</a>
+		<a href="javascript:void(0);" class="send-button graphicBtn violet">
+			<span><#= $.i18n.prop('message.save') #></span>
+		</a>
+
+	</div>
+</div>

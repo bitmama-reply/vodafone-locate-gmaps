@@ -1,0 +1,1058 @@
+/* Clearfix */
+.clearfix {
+	display: inline-block;
+}
+
+.clearfix:after {
+	clear: both;
+	content: ' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0
+}
+
+.clearfix {
+	display:block;
+}
+
+
+/*================================
+	Header Styles
+=================================*/
+
+#top {
+	min-height: 62px;
+	background: url("../images/header_blend.gif") repeat-x scroll left top transparent !important;
+	/*border-top:3px solid #e60000;*/
+	/*padding:10px 14px 0 ;*/
+}
+
+#top .menu {
+	float:right;
+	line-height: 62px;
+}
+
+.logo {
+	float:left;
+	line-height: 62px;
+}
+
+.logo h1 {background-color: transparent!important;}
+
+.logo h1 a, .logo a {
+	display:block;
+	cursor:pointer;
+	/*background: url(../images/header/VF_Locate_logo.png) no-repeat left top;*/
+	background: url(../images/vf_logo.gif) no-repeat left top;
+	/*padding-top:27px;*/
+	width:166px;
+	overflow:hidden;
+	height:62px;
+}
+
+.menu ul {
+	padding:0px;
+	list-style-type:none;
+	overflow:hidden;
+}
+
+.menu ul li {
+	float:left;
+	padding:0 21px 0 21px;
+	background: url(../images/header/Header_division_line.png) no-repeat right center;
+}
+
+.menu ul li.lastIteam {
+	background:none;
+}
+
+.menu ul li span.loggedAs {
+	color:#444;
+}
+
+#btn_username {
+	color:#000;
+}
+
+.menu ul li,
+.menu ul li a,
+.menu ul li span {
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size:11px;
+	text-decoration:none;
+	color: #333;
+	/*line-height:24px;*/
+}
+
+.menu ul li a:hover{
+	color: #666;
+	text-decoration:none;
+}
+
+/*===============================
+	Main navigation styles
+=================================*/
+
+#bottom {
+	clear:both;
+	background: url("../images/menu_blend.gif") repeat-x scroll left bottom transparent;
+	border-top:1px solid #dadada;
+	border-bottom:3px solid #e60000;
+	padding:0 25px 0 19px;
+}
+
+ul.menubar {
+	padding:0px;
+	margin:0px;
+	list-style-type:none;
+	float:left;
+}
+
+.menubar li  {
+	float:left;
+	height:35px;
+	background: url("../images/menu_dividers.png") no-repeat scroll right top;
+}
+
+.menubar li a {
+	display:block;
+	margin-right: 1px;
+}
+
+.menubar li a:hover {
+	background: url("../images/menu_bar_background.png") repeat-x scroll left center transparent;
+}
+
+.menubar li a span  {
+	display:block;
+	padding: 0 36px 0 36px;
+	line-height:35px;
+	text-decoration:none;
+	cursor:pointer;
+	font-size:13px;
+	color:#666;
+	font-family: arial,verdana,sans-serif;
+	font-weight:bold;
+}
+
+.menubar li.messages a span{
+/* 	padding-left: 36px; */
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.menubar li.messages a span img{
+	padding-left: 20px;
+  width: 10px;
+  height: 5px;
+}
+
+ul.menubar li.currentIteam {
+	background: none no-repeat scroll right bottom;
+	/*border-left: 1px solid #ccc;*/
+	background: url("../images/menu_dividers.png") no-repeat scroll right -48px transparent;
+}
+
+ul.menubar li.currentIteam a, ul.menubar li.currentIteam a:hover  {
+	background: url("../images/menu_bar_background.png") repeat-x scroll left bottom transparent;
+}
+
+ul.menubar li.currentIteam a span {
+	background-color: transparent;
+}
+
+ul.menubar li.currentIteam a span,
+ul.menubar li a:hover span {
+	color:#333;
+	text-decoration:none!important;
+}
+/*=================================
+Control Panel (accordion section)
+=================================*/
+#tabs .ui-tabs-nav li a {
+	display:block;
+	padding-top: 53px;
+	width: 88px;
+	cursor:pointer;
+	text-align: center;
+/* 	font-family: VodafoneRgRegular,arial,verdana,sans-serif; */
+	font-family: arial,verdana,sans-serif;
+	font-size:12px;
+	line-height:14px;
+}
+
+/*
+#tabs .ui-tabs-nav li a:hover {
+	text-decoration:none;
+	color:#e60000;
+}
+*/
+
+/*
+#tabs .ui-tabs-nav li:hover  {
+	background-color:#fff!important;
+}
+*/
+
+a#btn_tab-users {
+	background:url("../images/tab_users.png") no-repeat center -85px;
+}
+
+/*a#btn_tab-users:hover,*/ li.ui-tabs-selected a#btn_tab-users {
+	background-position: center top;
+}
+
+a#btn_tab-assets {
+	background:url("../images/tab_assets.png") no-repeat center -85px;
+}
+
+/*a#btn_tab-assets:hover,*/ li.ui-tabs-selected a#btn_tab-assets{
+	background-position: center top;
+}
+
+a#btn_tab-places {
+	background:url("../images/tab_places.png") no-repeat center -85px;
+}
+
+/*a#btn_tab-places:hover,*/ li.ui-tabs-selected  a#btn_tab-places {
+	background-position: center top;
+}
+
+a#btn_tab-routes {
+	background:url("../images/tab_routes.png") no-repeat center -85px;
+}
+
+/*a#btn_tab-routes:hover,*/ li.ui-tabs-selected a#btn_tab-routes {
+	background-position: center top;
+}
+
+a#btn_tab-geofences {
+	background:url("../images/tab_geofences.png") no-repeat center -85px;
+}
+
+/*a#btn_tab-geofences:hover, */li.ui-tabs-selected a#btn_tab-geofences {
+	background-position: center top;
+}
+
+#contents ul {
+	padding-right:11px;
+}
+
+
+/*=============================
+	Map control buttons
+==============================*/
+.mapStyles {
+	background: url("../images/controlPanel/shadows/horizontalShadowl.png") repeat-x left bottom;
+	padding-bottom:8px;
+	position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+#mapPanel {
+  top: 0;
+/*   width: 100%; */
+  padding: 9px 23px;
+  z-index: 2000;
+  background: #fff;
+  /*opacity: 0.9;*/
+}
+
+
+a.map_button {
+	display:block;
+	cursor:pointer;
+	outline:none;
+	text-decoration:none;
+/* 	background: url("../images/controlPanel/Button/mapBtnLeft.png") no-repeat left top; */
+	background: url("../images/controlPanel/Button/button_white_left.png") no-repeat left top;
+	float:left;
+/* 	padding-left:7px; */
+  padding-left: 10px;
+	overflow:hidden;
+}
+
+a.map_button span {
+	display:block;
+/* 	background: url("../images/controlPanel/Button/mapBtnRight.png") no-repeat right top; */
+	background: url("../images/controlPanel/Button/button_white_right.png") no-repeat right top;
+	height: 34px;
+	line-height: 30px;
+/*
+	height:28px;
+	line-height:25px;
+*/
+	font-size:12px;
+	color:#333;
+	padding: 0 32px 0 22px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+a.map_button span.status {
+  display: inline;
+  padding: 0;
+  padding-left: 22px;
+}
+
+a.map_button:hover, a.map_rel.active {
+  background: url("../images/controlPanel/Button/button_white_left.png") no-repeat left -46px;
+
+/* 	background: url("../images/controlPanel/Button/mapBtnLeftHover.png") no-repeat left bottom; */
+	outline:none;
+}
+
+a.map_button:hover span, a.map_rel.active span {
+/* 	background: url("../images/controlPanel/Button/mapBtnRightHover.png") no-repeat right bottom; */
+	background: url("../images/controlPanel/Button/button_white_right.png") no-repeat right -46px;
+  font-size:12px;
+	color:#333;
+}
+
+a.map_button.block:hover {
+	background: url("../images/controlPanel/Button/button_white_left.png") no-repeat left top;
+}
+
+a.map_button.block:hover span {
+	background: url("../images/controlPanel/Button/button_white_right.png") no-repeat right top;
+}
+
+a.map_button span.status, a.map_button:hover span.status {
+	background: none;
+}
+
+.map_button_bar {
+	height: 100%;
+  overflow: hidden;
+/*   padding: 0.5em; */
+	list-style-type:none;
+}
+
+.map_button_bar li {
+	float:right;
+	padding-left:8px;
+}
+
+/*=============================
+	Accordion content
+  (tabs with check boxes)
+==============================*/
+.tabsHolder {
+	background:url("../images/controlPanel/shadows/sidesShodows.png") repeat-y left top;
+	height:100%;
+}
+
+.accordionStyles {
+	/*background: url("../images/controlPanel/Tabs/accordnnerBg.jpg") repeat-x left bottom;*/
+	background-color: #ebebeb;
+	/*border:1px solid #e3e3e3;*/
+	min-height: 30px;
+  	overflow: hidden;
+  	/*padding: 7px 22px 0 11px;*/
+}
+
+.accordionStyles,
+.accordionStyles label {
+	font-size:12px;
+	color:#333;
+	font-weight:bold;
+	line-height:30px;
+	padding-left: 8px;
+}
+
+.accordionStyles label span.groupName{
+	cursor: pointer;
+}
+
+input.groupId {
+  /*float:left;*/
+}
+.accordionStyles .openCloseCat{cursor: pointer;}
+/*=============================
+	Actions buttons
+==============================*/
+.actions {
+	clear:both;
+	/*border-top:1px solid #d0d0d0;*/
+	/*padding:11px 9px 0 9px;*/
+}
+
+.actions div{
+	line-height: 2em;
+}
+
+.selectAction, .actions select {
+	width:206px;
+	float:left;
+}
+
+input.goBtn {
+	float:right;
+	padding:0px;
+	background: url("../images/controlPanel/Button/button_purpleHover.png") no-repeat left top;
+	width:78px;
+	height:26px;
+	color:#fff;
+	font-weight:bold;
+	font-size:14px;
+}
+
+input.goBtn:hover {
+	background-position:0px -26px;
+}
+
+/*==================================
+	Ui-autocomplete styles
+===================================*/
+ul.ui-autocomplete {
+	background: url("../images/controlPanel/shadows/autocompleteBottom.png") no-repeat center bottom;
+	width:324px!important;
+	padding-bottom:17px;
+	list-style-type:none;
+	z-index: 2000 !important;
+}
+
+ul.ui-autocomplete li {
+	background: url("../images/controlPanel/shadows/autocompleteCont.png") repeat-y left top;
+	float:left;
+	clear:both;
+	width:322px;
+	width: 257px;
+	padding: 7px 30px 7px 30px;
+	position:relative;
+}
+ul.ui-autocomplete li .globalSearchButton{
+	position: absolute;
+    right: 10px;
+    bottom: 4px;
+}
+
+ul.ui-autocomplete li:hover {
+	background: url("../images/autocompleteCont3.png") repeat-y left bottom;
+}
+
+ul.ui-autocomplete li.no-result:hover {
+	background: url("../images/controlPanel/shadows/autocompleteCont.png") repeat-y left top;
+}
+
+ul.ui-autocomplete li a:hover{
+	color: #333333 !important;
+}
+
+ul.ui-autocomplete li,
+ul.ui-autocomplete li a,
+ul.ui-autocomplete li span {
+	font-size: 13px;
+	line-height: 16px;
+}
+
+ul.ui-autocomplete li a {
+  padding-left: 0px;
+}
+
+ul.ui-autocomplete li a:hover {
+	text-decoration:underline;
+	color:#e60000;
+	cursor:pointer;
+	background-position:left 3px;
+}
+
+span.border {
+	display:block;
+	border-bottom:1px solid #f4f4f4;
+	position:absolute;
+	width:303px;
+	right: 6px;
+	bottom:0px;
+}
+
+ul.ui-autocomplete li.ui-autocomplete-category span.border {
+	border-bottom:1px solid #ebebeb !important;
+}
+
+ul.ui-autocomplete li.ui-autocomplete-category {
+	background: url("../images/controlPanel/shadows/categoryAutocomplete.png") repeat-y left top;
+	overflow:hidden;
+}
+
+ul.ui-autocomplete li.ui-autocomplete-category span  {
+	font-weight:bold;
+}
+
+ul.ui-autocomplete li.fistResultIteam {
+	background: url("../images/controlPanel/shadows/autocompleteTop.png") no-repeat left top;
+}
+
+ul.ui-autocomplete li.fistResultIteam span{
+	padding-top: 6px;
+}
+
+.globalSearchButton{
+    cursor: pointer;
+    float: right;
+    height: 24px;
+    line-height: 24px;
+    padding-left: 12px;
+    margin-top: 3px;
+    background: url("../images/rollover_button_left.png") no-repeat scroll left 100px transparent;
+}
+
+
+div.contents ul.users li:hover .globalSearchButton, .globalSearchButton:hover, ul.ui-autocomplete li:hover .globalSearchButton{
+	background-position: left top;
+}
+
+div.contents ul.users li:hover .locked.globalSearchButton, .globalSearchButton:hover, ul.ui-autocomplete li:hover .locked.globalSearchButton{
+	background-position: left 100px;
+	cursor: default;
+}
+
+
+.globalSearchButton:active, .globalSearchButtonActive {
+	background-position: left bottom !important;
+}
+
+.globalSearchText{
+    display: inline-block;
+    font-size: 11px !important;
+    height: 24px;
+    line-height: 24px !important;
+    padding: 0 26px 0 0;
+    color: transparent;
+    font-weight: bold !important;
+    zoom: 1;
+	*display: inline;
+}
+
+div.contents ul.users li:hover .globalSearchText, ul.ui-autocomplete li:hover .globalSearchText{
+	background-position: right center;
+	background-size: auto;
+    color: #666666;
+}
+
+div.contents ul.users li:hover .locked .globalSearchText, ul.ui-autocomplete li:hover .locked .globalSearchText{
+	background-position: right top;
+    color: transparent;
+}
+
+
+.globalSearchButton:hover .globalSearchText{
+	background-position: right center;
+    color: #333 !important;
+}
+.globalSearchButton.locked:hover .globalSearchText{
+	background-position: right top!important;
+    color: transparent !important;
+
+}
+div.groupElementExpanded .globalSearchButton.locked{
+	background: none;
+}
+
+div.groupElementExpanded .globalSearchButton.locked span{
+	background-position: right top;
+	color: transparent;
+}
+
+
+.globalSearchButton:active .globalSearchButtonActive {
+	background-position: left bottom !important;
+}
+
+.globalSearchButton:active .globalSearchText, .globalSearchText .globalSearchButtonActive{
+	background-position: right bottom !important;
+}
+
+.locationAvailableRight {
+	background: url("../images/rollover_button_available3.png") no-repeat right top transparent;
+	color: transparent;
+}
+
+.globalSearchButton:active .locationAvailableRight, .globalSearchButtonActive .locationAvailableRight{
+	background-position: right bottom !important;
+}
+
+.locationInProgress {
+	background: none no-repeat 3px 50% transparent;
+}
+
+.locationInProgress span{
+	background: url("../images/loader_small_3.gif") no-repeat 40px center transparent;
+	color: transparent;
+	background-size: 14px;
+}
+
+.locationInProgress:hover{
+	background: url("../images/rollover_button_left.png") no-repeat scroll left top transparent !important;
+}
+
+
+.locationInProgress:active, .locationInProgressActive{
+	background: url("../images/rollover_button_left.png") no-repeat scroll left bottom transparent !important;
+}
+
+.locationInProgress:hover span{
+	background: url("../images/rollover_button_loading.png") no-repeat right top transparent !important;
+	background-size: auto;
+	color: #333;
+}
+
+.locationInProgress:active span, .locationInProgressActive span{
+	background: url("../images/rollover_button_loading.png") no-repeat right bottom transparent !important;
+	background-size: auto;
+	color: #333;
+}
+
+div.contents ul.users li:hover .locationInProgress {
+	background: url("../images/rollover_button_left.png") no-repeat scroll left top transparent;
+}
+
+div.contents ul.users li:hover .locationInProgress span{
+	background: url("../images/rollover_button_loading.png") no-repeat right top transparent;
+    color: #666666;
+}
+
+
+/* not locatable */
+
+.locationNotAvailableLeft{
+	background: none;
+	cursor:default;
+}
+
+.locationNotAvailableRight{
+	background: url("../images/icon_unavailable_x3.png") no-repeat right top transparent;
+	cursor:default;
+}
+
+.globalSearchButton:hover .locationNotAvailableRight{
+	color: #666 !important;
+}
+
+.globalSearchButton:active .locationNotAvailableRight, .globalSearchButtonActive .locationNotAvailableRight{
+	background-position: right top !important;
+}
+
+/* not locatable and no report */
+.locationNotAvailableLeft span{
+	cursor: pointer;
+}
+
+.globalSearchButton:active .reportNotAvailableRight, .globalSearchButtonActive .reportNotAvailableRight{
+	background-position: right bottom !important;
+}
+
+.reportNotAvailableRight{
+	background: url("../images/rollover_button_request5.png") no-repeat right top transparent;
+}
+
+/* pending request */
+.pendingRequestLeft span{
+	cursor: pointer;
+}
+
+.globalSearchButton:active .pendingRequestRight, .globalSearchButtonActive .pendingRequestRight{
+	background-position: right bottom !important;
+}
+
+.pendingRequestRight{
+	background: url("../images/rollover_button_pending5.png") no-repeat right top transparent;
+}
+.search-result-header {
+  margin-left:8px;margin-top:0px;margin-bottom:6px;font-weight:bold;
+}
+
+/*==================================
+	Search fields styles
+===================================*/
+/*
+#bottom #search {
+	float:right;
+	padding-top:4px;
+}
+
+span.searchField246 {
+	background: url("../images/controlPanel/bg/searchFields/seachFieldsW246.png") no-repeat left top;
+  display: block;
+  position: relative;
+  width: 246px;
+	height: 24px;
+	clear:both;
+}
+
+span.searchField246 input {
+    background: none;
+    border: medium none;
+    color: #444;
+    display: block;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 35px 0 5px;
+    text-align: left;
+    text-decoration: none;
+    width: 200px;
+		font-weight:bold;
+		margin: 0 auto;
+}
+*/
+div.x-input {
+	position:relative;
+	width:331px;
+	height:24px;
+}
+
+span.searchField331 {
+	background: url("../images/controlPanel/bg/searchFields/searchFieldW331.png") no-repeat left top;
+	display: block;
+  position: relative;
+  width: 331px;
+	height: 24px;
+	clear:both;
+}
+
+span.searchField331 input {
+	background: none;
+  border: medium none;
+  color: #444;
+  display: block;
+  font-size: 13px;
+  height: 24px;
+  line-height: 20px;
+  padding: 0 35px 0 20px;
+  text-align: left;
+  text-decoration: none;
+  width: 280px;
+	margin: 0 auto;
+}
+
+/* send message*/
+#sendMessage {padding-top: 12px;font-size:13px;}
+#sendMessage .label-row {height: 20px; padding-bottom: 3px; vertical-align: middle;}
+#sendMessage .inputText, #sendMessage .token-input-list-facebook {width: 435px!important; border: 1px solid #b4b4b4!important; /*line-height: 35px;*/ line-height: 14px; /*height: 35px!important;*/ margin-bottom: 16px; max-height: 100px;}
+#sendMessage #messageSubject {height: 23px; line-height: 23px; padding: 0 5px;width: 425px!important; color:#6b6b6b;}
+#sendMessage #messageContent {width: 425px!important; padding: 5px 5px;}
+#sendMessage #token-input-messageTo {height: 13px;}
+.buttons_class .cancel { margin:10px 0 0 0px; height:29px; background: url("../images/dialog_button_grey_left.png") no-repeat left top; padding-left:10px; padding-right: 6px; float: right; font-weight:bold; font-size:13px;}
+.buttons_class .cancel span { height:29px; background: url("../images/dialog_button_grey_right.png") no-repeat right top; margin:0;}
+
+.box-error-message {margin:0px 0 8px 0; background: url("../images/icon-error.png") no-repeat 16px 7px #fff2f2; padding-bottom: 20px; display:none; }
+.box-error-message .content-cell {color:#e60000;margin-left:66px;padding-top: 18px}
+.box-error-message .content-cell span{font-size: 16px; font-weight: bold;padding-bottom: 10px; display: block;}
+.box-error-message .content-cell ul li{border:none !important; font-size: 13px !important; font-weight: normal; background: url("../images/controlPanel/controlPanel/item_list_error.png") no-repeat 0px 1px #fff2f2 !important; padding-left: 14px !important; line-height:16px !important;}
+.box-error-message .content-cell ul li a{color:#e60000 !important; }
+.box-error-message .content-cell ul li a:hover{text-decoration: underline; }
+
+#success-view-message {margin:0px 0 8px 0; background: url("../images/icon_available.png") no-repeat 16px 7px #DEF5B5; padding-bottom: 20px; display:none; }
+#success-view-message .content-cell {color:#80A83C;margin-left:66px;padding-top: 18px}
+#success-view-message .content-cell span{font-size: 16px; font-weight: bold;padding-bottom: 10px; display: block;}
+
+
+
+#sendMessage .error-input-highlight,
+.error-input-highlight {
+  border: 1px solid #e60000 !important;
+  /*margin-left: 0 !important;
+  margin-right: 0 !important;*/
+}
+
+#sendMessage .verified-input-highlight,
+.verified-input-highlight {
+  border: 1px solid #388000 !important;
+  /*margin-left: 0 !important;
+  margin-right: 0 !important;*/
+}
+
+.buttons_class .cancel{
+width:70px;
+padding-right: 0;
+margin-right: 10px;
+}
+.buttons_class .cancel span{
+width:50px;
+text-align: center;
+}
+.buttons_class .send {
+width:70px;
+}
+.buttons_class .send span{
+width:50px;
+text-align: center;
+}
+
+.buttons_class .cancelActive, .buttons_class .cancelOver {background-position: left -29px;}
+.buttons_class .cancelActive span, .buttons_class .cancelOver span  {background-position: right -29px !important}
+
+.buttons_class .send { float:right; margin-top:10px; font-weight:bold; }
+
+.LV_validation_message.LV_invalid img { float:right; margin:5px 0 0 0; }
+/*.dialog .ft .c { margin-right: -19px!important; }*/
+/*.dialog .ft { width: 490px; margin-right: 8px; }*/
+a.alert-charts, a.alert-empty-m { height:16px; width:16px; background: url("../images/controlPanel/Icons/alert-m.jpg") no-repeat 0 0; display:none; float:left; cursor:pointer;margin-left:4px;}
+/* message */
+div.wrapper-counter-message {float:right;display:none;position: relative;}
+div.wrapper-counter-message span {float:left;padding-left:4px;line-height:16px;}
+div.wrapper-counter-message span.icon-counter {float:left;display:block; width:20px;}
+
+textarea.text-area-m { overflow-y: auto; }
+td.subject-m { /*overflow:hidden;*/ position:relative; }
+td.subject-m span.LV_invalid { position:absolute; right: 0; }
+div.ui-dialog-content.ui-widget-content {
+  overflow:hidden;
+}
+
+.overflow-not-hidden div.ui-dialog-content.ui-widget-content {
+  position: static;
+}
+
+div.popup-alert-m-limit, div.popup-alert-m-empty { font-size:10px; z-index:9999; position:absolute; right:-12px; top:0; height:83px; width:168px; background: url("../images/controlPanel/controlPanel/alert-limit-m.png") no-repeat 0 0; display:none; float:left; padding: 20px 20px 0 60px; }
+div.popup-alert-s-empty { font-size:10px; z-index:9999; position:absolute; right:-12px; top:-30px; height:83px; width:168px; background: url("../images/controlPanel/controlPanel/alert-limit-m.png") no-repeat 0 0; display:none; float:left; padding: 20px 20px 0 60px; }
+
+
+div.tooltip-alert-generic-right {background: url("../images/controlPanel/controlPanel/bg_tooltip_horizontal_right.png") no-repeat 0 0;font-size: 11px;z-index:9999;position:absolute;width:198px;height:59px;display:none;}
+div.tooltip-alert-generic-right span {padding:10px 30px 10px 16px;display:block;line-height: 120%;}
+
+div.tooltip-alert-generic-left {background: url("../images/controlPanel/controlPanel/bg_tooltip_horizontal_left.png") no-repeat 0 0;font-size: 11px;z-index:9999;position:absolute;width:216px;height:59px;display:none;}
+div.tooltip-alert-generic-left span {padding:10px 10px 10px 22px;display:block;line-height: 120%;}
+
+
+
+
+div.tooltip-alert-messageTo {left:-170px; top:154px;}
+div.tooltip-alert-messageSubject {left:-170px; top:214px;}
+div.tooltip-alert-messageContent {left:-170px; top:276px;}
+
+
+div.tooltip-icon-limit-message {left:480px; top:268px;}
+
+
+
+.overflow-not-hidden {overflow:visible !important;}
+
+
+li.token-input-token-facebook { background-color:#e8e8e8!important; border:1px solid #d7d7d7!important; }
+.token-input-delete-token-facebook { color:#b2b2b2; text-transform:uppercase; background-color:#e8e8e8; }
+.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.dialog { position:absolute; }
+.ui-icon.ui-icon-closethick { display:none; }
+.noClose .ui-dialog-titlebar-close {display: none !important}
+
+/** 14.02 AllMessagesStates **/
+
+
+/* come back here messaeges css*/
+
+
+
+/** 16.03 MultipleUserTooltip **/
+#multipleUsersToolTipTemplate.toolTipContainer {min-height: 150px;overflow: hidden;}
+#multipleUsersToolTipTemplate .toolTipContent ul {height: 100px; overflow: auto;}
+#multipleUsersToolTipTemplate .locateUserRow {line-height: 24px;}
+#multipleUsersToolTipTemplate .locateUserRow .globalSearchButton {margin-top: 0;}
+
+/** custom checkboxes **/
+.jqTransformHidden {display: none;}
+span.jqTransformCheckboxWrapper{
+	display:block;float:left;
+}
+a.jqTransformCheckbox {
+	background: url('../images/check-button.png') no-repeat scroll 0 0;
+	vertical-align: middle;
+	height: 12px;
+	width: 12px;
+	display:block;/*display: -moz-inline-block;*/
+}
+a.jqTransformChecked { background-position: 50% 100%;}
+
+
+#tab-users_count, #tab-assets_count{
+	padding:0 8px 10px;
+}
+
+/*davide*/
+
+#nearestUsersDialog{
+/*margin: 11px 0 3px 0;*/
+margin: 6px 0 14px 0;
+}
+
+#nearestUsersDialog_first,
+#nearestUsersDialog_second {
+    display: inline-block;
+    vertical-align: top;
+    margin-top:8px;
+
+}
+
+
+#nearestUsersDialog span{
+    display: inline-block;
+}
+#nearestUsersDialog span a span{
+    display: block;
+
+}
+#select-radius-button {
+/*float: left;*/
+height: 25px;
+margin: 0 10px 0 13px;
+position: relative;
+/*top: -8px;*/
+}
+
+a#select-radius-button.ui-selectmenu .ui-selectmenu-icon {
+right:2px;
+top:2px;
+}
+
+#select-radius-menu{
+width:57px !important;
+}
+#select-radius-menu li{
+padding-right: 28px;
+text-align: right;
+}
+
+#select-radius-button span.ui-selectmenu-status{
+padding-right: 30px;
+text-align: right;
+}
+
+.under-dialog-title{
+width: 96%;
+position: absolute;
+left: 0pt;
+bottom: -3px;
+margin-left: 10px;
+/*border-top: 1px solid rgb(204, 204, 204);*/
+/*border-top: 1px solid #d3d3d3;*/
+}
+
+.under-dialog-content{
+width: 96%;
+position: absolute;
+left: 0;
+bottom: 0;
+margin-left: 10px;
+border-top: 1px solid #d3d3d3;
+}
+
+.ui-dialog .ui-dialog-buttonpane button.show{
+margin: 0 3px 0 7px !important;
+font-size: 11px !important;
+font-weight: bold;
+}
+.ui-dialog .ui-dialog-buttonpane button.cancel{
+width: 75px;
+}
+
+
+/*davide end*/
+
+
+/* CALENDAR: NEW EVENT */
+#createMeeting #meetingDateTime {
+  margin: 6px 0 3px;
+  position: relative;
+}
+
+#createMeeting #meetingAttendees{margin: 5px 0 2px;}
+#createMeeting .inputs {padding-bottom: 15px;}
+#createMeeting .inputs.first {padding-top:12px;}
+#createMeeting .inputs label,
+#createMeeting .inputs input {float: left; font-family: Arial, sans-serif; font-size: 13px; line-height: 21px;}
+#createMeeting .inputs input, #createMeeting textarea {width: 337px; padding: 0 10px;}
+#createMeeting .inputs label {padding-right: 10px; text-align: right; font-weight: bold; width: 80px;}
+#createMeeting .inputs .short {width: auto;}
+#createMeeting .inputs input.date {width: 78px; padding-right: 10px;}
+#createMeeting .inputs input.time {border: 0;}
+#createMeeting .left-padding {padding-left: 46px;}
+#createMeeting textarea {height: 55px; overflow-x: auto; overflow-y: hidden; resize:none;}
+#createMeeting .check-list label {padding-right: 35px; padding-left: 10px; font-weight: normal;}
+#createMeeting .check-list label.last {padding-right:0;}
+
+#createMeeting input[type=text],
+#createMeeting textarea {
+  border: 1px solid #b8b8b8;
+  line-height: 21px;
+  height: 22px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+#createMeeting textarea {height: 75px; overflow-y: scroll; padding: 0 0 0 10px; width: 347px;}
+
+#createMeeting .ui-datepicker-trigger {
+  left: 200px;
+}
+
+#createMeeting .all-day-wrap {float: left; padding:5px 0 0 20px;}
+#createMeeting .all-day-wrap label {padding-left:10px; font-weight: normal;}
+#createMeeting .time-wrap {float:left; border: 1px solid #b8b8b8;}
+#createMeeting .time-wrap .disabled-input {display: none; width: 45px; line-height: 22px;height: 22px; border: none; padding-left: 14px;}
+#createMeeting .time-wrap span {float: left; line-height: 22px;}
+#createMeeting .time-wrap .hours {padding-right: 3px; width: 20px; text-align: right;}
+#createMeeting .time-wrap .mins {padding-left: 3px; width: 20px; text-align: left; }
+#createMeeting .buttons_class button {margin-top:0;}
+#createMeeting li.token-input-token-facebook span {color: #333;}
+
+/* token input related */
+#createMeeting .token-input-list-facebook {border: 1px solid #B4B4B4 !important;line-height: 12px;width: 357px !important; padding: 0;}
+#createMeeting .token-input-token-facebook p {font-weight: normal;}
+#createMeeting #token-input-messageTo, #createMeeting #token-input-nameOfaLocation {height: 22px;border: 0;}
+#createMeeting ul.token-input-list-facebook li input {margin: 0;}
+
+#createMeeting .location .wrap {position: relative;}
+#createMeeting .location .wrap span {display: none;}
+#createMeeting .location .wrap span.searchLoading {position: absolute; background: url("../images/loader_small_3.gif") 0 center no-repeat;/* background-size: 14px; */top:3px; right: 10px;display: block; width: 16px; height: 16px;}
+
+.location-autocomplete ul.ui-autocomplete {width: 400px!important; background: url("../images/controlPanel/shadows/autocompleteBottom360.png") no-repeat scroll center bottom transparent;}
+.location-autocomplete ul.ui-autocomplete li{background: url("../images/controlPanel/shadows/autocompleteCont360.png") repeat-y scroll left top transparent;}
+#calendar .fc-widget-content.event {background-color: #007d92;}
+#calendar .fc-event-title {padding:0 10px; line-height: 15px; font-size: 11px; font-family: arial, sans-serif;}
+
+#meetingDetails .row {border: 0; border-bottom: 1px solid #e7e7e7; padding-bottom: 5px;}
+#meetingDetails .row#attendees {padding-bottom: 0; border-bottom: 0;}
+#meetingDetails .row h2, #meetingDetails .row p {font-family: Arial, sans-serif; font-size: 13px;line-height:16px;}
+#meetingDetails .row h2 {font-weight: bold; line-height: 29px;}
+#meetingDetails .row .wrap-list {max-height: 91px; height: auto!important; height: 91px; overflow-x: hidden; overflow-y: scroll; border-bottom: 0;}
+#meetingDetails .row p {font-weight: normal!important;}
+#meetingDetails .row .list {border-top: 1px solid #e7e7e7;}
+#meetingDetails .row .list li {border-bottom: 1px solid #e7e7e7; font-size: 13px; line-height:29px; font-family: Arial, sans-serif;}
+#meetingDetails .row .list li .status{font-weight: bold; text-transform: uppercase; float: right;}
+#meetingDetails .row .list li .eta{font-weight: bold; text-transform: uppercase; float: right; width: 60px; padding: 0 0 0 20px;}
+#meetingDetails .row .list li .name{float: left;}
+
+.delete-text.dialog p {font-weight: normal;}
+
+.meeting-detail .ui-dialog-buttonset {text-align: center; clear: both; float: none!important;}
+.meeting-detail .ui-dialog-buttonset button {margin-top:0;margin-bottom: 0;min-width: 75px!important;}
+.meeting-detail .ui-dialog-buttonset .ui-button-text-only .ui-button-text {padding: 0 20px 0 10px !important; font-size: 13px;}
+.meeting-detail.dialog .hd {background: url('../images/tl_pointer.png') 0 bottom no-repeat;}
+.meeting-detail.dialog .bd {background: url('../images/ml_pointer.png') 0 center no-repeat;}
+.meeting-detail.dialog .ft {background: url('../images/bl_pointer.png') 0 0 no-repeat;}
+
+.meeting-detail.dialog.opposite .hd {background: url('../images/tr_opposite.png') 0 100% no-repeat; padding-left:18px; }
+.meeting-detail.dialog.opposite .hd .c{background: url('../images/tl_pointer_opposite.png') no-repeat scroll right bottom transparent; height: 12px; margin-right: -6px;}
+.meeting-detail.dialog.opposite .bd {background:url("../images/mr_opposite.png") repeat-y scroll 0 50% transparent; padding-left:18px;}
+.meeting-detail.dialog.opposite .bd .c{background: url("../images/ml_pointer_opposite.png") repeat-y scroll right center transparent; margin-right: -12px;}
+.meeting-detail.dialog.opposite .ft {background: url('../images/br_opposite.png') 0 100% no-repeat; padding-left:18px;}
+.meeting-detail.dialog.opposite .ft .c{background: url('../images/bl_pointer_opposite.png')no-repeat scroll right 0 transparent;margin-right: -10px;}
+/*
+.meeting-detail.dialog.opposite .hd{background: url("http://lbas.vodafone.com/reply/images/hoverCalendarOppositeTopRight.png") 1px 0 no-repeat; height: 12px; padding-left:19px; }
+.meeting-detail.dialog.opposite .hd .c{background: url("http://lbas.vodafone.com/reply/images/hoverCalendarOppositeTopLeft.png") 100% 0 no-repeat; height: 12px; margin-right: -2px;}
+.meeting-detail.dialog.opposite .bd{background: url("http://lbas.vodafone.com/reply/images/hoverCalendarOppositeMiddleRight.png") 0 0 no-repeat; padding-left:12px;}
+.meeting-detail.dialog.opposite .bd .c{background: url("http://lbas.vodafone.com/reply/images/hoverCalendarOppositeMiddleLeft.png") 100% 50% no-repeat; margin-right: -13px; padding-right: 5px;}
+.meeting-detail.dialog.opposite .ft{background: url("http://lbas.vodafone.com/reply/images/hoverCalendarOppositeBottomRight.png") 0px 0 no-repeat; height: 12px; padding-left:19px; }
+.meeting-detail.dialog.opposite .ft .c{background: url("http://lbas.vodafone.com/reply/images/hoverCalendarOppositeBottomLeft.png") 100% 0 no-repeat; height: 12px; margin-right: -2px;}
+*/
+
+#createMeeting #emailAttendees{}
+#createMeeting #emailAttendeesCover{float: left;  padding: 0 10px; width: 337px; border: 1px solid #B8B8B8; height: 55px; overflow-y: auto;}
+#createMeeting #emailAttendeesInput{border: medium none!important; float: left; width: 300px; padding: 0;}
+#createMeeting #emailAttendeesAdd{font-size: 20px; line-height: 22px; float: left;}
+#createMeeting #emailAttendeesList .token-input-token-facebook a{font-size: 14px; display: block; width: 10px; float: right; line-height: 12px; padding-left: 6px;}
+#createMeeting .why{ background: url("../images/availability/info.png") no-repeat scroll center bottom transparent; display: inline-block; height: 20px; width: 20px; margin: 0px 0 0 5px;}

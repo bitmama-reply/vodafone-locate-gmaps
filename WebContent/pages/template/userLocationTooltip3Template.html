@@ -1,0 +1,35 @@
+<div class="tooltipHeader"><#= user.name #>&nbsp;<#= user.surname #></div>
+
+<div style="height:100px">
+   <div>
+   <p><div id="dsUsrLocAd_<#= user.user_id #>" class="content"><#= user.last_pos_address #></div></p>
+   <p><div id="dsUsrLat_<#= user.user_id #>" class="content"><#= latitude.substring(0, latitude.length-1) #> <#= $.i18n.prop('location.tooltip.short.north') #></div></p>
+   <p><div id="dsUsrLon_<#= user.user_id #>" class="content"><#= longitude.substring(0, longitude.length-1) #> <#= $.i18n.prop('location.tooltip.short.east') #></div></p>
+   <p><div id="dsUsrLocTime_<#= user.user_id #>"><#= lastTrackTime #></p></div>
+   <p><div id="dsUsrLocTimeUserOffset_<#= user.user_id #>"><#= lastTrackTimeForUsersOffset #></p></div>
+   <# if(user.eta != null) { #>
+   	<p><div><#= $.i18n.prop('meetings.eta') #> : <#= user.eta #></p></div>
+   <# } #>
+   
+   <div id="dsUpdtUsrLoc_<#= user.user_id #>" style="display:none;">
+		<#= $.i18n.prop('tooltipmain.updatingLocation') #>&nbsp;<img src="images/ajax-loader.gif" style="width:11px;height:10px;" />
+   </div>
+   
+   </div>
+</div>
+
+<br/>
+
+<div class="hr"></div>
+
+<div class="poiTooltipCloser" onclick="mainMarkerManager.closeTooltip('<#= markerId #>');"></div>
+
+<div class="tooltipMenu">
+
+  <a onclick="openSendMessageDialogFromPrivacyPage('<#= user.name #> <#= user.surname #>',<#= user.user_id #>);" class="tooltipMenuItem standartLink" style="color:#0077B7"><#= $.i18n.prop('tooltipmain.SendMessage') #></a> |
+  <a onclick="openSaveLocationDialogFromLatLon('<#= user.name #>',<#= user.latitude #>,<#= user.longitude #>);" class="tooltipMenuItem standartLink" style="color:#0077B7"><#= $.i18n.prop('tooltipmain.SaveLocation') #></a> | 
+  <a onclick="updateUserLocationInDashboard(<#= user.user_id #>)" class="tooltipMenuItem standartLink" style="color:#0077B7"><#= $.i18n.prop('tooltipmain.UpdateLocation') #></a>
+  <a onclick="showNearestUsers(<#= user.latitude #>,<#= user.longitude #>);" class="tooltipMenuItem standartLink" style="color:#0077B7"><#= $.i18n.prop('tooltipmain.ShowNearestUsers') #></a>
+
+</div>
+

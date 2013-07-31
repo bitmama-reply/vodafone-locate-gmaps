@@ -1,0 +1,86 @@
+<h1><#= $.i18n.prop('admin.UsersManagement') #></h1>
+
+
+<div class="admin-users-wrap">
+	<#= parseTemplate('adminToolbar', { exportFlag: true }) #>
+
+	<table class="list-content" style="display:none;">
+
+		<thead>
+			<tr>
+				<th class="first"><input type="checkbox" class="list-select-all" /></th>
+				<th data-sortColumn="name"><span><#= $.i18n.prop('admin.userlist.column.name') #></span></th>
+				<th data-sortColumn="email"><span><#= $.i18n.prop('userEdit.Email') #></span></th>
+				<th data-sortColumn="msisdn"><span><#= $.i18n.prop('assetEdit.msisdn') #></span></th>
+				<th data-sortColumn="active"><span><#= $.i18n.prop('companyList.Status') #></span></th>
+				<th data-sortColumn="optInState"><span><#= $.i18n.prop('admin.list.OptinStatus') #></span></th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr class="sample-row">
+				<td class="first">
+					<input type="checkbox" value=""/>
+					<input type="hidden" name="id"/>
+				</td>
+				<td class="name"></td>
+				<td class="email"></td>
+				<td class="msisdn"></td>
+				<td class="status"></td>
+				<td class="option-status"></td>
+				<td class="actions last">
+					<a class="btn-update" href="javascript:void(0);"><#= $.i18n.prop('buttons.update') #></a>
+					<a class="btn-delete" href="javascript:void(0);"><#= $.i18n.prop('buttons.delete') #></a>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<div class="import-form" style="display:none;">
+		<form action="json/uploadUserFile.action" method="post" enctype="multipart/form-data">
+			<div class="import-legend-row">
+				<a href="getImportTemplate.action?fileType=user&amp;uploadType=xls">
+					<#= $.i18n.prop('admin.list.downloadLink', 'TemplateForUserUpload.xls') #>
+				</a>
+			</div>
+			<div class="clearfix">
+				<div class="import-legend-row left">
+					<input type="hidden" name="uploadType" value="xls" />
+					<input type="file" name="uploadObj" />
+				</div>
+				<a href="javascript:void(0);" class="upload-button graphicBtn violet right">
+					<span><#= $.i18n.prop('buttons.upload') #></span>
+				</a>
+			</div>
+		</form>
+	</div>
+
+	<div class="move-to-group-form" style="display:none;">
+		<form action="#" method="post" enctype="multipart/form-data">
+			<div class="move-legend-row-label"><#= $.i18n.prop('user.selectedUsers') #>:</div>
+			<div class="move-legend-row selected-user-info"></div>
+
+			<div class="move-legend-row-label"><#= $.i18n.prop('user.ToGroup') #>:</div>
+			<div class="move-legend-row selected-user-togroup"></div>
+
+			<div class="overlay-actions-wrapper">
+				<a href="javascript:void(0);" class="cancel-button graphicBtn little">
+					<span><#= $.i18n.prop('message.cancel') #></span>
+				</a>
+				<a href="javascript:void(0);" class="apply-button graphicBtn violet">
+					<span><#= $.i18n.prop('buttons.apply') #></span>
+				</a>
+			</div>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		$(function(){
+			var usersManagement = new UsersManagement();
+			usersManagement.wrapClass = 'admin-users-wrap';
+			usersManagement.options.deleteText=$.i18n.prop('admin.delete.user.confirm');
+		});
+	</script>
+</div>

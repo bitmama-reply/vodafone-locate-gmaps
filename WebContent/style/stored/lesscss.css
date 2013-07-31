@@ -1,0 +1,292 @@
+/* button configuration options */
+/* color variables set relative to @button_color. 
+You probably don't need to change these. */
+/* styles for button color */
+.button {
+  color: #333333;
+  border: none;
+  background: transparent;
+}
+.button:hover {
+  background: #ffffff;
+}
+.button:active {
+  background: #ffffff;
+}
+/* basic styles for button size, padding, etc. */
+.button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 100%;
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+  padding: 1em 4em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  /*
+  -webkit-border-radius: @button_border_radius;
+  -moz-border-radius: @button_border_radius;
+  border-radius: @button_border_radius;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  */
+
+}
+.button:hover {
+  text-decoration: none;
+}
+.button:active {
+  /*
+  position: relative;
+  top: 1px;
+  */
+
+}
+.withDivider {
+  border-right: 1px solid #CCC;
+}
+/* button configuration options */
+/* color variables set relative to @menubar_color. 
+You probably don't need to change these. */
+/* styles for button color */
+.menubar {
+  color: #333333;
+  border-bottom: 5px solid #CCCCCC;
+  border-top: 1px solid #E2EEEE;
+  background: #ffffff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eeeeee));
+  background: -moz-linear-gradient(top, #ffffff, #eeeeee);
+}
+/* basic styles for button size, padding, etc. */
+.menubar {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  /* text-align: center; */
+
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 100%;
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+  padding: 0em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 0em;
+  -moz-border-radius: 0em;
+  border-radius: 0em;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  width: 100% !important;
+}
+.font-small {
+  font-size: 10pt;
+  color: black;
+  text-decoration: none;
+}
+.bordered {
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+.padding {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.hover {
+  color: red !important;
+  cursor: pointer;
+  text-decoration: underline !important;
+}
+/*
+button{
+	width: 120px;
+}
+*/
+body {
+  width: 100%;
+  margin: auto;
+  font-family: arial, verdana, sans-serif;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+  font-size: 1em !important;
+}
+.ui-autocomplete-category {
+  color: red;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 0.8em 0 0.2em;
+  padding: 0.2em 0.4em;
+}
+#header #top ul li {
+  display: inline;
+  padding: 1em;
+}
+div#header {
+  width: 100%;
+  background-color: white;
+  top: 0px;
+  font-size: 10pt;
+  color: black;
+  text-decoration: none;
+}
+div#header #top {
+  width: 100%;
+  background-color: transparent;
+  text-align: left;
+  overflow: hidden;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+#top .menu, #top .logo {
+  width: 50%;
+  float: left;
+}
+#top .menu {
+  text-align: right;
+}
+#top .menu ul {
+  margin-right: 10em;
+}
+#top .menu ul li a {
+  color: #AAA;
+}
+.logo img {
+  width: 4em;
+  vertical-align: middle;
+}
+div#header #bottom span {
+  background-color: transparent;
+  text-align: right;
+  margin-right: 50px;
+}
+div#footer {
+  display: none;
+  width: 99%;
+  position: absolute;
+  bottom: 0px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+#search input {
+  border: 1px solid #CCCCCC;
+  border-radius: 0.5em;
+  width: 30em;
+  background: url("../images/search.png") no-repeat scroll right center #ffffff;
+  padding: 0.5em;
+  margin: 0px;
+  font-size: 10pt;
+}
+/*
+input.search{
+	font-size: 10pt;
+	border: 1px solid black;	
+	padding: 6px;
+	margin: 0px;
+	width: 90%;
+	
+}
+*/
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+}
+a:hover {
+  color: red !important;
+  cursor: pointer;
+  text-decoration: underline !important;
+}
+a:active {
+  color: black;
+}
+#content {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+}
+#left {
+  width: 20%;
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+  overflow: auto;
+  position: absolute;
+  top: -0.5em;
+  left: 1.0em;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #DDDDDD;
+}
+#right {
+  width: 100%;
+  hight: 100%;
+  float: left;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+}
+/*buttons*/
+#tab-users .ui-button {
+  width: 50%;
+}
+#tab-users  .ui-button-text {
+  padding: 0.2em !important;
+  line-height: 1em !important;
+}
+#btn_users_locatable {
+  width: 90%;
+  border: none;
+}
+.x-input {
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+.x-input span {
+  color: #CCC;
+  cursor: pointer;
+}
+.x-input input.x-input-text {
+  border: none;
+  font-size: 10pt;
+  margin: 0;
+  width: 90%;
+}

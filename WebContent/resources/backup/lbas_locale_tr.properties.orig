@@ -1,0 +1,1456 @@
+lbas.title=Vodafone Locate
+lbas.system=Sistem
+
+ #General Messages 
+general.Search=Ara
+general.Search.UsernameOrGroup=bir kullanıcı adı ya da grup yazın
+general.actions=İşlemler
+general.result=Sonuç
+ 
+general.minList=00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59
+general.hourList=00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23
+general.dayList=01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+general.monthList=01,02,03,04,05,06,07,08,09,10,11,12
+general.hourMinuteList=00:00,01:00,02:00,03:00,04:00,05:00,06:00,07:00,08:00,09:00,10:00,11:00,12:00,13:00,14:00,15:00,16:00,17:00,18:00,19:00,20:00,21:00,22:00,23:00
+ 
+general.displaytag.pagebanner={0} {1} bulundu, hepsi gösteriliyor {2}.
+ 
+#Buttons 
+buttons.ok=Ok
+buttons.update=Güncelle
+buttons.browse=Göz at 
+buttons.share=Paylaş
+buttons.search=Ara
+buttons.cancel=İptal Et
+buttons.change=Değiştir
+buttons.add=Ekle
+buttons.addNew=Yeni… Ekle
+buttons.edit=Düzenle
+buttons.close=Kapat
+buttons.route= Güzergah 
+buttons.print=Yazdır
+buttons.save=Kaydet
+buttons.delete=Sil
+buttons.select=Seç 
+buttons.create=   Yeni  Oluştur
+buttons.request=İste
+buttons.save.enterprise=Kurumsal olarak ayarla
+buttons.accept= Onayla
+buttons.reject=Reddet
+buttons.skip=Atla
+buttons.sendinvite= Toplantı Daveti Gönder
+buttons.submit=Gönder
+buttons.sendupdate= Güncelleme gönder
+buttons.previous=Önceki 
+buttons.next=Sonraki
+buttons.last=Last
+buttons.first=First
+buttons.apply=Uygula 
+buttons.confirm=Onayla 
+buttons.decline=Reddet
+buttons.uploadIcon=Simge Yükle
+buttons.upload=Yükle 
+buttons.crop=Kırp 
+buttons.changeicon=Simge Değiştir
+buttons.view=İzle
+buttons.send=Gönder
+buttons.showCdf=Kişiselleştirilebilir Alanları Göster 
+buttons.hideCdf=Kişiselleştirilebilir Alanları Gizle
+buttons.show=Show
+buttons.remove=Remove
+buttons.show.on.map = Show on map
+buttons.user.details=User Details
+
+#error Messages
+error.permission=You don't have permission to do that.
+errors.operation.fail={0} İşlem başarısız oldu! Lütfen daha sonra tekrar deneyiniz. 
+errors.db.fail=İşlem başarısız oldu, Lütfen daha sonra tekrar deneyiniz. 
+error.permission=Bu işlem sadece şirket yetkilisi tarafından yapılabilir. 
+error.add=Ekleme işlemi başarısız oldu! Lütfen daha sonra tekrar deneyiniz. 
+error.delete=Silme işlemi başarısız oldu, Lütfen daha sonra tekrar deneyiniz. 
+error.update=Güncelleme işlemi başarısız oldu, Lütfen daha sonra tekrar deneyiniz. 
+error.upload=Dosya yükleme işlemi başarısız oldu, Lütfen daha sonra tekrar deneyiniz. 
+error.create=İşlem başarısız oldu, Lütfen daha sonra tekrar deneyiniz. 
+error.acceptReject=İşlem başarısız oldu, Lütfen daha sonra tekrar deneyiniz. 
+error.save=İşlem başarısız oldu, Lütfen daha sonra tekrar deneyiniz. 
+error.search=Arama işlemi başarısız oldu, Lütfen daha sonra tekrar deneyiniz. 
+error.get=İşlem başarısız oldu, Lütfen daha sonra tekrar deneyiniz. 
+errors.not.authorized=Bu işlem sadece şirket yetkilisi tarafından yapılabilir. 
+errors.no.reports.available= Seçili Kullanıcı(lar) için   lokasyon raporu  bulunmamaktadır.
+error.invalid.dateFormat=Lütfen girilen tarihleri veya saatleri kontrol ediniz.
+errors.no.meeting.available=Toplantı bilgisi bulunmamaktadır.
+errors.no.location.data= Güncel lokasyon bilgisi bulunmamaktadır.
+errors.route.not.found=Güzergah bilgisi bulunmamaktadır.
+error.no.address.available=Seçmiş olduğunuz lokasyon bilgisine ait bir adres bilgisi bulunamamıştır.
+error.empty.text=Lütfen bir adres giriniz.
+error.routing.samepoints=Güzargahını  almak istediğiniz iki nokta bilgisi aynı, farklı bir güzergah noktası belirleyiniz.
+error.routing.routenotavailable= Seçmiş olduğunuz lokasyonlara ait güzergah bilgisi bulunmamaktadır.
+error.location.search.noresults= Talep etmiş olduğunuz sorgulama için hiçbir arama sonucu bulunamamıştır.
+errors.no.address= Lokasyon için adres bilgisi bulunamamıştır
+errors.empty.route.name=Lokasyon güzergahı belirlemek için lütfen bir güzergah bilgisi giriniz.
+errors.wrong.character= Farklı bir karakter bilgisi girdiğiniz için işleminiz yapılamamıştır. Lütfen kontrol ederek tekrar deneyiniz.
+errors.duplicated.ban2=Girmiş olduğunuz  BAN, şirket bilgilerinize zaten eklenmiş durumdadır. Lütfen kontrol ederek tekrar deneyiniz. 
+errors.report.duration=Seçili süre 60 günden fazla. Lütfen 60 günü aşmayan bir süre seçiniz
+error.meeting.time.passed= Girmiş olduğunuz tarih geçmiş tarih bilgisidir. Lütfen kontrol ederek tekrar giriniz.
+error.meeting.stop.time.error=Toplantı bitiş saati toplantı başlangıç saatinden önce, lütfen kontrol ederek tekrar deneyiniz.
+error.meeting.timing.error=Toplantı başlangıç ve bitiş saatleri aynı. Toplantı başlangıç ve bitiş saati farklı olmalıdır. 
+error.asset.permission.request.invalid=Kullanıcılar izin isteğini alamıyor.
+error.asset.permission.request.invalid.listassets=Kullanıcılar izin isteğini alamıyor. İstediğinizden şu kullanıcılar çıkarıldı: {0} 
+error.asset.invalid.operation=Kullanıcılar için geçersiz işlem talebi girdiniz. Lütfen kontrol ederek tekrar deneyiniz. 
+error.asset.invalid.operation.listassets=Kullanıcılar için geçersiz işlem: {0}
+error.message.reply=Sistem mesajları yanıt gerektirmemektedir.
+errors.searchDBObject.selectRequired=Lütfen Alanlardan Opco/Şirket/Veriler seçin
+
+delete.permission.error= Bu işlem sadece şirket yetkilisi tarafından yapılabilir. 
+delete.general.error={0} için talep etmiş olduğunuz silme işlemi başarısız olmuştur. Lütfen daha sonra tekrar deneyiniz.
+
+# Validation 
+error.correct.invalid.fields=  Lütfen geçersiz işlem yapılan alanları kontrol ederek , tekrar deneyiniz.
+error.required= Lütfen zorunlu bilgileri  kontrol ederek , tekrar deneyiniz.
+error.maxlength=İzin verilen maksimum karakter sayısı {0}’dır. 
+error.intMax=Maksimum {0}
+error.numeric=Girilen bilgi sadece sayı olmalıdır.
+error.email= Lütfen e-posta adresini kontrol ederek, tekrar deneyiniz. 
+error.url= Lütfen internet adresini kontrol ederek, tekrar deneyiniz. 
+error.phone= Lütfen telefon numarasını kontrol ederek, tekrar deneyiniz . 
+error.fax= Lütfen faks numarasını  kontrol ederek, tekrar deneyiniz.
+error.emailOrPhone= Lütfen telefon numarası veya e-posta adresini kontrol ederek, tekrar deneyiniz. 
+error.IPRange= Lütfen izin verilen IP adreslerini kontrol ederek, tekrar deneyiniz.
+
+warning.select.category=Lütfen bir kategori seçiniz.
+warning.select.location=Lütfen bir lokasyon seçiniz.
+warning.select.limitchars=480 is the  maximum number of characters allowed.
+warning.select.user=Lütfen bir kullanıcı seçiniz.
+warning.select.recipient=Please select at least one recipient.
+warning.select.categoryorlocation=Lütfen bir kategori ya da bir lokasyon seçiniz.
+warning.select.less.user=You can select up to 5 users simultaneously for reporting.
+warning.select.less.user=  Tek seferde en fazla 5 kullanıcı seçebilirsiniz.
+warning.no.user.found= Belirlenen lokasyon çevresinde de hiçbir kullanıcı bulunamadı.
+warning.no.locate.permission=Seçmiş olduğunuz kullanıcı(lar)nın yerini tespit etme iznine sahip değilsiniz.
+warning.no.route.foruser=There is no route for selected user.
+warning.routing.select.only.one.route=Sadece tek Güzergah  belirlemelisiniz.
+warning.routing.select.one.route=En az bir güzergah belirlemelisiniz.
+warning.delete.ban=This Ban canot be deleted because it is the only one.
+warning.select.message=Lütfen bir mesaj seçin.
+warning.select.action=Please select an action.
+
+fileUpload.Loading=Yükleniyor...
+
+
+#Information Messages=
+info.save=Kaydedildi
+info.delete=Silindi
+info.update=Güncellendi
+info.update.success= Güncelleme işleminiz başarılı bir şekilde tamamlanmıştır. 
+info.add.success=Ekleme işleminiz başarılı bir şekilde tamamlanmıştır
+info.delete.success=Silme işleminiz başarılı bir şekilde tamamlanmıştır.
+info.upload.success= Dosya yükleme işleminiz başarılı bir şekilde tamamlanmıştır.
+info.password.change=Şifrenizin süresi dolmuş ya da şifreniz yeni oluşturulmuş. şifrenizi değiştirmelisiniz.
+info.password.change.success=Şifreniz başarılı bir şekilde  değiştirilmiştir.
+ 
+ #tips 
+tip.user.telephone.format=Lütfen, ülke kodu içeren uluslararası formatı kullanın, örneğin, İngiltere için 44.  Eğer numara 0 ile başlıyorsa, 0’ı eklemeden  numarayı giriniz. , Örneğin, 441010101101
+tip.user.pwd.instruction=Şifre en az 8 karakter uzunluğunda olmalıdır ve büyük ve küçük harfler/ sayılar/ özel karakterler, örneğin, $&*!+ herhangi ikisini içermelidir. 
+tip.company.cdf=Lütfen kullanıcı başına aktifleştirilebilen özel alanları ekleyiniz.
+tip.user.agps= Bu özellik daha hassas konum bilgisi almak için GPS fonksiyonunu kullanacaktır.
+tip.privacy.company=Bu bildirim Locate portalında oturum açan kullanıcılara gösterilir. Devam etmeden önce kabul etmeleri gerekmektedir. 
+tip.companyPrivacy.statmentEditorFrame=Bu bildirim Locate portalında oturum açan kullanıcılara gösterilir. Devam etmeden önce kabul etmeleri gerekmektedir.
+ 
+username=Kullanıcı adı
+password= Şifre 
+securitycode=Güvenlik Kodu
+login.login=Oturum Aç
+login.failure=Geçersiz kullanıcı adı veya şifre.
+login.success=Oturum başarıyla açıldı.
+login.usernameOrPassword=Kullanıcı adınızı veya şifrenizi  unuttunuz mu?
+login.brute.force.attack.warning=Lütfen girmek istediğiniz sayıları metin alanına yazınız. 
+
+forgotPassword.enterMsisdnEmail={0} ya da {1}’inizi girin.
+msisdn=Cep telefonu numarası
+email=E-posta
+ 
+location.details=Ayrıntılar
+location.categories=Kategoriler
+location.permissions=İzinler
+location.admin=Yönetici 
+ 
+poi.name=İsim
+poi.country=Ülke
+poi.city=Şehir
+poi.street=Sokak 
+poi.houseNo=Hane No.
+poi.postcode=Posta Kodu
+poi.number=Numara
+poi.towncity=İl/ilçe
+poi.address=Açık Adres
+location.address=Adres
+poi.phone=Telefon
+poi.fax=Faks
+poi.image=Resim
+poi.language=Dil 
+poi.id=Kimlik No.
+poi.latitude=Enlem
+poi.longitude=Boylam.
+poi.email=E-posta
+poi.website=İnternet Sitesi
+poi.openHours=Çalışma Saatleri
+poi.from 
+poi.to=Kime
+poi.shortDescription=Kısa Tanımlama
+poi.longDescription=Uzun Tanımlama
+poi.fromYou =uzaklıkta
+poi.selectAtleastOne=Bir lokasyon belirlemelisiniz.
+ poi.editPoi=Lokasyonu Düzenle
+poi.radius=Metre cinsinden çevreyi katın
+poi.rating.reset=Sıfırla
+poi.position=Position
+
+location.permissions.selected={0}'ın İzinleri
+location.permissions.AllUsersAndGroups=Tüm kullanıcılar ve gruplar
+location.permissions.viewLocation=Lokasyonu Görüntüle
+location.permissions.rateLocation=Lokasyonu Değerlendir
+location.permissions.editPermissions=İzinleri Düzenle
+location.permissions.editDetails=Ayrıntıları Düzenle
+location.permissions.deleteLocation=Lokasyonu Sil
+location.permissions.shareLocation=Lokasyonu Paylaştır
+location.permissions.changeCategory=Kategoriyi Değiştir
+  
+ 
+category.personal=Kişisel
+category.enterprise=Kurumsal
+ 
+location.categories.createNewCategory=Yeni bir kategori oluştur
+location.categories.selectCategory=Kategori seç:
+  
+locationRequest.view= Lokasyon bilginizi görüntülemek istiyorum.
+locationRequest.for=için
+locationRequest.frequency=Sıklık
+locationRequest.restrict=Lokasyonu sınırlandır
+locationRequest.viewLocationList=Şimdi:1|Belirli bir zaman için:2|Her zaman:3
+locationRequest.always=Her zaman 
+locationRequest.specificTime=Belirli bir zaman için
+locationRequest.radioList=Tüm gün:1|İş saatleri:2
+locationRequest.minute=dakika(lar)
+locationRequest.hour=saat(ler)
+locationRequest.at=de
+locationRequest.to=Kime
+locationRequest.day=gün(ler)
+locationRequest.month=ay(lar)
+locationRequest.year=yıl(lar)
+locationRequest.last.updated=Son güncelleme {0}
+locationRequest.last.updated.useroffset=Kullanıcının yerel saatiyle {0}
+locationRequest.last.tracked=Son takip {0} önce
+locationRequest.ago=önce
+locationRequest.now=şimdi
+locationRequest.always=Her zaman 
+locationRequests.others=Diğerleri
+locationRequests.info.title=İstenen izin
+
+locationRequest.temporary.action.title = I would like to locate you on
+locationRequest.permanent.action.title = Choose visibility profile
+locationRequest.choose.visibility.profile.sub =You can choose a visibility profile to define when your location will be visible to {0}. (Note that {0} will be able to see the profile you select).
+
+locationReport.title= Lokasyon Raporu
+locationReport.report= Rapor
+locationReport.pdfreport=PDF Rapor
+locationReport.print=Yazdır
+locationReport.clearmap=Haritayı temizle
+locationReport.viewReport= Raporu görüntüle
+locationReport.viewTracking= Takibi görüntüle 
+locationReport.column.time=Süre
+locationReport.column.status=Durum
+locationReport.column.speed=Hız
+locationReport.column.direction=Yön
+locationReport.column.distance=Mesafe
+locationReport.column.street=Sokak 
+locationReport.column.area=Alan
+locationReport.column.city=Şehir
+locationReport.column.country=Ülke
+locationReport.total.distance=Toplam mesafe
+locationReport.total.time=Toplam süre
+locationReport.average.speed=Ortalama hız
+locationReport.mps=km/h
+locationReport.request.permission=İzin iste
+locationReport.permission.required=İzin istendi
+locationReport.location.notavailable={0} Lokasyon bilgisi mevcut değil.
+locationReport.column.latitude=Enlem
+locationReport.column.longitude=Boylam
+locationReport.column.radius=Yarıçap
+ 
+#categories 
+category.AllLocations=Tüm Lokasyonlar
+category.PersonalLocations=Kişisel Lokasyonlar
+category.EnterpriseLocations=Kurumsal Lokasyonlar
+category.RequestPermission=İzin İste
+category.SelectMultiple= Çoklu… seç
+category.CreateNew= Yeni… oluştur
+category.HideSelection=Çoklu Seçim
+category.ShareWith3rdParty=Üçüncü kişiler ile paylaştır.
+category.ExportToPdf=PDF’e gönder
+category.MoveToCategory=Kategoriye taşı
+category.AddressSearch=Adres Arama
+category.Number=Numara
+category.Street=Sokak 
+category.Postcode=Posta Kodu
+category.TownCity=İl/ilçe
+category.Go=Git
+category.Refresh=Yenile
+category.edit=Kategoriyi Düzenle
+category.selectAtleastOne=Bir kategori seçmelisiniz
+category.needPermissionBecause=İzin almam gerekiyor çünkü, 
+category.typeYourReason=Nedeninizi yazın
+category.findonmap=Find on map
+categoryOrPoi.actionList=Sil:1|3. tarafla paylaştır:2|PDF’e gönder:3|Yeni Kategori Ekle:4|Haritada Göster:5|Düzenle:7
+categoryOrPoi.actionList.1=Sil
+categoryOrPoi.actionList.2=Üçüncü kişiler ile paylaştır.
+categoryOrPoi.actionList.3=PDF’e gönder
+categoryOrPoi.actionList.4=Yeni Kategori Ekle
+categoryOrPoi.actionList.5=Haritada Göster
+categoryOrPoi.actionList.7=Düzenle
+ 
+#categoryAdmin 
+categoryAdmin.ChangeAdmin=Yöneticiyi değiştir
+categoryAdmin.CurrentAdmin=Şimdiki yönetici
+categoryAdmin.OtherUsersWithAdminRights=Yönetici haklarına sahip diğer kullanıcılar
+categoryAdmin.Message=Mesaj
+categoryAdmin.AddUsers=Kullanıcıları ekle 
+ 
+#categoryApi 
+categoryApi.title=Takip  & Locate API’ya erişebilen kişiler: 
+categoryApi.AddUsers=Kullanıcıları ekle 
+ 
+ 
+#categoryDetail 
+categoryDetail.editCategory=Kategoriyi düzenle
+categoryDetail.newCategory=Yeni kategori
+categoryDetail.CategoryName=Kategori adı
+categoryDetail.CategoryDescription=Tanımlama
+categoryDetail.CategoryIcon=Kategori Simgesi
+ 
+#categoryPermission 
+categoryPermission.AllUsersAndGroups=Tüm kullanıcılar ve gruplar
+categoryPermission.CategoryPermissions=Kategori izinleri
+categoryPermission.LocationPermissions=Yer izinleri			
+categoryPermission.EditName=Adı düzenle
+categoryPermission.EditPermissions=İzinleri Düzenle
+categoryPermission.ViewCategory=Kategoriyi Görüntüle
+categoryPermission.AllowAPIAccess=API erişimine izin ver
+categoryPermission.AddToCategory=Yerleri Kategoriye Ekle
+categoryPermission.RemoveFromCategory=Yerleri Kategoriden Çıkar
+ 
+ 
+#categorySharing 
+categorySharing.Sharing=Paylaşılıyor
+categorySharing.AllUsersAndGroups=Tüm kullanıcılar ve gruplar
+categorySharing.Search=Ara
+categorySharing.Update=Güncelle
+categorySharing.SharedWith=ile paylaşıldı
+ 
+#changeCategoryAdmin 
+changeCategoryAdmin.UsersGroups=Kullanıcılar /Gruplar
+changeCategoryAdmin.newAdmin=Yeni yönetici
+changeCategoryAdmin.addNewUser=Yönetici haklarına sahip yeni kullanıcı ekle
+ 
+#editApiInfo 
+editApiInfo.title=Track & Locate API’ya erişebilen kişiler
+ 
+#editEnterpriseCategoryDialog 
+editEnterpriseCategoryDialog.Details=Ayrıntılar
+editEnterpriseCategoryDialog.Permissions=İzinler
+editEnterpriseCategoryDialog.Admin=Yönetici 
+editEnterpriseCategoryDialog.API=API
+ 
+#editLocationDialog 
+editLocationDialog.Details=Ayrıntılar
+editLocationDialog.Categories=Kategoriler
+editLocationDialog.Permissions=İzinler
+editLocationDialog.Admin=Yönetici 
+ 
+#editPersonalCategoryDialog 
+editPersonalCategoryDialog.Details=Ayrıntılar
+editPersonalCategoryDialog.Sharing=Paylaşılıyor
+ 
+home.RecentLocations=Son lokasyonlar
+home.RecentPlaces=Son yerler
+home.todaysMeetings=Bugünkü Toplantılar
+home.RecentRoutes=Son  Güzergahlar
+ 
+#locations 
+locations.AllLocations=Tüm lokasyonlar
+locations.AddressSearch=Adres Arama
+locations.RecentLocations=Son Lokasyonlar
+locations.Number=Numara
+locations.Street=Sokak 
+locations.Postcode=Posta Kodu
+locations.TownCity=İl/ilçe
+locations.Region=Bölge
+locations.actionList=Sil:1|PDF’e gönder:3|Haritada Göster:4|Kategoriye taşı:5
+locations.uncategorized=Kategorize Edilmemiş 
+locations.location=Lokasyon
+locations.enteraddresspoi=Adres / Lütfen ilgilenilen yer bilgisini giriniz.
+locations.enterKeyword=Anahtar kelime girin, örneğin, pizza
+locations.enterComplexAdress=Sokak [hane numarası] [,Şehir] girin
+locations.advancedSearch=Gelişmiş Arama
+locations.simpleSearch=Basit Arama
+  
+  
+#poiList 
+poiList.PersonalLocations=Kişisel Lokasyonlar
+poiList.EnterpriseLocations=Kurumsal Lokasyonlar
+poiList.SearchResultFor=için arama sonuçları
+poiList.SelectMultiple= Çoklu… seç
+poiList.HideSelection=Seçimi Sakla
+poiList.actionList=Sil:1|3.tarafla paylaştır:2|PDF’e gönder:3|Kategoriye taşı:4|Haritada Göster:5
+#routing 
+routing.routing=Yönlendirme
+routing.from=Başlangıç
+routing.to=Bitiş
+routing.title=Araç boyutları ve malzemeleri
+routing.m=m
+routing.Ton=Ton
+routing.HazardousMaterials=Tehlikeli Maddeler
+routing.MySavedRoutes=Kaydedilmiş güzergahlarım
+routing.SaveRoute=Güzergahı  Kaydet
+routing.Name=İsim
+routing.ShareWith=ile paylaş
+routing.Duration=Süre
+routing.Date=Tarih
+routing.savedRoutesActionList=Haritada göster:1|Sil:2|Paylaştır:3
+routing.Go=Git
+routing.noRouteFound=Hiçbir Güzergah  Bulunamadı
+routing.directions.header={1} {2}’ye {0} Güzergah  tarifleri - {3} hakkında
+routing.adddestination=Hedef ekle
+routing.chooseVehicle=Araç seç
+routing.pedestrian=Yaya 
+routing.driving=Arabayla 
+routing.publictransportation=Toplu Taşımayla
+routing.noValidLocation={0} geçerli bir lokasyon bilgisi bulunmamaktadır.
+routing.travelMode=Seyahat Modu
+routing.km=km
+routing.mins.secs={0} dakika, {1} saniye 
+routing.hours.mins={0} saat, {1} dakika
+routing.routeType.driving=Arabayla 
+routing.routeType.pedestrian=Yaya 
+routing.empty.routeFrom=Çıkış Adresi alanı boş
+routing.empty.routeTo=Varış Adresi alanı boş
+routing.empty.saveRoute=To save this route please enter a name
+routing.empty.shareRoute=Users field is empty
+routing.includeTraffic=Trafik
+routing.select.typeInName=Lütfen bir isim yazınız.
+
+#tooltipmain 
+tooltipmain.Address=Adres
+tooltipmain.Telephone=Telefon
+tooltipmain.Fax=Faks
+tooltipmain.Email=E-posta
+tooltipmain.Website=İnternet Sitesi
+tooltipmain.Opening=Açılıyor
+tooltipmain.SaveLocation=Yeri kaydet
+tooltipmain.ShowNearestUsers=En yakın kullanıcıları göster
+tooltipmain.RouteFrom=Güzergah başlangıcı
+tooltipmain.RouteTo=Güzergah  sonu
+tooltipmain.AddDestination=Destinasyon Ekle
+tooltipmain.PlanAMeeting= Toplantı Planla
+tooltipmain.SendMessage=Mesaj Gönder
+tooltipmain.UpdateLocation=Lokasyonu Güncelle 
+tooltipmain.inviteMeeting=Toplantıya Davet Et
+tooltipmain.updatingLocation=Lokasyon Güncelleniyor
+tooltipmain.rate=Bu Lokasyonu Değerlendir
+tooltipmain.ratings=Değerlendirme(ler)
+tooltipmain.saveAssetsAsPlaces=Kullanıcıları yer olarak kaydet
+ 
+#tooltipshare 
+tooltipshare.title=Paylaş
+tooltipshare.emailOrSmsTextValue=Lütfen bir e-posta adresi ya da cep telefonu numarası yazınız.
+ 
+#welcome 
+welcome.Help=Yardım
+welcome.HelpLink=http://www.business.vodafone.com/site/locate/help/en/index.jsp
+welcome.Privacy=Gizlilik ve Kontrol
+welcome.PrivacyStatement=Privacy Statements
+welcome.PrivacyStatementLink=https://locate.vodafone.com/privacy/en/
+welcome.Account=Hesap ayarları
+welcome.Home=Ana Sayfa
+welcome.Login=Oturum Aç
+welcome.Places=Yerler
+welcome.FindOnMap=Haritada bul
+welcome.UsersAndGroups=Kullanıcılar ve gruplar
+welcome.LocationRequests=Lokasyon istekleri
+welcome.Routes= Güzergahlar
+welcome.myRoutes=Güzergahlarım
+welcome.Meetings=Toplantılar
+welcome.Calendar=Takvim
+welcome.Mail=Mesajlar
+welcome.Users=Kullanıcılar
+welcome.Hybrid=Harita+Uydu
+welcome.Traffic=Trafik
+welcome.Map=Harita
+welcome.Satellite=Uydu 
+welcome.MyLocation=Lokasyonum
+welcome.ShowUsers=Kullanıcılar
+welcome.Logout=Oturumu Kapat 
+welcome.myAccount = Hesabım
+welcome.clearMap=Haritayı Temizle
+welcome.adminLink=Yönetici 
+ 
+#admin 
+admin.Help=Yardım
+admin.Privacy=Gizlilik
+admin.Account=Hesap
+admin.CompanyManagement=Şirket Yönetimi
+admin.OpcoAdminUserManagement=Opco Yönetici Kullanıcı Yönetimi
+admin.ApplicationManagement=Uygulama Yönetimi
+admin.UserStatisticsManagement=Kullanıcı İstatistikleri Yönetimi 
+admin.DBObjectsManagement=DB Nesneleri Yönetimi
+admin.kpiManagement=Anahtar Performans Göstergeleri
+admin.UsersManagement=Kullanıcı Yönetimi
+admin.AssetManagement=Kullanıcı Yönetimi
+admin.GroupManagement=Grup Yönetimi
+admin.LocationManagement=Yer Yönetimi
+admin.privacyControl=Privacy & Control
+admin.delete.user.confirm=Seçili kullanıcıları silmek istediğinizden emin misiniz?	
+admin.delete.application.confirm=Seçili uygulamaları silmek istediğinizden emin misiniz?
+admin.delete.group.confirm=Seçili grupları silmek istediğinizden emin misiniz?
+admin.delete.company.confirm=Seçili şirketleri silmek istediğinizden emin misiniz?
+admin.delete.asset.confirm=Seçili kullanıcıları silmek istediğinizden emin misiniz?		
+admin.activate.user.confirm=Seçili kullanıcıları aktifleştirmek istediğinizden emin misiniz?
+admin.activate.group.confirm=Seçili grupları aktifleştirmek istediğinizden emin misiniz?
+admin.deactivate.user.confirm=Seçili kullanıcıların aktivasyonunu kaldırmak istediğinizden emin misiniz?
+admin.deactivate.group.confirm=Seçili grupların aktivasyonunu kaldırmak istediğinizden emin misiniz?
+admin.activate.user.title=Aktivasyonu onayla
+admin.userlist.column.state= Durum
+admin.userlist.column.msisdn=Cep Telefonu
+admin.userlist.column.name=İsim
+admin.assetList.column.model=Model
+admin.assetList.identification.number=Tanıtım Numarası
+admin.assetList.asset=Kullanıcı
+admin.assetList.assets=Kullanıcılar
+ 
+admin.deactivate.user.title= İptal işlemini onayla.
+admin.delete.user.title=Silme işlemini onayla.
+admin.move.title=Taşı
+ 
+#companyList 
+companyList.CompanyName=Şirket adı
+companyList.Status=Durum
+companyList.ContactNumber=Şirket Servis Yetkilisi GSM No
+companyList.ContactName=Şirket Servis Yetkilisi Adı
+companyList.ContactSurName=Şirket Servis Yetkilisi Soyadı 
+companyList.ContactEmail=Şirket Servis Yetkilisi e-posta
+companyList.Address=Adres
+companyList.City=Şehir
+companyList.ExpiryDate=Son geçerlilik tarihi
+companyList.MaxUsers=Maks. kullanıcı
+companyList.BAN=BAN
+companyList.EditCompany=Şirketi Düzenle
+companyList.NewCompany=Yeni Şirket
+companyList.Company=Şirket
+companyList.newBan=Yeni BAN
+companyList.banRequired=En az bir BAN tanımlamak zorundasınız
+companyList.History=Tarihçe
+companyList.ViewHistory=Tarihçeyi Görüntüle
+companyList.History.Description=Tanımlama
+companyList.DoC.acronym=RB
+companyList.DoC=Rıza Beyanı
+companyList.Doc.radioList=kullanılabilir:1|kullanılamaz:0
+companyList.Doc.enabled=Var
+companyList.Doc.disabled=Yok
+companyList.useProvisioning=Tedarik Kullan
+companyList.PrivacyManagement=Gizlilik Yönetimi
+companyList.enableUsers=Kullanıcıları Etkinleştir
+companyList.enableAssets=Kullanıcıları Etkinleştir
+companyList.AdminUserSessionTimeout=Oturum Zaman Aşımı (yönetici) :
+companyList.StandardUserSessionTimeout=Oturum Zaman Aşımı (std) :
+companyList.ageOfLocation=Lokasyonun Yaşı
+companyList.businessHours=Çalışma Saatleri 
+companyList.allowedIP=İzin verilen IP
+companyList.fields=Fields
+companyList.description=Description
+companyList.addnewfield=Add new field
+companyList.ageof=Age of location
+companyList.hours=Hour(s)
+companyList.days=Day(s)
+ 
+#groupEdit 
+groupEdit.editGroup=Grubu düzenle
+groupEdit.newGroup=Yeni grup
+groupEdit.GroupMembers=Grup üyeleri
+groupEdit.Permissions=İzinler
+groupEdit.Admin=Yönetici 
+groupEdit.GroupDetails=Ayrıntılar
+groupDetails.description=Tanımlama
+groupDetails.icon=Simge
+groupDetails.assetGroup=Kullanıcı Grubu
+ 
+#groupList 
+groupList.Group=Grup
+groupList.NewGroup=Yeni Grup
+ 
+ 
+#groupMembers 
+groupMembers.AllUsers=Tüm Kullanıcılar
+buttons.ChooseAvailableAndAdd=Kullanılabilir olanları seç ve ekle
+buttons.ChooseSelectedAndRemove=Seçili olanları seç ve çıkar
+buttons.AddAll=Tümünü ekle
+buttons.RemoveAll=Tümünü çıkar
+groupMembers.GroupMembers=Grup üyeleri
+groupMembers.confirm.changeGroup=Seçili kullanıcılar mevcut gruplarından çıkarılacak. Emin misiniz?
+ 
+#groupName 
+groupName.groupName=Grup Adı
+ 
+#groupPermission 
+groupPermission.AddEnterpriseLocations=Kurumsal  Lokasyon  ekle/düzenle
+groupPermission.CreateEnterpriseCategory=Kurumsal Kategori Oluşturma
+groupPermission.CreateEnterpriseLocations=Kurumsal lokasyon oluştur
+groupPermission.CreateEditUsers=Kullanıcı oluştur/düzenle 
+groupPermission.CreateEditGroups = Grup oluşturma/düzenleme 
+groupPermission.requestLocationAlways=Her Zaman Lokasyon iste
+groupPermission.RequestLocation=Lokasyon isteme
+groupPermission.RequestLocationReport=Lokasyon Raporu İsteme
+groupPermission.ViewEnterpriseLocations=Kurumsal Yer Görüntüleme
+groupPermission.CreateMeetings=Toplantı Oluşturma
+groupPermission.Routing=Yönlendirme
+groupPermission.SendMessages=Mesaj Gönderme
+userPermission.BeLocated=Yeri Tespit Edilebilir
+userPermission.viewAllGroups=Tüm grupları görüntüle
+
+#userEdit 
+userEdit.editUser=Kullanıcıyı düzenle
+userEdit.createUser=Yeni bir kullanıcı oluştur
+userEdit.FirstName=Adı
+userEdit.Surname=Soyadı 
+userEdit.Password=Yeni Şifre oluştur
+userEdit.ReTypePassword=Şifreyi  yeniden yazın
+userEdit.Email=E-posta
+userEdit.Mobile=Cep Telefonu
+userEdit.Username=Kullanıcı adı
+userEdit.Groups=Gruplar
+userEdit.Permissions=İzinler
+userEdit.WorkAddress=İş Adresi
+userEdit.Create.New.Group=Yeni bir grup oluştur
+userEdit.Timezone=Saat Dilimi
+userEdit.agpsEnabled=A-GPS Etkin
+userEdit.opcoAreaCode=Opco Alan Kodu
+userEdit.smsInterfaceEnabled=Sms Arayüzü Etkin
+userEdit.smsOptinNotification=Sms Seçme Uyarısı
+
+applicationEdit.editApp=Uygulamayı Düzenle
+applicationEdit.createApp=Yeni bir uygulama oluştur
+applicationEdit.appKey=Yeni Uygulama Anahtarı 
+applicationEdit.appName=Uygulama Adı
+applicationEdit.authorizedUrlsPattern=Uygulama Yetkili Url’lerinin Modeli
+applicationList.application=Uygulama
+applicationEdit.contactEmail=E-posta
+applicationEdit.contactSms=SMS
+
+#assetEdit 
+assetEdit.editAsset=Varlığı düzenle
+assetEdit.newAsset=Yeni Kullanıcı
+assetEdit.name=İsim
+assetEdit.model=Model
+assetEdit.identificationNumber=Tanıtım Numarası
+assetEdit.msisdn=GSM No
+assetEdit.allocatedTo=Tahsis Edildiği Kişi 
+assetEdit.permissions=İzinler
+assetEdit.activate=Aktifleştir
+assetEdit.group=Grup
+assetEdit.state=Durum
+ 
+ 
+#userList 
+userList.UserName=Kullanıcı Adı
+userList.User=Kullanıcı
+userList.NewUser=Yeni Kullanıcılar
+ 
+#assetList 
+assetList.asset=Kullanıcı
+ 
+#account 
+user.password=Şifre
+user.BusinessHours=Çalışma saatleri 
+user.Units=Birimler
+user.lang=Dil 
+user.Temperature=Sıcaklık 
+user.WorkAddress=İş adresi
+user.startHour=Başlangıç
+user.EndHour=Bitiş
+user.unitList=Miller:1|Metreler:2
+user.langList=İngilizce:en|Almanca:de|Romence:ro
+user.change=değiştir
+user.distance.unit= Metreler
+#change password 
+userCurrentPassword=Şimdiki şifre
+userNewPassword=şifre
+userRetypeNewPassword=Lütfen Şifreyi yeniden yazınız
+user.menu.details=Personal details
+user.menu.groups=Groups
+user.menu.timezone=Time zone
+user.details.firstname=First name
+user.details.surname=Surname
+user.details.email=Email
+user.details.mobile=Mobile
+user.details.changepassword=Change password
+user.details.newpassword=New password
+user.details.retypepassword=Retype password
+user.workAddress.required=Work address field is required.
+user.details.passwordupdated=Your password has been updated
+user.details.passwordrequired=New password field is required.
+user.details.retypepasswordrequired=Retype password field is required.
+user.details.passwordsnequal=Password and Retype password fields must be equal.
+user.businessHours.dayNames=Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
+user.msgs.updatedgroup=Your group changed successfully.
+user.msgs.updatedtimezone=Your time zone changed successfully.
+user.msgs.updatedbusinesshours=Your business hours changed successfully.
+user.msgs.updatedunits=Your unit changed successfully.
+user.msgs.updatedtemperature=Your temperature changed successfully.
+user.msgs.updatedworkaddress=Your work address changed successfully.
+user.msgs.updatedlanguage=Your language settings has been updated.
+
+ #locationPermission 
+locationPermission.AllUsersAndGroup=Tüm kullanıcılar ve gruplar
+locationPermission.CategoryPermissions=Kategori izinleri
+locationPermission.EditName=Adı düzenle
+locationPermission.EditPermissions=İzinleri düzenle
+locationPermission.Delete=Sil
+locationPermission.ViewCategory=Kategoriyi Görüntüle
+locationPermission.LocationPermissions=Lokasyon izinleri
+locationPermission.AddToCategory=Kategoriye ekle
+locationPermission.RemoveFromCategory=Kategoriden çıkar
+ 
+ 
+saveLocation.title=Lokasyonu Kaydet
+tooltipmain.latitude=Enlem
+tooltipmain.longitude=Boylam
+ 
+#users 
+user.SelectAll=Tümünü seç
+user.SelectNone=Hiçbirini seçme
+user.actionList=İzin İste:1|Yeni bir kullanıcı oluştur:2|Ayrıntıları görüntüle:3|Yeni bir grup oluştur:4|Grubu düzenle:5|Bir mesaj gönder:6|Raporu görüntüle:7|Kullanıcı(lar)yı Sil:8|Kullanıcıyı Düzenle:9|Yeni bir gruba taşı:10|Lokasyonumu paylaştır:11|Haritada göster:12
+user.actionList.1=İzin İste
+user.actionList.2=Yeni kullanıcı oluştur
+user.actionList.3=Ayrıntıları görüntüle
+user.actionList.4=Yeni grup oluştur
+user.actionList.5=Grubu düzenle
+user.actionList.6=Mesaj gönder
+user.actionList.7=Raporu görüntüle
+user.actionList.8=Kullanıcı(lar)yı Sil
+user.actionList.9=Kullanıcıyı Düzenle
+user.actionList.10=Yeni bir gruba taşı
+user.actionList.11=Lokasyon bilgimi paylaştır
+user.actionList.12=Haritada göster
+user.actionList.21=Delete Asset(s)
+user.actionList.22=Edit Asset
+user.actionList.tracking.request=Takip İsteği 
+user.request=İste
+user.moveToNewGroup=Yeni gruba taşı
+user.selectedUsers=Taşı
+user.ToGroup=Gruba
+user.peopleInThisLocation={0} in this location
+
+#places
+places.showonmap=Show on Map
+places.newCategory=New Category
+places.delete=Delete
+places.Pdf=Pdf
+places.Distance=Distance
+places.Duration=Duration
+ 
+messages.to=Alıcı
+messages.Subject=Konu
+messages.message=Mesaj
+messages.send=Gönder
+messages.charLeft=kalan karakter sayısı
+messages.newMessage=Yeni mesaj
+messages.selectAtleastOne=Bir kullanıcı seçmelisiniz
+messages.send.message=Mesaj gönder
+messages.allMessages=All Messages
+messages.Meetings=Meetings
+messages.SharedRoutes=Shared routes
+messages.backToList=&laquo; Back to list
+messages.noSubject= No subject
+messages.noBody= This message has no content
+messages.re = Re:
+messages.fwd = Fwd:
+messages.Delete=Delete
+messages.markAsUnread = Mark as Unread
+messages.markAsRead = Mark as Read
+
+ locationRequests.from=Gönderen:
+locationRequests.to=Alıcı:
+locationRequests.sent=Gönderilme zamanı:
+locationRequests.received=Alınma zamanı:
+locationRequests.incoming=Başkalarından gelen istekler
+locationRequests.outgoing=Sizden gelen istekler
+locationRequests.whoCanSeeYorLoc=Lokasyonunuzu Kim Görebilir
+locationRequests.locationRequest=İzin iste
+locationRequests.status=Durum
+locationRequests.incoming.message.day={0}
+locationRequests.name=İsim
+locationRequests.status=Durum
+locationRequests.pending=Beklemede
+locationRequests.accepted=Kabul edildi
+locationRequests.denied=Reddedildi 
+locationRequests.sendReminder=Bir hatırlatma gönder
+locationRequests.content.to=alıcı
+locationRequests.text.first=I would like to get permission to
+locationRequests.text.first.bold=create location reports
+locationRequests.text.second=Please be aware that
+locationRequests.text.third=&apos;s location will show in the report based on the hours specified in their visibility profile.
+
+locationRequest.viewLocationList=Şimdi:1|Belirli bir zaman için:2|Her zaman:3
+locationRequest.radioList=Tüm gün:1|İş saatleri:2
+locationRequest.minute=dakika(lar)
+locationRequest.hour=saat(ler)
+
+shareMyLocation.title=Lokasyon Bilgimi  Paylaştır
+shareMyLocation.duration=Süre
+shareMyLocation.viewLocationList=Her zaman:1|Belirli bir zaman için:2
+shareMyLocation.toUsers=Kadar
+
+inbox.inboxTitle=My inbox
+inbox.composeNewMessage.title=Yeni bir mesaj hazırlayın
+ 
+inbox.subject.location=Lokasyonunuzu görmek için istek
+inbox.subject.location.update=Lokasyonunuzu görüntüleme isteğiniz güncellendi.
+inbox.subject.meeting=Toplantı isteği: {0} 
+inbox.subject.admin=Yönetici isteği 
+inbox.subject.poi.enterprise=POI’yi kurumsal yapma isteği
+inbox.subject.share.location=Lokasyonu paylaştır
+inbox.subject.location.request.approved=Lokasyon isteğiniz onaylandı
+inbox.content.location.permissionReq={0} lokasyon bilginizi  görmek istiyor
+inbox.content.location.fromTo={0} {1}’den {2}’ye kadar lokasyon bilginizi  görmek istiyor 
+inbox.content.location.always={0} lokasyon bilginizi  her zaman görmek istiyor.
+inbox.content.location.reschedule=Bu Lokasyon İsteği güncellendi. Görüntülemek için bu linke tıklayın. 
+inbox.content.poi.enterprise={0} tanıtım numaralı ve {1} adlı poi türü kurumsal olarak değiştirildi.
+inbox.content.share.location=Lokasyon bilgim {1}'den {2}'ye kadar  sizinle  paylaşılacaktır. 
+inbox.content.share.always=Lokasyon bilgimi  sizinle her zaman paylaşılacaktır. .
+inbox.subject.request.permission=İzin isteği
+inbox.subject.meeting.request.approved=Toplantı isteği onaylandı
+inbox.subject.meeting.request.rejected=Toplantı isteği reddedildi
+inbox.search = Search
+inbox.searchMessages=mesajlarını
+inbox.searchInReq = incoming requests
+inbox.searchOutMessages = sent messages
+inbox.searchOutReq = sent requests
+inbox.searchTrash = deleted items
+
+inbox.paging.of=ara
+ 
+inbox.folders=Klasörler
+inbox.inbox=Gelen kutusu
+inbox.sent=Giden kutusu
+inbox.trash=Çöp Kutusu
+inbox.mail= Mesajlar ({0})
+inbox.inboxx= Gelen kutusu ({0})
+ 
+message.id=Kimlik No.
+message.userTo=Alıcı
+message.userFrom=Gönderen
+message.sendTime=Gönderilme Saati
+message.deletedTime=Silinme Saati
+message.subject=Konu
+message.noSubject=
+message.content=İçerik
+message.read=Okundu
+message.deleted=Silindi
+message.type=Yazın
+message.message=Mesaj
+message.deleteIcon=Sil
+message.trashIcon=Silinmiş mesajlar
+message.sendSms=SMS gönder
+message.send=Send
+message.cancel=Cancel
+message.to=To:
+message.save = Save
+
+message.tabletitle.from = From
+message.tabletitle.subject = Subject
+message.tabletitle.date = Date
+message.tabletitle.sent.to = Sent to 
+
+message.SelectAll=Tümünü seç
+message.SelectNone=Hiçbirini seçme
+message.Delete=Sil
+message.DeleteAll=Tümünü Sil 
+message.Reply=Yanıtla
+message.ReplyAll=Reply all
+message.Forward=Forward
+message.Messages=Messages
+message.IncomingRequests=Incoming requests
+message.markAsRead=Mark as read
+message.markAsUnread=Mark as unread
+message.allmessages=All messages
+message.sent.mex = Sent messages
+message.sent.req = Sent requests
+message.trash = Deleted items
+message.remove.from.trash = Back to inbox
+message.trash.moved = The message has been moved from the bin.
+message.sendReminder=Send a reminder
+message.sentTo=Sent to
+message.status=Status
+message.req.subject=Subject
+
+messageDetail.date=Date 
+messageDetail.from=Gönderen
+messageDetail.to=To
+messageDetail.sent=Gönderilme zamanı
+messageDetail.when=Ne zaman
+messageDetail.where=Nereden
+messageDetail.showMyETA=Tahmini varış zamanımı göster
+messageDetail.warnAboutETA=Toplantı Saatini Bana Bildir
+messageDetail.showMyLocation=Lokasyon Bilgimi  Göster
+messageDetail.requestAnswerStatus=İstek Yanıtının Durumu
+messageDetail.meetingStatus=Toplantı Durumu
+ 
+lbasGroup.name=grup adı
+ 
+#meetings 
+meetings.NewMeeting=Yeni toplantı
+meetings.title.create=Yeni bir toplantı oluştur
+meetings.title.edit=Toplantıyı düzenle
+meetings.location=Lokasyon
+meetings.time=Toplantı saati 
+meetings.start=Başlangıç
+meetings.end=Bitiş
+meetings.at=at
+meetings.subject=Konu
+meetings.details=Ayrıntılar
+meetings.attendees=Katılanlar
+meetings.invitedAttendees=Katılanları Davet Et
+meetings.invitedAttendees_1=Davet Edilen Katılanlar
+meetings.select.Location=Toplantı lokasyonu seç 
+meetings.viewSelectAddressList=Mevcut lokasyonlardan seçin:1|Adresi yazın:2
+meetings.viewShowEta=Tahmini varış zamanımı göster
+meetings.viewShowLocation=Lokasyon bilgimi  göster
+meetings.warnAboutETA=Tahmini varış zamanımı bildir
+meetings.select.typeInNameofLocation=Lütfenlokasyon adını yazın
+meetings.users=Kullanıcılar
+meetings.emails=E-postalar
+meetings.viewonmap=Haritada gör
+meetings.number=numara
+meetings.postcode=posta kodu
+meetings.street= sokak
+meetings.town_city=il/ilçe
+meetings.showmyETA=ETA’mı göster
+meetings.shoemyLocation=Lokasyon bilgimi  göster
+meetings.changeLocation=Lokasyonu değiştir
+meetings.planAMeeting= Toplantı Yerini Ayarla 
+meetings.searchagain=Yeniden ara
+meetings.meetingpoint=Toplantı Noktası
+meetings.meetingTime=Toplantı Saati 
+meetings.eta=ETA
+meetings.eta2=ETA: 
+meetings.refresh= Yenile
+meetings.refreshing= Yenileniyor
+meetings.change=Değiştir
+meeting.status.list=BEKLEMEDE:0|KABUL EDİLDİ:1|REDDEDİLDİ:2
+meetings.eventName=Örnek Toplantı İsteği
+meetings.alarm_description= Toplantı Alarmı Tanımlaması
+meetings.deleted= -Toplantı  iptal edilmiştir.
+meetings.change=Değiştir
+meetings.Today=Bugünkü Toplantılar
+meetings.searching=Aranıyor...
+meetings.NoResults=Sonuç yok
+meetings.viewSelectAddressList=Mevcut lokasyonlardan seçin:1|Adresi yazın:2
+meetings.route.wait=Yükleniyor...
+meetings.conflict=Bu toplantı diğer toplantılarınızla çakışıyor. Devam etmek istediğinizden emin misiniz?
+meetings.catchwarn= Toplantıya  yetişebilmek için hemen hareket etmeniz gerekmektedir. 
+meetings.allDay=Tüm gün
+meetings.delete.alert = Are you sure you want to delete {0} ? A message will be sent to all attendees.
+ 
+confirmation.decline=Bu isteği reddederseniz, toplantı katılımcı listesinden çıkarılacaksınız. 
+confirmation.delete.title=Sil
+confirmation.delete=Bilgiler  silinecek. Emin misiniz?
+confirmation.delete.user=  will be deleted. Are you sure?
+confirmation.resetpassword=Yeni bir şifre  üretilecek ve SMS aracılığıyla kullanıcıya gönderilecek. Emin misiniz?
+confirmation.resetAdminpassword=Yeni bir şifre  üretilecek ve şirketin yönetici kullanıcısına SMS ve e-posta aracılığıyla gönderilecek. Emin misiniz?
+ 
+privacyAndControl.myVisibility=Görünürlüğüm
+privacyAndControl.myAvailability=My availability
+privacyAndControl.whoCanLocateMe=Yerimi kim tespit edebilir?
+privacyAndControl.whomICanLocate=Kimin yerini tespit edebilirim?
+privacyAndControl.whoHasLocatedMe=Yerimi kim tespit etti?
+privacyAndControl.privacyStatements=Gizlilik bildirimleri
+privacyAndControl.apiAccess=API erişimi
+privacyAndControl.cancel.approval.title=Onay İptal Edildi
+privacyAndControl.timeExceptions=Time off exceptions
+privacyAndControl.people=People 
+privacyAndControl.locating=Locating
+privacyAndControl.reporting=Reporting
+privacyAndControl.whenCanLocateMe=When can they locate me
+privacyAndControl.whenICanLocate=When I can locate them
+privacyAndControl.filterBy=Filter by
+privacyAndControl.requestKind=Kind of request
+privacyAndControl.search=Search
+privacyAndControl.view=View
+privacyAndControl.request.all=All
+privacyAndControl.request.permanent=Permanent
+privacyAndControl.request.temporary=Temporary
+
+privacyAndControl.whoCanLocateMe.EditPermission=Edit permission
+privacyAndControl.whoCanLocateMe.AllowReports=Allow report creation
+privacyAndControl.whoCanLocateMe.TempVis=Temporary visibility
+privacyAndControl.whoCanLocateMe.VisProf=Visibility profile
+ 
+privacy.statement.vodafone=Vodafone gizlilik bildirimi
+privacy.statement.company=Şirket gizlilik bildirimi
+privacy.dontshow=Bunu tekrar gösterme
+ 
+messageDetail.PENDING=BEKLEMEDE
+messageDetail.ACCEPTED=KABUL EDİLDİ
+messageDetail.DENIED=REDDEDİLDİ 
+messageDetail.TIMEOUT=ZAMAN AŞIMI
+ 
+calendar.dayNamesShort=Paz,Pzts,Sal,Çar,Per,Cum,Cts
+calendar.dayNames=Pazar,Pazartesi,Salı,Çarşamba,Perşembe,Cuma,Cumartesi 
+calendar.monthNames=Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık
+calendar.monthNamesShort=Oc,Şub,Mar,Nis,May,Haz,Tem,Ağ,Ey,Ek,Kas,Ara
+
+calendar.create.new.event = Create a new event
+calendar.edit.event = Edit event
+ 
+#pztesi,sali,carsamba,persembe,cuma,cmtesi,pazar 
+calendar.workingHours=09:00-18:00|09:00-18:00|09:00-18:00|09:00-18:00|09:00-18:00|||
+ 
+calendar.month=ay
+calendar.day=gün
+calendar.week=hafta
+calendar.showOnMap=Etkinlikleri haritada göster
+ 
+whoCanLocateMe.cancelApproval=onayı iptal et 
+whoCanLocateMe.approveMsgStart=Onayladınız
+whoCanLocateMe.approveMsgEnd=sizi… arasında takip etmek için
+whoCanLocateMe.approveMsgAlways=sizi her zaman takip etmek için
+whoCanLocateMe.and=ve
+whoCanLocateMe.searchForAUser=Bir kullanıcıyı ara
+ 
+whomICanLocate.cancelApproval=onayı iptal et 
+whomICanLocate.approveMsgStart=Takip etme talebiniz onaylandı
+ 
+whomICanLocate.between=arasında
+ 
+whomICanLocate.always=her zaman
+whomICanLocate.and=ve
+whomICanLocate.searchForAUser=Bir kullanıcıyı ara
+ 
+dashboard.usersAroundYou=Etrafınızdaki kullanıcılar
+dashboard.todaysJobs=POI Kategorisi Paneli
+dashboard.todaysEvents=Bugünkü etkinlikler
+dashboard.mail.noMessages=Yeni mesaj yok.
+ 
+ 
+editVisibility.addException=İstisnaları ekle
+editVisibility.addTimeException.title=Zaman istisnası ekle
+editVisibility.addTimeException.text=Bir istisna ekleyerek, genel ayarlarınızı değiştirmek zorunda kalmadan belirli bir süre için görünürlüğünüzü değiştirebilirsiniz.
+editVisibility.addTimeException.reason=Neden?
+editVisibility.addTimeException.optional=iste bağlı 
+editVisibility.statusList=görülebilir,görülemez
+editVisibility.status=Durum
+editVisibility.editException.title=İstisnayı düzenle
+editVisibility.info= Diğer kullanıcılar tarafından görüntülenmek  istediğiniz saat(ler)in ilgili hücresine sürükleyin. Görünürlük ayarını kaldırmak için lütfen tıklayınız.
+editVisibility.visible= Lokasyon bilgisi görüntülenebilir
+editVisibility.notvisible=Görülemez
+editVisibility.activeVisibilityProfiles=Active visibility profiles
+editVisibility.followingProfiles=These profiles define your location as available NOW.
+editVisibility.followingProfiles.line2=You can change your status at any time without adjusting your profile(s):
+editVisibility.followingProfiles.line3=Click on the status by your name and change it. Your choice is effective immediately. Your profile doesn’t change
+editVisibility.followingProfiles.line4=Add a time off exception. These take precedence over all your profile(s)
+editVisibility.seeLocation.people=people can view your location
+editVisibility.seeLocation.person=person can view your location
+editVisibility.seeLocation.noUser=No one can view your location
+editVisibility.seeLocation=People can view your location
+editVisibility.seeLocationNow=People can see you now
+editVisibility.view=View
+editVisibility.timeOffExceptions=Time off exceptions
+editVisibility.defineException=Define a "time off" exception in order to automatically hide your location.
+editVisibility.exceptionEffect=Exceptions take effect on all visibility profiles simultaneously.
+editVisibility.exception.table.name=Name
+editVisibility.exception.table.from=From
+editVisibility.exception.table.to=To
+editVisibility.exception.Add=Add
+editVisibility.exception.edit=Edit
+editVisibility.exception.Cancel=Cancel
+editVisibility.exception.addException=exception
+editVisibility.exception.timePeriod=Define a time period for your location to be hidden
+editVisibility.alert.delete=Are you sure you want to delete the exception
+editVisibility.alert.deleteTitle=Delete exception
+editVisibility.alert.deleteUser=Remove permission of
+
+myVisibility.and=ve
+myVisibility.header= Lokasyon bilgisi  görüntüleme ayarlarım
+myVisibility.on=Tarihinde
+myVisibility.between=boyunca
+myVisibility.noTimeSetting=Sadece bir lokasyon isteğini kabul ettikten sonra lokasyonunuz tespit edilebilir. O zaman, herhangi bir lokasyon bilgisi görüntüleme  ayarı tanımlamadığınız için yeriniz her zaman tespit edilebilir.
+myVisibility.define.timeSetting= Lokasyon bilgisi  görüntüleme ayarlarınızı tanımlayarak başkalarının hangi saatlerde yerinizi tespit edebileceğini tanımlamış olursunuz.
+myVisibility.define.visibility.settings= Lokasyon bilgisi  görüntüleme ayarlarınızı tanımlayın
+myVisibility.update.visibility.settings= Lokasyon bilgisi  görüntüleme ayarlarınızı güncelleyin
+myVisibility.addException.detail=Bir istisna ekleyerek, varsayılan ayarlarınızı değiştirmeden, Lokasyon bilgisi  görüntüleme  aktif durumunuzu belirli bir süre için pasif duruma çekebilirsiniz. 
+myVisibility.notification.sms.detail=Lokasyon bildirimlerini SMS ile alın
+myVisibility.existentTimeSetting=Varsayılan Lokasyon bilgisi  görüntüleme ayarlarınız yerinizin tespit edilebileceği anlamına geliyor:
+myVisibility.exception.calendar.title=Özel Faaliyet – Lokasyon bilgisi  görüntüleme İstisnası 
+myVisibility.switchTo.businessHoursView=İş saatleri Lokasyon bilgisi  görüntüleme  durumuna geç
+myVisibility.switchTo.defaultView=7/24 Lokasyon bilgisi  görüntüleme  durumuna geç
+myVisibility.defineVisibilityConfiguration=Create and manage your visibility profiles. People that request permission to locate you can be assigned to one of your profiles.
+myVisibility.seeLocation.NoUser=No one can see your location during the hours below
+myVisibility.seeLocation.oneUser=person can view your location during the hours below
+myVisibility.seeLocation= People can view your location during the hours below
+myVisibilityDeleteProfile=Delete Profile
+myVisibility.visibilityHours=Location visibility hours
+myVisibility.removePermission=Remove permission of
+myVisibility.removeIf1=If you remove this permission
+myVisibility.removeIf2=will no longer be able to
+myVisibility.locateYou=locate you
+myVisibility.produceReports=produce location reports on you
+myVisibility.addPermission=Add a new visibility profile
+
+whoHasLocateMe.locatingCountHeader=Geçmişte yeriniz {0} kez tespit edildi
+whoHasLocateMe.message=mesaj
+whoHasLocateMe.user=kullanıcı
+whoHasLocateMe.time=süre
+ 
+privacy.sendMeUpdatePeriodList=Günlük:0|Haftalık:1|Aylık:2
+privacy.sendMeUpdateCheckbox1=Yerimi kimin tespit ettiğini
+privacy.sendMeUpdateCheckbox2= olarak bana gönder.
+privacy.sendMeMailCheckbox=Bana gelen kutusundaki mesajların listesini gönder
+ 
+privacy.notifyMeEveryNthLocation0=Her…da Bana Haber Ver 
+privacy.notifyMeEveryNthLocation3=Her… İçin Bana Haber Ver 
+privacy.notifyMeEveryNthLocation1=1|2|3|4|5|10|15  
+privacy.notifyMeEveryNthLocation2=yerini tespit ediyor 
+privacy.donotnotifyMe=Şu anda herhangi bir Lokasyon bildirme ayarınız yok.
+ 
+import.user.title=Kullanıcı al
+import.poi.category.title=POI ve/veya Kategori al
+
+processing.text.message=İşleniyor… Lütfen bekleyin. 
+
+editor.statementTooLong=Bildirim çok uzun.
+error.editor.statementRequired=Bildirim gerekli.
+
+uploadImage.limitInfo=Not: Yükleme sınırı maksimum 512 KB ve desteklenen görüntü türleri jpg, gif, png.
+
+regions.all=Andorra:AD|Hırvatistan:HR|Andorra:AD|Arnavutluk:AL|Avusturya:AT|Bosna-Hersek:BA|Belçika:BE|Bulgaristan:BG|Belarus:BY|İsviçre:CH|Sırbistan-Karadağ:RS|Çek Cumhuriyeti:CZ|Almanya:DE|Estonya:EE|İspanya:ES|Finlandiya:FI|Fransa:FR|Cebelitarık:GI|Büyük Britanya UK:GB|Yunanistan:GR|Macaristan:HU|İrlanda:IE|İtalya:IT|Lihtenştayn:LI|Litvanya:LT|Lüksemburg:LU|Letonya:LV|Monako:MC|Karadağ:ME|Moldova:MD|Makedonya:MK|Hollanda:NL|Norveç:NO|Polonya:PL|Portekiz:PT|Romanya:RO|İsveç:SE|Slovenya:SI|Slovak cumhuriyeti:SK|San Marino:SM|Türkiye:TR|Vatikan Şehir Devleti:VA|Ukrayna:UA
+ 
+poi.ratings=Değerlendirme:
+ 
+trafficInfo.freeflowing=Akıcı
+trafficInfo.sluggish=Ağır işliyor
+trafficInfo.slowstopped=Yavaş/Durdu
+trafficInfo.Closed=Kapalı
+ 
+dialog.delete=Sil
+dialog.error=Hata
+dialog.info=Bilgi
+dialog.warn=Uyar
+ 
+buttons.list=Listele
+ 
+userStatisticList.Start=Başlangıç
+userStatisticList.End=Bitiş
+userStatisticList.opco=Operatör
+userStatisticList.companyList=Şirket
+userStatisticList.tariffList=Tarife
+userStatisticList.userList=Kullanıcı
+ 
+ 
+lbasUser.opcoAreaCode=Opco Alan Kodu
+lbasUser.companyName=Şirket Adı
+lbasUser.companyContactEmail=Şirket İrtibat E-Postası
+lbasUser.tariff=Tarife
+lbasUser.msisdn=Msisdn
+lbasUser.activeText=Durum
+lbasUser.usersProvisionedCount=Tedarik Edilmiş Kullanıcı
+lbasUser.usersDeProvisionedCount=Tedarik Edilmemiş Kullanıcı
+lbasUser.locationRequestsCount=Lokasyon İstekleri
+lbasUser.createdPoiCount=Oluşturulmuş Poi
+lbasUser.createdMeetingCount=Oluşturulmuş Toplantı
+lbasUser.activeUsersCount=Aktif Kullanıcılar
+lbasUser.username=Kullanıcı Adı
+
+no.results.text= Yapılan işleme ait hiçbir sonuç bulunamamıştır.
+
+no.available.route= Seçmiş olduğunuz lokasyona ait güzergah  bilgisi bulunmamaktadır. 
+ 
+nearestUsers.dialog.title=Tüm kullanıcıları göster
+nearestUsers.dialog.first=Bu noktadan itibaren…km yarıçaplı 
+nearestUsers.dialog.second=alan içindeki tüm kullanıcıları göster
+ 
+import.asset.title=Varlık Al
+users.at.same.location=Lokasyondaki kullanıcılar
+closer.users.dialog.name=Daha Yakındaki Kullanıcılar 
+ 
+import.user.text=Kullanıcıları yüklemek üzere şablon dosyasını almak için lütfen tıklayınız
+import.asset.text=Kullanıcıları yüklemek üzere şablon dosyasını almak için lütfen tıklayınız
+import.poi.category.text=POI’ları yüklemek üzere şablon dosyasını almak için lütfen tıklayınız
+ 
+company.ageOfLocationDayList=13|14
+ 
+company.label.cdfHeader=Lüten kendi kişiselleştirilebilir alanınızı ekleyiniz.
+company.label.cdfDesc=Tanımlama
+
+user.telephone.format=include international prefix e.g: 44xxxxxxxxxx
+user.cdf=Kişiselleştirilebilir Alanlar
+
+user.pwd.instruction=Passwords must be at least 8 characters and contain 2 of the following type: upper and lower case letters/ numbers/ special characters e.g. $&*!+
+
+location.tooltip.short.north=N
+location.tooltip.short.east=E
+location.tooltip.accuracy=Hassasiyet
+ 
+searchDBObjects.opco=Operatör
+searchDBObjects.companyList=Şirket
+searchDBObjects.dataFrom=Bilgi Kaynağı
+searchDBObjects.id=Kimlik No.
+searchDBObjects.name=İsim
+searchDBObjects.email=E-posta
+searchDBObjects.msisdn=MSISDN
+
+viewDBObjectsAttr.viewDetails=View details
+
+
+#NEW
+welcome.Assets=Assets
+welcome.Geofences=Geofences
+welcome.ControlPanel=Control Panel
+
+category.recents=Recents
+
+dialog.title.success=Success
+dialog.title.error=Error
+dialog.errormessage.user.selectone=Please, select only one user
+dialog.errormessage.user.noselected=Please select a user
+dialog.errormessage.max480 = Message content field can be max 480 characters (3 SMS).
+
+#dialog.title.max5users=You can locate a maximum of 5 people simultaneously.
+#dialog.errorMessage.max5users=You have selected more then five people, please remove some and the locate action will become available to you.
+dialog.title.max5users=You can locate a maximum of 5 devices simultaneously. 
+dialog.errorMessage.max5users=
+
+dialog.message.locating=Locating
+dialog.message.please.wait=Please wait...
+dialog.message.item.located=Successfully located
+dialog.label.close=Close
+
+dialog.locating.title=Locating in progress
+
+message.sent=Your message has been sent
+message.single.moved.trash =The message has been moved to the Bin.
+message.multiple.moved.trash = Messages have been moved to the Bin.
+message.multiple.deleted = messages have been deleted
+message.single.deleted = The message has been deleted
+message.title.delete = Delete message(s)
+messages.alert.delete = Are you sure you want to permanently delete the selected message(s)
+message.reply =Reply
+message.forward =Forward 
+
+mesage.selected.users=selected
+mesage.selected.assets=selected 
+
+location.group.update.success=New place category added.
+location.users.in.same.location=users in this location
+location.save.success=Location saved!
+
+users.allPeople=All People 
+users.allAssets=All Assets
+users.locatable=Locatable 
+
+user.action.createReport=Create Report
+
+globalsearch.request_permission=You can't perform this action. Click to request permission.
+globalsearch.showonmap=Locate
+globalsearch.notlocatable=Not locatable
+globalsearch.noResults=No Results
+globalsearch.loading=Loading...
+globalsearch.requestPermission=Request
+globalsearch.pendingRequest=Pending
+
+globalsearch.category.Users=People
+globalsearch.category.Assets=Assets
+globalsearch.category.Places=Places
+globalsearch.category.Routes=Routes
+globalsearch.category.Addresses=Addresses
+
+
+userEdit.companyName=Company Name
+userEdit.companyAddress=Company Address
+
+warning.cat.locate.user=No permission to locate
+
+tooltip.getDirections=Get Directions
+tooltip.setupMeeting=Setup Meeting
+tooltip.savePlace=Save Place
+tooltip.showNearestUsers=Show Nearest Users
+
+item.locatiing=Locating...
+
+reportRequest.title = Request permission
+
+dialog.select.one = Please select at least one element
+
+#UPDATED
+locations.RecentLocations=Recents
+lbasUser.companyName=Company
+warning.no.locate.permission=To locate the following people or devices permission is required.
+
+assetsMessageTooltip=You can not send messaege to assets.
+
+date.Today=Today
+avability.Requests=requests
+avability.noProfileFound=No profile found
+avability.workingTime=Working Time
+avability.fullTime=Full Day
+
+avability.deleteProfile.headline=delete the profile
+avability.deleteProfile.message1/2=There are
+avability.deleteProfile.message2/2=people associated with the profile.
+avability.deleteProfile.option1=Assign them with a different profile
+avability.deleteProfile.option2=Remove permission from these people
+avability.deleteProfile.option2.subtext=(both permission to locate and to create report)
+avability.deleteProfile.choose=Please choose one of the following options:
+avability.error.emptyField=please select a name
+avability.error.overCharacter=Profile name can not be longer than 20 characters
+avability.error.inUse=the name is already used for a different profile
+
+editVisibility.alert.editTitle=Edit permissions
+editWhoCanLocate.alert.delete=If you remove this permission, user will no longer be able to:
+
+locationReports.PopUp.title=Location Reports
+locationReports.PopUp.text=Location reports show your location over a time duration like in the example below.
+
+locationReportsPopUp.secondImage.part1=Visibility profiles allow users to define when their location will be available to others.
+locationReportsPopUp.secondImage.part2=To edit your visibility profiles go to:
+locationReportsPopUp.secondImage.part3=Availability>Visibility profiles
+
+place.moreinfo=More info
+place.share=Share
+place.edit=Edit
+
+route.ShareRoute=Share route
+
+#New labels - 23/07/2012
+admin.list.Import=Import
+admin.list.AddUser=Add user
+admin.list.Export=Export
+admin.list.OptionStatus=Option status
+admin.list.IDNumber=ID number
+admin.list.MobileNo=Mobile No.
+admin.list.assetsFound={0} assets found, displaying {1} to {2}
+admin.list.usersFound={0} users found, displaying {1} to {2}
+
+#New labels - 26/07/2012
+admin.list.export.excel=Export Excel
+admin.list.export.csv=Export CSV
+admin.list.export.xml=Export XML
+admin.list.export.pdf=Export PDF
+admin.list.selectData=Please select data to provide this action.
+admin.list.activateUsers=Activate users
+admin.list.disableUsers=Disable users
+admin.list.fileformat=File Format:
+companyList.defaultVisibilityProfile=Default Visibility profile (Company working hours)
+
+#New labels - 27/07/2012
+admin.list.active=Active
+admin.list.inactive=Inactive
+admin.list.OptinStatus=OptIn Status
+
+#New labels - 30/07/2012
+admin.list.AddAsset=Add asset
+admin.list.AddGroup=Add group
+admin.list.AddGroupAsset=Add asset group
+admin.list.groupsFound={0} groups found, displaying {1} to {2}
+admin.list.group.activate=Activate
+admin.list.group.disable=Disable
+
+request.permission.start=Start
+request.permission.end=End
+request.permission.hours=Hours
+request.permission.to=To
+request.permission.daily=(daily)
+request.permission.option1=View your location and create location reports
+request.permission.option2=View your location
+request.permission.permissionType=Permission type
+request.permission.warning1=(Please be aware that
+request.permission.warning2=location will be available during the hours specified in their visibility profile)
+
+#New labels - 31/07/2012
+admin.list.importUsers=Import users
+admin.list.importAssets=Import assets
+admin.list.downloadLink=Download {0}
+
+#New labels - 08/08/2012
+admin.list.placesFound={2} place category(s) found, showing {0} - {1}
+admin.list.pages=Page {0} of {1}
+
+routing.pedestrian=Walk
+routing.driving=Drive
+session.expired=You have logged out successfully.
+
+#New labels - 15/10/2012
+myVisibility.exception.active=Active Exception -
+myVisibility.exception.active.message=Your status is set to "not visible" because of an Active Exception
+notifications.title=Notifications
+notifications.text=You can be notified when you have been located and by whom.
+notifications.email.text1=Send me
+notifications.email.text2=updates from my Locate inbox
+notifications.sms.text1=Notify me by SMS every
+notifications.sms.text2=time someone locates me
+notifications.daily=Daily
+notifications.weekly=Weekly
+notifications.monthly=Monthly
+
+#privactStatement
+privactStatement.box1.header=Vodafone privacy statement
+privactStatement.box2.header=Company privacy statement
+privactStatement.box.message=Do not display these statements at login.
+privactStatement.privacyStatementMenu.line1=Vodafone Privacy Statements
+privactStatement.privacyStatementMenu.line2=Company Privacy Statements
+
+firstTimeLogin.header=First time login
+firstTimeLogin.message=Please change your password
+upload.error.message=Please upload a file
+
+permission.required.messages=Permission required to send messages.
+permission.required.report=Permission required to create report
+
+### new Labels 19/2/2013
+can.be.tracked=Can be tracked
+can.be.track.frequency=Tracking frequency
+permission.required.request=Permission required to request permission.
+
+location.dialog.locatingNear=Locating users nearby...
+location.dialog.locating=Locating...
+location.dialog.pending=Pending Requests
+location.dialog.permission=Permission Required
+location.dialog.error=Location failed for:
+location.dialog.error.message=The user(s) who could not be located may have just changed their visibility status. Please click the system refresh button under the Users or Assets list to view the most recent status.
+reminder.sent=Reminder sent.
+reminder.noUser=You can not send reminder to this user(s).
+something.went.wrong=Sorry, something went wrong. Please try again.
+message.delete.event=Delete Event
+whoLocatedMeNotify.text1=Send me
+whoLocatedMeNotify.text2=updates on who has located me.
+calendar.questionMark=Please add the email addresses of non-Locate users to invite them.
+working.hours.error=Please check: the start time must be earlier than the end time.
+asset.Error.message=Sorry, you don't have permission.
+warning.youHave.rights=Users that you asked for you have permissions.
+select.a.category=Select a category
+
+changeTitle.map=Map
+changeTitle.message=Inbox
+changeTitle.calendar=Calendar
+changeTitle.privacy=Availability
+changeTitle.account=My Account
+changeTitle.admin=Admin
+changeTitle.PrivacyStatements=Privacy Statements
+location.tooltip.person.rate=ratings
+tooltip.min.ago=min ago
+tooltip.hour.ago=hour ago
+tooltip.hours.ago=hours ago
+tooltip.day.ago=day ago
+tooltip.days.ago=days ago
+
+category.not.be.deleted=The Uncategorised folder is a system folder and can''t be deleted.
+cant.edit.privacyProfile1=Profile Working Hours is not editable
+cant.edit.privacyProfile2=Create a new profile to change your visibility hours
+

@@ -1,0 +1,58 @@
+.olFramedCloudPopupContent {
+  max-width: none !important;
+}
+.toolTipContainer {
+  width: 440px;
+  height: 340;
+  padding: 1em;
+  line-height: 1.2em;
+}
+.toolTipHeader {
+  border-bottom: 1px solid #CCCCCC;
+  font-size: 18px;
+  line-height: 2em;
+  margin-bottom: 1em;
+  width: 100%;
+  overflow: hidden;
+}
+.toolTipHeader .toolTipLeft {
+  float: left;
+  font-weight: bold;
+  width: 80%;
+}
+.toolTipHeader .toolTipRight {
+  float: right;
+}
+.toolTipContent {
+  overflow: hidden;
+}
+.toolTipContent ul.toolTipLeft {
+  float: left;
+  width: 60%;
+}
+.toolTipContent ul.toolTipRight {
+  float: left;
+  width: 30%;
+}
+.toolTipContent ul.toolTipRight li a {
+  text-decoration: underline !important;
+  color: #333 !important;
+}
+.toolTipContent ul.toolTipBottom {
+  clear: both;
+  overflow: hidden;
+  padding-top: 2em;
+  text-align: center;
+}
+.toolTipContent ul.toolTipBottom li {
+  display: inline;
+  list-style-type: none;
+}
+/* Multiple users tooltip */
+#multipleUsersToolTipTemplate .toolTipHeader {
+  margin-bottom: 0 !important;
+}
+#multipleUsersToolTipTemplate #tooltipContent ul li {
+  line-height: 30px;
+  border-bottom: 1px solid #ccc;
+}

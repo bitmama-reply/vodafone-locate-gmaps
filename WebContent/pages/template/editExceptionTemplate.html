@@ -1,0 +1,82 @@
+<!--
+        <div id="editExcp-form" style="display: none;">
+            <form>
+                <h1 class="excpTitle"><#= $.i18n.prop('editVisibility.exception.edit') #> <#= $.i18n.prop('editVisibility.exception.addException') #> </h1>
+                <p class="excpText"> <#= $.i18n.prop('editVisibility.exception.timePeriod') #> </p>
+
+                <label for="name" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.name') #>:</label>
+                <input type='text' id='nameEdit' class="nameInput" maxlength="50" size="40" />
+
+
+                <div id="exceptionTimeEdit">
+                    <ul>
+                        <li>
+                            <label for="dateFromEdit" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.from') #>:</label>
+                            <input type="text" id="dateFromEdit" class="dateInputFromEE" maxlength="15" size="13" />
+                            <input type='text' id='timeFromEdit' class="timeInput" maxlength="15" size="7"/>
+                        </li>
+
+                        <li>
+                            <label for="dateToEdit" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.to') #>:</label>
+                            <input type="text" id="dateToEdit" class="dateInputToEE" maxlength="15" size="13"/>
+                            <input type='text' id='timeToEdit' class="timeInput" maxlength="15" size="7"/>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="button_class dialog_action">
+                        <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button"><span style="line-height:2.5em !important; font-weight: bold; " class="ui-button-text"><#= $.i18n.prop('buttons.edit') #></span></button>
+                        <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+                    </div>
+
+            </form>
+        </div>
+
+-->
+
+
+
+
+<div id="editExcp-form">
+  <form>
+    <h1 class="excpTitle"><#= $.i18n.prop('editVisibility.exception.edit') #> <#= $.i18n.prop('editVisibility.exception.addException') #> </h1>
+    <p class="excpText"> <#= $.i18n.prop('editVisibility.exception.timePeriod') #> </p>
+    
+    <label for="name" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.name') #></label>
+    <input type='text' id='name' class="nameInput" maxlength="50" size="40" />
+        
+    <div id="exceptionTimeEdit">
+      <ul>
+        <li>
+          <div class="inputs clearfix">
+            <label><#= $.i18n.prop('meetings.start') #></label>
+            <input type="text" id="start-date" name="" maxlength="40"  class="inputText date vldRequired" value="" />
+            <div class="time-wrap" id="start-time">
+              <input class="disabled-input inputText" value="" />
+              <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+              <span>:</span>
+              <input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+            </div>
+          </div>
+        </li>
+        <li class="last">
+          <div class="inputs clearfix">
+      	    <label><#= $.i18n.prop('meetings.end') #></label>
+      	    <input type="text" id="end-date" name="" maxlength="40"  class="inputText date vldRequired" value="" />
+      	    <div class="time-wrap" id="end-time">
+      	     <input class="disabled-input inputText" value="" />
+      	     <input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+      	     <span>:</span>
+      	     <input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+      	    </div>
+        	 </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="button_class dialog_action clearfix">
+      <button aria-disabled="false" role="button" class="send ui-button ui-widget ui-button-text-only purple_button no-border" type="button"><span style="line-height:2.5em !important; font-weight: bold; " class="ui-button-text"><#= $.i18n.prop('buttons.edit') #></span></button>
+      <button onclick="javascript:utils.closeDialog()" aria-disabled="false" role="button" class="cancel ui-button ui-widget  ui-button-text-only no-border" type="button"><span style="line-height:2.5em !important" class="ui-button-text"><#= $.i18n.prop('buttons.cancel') #></span></button>
+        </div>
+  </form>
+</div>

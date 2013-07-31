@@ -1,0 +1,33 @@
+<div class="modBorder">	
+	<div class="modCopy" style="overflow:auto">
+		<table class="inboxPanelListTable" style="width:95%" id="inboxPanelTable" cellpadding="0" cellspacing="0">
+			
+		 <#if(json.unreadMessageCount !=0){for(var i=0; i < json.lbasMessages.length; i++) { var top = json.lbasMessages[i]; #>
+			<# if(!top.read) { #>                          
+				<tr id="<#= top.id #>" style="background-color:#FFFFFF;">				                                    
+					<td class="inboxPanelList" align="left"><#= top.userFromName #></td>                                                              
+					<td class="inboxPanelList">
+						<a onclick="$('#inboxRightNav').click();">
+		 					<# if(top.subject == null) { #>
+		 						<#= '-' #>
+		 					<# } else if(top.subject.length>21) { #>
+								<#= top.subject.substr(0,17) #>...
+	                        <# } else { #>
+								<#= top.subject #>
+	                        <# } #>
+                        </a>
+               		</td>
+               		<td class="inboxPanelList" align="right"><#= getDate(top.sendTime) #></td>
+             	</tr>
+			<# } #>				                
+		<# } }
+		
+		else{#><tr id="emptyPanel" style="background-color:#FFFFFF;">
+			<td class="inboxPanelList">
+			<#= $.i18n.prop('dashboard.mail.noMessages') #>
+			
+			</td>
+			</tr> <# } #>
+	</table>         
+</div>
+</div>

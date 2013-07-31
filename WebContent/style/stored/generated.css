@@ -1,0 +1,655 @@
+/* button configuration options */
+/* color variables set relative to @button_color. 
+You probably don't need to change these. */
+/* styles for button color */
+.button {
+  color: #333333;
+  border: none;
+  background: transparent;
+}
+.button:hover {
+  background: #ffffff FF;
+}
+.button:active {
+  background: #ffffff;
+}
+/* basic styles for button size, padding, etc. */
+.button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.1em;
+  line-height: 100%;
+/*   font-family: VodafoneRgRegular, arial, verdana, sans-serif; */
+  font-family: arial, verdana, sans-serif;
+  padding: 1em 4em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  /*
+  -webkit-border-radius: @button_border_radius;
+  -moz-border-radius: @button_border_radius;
+  border-radius: @button_border_radius;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  */
+
+}
+.button:hover {
+  text-decoration: none;
+}
+.button:active {
+  /*
+  position: relative;
+  top: 1px;
+  */
+
+}
+.withDivider {
+/*   background-image: url("http://lbas.vodafone.com/reply/style/../images/header/Tabs_division_line.png"); */
+  background-image: url("../images/header/Tabs_division_line.png");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+/* button configuration options */
+/* color variables set relative to @menubar_color. 
+You probably don't need to change these. */
+/* styles for button color */
+.menubar {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-size: cover;
+}
+/* basic styles for button size, padding, etc. */
+.menubar {
+/*   font-family: VodafoneRgRegular, arial, verdana, sans-serif; */
+  font-family: arial, verdana, sans-serif;
+}
+ul.token-input-list-facebook {
+  overflow: hidden;
+  height: auto !important;
+  height: 1%;
+  border: 1px solid #8496ba;
+  cursor: text;
+  font-size: 12px;
+  font-family: Verdana;
+  min-height: 1px;
+  z-index: 999;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+}
+ul.token-input-list-facebook {
+  list-style-type: none;
+}
+ul.token-input-list-facebook li input {
+  border: 0;
+  padding: 3px 8px;
+  background-color: white;
+  margin: 2px 0;
+  width: auto;
+}
+li.token-input-token-facebook {
+  overflow: hidden;
+  height: auto !important;
+  margin: 3px;
+  padding: 1px 3px;
+  background-color: #eff2f7;
+  color: #000;
+  cursor: default;
+  border: 1px solid #ccd5e4;
+  font-size: 11px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  float: left;
+}
+li.token-input-token-facebook p {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+li.token-input-token-facebook span {
+  color: #a6b3cf;
+  margin-left: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+li.token-input-selected-token-facebook {
+  background-color: #5670a6;
+  border: 1px solid #3b5998;
+  color: #fff;
+}
+li.token-input-input-token-facebook {
+  float: left;
+}
+div.token-input-dropdown-facebook {
+  position: absolute;
+  width: 284px;
+  background-color: #fff;
+  overflow: hidden;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  cursor: default;
+  font-size: 11px;
+  font-family: Verdana;
+  z-index: 1;
+}
+div.token-input-dropdown-facebook p {
+  margin: 0;
+  padding: 5px;
+  font-weight: bold;
+  color: #777;
+}
+div.token-input-dropdown-facebook ul {
+  margin: 0;
+  padding: 0;
+}
+div.token-input-dropdown-facebook ul li {
+  background-color: #fff;
+  padding: 3px;
+}
+div.token-input-dropdown-facebook ul li.token-input-dropdown-item-facebook {
+  background-color: #fff;
+}
+div.token-input-dropdown-facebook ul li.token-input-dropdown-item2-facebook {
+  background-color: #fff;
+}
+div.token-input-dropdown-facebook ul li em {
+  font-weight: bold;
+  font-style: none;
+}
+div.token-input-dropdown-facebook ul li.token-input-selected-dropdown-item-facebook {
+  background-color: #3b5998;
+  color: #fff;
+}
+.bordered {
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+.padding {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.hover {
+  color: red !important;
+  cursor: pointer;
+  text-decoration: underline !important;
+}
+.boxing {
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+}
+.vodafoneFont {
+  font-family: VodafoneRgRegular, arial, verdana, sans-serif !important;
+  font-size: 14px !important;
+  color: #333333;
+}
+.defaultFont {
+  font-family: arial, verdana, sans-serif !important;
+  font-size: 12px !important;
+  color: #333333;
+}
+.font-small {
+  font-size: 0.8em;
+  color: #000000;
+  text-decoration: none;
+}
+.inLineBlockForIE7 {
+  zoom: 1;
+  *display: inline;
+}
+body {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+/*   font-family: VodafoneRgRegular, arial, verdana, sans-serif !important; */
+  font-family: arial, verdana, sans-serif !important;
+  font-size: 14px !important;
+  color: #333333;
+}
+span.bold {
+  display: inline-block;
+  font-weight: bold;
+  width: 6em;
+  zoom: 1;
+  *display: inline;
+}
+div#header {
+  width: 100%;
+  background-color: white;
+  top: 0px;
+  font-size: 0.8em;
+  color: #000000;
+  text-decoration: none;
+  padding-bottom: 9px;
+}
+#top .menu ul li.withDivider {
+/*   background-image: url("http://lbas.vodafone.com/reply/style/../images/header/Header_division_line.png"); */
+  background-image: url("../images/header/Header_division_line.png");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.logo img {
+  vertical-align: middle;
+}
+div#footer {
+  display: none;
+  width: 99%;
+  position: absolute;
+  bottom: 0px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+}
+a:active {
+  color: black;
+}
+.content {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+  clear: both;
+}
+#left {
+  width: 380px!important;
+  /*overflow: auto;
+	overflow: hidden;*/
+
+  position: absolute;
+  top: 0em;
+  left: 1.0em;
+  z-index: 1000;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+  /*max-height:445px!important;*/
+
+  max-height: 750px!important;
+}
+#left .title {
+  text-align: left;
+/*   background: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/Tabs/accordTriggerBg.jpg") repeat-x left top; */
+  background: url("../images/controlPanel/Tabs/accordTriggerBg.jpg") repeat-x left top;
+  border: 1px solid #dadada;
+  padding: 11px 19px 0 19px;
+  margin-left: 6px;
+  min-height: 23px;
+  cursor: pointer;
+  overflow: hidden;
+  width: 316px;
+}
+#left .title h1 {
+  float: left;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: bold;
+}
+#left .title span#map_expand_collapse {
+/*   background-image: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/controlPanel/control_panel_collapse.png"); */
+background-image: url("../images/controlPanel/controlPanel/control_panel_collapse.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  float: right;
+  width: 0.5em;
+}
+#left .title span#map_expand_collapse.expanded {
+/*   background-image: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/controlPanel/control_panel_collapse.png"); */
+background-image: url("../images/controlPanel/controlPanel/control_panel_collapse.png");  
+}
+#left .title span#map_expand_collapse.collapsed {
+/*   background-image: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/controlPanel/control_panel_expand.png"); */
+background-image: url("../images/controlPanel/controlPanel/control_panel_expand.png");
+}
+#left #tabs {
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 362px!important;
+  height: 445px;
+/*   background: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/shadows/accordBottomS.png") no-repeat left bottom; */
+background: url("../images/controlPanel/shadows/accordBottomS.png") no-repeat left bottom;  
+  padding-bottom: 8px;
+}
+#right {
+  width: 100%;
+  hight: 100%;
+  float: left;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+}
+/*buttons*/
+#tab-users .ui-button {
+  width: 50%;
+}
+#tab-users  .ui-button-text {
+  padding: 0.2em !important;
+  line-height: 1em !important;
+}
+#btn_users_locatable {
+  width: 90%;
+  border: none;
+}
+/* Login */
+#searchArea {
+  line-height: 2.5em;
+  margin: auto;
+  width: 50%;
+}
+#searchArea input {
+  font-size: 15px;
+  height: 32px;
+  width: 80%;
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  -moz-box-sizing: border-box;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-color: #C0C0C0 #D9D9D9 #D9D9D9;
+  border-radius: 1px 1px 1px 1px;
+  border-right: 1px solid #D9D9D9;
+  border-style: solid;
+  border-width: 1px;
+  display: inline-block;
+  margin: 0;
+  padding-left: 8px;
+  zoom: 1;
+  *display: inline;
+}
+#searchArea input:focus {
+  border: 1px solid #DF0000;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+  outline: medium none;
+}
+#searchArea input:hover {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #A0A0A0 #B9B9B9 #B9B9B9;
+  border-right: 1px solid #B9B9B9;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+}
+#searchArea input[type=submit] {
+  background-color: #DF0000;
+  background-image: -moz-linear-gradient(center top, #4d90fe, #4787ed);
+  border: 1px solid red;
+  color: #FFFFFF;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+  height: 32px;
+  margin: 0 1.5em 1.2em 0;
+}
+#searchArea input[type=submit]:hover {
+  background-color: red;
+  background-image: -moz-linear-gradient(center top, #4d90fe, #357ae8);
+  border: 1px solid #DF0000;
+  color: #FFFFFF;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+#searchArea input[type=submit]:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+}
+/** LIST LEFT PANEL */
+div.contents {
+  /*overflow-x: visible !important;
+	overflow-y: scroll!important;*/
+
+  margin: 10px 0 16px 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /*height:230px!important;*/
+
+}
+div.contents ul {
+  /*padding-right: 10px;*/
+
+  width: 99%;
+  margin-top: 4px;
+}
+div.contents ul li {
+  font-family: arial, verdana, sans-serif !important;
+  font-size: 12px !important;
+  color: #333333;
+  padding-bottom: 0.2em;
+  /*border-bottom:1px solid #ccc;*/
+
+}
+div.contents ul.users li {
+  background: none repeat scroll 0 0 transparent !important;
+}
+div.contents ul li ul {
+  width: 98%;
+}
+div.contents ul.users li:last-child {
+  margin-bottom: 1em;
+}
+div.contents div label {
+  background: transparent;
+}
+span.groupUsercount {
+  background-color: #FFFFFF;
+  float: right;
+  margin-right: 0.2em;
+  margin-top: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+/* FONT */
+@font-face {
+  font-family: 'VodafoneRgRegular';
+  src: url('../resources/vodafonerg-webfont.eot');
+  src: url('../resources/vodafonerg-webfont.eot?#iefix') format('embedded-opentype'), url('../resources/vodafonerg-webfont.woff') format('woff'), url('../resources/vodafonerg-webfont.ttf') format('truetype'), url('../resources/vodafonerg-webfont.svg#VodafoneRgRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.ui-widget {
+  font-family: VodafoneRgRegular, arial, verdana, sans-serif !important;
+  font-size: 14px !important;
+  color: #333333;
+}
+.ui-widget-content {
+  border: none;
+}
+.ui-dialog {
+  background-color: #ffffff !important;
+}
+.openClose {
+  font-weight: bold;
+  cursor: pointer;
+  margin: 1em;
+}
+.ui-autocomplete-category {
+  font-weight: bold;
+  color: red;
+}
+.ui-tabs .ui-tabs-nav li {
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding-bottom: 7px;
+  white-space: nowrap;
+  text-align: center;
+  background: none !important;
+  border-bottom: 1px solid #CCCCCC !important;
+  border-left: 1px solid #CCCCCC !important;
+  border-right: 1px solid #CCCCCC !important;
+  border-top: none !important;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+  margin-bottom: 0;
+  border: none !important;
+}
+.ui-tabs .ui-tabs-nav li a {
+  float: left;
+  text-decoration: none;
+  padding: 0;
+  font-size: 12px;
+  line-height: 14px;
+  color: #807d79;
+}
+.ui-autocomplete-category {
+  background-color: #ccc;
+  font-weight: bold;
+  line-height: 1.5;
+  font-family: VodafoneRgRegular, arial, verdana, sans-serif !important;
+  font-size: 14px !important;
+  color: #333333;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+div.groupElement {
+  background: none repeat scroll 0 0 transparent !important;
+  display: inline-block;
+  line-height: 2em;
+  overflow: hidden;
+  width: 101%;
+  font-family: arial, verdana, sans-serif !important;
+  font-size: 12px !important;
+  color: #333333;
+  zoom: 1;
+  *display: inline;
+}
+div.groupElementExpanded {
+  background: none repeat scroll 0 0 #F4F4F4 !important;
+  border: 1px solid #CCCCCC;
+}
+span.itemNameExpanded {
+  font-weight: bold;
+  text-decoration: underline;
+}
+div.groupElement div.container {
+  border-bottom: 1px solid #EBEBEB;
+  overflow: hidden;
+  padding-left: 11px;
+  font-family: arial, verdana, sans-serif !important;
+  font-size: 12px !important;
+  color: #333333;
+}
+ul.item_details li {
+  border: none !important;
+  font-size: 0.9em !important;
+}
+ul.action_button_bar {
+  height: 100%;
+  list-style-type: none;
+  overflow: auto;
+}
+ul.action_button_bar li {
+  float: left;
+  width: 25%;
+}
+ul.items_list_buttons li {
+  float: left;
+  width: 33%;
+}
+a.map_buttons_left_panel {
+/*   background: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/Button/mapBtnLeft.png") no-repeat scroll left top transparent; */
+background: url("../images/controlPanel/Button/mapBtnLeft.png") no-repeat scroll left top transparent;
+  cursor: pointer;
+  display: block;
+  outline: medium none;
+  overflow: hidden;
+  padding-left: 7px;
+  text-align: center;
+  text-decoration: none;
+}
+a.map_buttons_left_panel:hover {
+/*   background: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/Button/mapBtnLeft.png") no-repeat scroll left bottom transparent; */
+background: url("../images/controlPanel/Button/mapBtnLeft.png") no-repeat scroll left bottom transparent;
+  outline: none;
+}
+a.map_buttons_left_panel:active {
+/*   background: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/Button/mapBtnLeft.png") no-repeat scroll left bottom transparent; */
+background: url("../images/controlPanel/Button/mapBtnLeft.png") no-repeat scroll left bottom transparent;
+  outline: none;
+}
+a.map_buttons_left_panel span {
+/*   background: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/Button/mapBtnRight.png") no-repeat scroll right top transparent; */
+background: url("../images/controlPanel/Button/mapBtnRight.png") no-repeat scroll right top transparent;
+  color: #333333;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  height: 28px;
+  line-height: 25px;
+  padding-right: 7px;
+}
+a.map_buttons_left_panel:hover span {
+/*   background: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/Button/mapBtnRight.png") no-repeat scroll right bottom transparent; */
+background: url("../images/controlPanel/Button/mapBtnRight.png") no-repeat scroll right bottom transparent;
+  color: #fff;
+}
+a.map_buttons_left_panel:active span {
+/*   background: url("http://lbas.vodafone.com/reply/style/../images/controlPanel/Button/mapBtnRight.png") no-repeat scroll right bottom transparent; */
+background: url("../images/controlPanel/Button/mapBtnRight.png") no-repeat scroll right bottom transparent;
+  color: #fff;
+}

@@ -1,0 +1,269 @@
+<script type="text/javascript">	
+$().ready(function(){
+
+		prepareStartDate(<#= json.startTime #>);
+		prepareStopDate(<#= json.stopTime #>);
+
+		/*custom select*/
+
+    $('#locationRequestMessageDetailContent').find('button.send')
+       .mousedown(function(){
+    		  $(this).addClass('purple_button_active');
+    	 })
+    	 .mouseup(function(){
+    	   $(this).removeClass('purple_button_active');
+    	 })
+    	.mouseenter(function(){
+    	 $(this).addClass('purple_button_over');
+    	 })
+    	.mouseleave(function(){
+    	 $(this).removeClass('purple_button_over');
+    	 });
+       
+       
+       $('#locationRequestMessageDetailContent').find('button.cancel')
+       .mousedown(function(e){
+        e.preventDefault(); 
+    		$(this).addClass('cancelActive');
+    	})
+    	.mouseup(function(){
+    		$(this).removeClass('cancelActive');
+    	})
+    	.mouseenter(function(){
+    	 $(this).addClass('cancelOver');
+    	})
+    	.mouseleave(function(){
+    	 $(this).removeClass('cancelOver');
+    	});
+    
+    
+
+
+   
+    $('#inboxLocationRequestAcceptButton').mousedown(function(e){
+        e.preventDefault();
+     }).click(function(e) {
+		e.preventDefault();
+		/*var selectedName =$(".ui-selectmenu .ui-selectmenu-status").text().split("All Messages");*/
+		var profileID;
+		if( $(".permanent").is(':visible')){
+			profileID = $(".permanent .working-hours-select").selectmenu('value') ;	
+/*
+		} else if( $(".temporary").is(':visible') ){
+			profileID = $(".temporary .working-hours-select").selectmenu('value') ;				
+*/
+		}else{
+			profileID = -100;
+		}
+
+		answerLocationRequest('<#= json.id #>',true,'accepted',profileID );
+		$(this).parent().parent().fadeOut();
+		if($('#privacy').length === 1){
+			$('#privacy').remove();
+		}
+		/*
+		$('#locationRequestMessageDetailContent').block({ 
+			message:  $.i18n.prop('processing.text.message')
+		});
+		*/
+    }); 
+
+    $('#inboxLocationRequestRejectButton').click(function(e) {
+	    e.preventDefault();       
+    	answerLocationRequest('<#= json.id #>',false,'incoming' );
+		$(this).parent().parent().fadeOut();
+      /*
+$('#locationRequestMessageDetailContent').block({ 
+        message:  $.i18n.prop('processing.text.message')
+      });
+*/ 
+    });
+    
+    $.ajax({
+		  url :'getMyVisibilityProfiles.action',
+		  type :'POST',
+		  async :false,
+		  cache: false,
+		  dataType :'json',
+		  success :function(profilesJson) {
+		    if (checkResponseSuccess(profilesJson)) {
+	  		    $.each(profilesJson.profileSettingsList, function(i,v) {
+	  		      
+	    		    $('.working-hours-select')
+	    		      .append($("<option></option>")
+	    		      .attr({
+	    		      	"value":v.visibilityProfileId,
+	    		      })
+	    		      .text(v.visibilityProfileName)); 
+	  		    });
+	  		    
+		        $(".req-action-box .working-hours-select").selectmenu({
+					change: function() {
+						$('#filter_all_tab-users').change();
+					}
+ 				});
+		    }
+    
+    
+		 }
+		});
+});
+</script>
+ 
+<# if(!json.deleted) { #>
+<div id="locationRequestMessageDetailContent" align="left" class="inboxMessageContentDiv">
+  <div class="toolsMessage clearfix">
+      <a class="goBack" onclick="hideRequestContent(this);"><#= $.i18n.prop('messages.backToList') #></a>
+  </div>
+  <div class="head">
+    <div class="clearfix">
+      <h2><#= json.detailTitle #></h2>
+      <h3 class="from">
+          <#= $.i18n.prop('messageDetail.from') #>: <span><#= json.from #></span>
+      </h3>
+      <h3 class="to">
+          <!-- json.toUserId -->
+          <#= $.i18n.prop('messageDetail.to') #>: <span><#= json.to #></span>
+      </h3>
+
+      <p id="sentTimeReq" class="sentTime"><#= $.i18n.prop('messageDetail.sent') #>:&nbsp;</p>
+    </div>
+  </div>
+  <div class="content">
+      <#= json.content #>
+  </div>
+  <div class="reason">
+      <#= json.reason #>
+  </div>
+	<!--<span><b><#= json.detailTitle #></b></span>-->
+
+	<!--<table class="formTable">-->
+		<!--<tr>-->
+			<!--<td><b><#= $.i18n.prop('messageDetail.from') #>: </b><#= json.from #></td>-->
+		<!--</tr>-->
+		<!--<tr>-->
+			<!--<td><b><#= $.i18n.prop('messageDetail.when') #>:</b>-->
+			<!--<span id = "locRequestInboxStartTime"></span>-->
+			<!--<span id = "locRequestInboxStopTime"></span></td>-->
+		<!--</tr>-->
+		<!--<# if(json.additionalInfo != "") { #>-->
+		<!--<tr>-->
+			<!--<td><#= json.additionalInfo #></td>-->
+		<!--</tr>-->
+		<!--<# } #>-->
+	<!--</table>-->
+	
+	<# if(!json.invalid) { #>
+	
+	   
+<!-- 		<# if(json.type !=2) { #> -->
+				<!--
+<div>
+				  <b><#= $.i18n.prop('messageDetail.requestAnswerStatus') #>:</b> 
+					<span id="locationRequestAnswerStatusId"><#= json.requestAnswerStatus #></span>
+				</div>
+-->
+	 
+	   <!-- PERMANENT REQUEST -->
+	   <# if (json.startTime == -1) { #>
+	     
+        <div class="permanent req-action-box clearfix">
+          <h3><#= $.i18n.prop('locationRequest.permanent.action.title') #></h3>
+          <p><#= $.i18n.prop('locationRequest.choose.visibility.profile.sub', json.from) #></p>
+          <select class="working-hours-select"></select>
+          <ul class="action buttons_class clearfix">
+				    <li>
+				       <button id="inboxLocationRequestRejectButton" aria-disabled="false" role="button" class="cancel ui-button ui-widget ui-button-text-only no-border" type="button">
+				        <span style="line-height:2.5em !important" class="ui-button-text">
+				          <#= $.i18n.prop('buttons.reject') #>
+				        </span>
+				       </button>
+				    </li>
+				    <li>
+				      <button id="inboxLocationRequestAcceptButton" aria-disabled="false" role="button" class="send ui-button ui-widget purple_button ui-button-text-only no-border" type="button">
+				        <span style="line-height:2.5em !important" class="ui-button-text">
+  				        <#= $.i18n.prop('buttons.accept') #>
+				        </span>
+				      </button>
+				    </li>
+				  </ul>  
+        </div>
+      <# } else {#>
+        
+        <!-- TEMPORARY REQUEST -->
+        <div class="temporary req-action-box clearfix">
+          <h3>
+            <#= $.i18n.prop('locationRequest.temporary.action.title') #>
+            <span class="req-time"></span>
+          </h3>
+          <p><#= $.i18n.prop('locationRequest.choose.visibility.profile.sub', json.from) #></p>
+<!--           <select class="working-hours-select"></select> -->
+          <ul class="action buttons_class clearfix">
+				    <li>
+				       <button id="inboxLocationRequestRejectButton" aria-disabled="false" role="button" class="cancel ui-button ui-widget ui-button-text-only no-border" type="button">
+				        <span style="line-height:2.5em !important" class="ui-button-text">
+				          <#= $.i18n.prop('buttons.reject') #>
+				        </span>
+				       </button>
+				    </li>
+				    <li>
+				      <button id="inboxLocationRequestAcceptButton" aria-disabled="false" role="button" class="send ui-button ui-widget purple_button ui-button-text-only no-border" type="button">
+				        <span style="line-height:2.5em !important" class="ui-button-text">
+  				        <#= $.i18n.prop('buttons.accept') #>
+				        </span>
+				      </button>
+				    </li>
+				  </ul>  
+        </div>
+      
+      <# }#>
+
+
+				
+<!-- 				<# if(json.messageBoxTypeName == 'INBOX') { #> -->
+
+
+				  <!--
+<#if(json.answerStatus == 0) {#>
+				    <div id="locationrequestinboxbuttons" align="right" style="height:24px;">
+				      <table cellpadding="6" cellspacing="6" align="right" style="margin-right:5px">
+						    <tr>
+								  <td align="left">
+									 <a id="inboxLocationRequestRejectButton" href="javascript:void(0);"  style="color: #000;" class="textBtnGrey" >
+									   <span class='btnSpan'><#= $.i18n.prop('buttons.reject') #></span>
+									 </a>&nbsp;
+									 <a id="inboxLocationRequestAcceptButton" href="javascript:void(0);"  style="color: #000;" class="textBtnGrey" >
+									   <span class='btnSpan'><#= $.i18n.prop('buttons.accept') #></span>               	
+									 </a>
+								</td>
+								</tr>
+							</table>
+						</div>
+					<# } #>
+-->
+					
+					
+<!-- 				 <# } #> -->
+
+
+
+<!-- 		<# } #> -->
+	<# } else { #>
+		<div>
+		<b><#= $.i18n.prop('messageDetail.requestAnswerStatus') #>:</b> 
+			<#= json.requestAnswerStatus #>
+		</div>
+	<# } #>
+</div>
+
+<# } else { #>
+<div id="locationRequestMessageDetailContent" align="left" >
+	<span><b><#= json.detailTitle #></b></span>
+
+	<table class="formTable">
+			<tr>
+				<td><#= json.deletedLocationRequestMsgDetail #></td>
+			</tr>
+	</table>
+</div>
+<# } #>

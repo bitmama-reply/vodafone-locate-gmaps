@@ -1,0 +1,210 @@
+<form id="requestReportPermission" action="requestReportPermission" theme="simple">	
+
+	<input type="hidden" id="userId" name="userId" value="<#= user.user_id #>">
+	<input type="hidden" id="userPermission" name="userId" value="<#= user.permissions.hasCreateReportPermission #>">
+	
+	<div id="casefalse" style="display:none;">	
+		<div class="part1">
+			<#= $.i18n.prop('locationRequests.to') #> <span id="requestedUser"><#= user.fullName #></span>
+		</div>
+		<div class="part2">
+			<#= $.i18n.prop('locationRequests.text.first') #> <strong> <#= $.i18n.prop('locationRequests.text.first.bold') #></strong> <a href="javascript:void(0);" class="info image1"></a>
+		</div>
+		<div class="part3">
+			<#= $.i18n.prop('locationRequests.text.second') #> <#= user.name #><#= $.i18n.prop('locationRequests.text.third') #><a href="javascript:void(0);" class="info image2"></a>
+		</div>
+	</div>
+	
+	<div id="casetrue" style="display:none;">
+	   	
+	   	<div class="part1 clearfix">
+            <label for="date1" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.from') #>:</label>
+            <input type="text" id="date1" class="dateInputFrom" maxlength="15" size="13" />
+	        <!--<input type='text' id='time1' class="timeFrom" maxlength="15" size="7"/>--> 
+	        <div class="time-wrap" id="start-time">
+				<input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+				<span>:</span>
+				<input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+		    </div>
+	   	</div>
+		<div class="part2 clearfix">
+            <label for="date2" class="excpLabel"><#= $.i18n.prop('editVisibility.exception.table.to') #>:</label>
+            <input type="text" id="date2" class="dateInputTo" maxlength="15" size="13" />
+            <!--<input type='text' id='time2' class="timeTo" maxlength="15" size="7"/>-->
+            <div class="time-wrap" id="end-time">
+				<input type="text" id="" name="" maxlength="2"  class="inputText time hours vldRequired" value="" />
+				<span>:</span>
+				<input type="text" id="" name="" maxlength="2"  class="inputText time mins vldRequired" value="" />
+		    </div>
+
+		</div>
+	</div>
+  
+</form>
+
+<script>
+	$('#messageContent').maxlength( {
+		statusText: $.i18n.prop('messages.charLeft'),
+		maxCharacters: 160	
+	});
+    
+        $(document).ready(function() {
+        	
+        var d = new Date();
+    	$('#casetrue .hours').val(d.getHoursFormatted()-1);
+    	$('#casetrue .mins').val(d.getMinutesFormatted());
+    	d.setHours(d.getHours());
+    	$('#casetrue #end-time .hours').val(d.getHoursFormatted());
+
+
+	checkTheInputTime();	
+        	
+    		$('.ui-button').eq(1).removeClass("multi_user_button").addClass("purple_button").css({"width":"auto"});
+        	var checkPermission = $("#userPermission").val();
+        	/*control which template*/
+        	if(checkPermission == 'true'){
+        		$("#casefalse").hide();
+        		$(".locationReportRequestPermission").css({'width':400+'!important'});
+        		$(".locationReportRequestPermission #ui-dialog-title-dialog").html( $.i18n.prop('user.action.createReport') );
+        		$("#casetrue").show();
+        	}else if(checkPermission == 'false'){
+        		$("#casetrue").hide();
+        		$("#ui-dialog-title-dialog").html($.i18n.prop('locationReport.request.permission'));
+        		$("#casefalse").show();
+        	}else{
+        		$("#ui-dialog-title-dialog").html("fix this thing");
+        	}
+			/* get time into the fields */  			
+/*
+  				var currentTime = new Date();
+				var hours = currentTime.getHours();
+				var minutes = currentTime.getMinutes();
+				$('#time1').val(hours +" : "+ minutes);
+				$('#time2').val(hours+1 +" : "+ minutes);
+*/
+  			var date = new Date();
+  			date.setDate(date.getDate() - 1);
+  			/*date picker*/
+            $( ".dateInputFrom" ).datepicker({
+                showOn: "button",	
+                buttonImage: "images/availability/my_availability_calendar_icon.png",
+                buttonImageOnly: true,
+                buttonText: "calendar",
+                showOtherMonths: true,
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+                firstDay: +1,
+                dateFormat: "dd/mm/yy",
+                onSelect: function(dateText, inst) {
+                    $("#dialog #date1").val($.trim(dateText));
+                },
+                beforeShow: function(input, inst)
+				{
+			        inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+				}
+
+            }).datepicker('setDate',date);
+
+  			var date2 = new Date();
+  			date2.setDate(date2.getDate());
+            $( ".dateInputTo" ).datepicker({
+                showOn: "button",
+                buttonImage: "images/availability/my_availability_calendar_icon.png",
+                dateFormat: "dd/mm/yy",
+                buttonImageOnly: true,
+                buttonText: "calendar",
+                showOtherMonths: true,
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+                firstDay: +1,
+                onSelect: function(dateText, inst) {
+                    $("#dialog #date2").val($.trim(dateText));
+                },
+                beforeShow: function(input, inst) {
+			        inst.dpDiv.css({marginTop: -(input.offsetHeight+95) + 'px', marginLeft: input.offsetWidth+50 + 'px'});
+				}
+
+            }).datepicker('setDate', date2);
+			
+			/*tooltip images*/
+			
+			$('.image1').hover(function(){
+				var btns = {};
+                /*utils.closeDialog();*/
+
+                utils && utils.dialog({
+                    title : $.i18n.prop('locationReports.PopUp.title'),
+                    content: '<div id="locationReportsPopUp"><p style="margin:0 0 10px;">'+$.i18n.prop('locationReports.PopUp.text')+'</p><div style="width:248px; height:233px;"> <img style="margin:0 0 10px;" src="images/locationReportsPopUpSample.jpg" alt="sample imaage" /></div></div>',
+                    buttons : btns,
+                    css : "noCloseNoOk hoverCalendars"
+                });
+
+                /* POSITION DIALOG */
+				$('.hoverCalendars').css({'width': 305});
+                if( $.browser.msie && $.browser.version == 7 ){
+					/*$('.hoverCalendars .bd. .c .s').css({'width': 321});*/
+               		$('.hoverCalendars').css({'width': 305}); 
+               	}
+				var hovCal = $(this).offset();
+				var calHeight = $(".hoverCalendars").outerHeight();
+				var calWidth = $(".hoverCalendars").outerWidth();
+				var hovCalLeft = hovCal.left+15;
+                var hovCalTop = hovCal.top;
+				var windowWidth = $(window).width();
+				
+				if( calWidth + hovCalLeft > windowWidth ){
+					hovCalLeft = hovCal.left-calWidth;
+					$(".hoverCalendars").addClass("oppositeSide");
+				}    
+                    
+                $('.hoverCalendars').css({
+                    'top':  hovCalTop - (calHeight/2) +10,
+                    'left': hovCalLeft,
+                });
+
+				return false;		
+			},function(){
+
+                $(".hoverCalendars").hide().remove();
+            });
+            
+			$('.image2').hover(function(){
+		
+			var btns = {};
+
+                utils && utils.dialog({
+                    title : "",
+                    content: '<div id="locationReportsPopUp"><p class="line1">'+$.i18n.prop('locationReportsPopUp.secondImage.part1')+'</p><p class="line2">'+$.i18n.prop('locationReportsPopUp.secondImage.part2')+'</p><p class="line3">'+$.i18n.prop('locationReportsPopUp.secondImage.part3')+'</p> </div>',
+                    buttons : btns,
+                    css : "noCloseNoOk hoverCalendars"
+                });
+
+                /* POSITION DIALOG */
+				$('.hoverCalendars').css({'width': 310});
+                if( $.browser.msie && $.browser.version == 7 ){
+					/*$('.hoverCalendars .bd. .c .s').css({'width': 321});*/
+               		$('.hoverCalendars').css({'width': 310}); 
+               	}
+				var hovCal = $(this).offset();
+				var calHeight = $(".hoverCalendars").outerHeight();
+				var calWidth = $(".hoverCalendars").outerWidth();
+				var hovCalLeft = hovCal.left+15;
+                var hovCalTop = hovCal.top;
+				var windowWidth = $(window).width();
+				
+				if( calWidth + hovCalLeft > windowWidth ){
+					hovCalLeft = hovCal.left-calWidth;
+					$(".hoverCalendars").addClass("oppositeSide");
+				}    
+                    
+                $('.hoverCalendars').css({
+                    'top':  hovCalTop - (calHeight/2) +30,
+                    'left': hovCalLeft,
+                });
+
+				return false;		
+			},function(){
+
+                $(".hoverCalendars").hide().remove();
+            });
+        });
+        
+</script>
