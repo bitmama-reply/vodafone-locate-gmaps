@@ -193,8 +193,9 @@
  				<div class="search_container clearfix">
  					<ul class="x-input clearfix">
 					    <li>
+					    	<
 					        <span class="search-wrap">
-								<input id="search_assets" class="search" value="Search" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}"/>
+								<input id="search_assets" class="search" value="Search" onfocus="if (this.value == $.i18n.prop('general.Search')) {this.value = '';}" onblur="if (this.value == '') {this.value = $.i18n.prop('general.Search');}"/>
 								<span class="searchMagnifier">&nbsp;</span>
 							</span>
 					    </li>
@@ -534,7 +535,7 @@
 </div>
 <script language="Javascript">
 $(document).ready(function(){
-    
+   
     $(document).click(function() {
         $('#menuMap').hide();
     });

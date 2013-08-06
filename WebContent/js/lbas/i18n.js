@@ -151,14 +151,17 @@ localize.mapTabs = function(){
 		localize.apply("#menuMap #PlanMeeting span", $.i18n.prop("tooltipmain.PlanAMeeting"));
 
 		localize.apply('#btn_map_clear span', $.i18n.prop("welcome.clearMap"));
-    localize.apply('#btn_map_traffic span', $.i18n.prop("welcome.Traffic"));
+		localize.apply('#btn_map_traffic span', $.i18n.prop("welcome.Traffic"));
 		localize.apply('#btn_map_satellite span', $.i18n.prop("welcome.Satellite"));
 		localize.apply('#btn_map_hybrid span', $.i18n.prop("welcome.Hybrid"));
 		localize.apply('#btn_map_myLocation span', $.i18n.prop("welcome.MyLocation"));
-
 		
+		localize.apply('#btn_map_street span', $.i18n.prop("welcome.Map"));
 
+		 	    
 		$('#search_users').attr('value', $.i18n.prop('general.Search'));
+		$('#search_assets').attr('value' , $.i18n.prop('general.Search') );
+
 		localize.apply('.multi_user_button_refresh span', $.i18n.prop('category.Refresh'));          			
 	
 };	
