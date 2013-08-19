@@ -2,9 +2,9 @@ var adminJqGridContent,
 	adminClickedCategoryId;
 
 function loadAdminCategoryListPlace() {
-	$([ 'admin.list.Import', 'buttons.delete' ]).each(function(key, value){
-		$('<option value="' + $.i18n.prop(value).toLowerCase() + '">' + $.i18n.prop(value) + '</option>').prependTo( $('.no-selected .actions-list') );
-	});
+	$('<option value="import">' + $.i18n.prop('admin.list.Import') + '</option>').prependTo( $('.no-selected .actions-list') );
+	$('<option value="delete">' + $.i18n.prop('buttons.delete') + '</option>').prependTo( $('.no-selected .actions-list') );
+	
 	$('.actions-list-box select option[value="xml"]').remove();
 	$('.actions-list-box select option[value="pdf"]').remove();
 	$('.actions-list-box select').selectmenu();

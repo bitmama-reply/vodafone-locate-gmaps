@@ -18,9 +18,10 @@ var GroupManagement = AdminList.extend({
 			$('<option value="' + $.i18n.prop(value).toLowerCase() + '">' + $.i18n.prop(value) + '</option>').prependTo( $('.no-selected .actions-list') );
 		});
 
-		$([ 'buttons.delete', 'admin.list.group.activate', 'admin.list.group.disable' ]).each(function(key, value){
-			$('<option value="' + $.i18n.prop(value).toLowerCase() + '">' + $.i18n.prop(value) + '</option>').prependTo( $('.for-selected .actions-list') );
-		});
+		$('<option value="delete">' + $.i18n.prop('buttons.delete') + '</option>').prependTo( $('.for-selected .actions-list') );
+		$('<option value="activate">' + $.i18n.prop('admin.list.group.activate') + '</option>').prependTo( $('.for-selected .actions-list') );
+		$('<option value="disable">' + $.i18n.prop('admin.list.group.disable') + '</option>').prependTo( $('.for-selected .actions-list') );
+		
 	},
 	afterApplyAction: function( instance, action ) {
 		switch(action) {
