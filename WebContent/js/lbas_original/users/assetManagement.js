@@ -16,13 +16,12 @@ var AssetManagement = AdminList.extend({
 
 	actionsDropdown: function( instance ) {
 		instance._super(instance);
-		$([ 'admin.list.Import', 'admin.list.AddAsset' ]).each(function(key, value){
-			$('<option value="' + $.i18n.prop(value).toLowerCase() + '">' + $.i18n.prop(value) + '</option>').prependTo( $('.no-selected .actions-list') );
-		});
-
-		$([ 'buttons.delete' ]).each(function(key, value){
-			$('<option value="' + $.i18n.prop(value).toLowerCase() + '">' + $.i18n.prop(value) + '</option>').prependTo( $('.for-selected .actions-list') );
-		});
+		
+		$('<option value="import">' + $.i18n.prop('admin.list.Import') + '</option>').prependTo( $('.no-selected .actions-list') );
+		$('<option value="add asset">' + $.i18n.prop('admin.list.AddAsset') + '</option>').prependTo( $('.no-selected .actions-list') );
+		
+		$('<option value="delete">' + $.i18n.prop('buttons.delete') + '</option>').prependTo( $('.for-selected .actions-list') );
+		
 	},
 
 	list: function( instance ) {

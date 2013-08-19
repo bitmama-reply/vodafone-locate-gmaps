@@ -12,13 +12,16 @@ var UsersManagement = AdminList.extend({
 
 	actionsDropdown: function( instance ) {
 		instance._super(instance);
-		$([ 'admin.list.Import', 'admin.list.AddUser' ]).each(function(key, value){
-			$('<option value="' + $.i18n.prop(value).toLowerCase() + '">' + $.i18n.prop(value) + '</option>').prependTo( $('.no-selected .actions-list') );
-		});
+		
+		$('<option value="import">' + $.i18n.prop('admin.list.Import') + '</option>').prependTo( $('.no-selected .actions-list') );
+		$('<option value="add user">' + $.i18n.prop('admin.list.AddUser') + '</option>').prependTo( $('.no-selected .actions-list') );
+		
+		$('<option value="delete">' + $.i18n.prop('buttons.delete') + '</option>').prependTo( $('.for-selected .actions-list') );
+		$('<option value="message">' + $.i18n.prop('messages.message') + '</option>').prependTo( $('.for-selected .actions-list') );
+		$('<option value="move to group">' + $.i18n.prop('user.moveToNewGroup') + '</option>').prependTo( $('.for-selected .actions-list') );
+		$('<option value="activate users">' + $.i18n.prop('admin.list.activateUsers') + '</option>').prependTo( $('.for-selected .actions-list') );
+		$('<option value="disable users">' + $.i18n.prop('admin.list.disableUsers') + '</option>').prependTo( $('.for-selected .actions-list') );
 
-		$([ 'buttons.delete', 'messages.message', 'user.moveToNewGroup', 'admin.list.activateUsers', 'admin.list.disableUsers' ]).each(function(key, value){
-			$('<option value="' + $.i18n.prop(value).toLowerCase() + '">' + $.i18n.prop(value) + '</option>').prependTo( $('.for-selected .actions-list') );
-		});
 	},
 
 	list: function( instance ) {
